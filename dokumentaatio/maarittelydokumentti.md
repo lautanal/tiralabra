@@ -21,6 +21,7 @@ Ohjelma näyttää polunetsinnän etenemisen visuaalisesti
 ## Aika- ja tilavaativuudet
 
 Aikavaatimus: O((|V|+|E|)\log |V|)
+
 Tilavaatimus: O(|E|)
 
 ## Lähteet

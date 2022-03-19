@@ -1,4 +1,4 @@
-## Viikko 1 19.03.2022
+## Viikko 1
 
 ### Aihe
 
