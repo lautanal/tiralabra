@@ -4,7 +4,7 @@
 
 Aiheeksi on valittu pikselikarttaa hyväksi käyttävä navigaattori, joka löytää lyhimmän reitin kahden pisteen välillä.
 
-Harjoitustyössä myös vertaillaan kahden eri algoritmin eroja.  Käytettävät algoritmit ovat Dijkstra ja Jump Point Search.
+Harjoitustyössä vertaillaan myös kahden eri algoritmin eroja.  Käytettävät algoritmit ovat Dijkstra ja Jump Point Search.
 
 ### Määrittelydokumentti
 

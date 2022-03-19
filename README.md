@@ -1,8 +1,8 @@
 # Tiralabra - 2022 periodi 4 
 
-# Pikselinavigaattori
+# Pikselikarttanavigaattori
 
-Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää lyhimmän tai nopeimman reitin kahden pisteen välillä.  Kartan pikselien väri merkitsee joko kuljettavaa reittiä tai estettä.
+Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää lyhimmän reitin kahden pisteen välillä.  Kartan pikselien väri merkitsee joko kuljettavaa reittiä tai estettä.
 
 Polunetsinnän nopeutta testataan kahdella eri algoritmilla, joita ovat Dijkstran perinteinen ja Jump Point Search.
 
