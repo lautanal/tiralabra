@@ -14,3 +14,4 @@ Polunetsinnän nopeutta testataan kahdella eri algoritmilla, joita ovat Dijkstra
 
 ## Releaset
 
+tyoaikakirjanpitoz,md
