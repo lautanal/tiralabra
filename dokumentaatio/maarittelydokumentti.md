@@ -1,6 +1,6 @@
 ## Aihe
 
-Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää lyhimmän reitin kahden pisteen välillä.  Kartan pikselien väri merkitsee joko kuljettavaa reittiä tai estettä.  Pikselien väri voi merkitä nopeampaa tai hitaampaa reittiä.
+Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Kartan pikselien väri merkitsee joko kuljettavaa reittiä tai estettä.  Pikselien väri voi merkitä nopeampaa tai hitaampaa reittiä.
 
 ## Ohjelmointikieli
 
@@ -12,11 +12,11 @@ Polunetsinnän nopeutta testataan kahdella eri algoritmilla, jotka ovat Dijkstra
 
 ## Ohjelman syötteet ja tulosteet
 
-Ohjelma lataa pohjaksi halutun kartan pikselitiedoston (esim. png-tiedosto).  Karttakuvan eri värit merkitsevät joko kuljettavaa reittiä tai estettä.  Jos aikaa projektissa riittää, eri väreille voidaan asettaa eri etenemisnopeudet.
+Ohjelma lataa pohjaksi pikselitiedoston (esim. png-tiedosto) tai generoi sellaisen.  Pikselikartan eri värit merkitsevät joko kuljettavaa reittiä tai estettä. Väri kertoo myös kulkunopeuden reitillä.
 
 Käyttäjä valitsee halutun reitin alku- ja loppupisteet sekä käytetyn algoritmin ja muut tarvittavat parametrit.
 
-Ohjelma näyttää polunetsinnän etenemisen visuaalisesti.
+Ohjelma näyttää polun visuaalisesti.
 
 ## Aika- ja tilavaativuudet
 
