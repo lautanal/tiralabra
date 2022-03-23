@@ -4,7 +4,7 @@
 
 Ohjelma perusrunko on saatu toteutettua Pythonilla.
 
-Ohjelma löytää parhaan reitin kahden pisteen välillä Dijkstran menetelmnällä.  Ohjelma laskee reitin kahdella eritavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
+Ohjelma löytää parhaan reitin kahden pisteen välillä Dijkstran menetelmnällä.  Ohjelma laskee reitin kahdella eri tavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
 
 Visualisoinissa on käytetty vielä aluksi Matplotlib-standardikirjastoa, jolla ei voi tehdä kovin interaktiivista käyttöliittymää.
 
@@ -16,11 +16,11 @@ Pythonin PriorityQueue luokka tuntuu toimivan nopeasti Dijkstran menetelmän ite
 
 Kun sallitaan diagonaalisiirtymät pikselien välillä, saadaan luonnollisesti lyhyempi reitti, mutta laskenta kestää helposti kaksi kertaa kauemmin.
 
-Visualisointi Matplotlib-kirjastolla on hitaahko ja ei näyttävä.
+Visualisointi Matplotlib-kirjastolla on hitaahko ja ei kovin näyttävä.
 
 ### Työtunnit
 
-Tähän mennessä käytetty aikaa 23 tuntia.  
+Tähän mennessä käytetty aikaa 26 tuntia.  
 
 ### Seuraava viikko
 
