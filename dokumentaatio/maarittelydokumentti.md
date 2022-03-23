@@ -1,6 +1,6 @@
 ## Aihe
 
-Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Kartan pikselien väri merkitsee joko kuljettavaa reittiä tai estettä.  Pikselien väri voi merkitä nopeampaa tai hitaampaa reittiä.
+Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Pikselikartan eri värit merkitsevät joko hyvin kuljettavaa reittiä, hankalaa reittiä tai estettä.
 
 ## Ohjelmointikieli
 
@@ -8,11 +8,11 @@ Ohjelmointikielenä käytetään Pythonia (versio 3.9)
 
 ## Algoritmit ja tietorakenteet
 
-Polunetsinnän nopeutta testataan kahdella eri algoritmilla, jotka ovat Dijkstran perinteinen ja Jump Point Search.
+Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, jotka ovat Dijkstran perinteinen ja Jump Point Search.
 
 ## Ohjelman syötteet ja tulosteet
 
-Ohjelma lataa pohjaksi pikselitiedoston (esim. png-tiedosto) tai generoi sellaisen.  Pikselikartan eri värit merkitsevät joko kuljettavaa reittiä tai estettä. Väri kertoo myös kulkunopeuden reitillä.
+Ohjelma lataa pohjaksi pikselitiedoston (esim. png-tiedosto) tai generoi sellaisen.
 
 Käyttäjä valitsee halutun reitin alku- ja loppupisteet sekä käytetyn algoritmin ja muut tarvittavat parametrit.
 

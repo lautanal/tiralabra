@@ -5,4 +5,5 @@
 | 18.03. | 2    | Aiheen valinta, vaatimusmäärittely|
 | 18.03. | 1    | Viikkoraportti, Github-repo, Labtool|
 | 21.03. | 1    | Pikselirutiinien ja kirjastojen kokeilua|
-yht    | 4   | 
+| 22.03. | 8    | Visualisoinnin kokeilua,Dijkstran metodi|
+yht    | 12   | 
