@@ -2,7 +2,7 @@
 
 ### Aihe
 
-Aiheeksi on valittu pikselikarttaa hyväksi käyttävä navigaattori, joka löytää lyhimmän reitin kahden pisteen välillä.
+Aiheeksi on valittu pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.
 
 Harjoitustyössä vertaillaan myös kahden eri algoritmin eroja.  Käytettävät algoritmit ovat Dijkstra ja Jump Point Search.
 

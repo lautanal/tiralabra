@@ -1,6 +1,6 @@
 ## Aihe
 
-Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Pikselikartan eri värit merkitsevät joko hyvin kuljettavaa reittiä, hankalaa reittiä tai estettä.
+Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Pikselikartan eri värit merkitsevät joko hyvin kuljettavaa reittiä, hidasta reittiä tai estettä.
 
 ## Ohjelmointikieli
 
