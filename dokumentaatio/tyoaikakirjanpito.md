@@ -8,4 +8,5 @@
 | 22.03. | 8    | Visualisoinnin kokeilua,Dijkstran metodi|
 | 23.03. | 8    | Dijkstran metodi, diagonaalisiirrot, visualisointia parannettu|
 | 23.03. | 1    | Dokumentointia, viikkoraportti|
-yht    | 24  | 
+| 23.03. | 2    | A*-menetelmään tutustuminen|
+yht    | 26  | 
