@@ -20,9 +20,9 @@ Ohjelma näyttää polun visuaalisesti.
 
 ## Aika- ja tilavaativuudet
 
-Aikavaatimus: O((|V|+|E|)\log |V|)
+Aikavaatimus: O((n + m log n)
 
-Tilavaatimus: O(|E|)
+Tilavaatimus: O(n)
 
 ## Lähteet
 
