@@ -3,17 +3,21 @@ from map import generate_map
 from dijkstra import dijkstra_traditional, dijkstra_diagonal
 from plotmap import plot_map
 
-if __name__ == "__main__":
+def maproute():
+# Luodaan kartta
     ysize = 40
     xsize = 80
+    levels = 6
+    map = generate_map(ysize,xsize,levels)
+
+# Reitin alku- ja loppupisteet
+    limit = 5
     istart = 0
     jstart = 0
     iend = ysize-1
     jend = xsize-1
-    levels = 6
-    limit = 5
-    map = generate_map(ysize,xsize,levels)
 
+# Dijsktran menetelmä, vain vaaka- ja pystysiirtymät
     print('\nDijkstra traditionaalinen')
     wdist,nsteps,iters,path1 = dijkstra_traditional(map,istart,jstart,iend,jend,limit)
     if wdist > 0:
@@ -24,6 +28,7 @@ if __name__ == "__main__":
         print('Iteraatiot: ', iters)
         print('Ei ratkaisua')
 
+# Dijsktran menetelmä, diagonaalisiirtymät sallittu
     print('\nDijkstra diagonaalinen')
     wdist,nsteps,iters,path2 = dijkstra_diagonal(map,istart,jstart,iend,jend,limit)
     if wdist > 0:
@@ -33,4 +38,7 @@ if __name__ == "__main__":
     else:
         print('Iteraatiot: ', iters)
         print('Ei ratkaisua')
-    plot_map(map,istart,jstart,iend,jend,path1,'green',path2,'blue',True)
+    plot_map(map,istart,jstart,iend,jend,path1,'indianred',path2,'orange',True)
+
+if __name__ == "__main__":
+    maproute()
