@@ -4,9 +4,9 @@
 
 <img src="dokumentaatio/png/reittikartta.png" width="750">
 
-Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nopeimman reitin kahden pisteen välillä.  Kartan pikselien väri kertoo, onko kyseessä este vai kuljettava polku.  Poluilla on pikselien väreistä tai tummudesta riippuva kulkunopeus.
+Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan pikseliruuduilla on jokaisella tietty arvo (esim. välillä 1-10), joka kertoo  miten paljon aikaa kuluu reitin kulkiessa pikselin kautta.  Pikselin arvo korreloi tummuusasteen kanssa.  Mitä tummempi ruutu, sitä hitaampi reitti.
 
-Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen ja Jump Point Search.
+Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A*  ja Jump Point Search.
 
 ## Dokumentaatio
 
