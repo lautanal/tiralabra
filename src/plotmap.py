@@ -4,18 +4,18 @@ import copy
 from timeit import default_timer as timer
 
 
-def plot_map(map,istart,jstart,iend,jend,path1,pathcolor1,path2,pathcolor2,numbers):
+def plot_map(map,istart,jstart,iend,jend,path1,path2,numbers):
     tstart = timer()
     ysize = map.shape[0]
     xsize = map.shape[1]
 # Alustus
     cmap1 = copy.copy(plt.cm.get_cmap("Greys"))
-    cmap1.set_bad(color=pathcolor1)
-    cmap1.set_under(color='blue')
+    cmap1.set_bad(color='lightcoral')
+    cmap1.set_under(color='red')
     cmap1.set_over(color='green')
     cmap2 = copy.copy(plt.cm.get_cmap("Greys"))
-    cmap2.set_bad(color=pathcolor2)
-    cmap2.set_under(color='blue')
+    cmap2.set_bad(color='blue')
+    cmap2.set_under(color='red')
     cmap2.set_over(color='green')
     fig, (ax1, ax2) = plt.subplots(2,1,figsize=(12,12))
 # Plot 1 

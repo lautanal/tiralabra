@@ -2,6 +2,7 @@ import numpy as np
 from queue import PriorityQueue
 from math import sqrt
 from timeit import default_timer as timer
+from path import get_path
 
 # Dijkstran metodi, vain vaaka- ja pystysuorat siirtymät
 def dijkstra_traditional(map,istart,jstart,iend,jend,limit):
@@ -147,14 +148,4 @@ def dijkstra_diagonal(map,istart,jstart,iend,jend,limit):
             break
 
     return distance[iend][jend], nsteps, count, get_path(previous,istart,jstart,iend,jend)
-
-def get_path(previous,istart,jstart,iend,jend):
-    path = []
-    i,j = iend, jend
-    while i != istart or j != jstart:
-        path.append([i,j])
-        i,j = previous[i][j]
-    path.append([i,j])
-    path.reverse()
-    return path
 
