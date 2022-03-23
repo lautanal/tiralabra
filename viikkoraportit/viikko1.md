@@ -19,3 +19,10 @@ Github-repo perustettu.
 Labtool-rekisteröinti tehty.
 
 
+### Työtunnit
+
+Tähän mennessä käytetty aikaa vain 4 tuntia.  Aihe on valittu ja Github-repo alustettu.  Koodaus alkaa välittömästi ensi viikolla.
+
+
+
+
