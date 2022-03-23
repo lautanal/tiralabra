@@ -25,6 +25,7 @@ Tähän mennessä käytetty aikaa 26 tuntia.
 ### Seuraava viikko
 
 Ensi viikolla laitetaan työn alle muut menetelmät eli A* ja JPS.
+
 Myös käyttöliittymää aloitetaan rakentamaan paremmaksi Pygame-kirjaston avulla.
 
 
