@@ -4,7 +4,7 @@ Sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää nop
 
 ## Ohjelmointikieli
 
-Ohjelmointikielenä käytetään Pythonia (versio 3.9)
+Ohjelmointikielenä käytetään Pythonia (versio 3.8.8)
 
 ## Algoritmit ja tietorakenteet
 
