@@ -2,13 +2,11 @@
 
 ### Ohjelman alustava toteutus
 
-Ohjelma perusrunko on saatu toteutettua Pythonilla.
+Ohjelman alustava runko on saatu toteutettua Pythonilla.  Tässä viritelmässä on keskitytty lähinnä algoritmin toimivuuteen ja käyttöliittymä sekä visualisointi ovat vielä alkuasteella.
 
-Ohjelma löytää parhaan reitin kahden pisteen välillä Dijkstran menetelmnällä.  Ohjelma laskee reitin kahdella eri tavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
+Ohjelma löytää parhaan reitin pikselikartan kahden pisteen välillä Dijkstran menetelmnällä.  Ohjelma laskee reitin kahdella eri tavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
 
-Visualisoinissa on käytetty vielä aluksi Matplotlib-standardikirjastoa, jolla ei voi tehdä kovin interaktiivista käyttöliittymää.
-
-Algoritmeista on kokeiltu Dijkstran algoritmi kahdella eri variantilla.  Toisessa sallitaan vain vaaka- tai pystysuorat siirtymät pikselien välillä.  Toisessa sallitaan myös diagonaalisiirtymät.
+Visualisointi on toteutettu aluksi Matplotlib-standardikirjastolla.  Varsinaista käyttöliittymää ei ole vielä rakennettu.
 
 ### Havaintoja matkan varrelta
 
