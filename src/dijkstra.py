@@ -11,11 +11,11 @@ def dijkstra_traditional(map,istart,jstart,iend,jend):
     ysize = map.shape[0]
     xsize = map.shape[1]
 # Taulukkojen alustus
-    distance = [[999999999]*xsize for _ in range(ysize)]
+    distance = [[999999999]*xsize for _ in range(ysize)]            # Etäisyydet
     distance[istart][jstart] = map[istart,jstart]
-    previous = [[(0,0)]*xsize for _ in range(ysize)]
-    visited = [[False]*xsize for _ in range(ysize)]
-    paths = PriorityQueue()
+    previous = [[(0,0)]*xsize for _ in range(ysize)]                # Edelliset paikat
+    visited = [[False]*xsize for _ in range(ysize)]                 # Vierailut
+    paths = PriorityQueue()                                         # Työjono
 # Aloitus
     i,j = istart, jstart
     count = 0
@@ -23,18 +23,19 @@ def dijkstra_traditional(map,istart,jstart,iend,jend):
     while True:
         count += 1
 # Seuraavat mahdolliset pisteet
-        if i < ysize - 1 and not visited[i+1][j]:
+        if i < ysize - 1 and not visited[i+1][j]:                   # Alas
             next_xy(i,j,i+1,j,map,distance,previous,paths,nsteps)
-        if i > 0  and not visited[i-1][j]:
+        if i > 0  and not visited[i-1][j]:                          # Ylös         
             next_xy(i,j,i-1,j,map,distance,previous,paths,nsteps)
-        if j < xsize - 1 and not visited[i][j+1]:
+        if j < xsize - 1 and not visited[i][j+1]:                   # Oikealle
             next_xy(i,j,i,j+1,map,distance,previous,paths,nsteps)
-        if j > 0  and not visited[i][j-1]:
+        if j > 0  and not visited[i][j-1]:                          # Vasemmalle
             next_xy(i,j,i,j-1,map,distance,previous,paths,nsteps)
         visited[i][j] = True
-# Seuraava lyhimmän matkan piste
+# Reittiä ei löytynyt
         if paths.empty():
             return -1,nsteps,count,[]
+# Seuraava reitin piste
         d,nsteps,i,j = paths.get()
 # Maali
         if i == iend and j == jend:
@@ -71,26 +72,27 @@ def dijkstra_diagonal(map,istart,jstart,iend,jend):
     while True:
         count += 1
 # Seuraavat mahdolliset pisteet
-        if i < ysize - 1 and not visited[i+1][j]:
+        if i < ysize - 1 and not visited[i+1][j]:                           # Alas
             next_diag(i,j,i+1,j,map,distance,previous,paths,nsteps)
-            if j < xsize - 1 and not visited[i+1][j+1]:
+            if j < xsize - 1 and not visited[i+1][j+1]:                     # Alas oikealle
                 next_diag(i,j,i+1,j+1,map,distance,previous,paths,nsteps)
-            if j > 0 and not visited[i+1][j-1]:
+            if j > 0 and not visited[i+1][j-1]:                             # Alas vasemmalle
                 next_diag(i,j,i+1,j-1,map,distance,previous,paths,nsteps)
-        if i > 0 and not visited[i-1][j]:
+        if i > 0 and not visited[i-1][j]:                                   # Ylös
             next_diag(i,j,i-1,j,map,distance,previous,paths,nsteps)
-            if j < xsize - 1 and not visited[i-1][j+1]:
+            if j < xsize - 1 and not visited[i-1][j+1]:                     # Ylös oikealle
                 next_diag(i,j,i-1,j+1,map,distance,previous,paths,nsteps)
-            if j > 0 and not visited[i-1][j-1]:
+            if j > 0 and not visited[i-1][j-1]:                             # Ylös vasemmalle
                 next_diag(i,j,i-1,j-1,map,distance,previous,paths,nsteps)
-        if j < xsize - 1 and not visited[i][j+1]:
+        if j < xsize - 1 and not visited[i][j+1]:                           # Oikealle
                 next_diag(i,j,i,j+1,map,distance,previous,paths,nsteps)
-        if j > 0 and not visited[i][j-1]:
+        if j > 0 and not visited[i][j-1]:                                   # Vasemmalle
                 next_diag(i,j,i,j-1,map,distance,previous,paths,nsteps)
         visited[i][j] = True
-# Seuraava lyhimmän matkan piste
+# Reittiä ei löytynyt
         if paths.empty():
             return -1, nsteps, count, []
+# Seuraava reitin piste
         d,nsteps,i,j = paths.get()
 # Maali
         if i == iend and j == jend:

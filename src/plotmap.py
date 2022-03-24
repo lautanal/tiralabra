@@ -17,7 +17,7 @@ def plot_map(map,istart,jstart,iend,jend,path1,path2,numbers):
     cmap2.set_bad(color='blue')
     cmap2.set_under(color='red')
     cmap2.set_over(color='green')
-    fig, (ax1, ax2) = plt.subplots(2,1,figsize=(12,12))
+    fig, (ax1, ax2) = plt.subplots(1,2,figsize=(12,12))
 # Plot 1 
     plottemp=map.astype(float)
     for i in range(len(path1)):
