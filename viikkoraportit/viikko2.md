@@ -6,7 +6,7 @@
 
 Ohjelman alustava runko on saatu toteutettua Pythonilla.  Tässä viritelmässä on keskitytty lähinnä algoritmin toimivuuteen ja käyttöliittymä sekä visualisointi ovat vielä alkuasteella.
 
-Ohjelma löytää parhaan reitin pikselikartan kahden pisteen välillä Dijkstran menetelmnällä.  Ohjelma laskee reitin kahdella eri tavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
+Ohjelma löytää parhaan reitin ruutukartan kahden pisteen välillä Dijkstran menetelmällä.  Ohjelma laskee reitin kahdella eri tavalla.  Ensiksi sallitaan vain vaaka- tai pystysuorat siirtymät pisteiden välillä.  Toisessa vaihtoehdossa myös diagonaalisiirtyvät sallitaan.
 
 Visualisointi on toteutettu aluksi Matplotlib-standardikirjastolla.  Varsinaista käyttöliittymää ei ole vielä rakennettu.
 
