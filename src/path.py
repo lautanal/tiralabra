@@ -1,3 +1,4 @@
+# Reitin pisteiden haku previous-taulukosta
 
 def get_path(previous,istart,jstart,iend,jend):
     path = []
