@@ -5,13 +5,12 @@ from plotmap import plot_map
 
 def maproute():
 # Luodaan kartta
-    ysize = 40
-    xsize = 80
+    ysize = 100
+    xsize = 100
     levels = 6
     map = generate_map(ysize,xsize,levels)
 
 # Reitin alku- ja loppupisteet
-    limit = 5
     istart = 0
     jstart = 0
     iend = ysize-1
@@ -19,7 +18,7 @@ def maproute():
 
 # Dijsktran menetelmä, vain vaaka- ja pystysiirtymät
     print('\nDijkstra traditionaalinen')
-    wdist,nsteps,iters,path1 = dijkstra_traditional(map,istart,jstart,iend,jend,limit)
+    wdist,nsteps,iters,path1 = dijkstra_traditional(map,istart,jstart,iend,jend)
     if wdist > 0:
         print('Iteraatiot: ', iters)
         print('Polun pituus:', nsteps)
@@ -30,7 +29,7 @@ def maproute():
 
 # Dijsktran menetelmä, diagonaalisiirtymät sallittu
     print('\nDijkstra diagonaalinen')
-    wdist,nsteps,iters,path2 = dijkstra_diagonal(map,istart,jstart,iend,jend,limit)
+    wdist,nsteps,iters,path2 = dijkstra_diagonal(map,istart,jstart,iend,jend)
     if wdist > 0:
         print('Iteraatiot: ', iters)
         print('Polun pituus:', nsteps)
