@@ -2,7 +2,7 @@
 
 ### Ohjelman alustava toteutus
 
-<img src="dokumentaatio/png/viikko2.png" width="750">
+<img src="/dokumentaatio/png/viikko2.png" width="750">
 
 Ohjelman alustava runko on saatu toteutettua Pythonilla.  Tässä viritelmässä on keskitytty lähinnä algoritmin toimivuuteen ja käyttöliittymä sekä visualisointi ovat vielä alkuasteella.
 
