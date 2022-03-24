@@ -1,3 +1,5 @@
+<img src="dokumentaatio/png/reittikartta.png" width="750">
+
 ## Aihe
 
 Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella pikseliruuduilla on tietty arvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa pikselin kautta.  Pikselin arvo korreloi pikselin tummuusasteen kanssa.  Mitä tummempi ruutu, sitä suurempi kustannus tai hitaampi reitti
