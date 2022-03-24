@@ -15,5 +15,3 @@ Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat 
 [Työaikakirjanpito](https://github.com/lautanal/tiralabra//blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 ## Releaset
-
-tyoaikakirjanpitoz,md
