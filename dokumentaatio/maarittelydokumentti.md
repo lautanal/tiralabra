@@ -2,7 +2,7 @@
 
 ## Aihe
 
-Kehitettävä sovellus on pikselikarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella pikseliruuduilla on tietty arvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa pikselin kautta.  Pikselin arvo korreloi pikselin tummuusasteen kanssa.  Mitä tummempi ruutu, sitä suurempi kustannus tai hitaampi reitti
+Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty arvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Ruudun arvo korreloi tummuusasteen kanssa.  Mitä tummempi ruutu, sitä suurempi kustannus tai hitaampi reitti
 
 ## Ohjelmointikieli
 
@@ -14,7 +14,7 @@ Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat 
 
 ## Ohjelman syötteet ja tulosteet
 
-Ohjelma lataa pohjaksi pikselitiedoston (esim. png-tiedosto) tai generoi sellaisen.
+Ohjelma lataa pohjaksi karttatiedoston tai generoi itse ruutu- tai pikselikartan.
 
 Käyttäjä valitsee halutun reitin alku- ja loppupisteet sekä käytetyn algoritmin ja muut tarvittavat parametrit.
 
