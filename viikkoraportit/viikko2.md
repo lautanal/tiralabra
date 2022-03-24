@@ -12,7 +12,7 @@ Visualisointi on toteutettu aluksi Matplotlib-standardikirjastolla.  Varsinaista
 
 ### Havaintoja matkan varrelta
 
-Pythonin PriorityQueue luokka tuntuu toimivan nopeasti Dijkstran menetelmän iteroinnisssa.  Esim 100*100 ruudukon reitin laskenta kestää alle 0.1 sekuntia.
+Pythonin PriorityQueue-luokka tuntuu toimivan nopeasti Dijkstran menetelmän iteroinnisssa.  Esim 100*100 ruudukon reitin laskenta kestää alle 0.1 sekuntia.
 
 Kun sallitaan diagonaalisiirtymät pikselien välillä, saadaan luonnollisesti lyhyempi reitti, mutta laskenta kestää helposti kaksi kertaa kauemmin.
 
