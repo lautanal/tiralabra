@@ -1,13 +1,14 @@
 import numpy as np
 from map import generate_map
-from dijkstra import dijkstra_traditional, dijkstra_diagonal
+from dijkstra import dijkstra_xy, dijkstra_diagonal
+from astar import astar_xy, astar_diagonal, manhattan, euclidian
 from plotmap import plot_map
 
 def maproute():
 # Luodaan kartta
-    ysize = 40
-    xsize = 40
-    levels = 6
+    ysize = 500
+    xsize = 500
+    levels = 10
     map = generate_map(ysize,xsize,levels)
 
 # Reitin alku- ja loppupisteet
@@ -16,9 +17,9 @@ def maproute():
     iend = ysize-1
     jend = xsize-1
 
-# Dijsktran menetelmä, vain vaaka- ja pystysiirtymät
-    print('\nDijkstra traditionaalinen')
-    wdist,nsteps,iters,path1 = dijkstra_traditional(map,istart,jstart,iend,jend)
+# Dijsktran menetelmä
+    print('\nDijkstra xy-siirrot')
+    wdist,nsteps,iters,path1 = dijkstra_xy(map,istart,jstart,iend,jend)
     if wdist > 0:
         print('Iteraatiot: ', iters)
         print('Polun pituus:', nsteps)
@@ -27,8 +28,8 @@ def maproute():
         print('Iteraatiot: ', iters)
         print('Ei ratkaisua')
 
-# Dijsktran menetelmä, diagonaalisiirtymät sallittu
-    print('\nDijkstra diagonaalinen')
+# Dijkstra diagonal
+    print('\nDijkstra diagonal-siirrot')
     wdist,nsteps,iters,path2 = dijkstra_diagonal(map,istart,jstart,iend,jend)
     if wdist > 0:
         print('Iteraatiot: ', iters)
@@ -37,9 +38,33 @@ def maproute():
     else:
         print('Iteraatiot: ', iters)
         print('Ei ratkaisua')
-        
+
+# A* menetelmä xy
+    heuristic = manhattan
+    print('\nA* xy-siirrot')
+    wdist,nsteps,iters,path3 = astar_xy(map,istart,jstart,iend,jend, heuristic)
+    if wdist > 0:
+        print('Iteraatiot: ', iters)
+        print('Polun pituus:', nsteps)
+        print(f'Polun painotettu pituus: {wdist}')
+    else:
+        print('Iteraatiot: ', iters)
+        print('Ei ratkaisua')
+
+# A* diagonal
+    print('\nA* diagonal-siirrot')
+    wdist,nsteps,iters,path4 = astar_diagonal(map,istart,jstart,iend,jend, heuristic)
+    if wdist > 0:
+        print('Iteraatiot: ', iters)
+        print('Polun pituus:', nsteps)
+        print(f'Polun painotettu pituus: {wdist:.1f}')
+    else:
+        print('Iteraatiot: ', iters)
+        print('Ei ratkaisua')
+
 # Reittien tulostus
-    plot_map(map,istart,jstart,iend,jend,path1,path2,True)
+    plot_map(map,istart,jstart,iend,jend,path1,True)
+#    plot_map(map,istart,jstart,iend,jend,path3,True)
 
 if __name__ == "__main__":
     maproute()

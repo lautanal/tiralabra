@@ -6,7 +6,7 @@ from path import get_path
 
 # DIJKSTRA XY-SUUNNAT
 
-def dijkstra_traditional(map,istart,jstart,iend,jend):
+def dijkstra_xy(map,istart,jstart,iend,jend):
     tstart = timer()
     ysize = map.shape[0]
     xsize = map.shape[1]
@@ -46,11 +46,11 @@ def dijkstra_traditional(map,istart,jstart,iend,jend):
 
 # Ruudun tietojen talletus priorityjonoon
 def next_xy(i,j,inext,jnext,map,cost,previous,paths,nsteps):
-        newcost = cost[i][j] + map[inext,jnext]
-        if newcost < cost[inext][jnext]:
-            cost[inext][jnext] = newcost
-            previous[inext][jnext] = (i,j)
-            paths.put((newcost,nsteps+1,inext,jnext))
+    newcost = cost[i][j] + map[inext,jnext]
+    if newcost < cost[inext][jnext]:
+        cost[inext][jnext] = newcost
+        previous[inext][jnext] = (i,j)
+        paths.put((newcost,nsteps+1,inext,jnext))
 
 
 

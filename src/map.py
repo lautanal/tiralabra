@@ -4,7 +4,7 @@ from random import randint
 # Kartan generointi
 def generate_map(ysize,xsize,levels):
     map = np.random.randint(1, levels+1, size=(ysize, xsize))
-    generate_hills(map,60,4,4,levels,int(1.5*levels))
+    generate_hills(map,60,8,8,levels,int(1.5*levels))
     return map
 
 # Kukkuloiden generointi
