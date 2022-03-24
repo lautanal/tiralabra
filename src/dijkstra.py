@@ -11,8 +11,8 @@ def dijkstra_traditional(map,istart,jstart,iend,jend):
     ysize = map.shape[0]
     xsize = map.shape[1]
 # Taulukkojen alustus
-    distance = [[999999999]*xsize for _ in range(ysize)]            # Etäisyydet
-    distance[istart][jstart] = map[istart,jstart]
+    cost = [[999999999]*xsize for _ in range(ysize)]            # Etäisyydet
+    cost[istart][jstart] = map[istart,jstart]
     previous = [[(0,0)]*xsize for _ in range(ysize)]                # Edelliset paikat
     visited = [[False]*xsize for _ in range(ysize)]                 # Vierailut
     paths = PriorityQueue()                                         # Työjono
@@ -22,34 +22,35 @@ def dijkstra_traditional(map,istart,jstart,iend,jend):
     nsteps = 0
     while True:
         count += 1
-# Seuraavat mahdolliset pisteet
+# Seuraavat mahdolliset ruudut
         if i < ysize - 1 and not visited[i+1][j]:                   # Alas
-            next_xy(i,j,i+1,j,map,distance,previous,paths,nsteps)
+            next_xy(i,j,i+1,j,map,cost,previous,paths,nsteps)
         if i > 0  and not visited[i-1][j]:                          # Ylös         
-            next_xy(i,j,i-1,j,map,distance,previous,paths,nsteps)
+            next_xy(i,j,i-1,j,map,cost,previous,paths,nsteps)
         if j < xsize - 1 and not visited[i][j+1]:                   # Oikealle
-            next_xy(i,j,i,j+1,map,distance,previous,paths,nsteps)
+            next_xy(i,j,i,j+1,map,cost,previous,paths,nsteps)
         if j > 0  and not visited[i][j-1]:                          # Vasemmalle
-            next_xy(i,j,i,j-1,map,distance,previous,paths,nsteps)
+            next_xy(i,j,i,j-1,map,cost,previous,paths,nsteps)
         visited[i][j] = True
 # Reittiä ei löytynyt
         if paths.empty():
             return -1,nsteps,count,[]
-# Seuraava reitin piste
+# Seuraava reitin ruutu
         d,nsteps,i,j = paths.get()
 # Maali
         if i == iend and j == jend:
             tend = timer()
             print(f'Laskenta vei {tend-tstart:.3f} sekuntia')
             break
-    return distance[iend][jend], nsteps, count, get_path(previous,istart,jstart,iend,jend)
+    return cost[iend][jend], nsteps, count, get_path(previous,istart,jstart,iend,jend)
 
-def next_xy(i,j,inext,jnext,map,distance,previous,paths,nsteps):
-        dnew = distance[i][j] + map[inext,jnext]
-        if dnew < distance[inext][jnext]:
-            distance[inext][jnext] = dnew
+# Ruudun tietojen talletus priorityjonoon
+def next_xy(i,j,inext,jnext,map,cost,previous,paths,nsteps):
+        newcost = cost[i][j] + map[inext,jnext]
+        if newcost < cost[inext][jnext]:
+            cost[inext][jnext] = newcost
             previous[inext][jnext] = (i,j)
-            paths.put((dnew,nsteps+1,inext,jnext))
+            paths.put((newcost,nsteps+1,inext,jnext))
 
 
 
@@ -60,8 +61,8 @@ def dijkstra_diagonal(map,istart,jstart,iend,jend):
     ysize = map.shape[0]
     xsize = map.shape[1]
 # Taulukoiden alustus
-    distance = [[float('inf')]*xsize for _ in range(ysize)]
-    distance[istart][jstart] = 0.0
+    cost = [[float('inf')]*xsize for _ in range(ysize)]
+    cost[istart][jstart] = 0.0
     previous = [[(0,0)]*xsize for _ in range(ysize)]
     visited = [[False]*xsize for _ in range(ysize)]
     paths = PriorityQueue()
@@ -71,43 +72,44 @@ def dijkstra_diagonal(map,istart,jstart,iend,jend):
     nsteps = 0
     while True:
         count += 1
-# Seuraavat mahdolliset pisteet
+# Seuraavat mahdolliset ruudut
         if i < ysize - 1 and not visited[i+1][j]:                           # Alas
-            next_diag(i,j,i+1,j,map,distance,previous,paths,nsteps)
+            next_diag(i,j,i+1,j,map,cost,previous,paths,nsteps)
             if j < xsize - 1 and not visited[i+1][j+1]:                     # Alas oikealle
-                next_diag(i,j,i+1,j+1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i+1,j+1,map,cost,previous,paths,nsteps)
             if j > 0 and not visited[i+1][j-1]:                             # Alas vasemmalle
-                next_diag(i,j,i+1,j-1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i+1,j-1,map,cost,previous,paths,nsteps)
         if i > 0 and not visited[i-1][j]:                                   # Ylös
-            next_diag(i,j,i-1,j,map,distance,previous,paths,nsteps)
+            next_diag(i,j,i-1,j,map,cost,previous,paths,nsteps)
             if j < xsize - 1 and not visited[i-1][j+1]:                     # Ylös oikealle
-                next_diag(i,j,i-1,j+1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i-1,j+1,map,cost,previous,paths,nsteps)
             if j > 0 and not visited[i-1][j-1]:                             # Ylös vasemmalle
-                next_diag(i,j,i-1,j-1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i-1,j-1,map,cost,previous,paths,nsteps)
         if j < xsize - 1 and not visited[i][j+1]:                           # Oikealle
-                next_diag(i,j,i,j+1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i,j+1,map,cost,previous,paths,nsteps)
         if j > 0 and not visited[i][j-1]:                                   # Vasemmalle
-                next_diag(i,j,i,j-1,map,distance,previous,paths,nsteps)
+                next_diag(i,j,i,j-1,map,cost,previous,paths,nsteps)
         visited[i][j] = True
 # Reittiä ei löytynyt
         if paths.empty():
             return -1, nsteps, count, []
-# Seuraava reitin piste
+# Seuraava reitin ruutu
         d,nsteps,i,j = paths.get()
 # Maali
         if i == iend and j == jend:
             tend = timer()
             print(f'Laskenta vei {tend-tstart:.3f} sekuntia')
             break
-    return distance[iend][jend], nsteps, count, get_path(previous,istart,jstart,iend,jend)
+    return cost[iend][jend], nsteps, count, get_path(previous,istart,jstart,iend,jend)
 
-def next_diag(i,j,inext,jnext,map,distance,previous,paths,nsteps):
+# Ruudun tietojen talletus priorityjonoon
+def next_diag(i,j,inext,jnext,map,cost,previous,paths,nsteps):
     if inext == i or jnext == j:
-        dnew = distance[i][j] + (map[i,j] + map[inext,jnext]) / 2.0
+        newcost = cost[i][j] + (map[i,j] + map[inext,jnext]) / 2.0
     else:
-        dnew = distance[i][j] + (map[i,j] + map[inext,jnext]) / sqrt(2.0)
-    if dnew < distance[inext][jnext]:
-        distance[inext][jnext] = dnew
+        newcost = cost[i][j] + (map[i,j] + map[inext,jnext]) / sqrt(2.0)
+    if newcost < cost[inext][jnext]:
+        cost[inext][jnext] = newcost
         previous[inext][jnext] = (i,j)
-        paths.put((dnew,nsteps+1,inext,jnext))
+        paths.put((newcost,nsteps+1,inext,jnext))
 

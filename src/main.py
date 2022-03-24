@@ -37,6 +37,8 @@ def maproute():
     else:
         print('Iteraatiot: ', iters)
         print('Ei ratkaisua')
+        
+# Reittien tulostus
     plot_map(map,istart,jstart,iend,jend,path1,path2,True)
 
 if __name__ == "__main__":
