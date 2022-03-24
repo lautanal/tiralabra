@@ -6,8 +6,8 @@ from plotmap import plot_map
 
 def maproute():
 # Luodaan kartta
-    ysize = 500
-    xsize = 500
+    ysize = 100
+    xsize = 100
     levels = 10
     map = generate_map(ysize,xsize,levels)
 

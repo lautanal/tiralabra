@@ -55,7 +55,7 @@ def next_xy(i,j,inext,jnext,iend,jend,map,cost,previous,paths,nsteps,heuristic):
         paths.put((fcost,nsteps+1,inext,jnext))
 
 
-# DIJKSTRA DIAGONAALISUUNNAT
+# A* DIAGONAALISUUNNAT
 
 def astar_diagonal(map,istart,jstart,iend,jend,heuristic):
     tstart = timer()
