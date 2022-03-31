@@ -2,19 +2,19 @@
 
 ## Aihe
 
-Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty arvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Ruudun arvo korreloi tummuusasteen kanssa.  Mitä tummempi ruutu, sitä suurempi kustannus tai hitaampi reitti
+Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Ruudun arvo korreloi tummuusasteen kanssa.  Mitä tummempi ruutu, sitä suurempi kustannus tai hitaampi reitti
 
 ## Ohjelmointikieli
 
-Ohjelmointikielenä käytetään Pythonia (versio 3.8.8)
+Ohjelmointikielenä käytetään Pythonia (versio 3.8.8).  Visualisointi ja käyttöliittymä toteutetaan Pygame-kirjaston avulla.
 
 ## Algoritmit ja tietorakenteet
 
-Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A* ja Jump Point Search.
+Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A*, IDA* ja Jump Point Search.
 
 ## Ohjelman syötteet ja tulosteet
 
-Ohjelma lataa pohjaksi karttatiedoston tai generoi itse ruutu- tai pikselikartan.
+Ohjelma lataa pohjaksi karttatiedoston tai generoi itse ruutukartan.
 
 Käyttäjä valitsee halutun reitin alku- ja loppupisteet sekä käytetyn algoritmin ja muut tarvittavat parametrit.
 

@@ -2,8 +2,8 @@ import pygame
 from ui import ui
 
 WIDTH = 800
-NCOLS = 50
-NROWS = 40
+NCOLS = 60
+NROWS = 60
 
 if __name__ == "__main__":
 # Gridin ruudun koko
