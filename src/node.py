@@ -51,8 +51,8 @@ class Node:
 		self.color = ORANGE
 		return self
 
-	def set_visited(self):
+	def set_visited(self, animate):
 		self.visited = True
-		if not self.start:
+		if animate and not self.start:
 			self.color = GREEN
 

@@ -2,7 +2,7 @@
 
 ### Ohjelman rungon toteutus
 
-<img src="/dokumentaatio/png/viikko3.png" width="750">
+<img src="/dokumentaatio/png/reittikartta03.png" width="750">
 
 Ohjelman runko on toteutettu Pythonilla. Edellisen viikon ohjelma on kokenut täysmuutoksen. Ruutukartan mallinnus ja algoritmit ovat toteutettu luokkien avulla edellisen viikon taulukkopohjaisen toteutuksen sijasta. Visualisointi on nyt toteutettu Pygame-kirjastolla Matplotlib-kirjaston sijasta. Myös käyttöliittymä on toteutettu Pygame-kirjaston avulla hiiri- ja näppäinkomennoin.  
 

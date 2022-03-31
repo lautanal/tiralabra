@@ -42,7 +42,7 @@ def dijkstra(map, start, end, diagonal, animate):
 		if animate:
 			map.draw()
 
-		node.set_visited()
+		node.set_visited(animate)
 
 	tend = timer()
 	print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
@@ -90,7 +90,7 @@ def astar(map, start, end, diagonal, animate):
 		if animate:
 			map.draw()
 
-		node.set_visited()
+		node.set_visited(animate)
 
 	tend = timer()
 	print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
