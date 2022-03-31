@@ -9,4 +9,7 @@
 | 23.03. | 8    | Dijkstran metodi, diagonaalisiirrot, visualisointia parannettu|
 | 23.03. | 1    | Dokumentointia, viikkoraportti|
 | 23.03. | 2    | A*-menetelmään tutustuminen|
-yht    | 26  | 
+| 27.03. | 8    | Ohjelman mallinnuksen muuttaminen luokka-pohjaiseksi|
+| 28.03. | 8    | Ohjelman visualisointi Pygame-kirjaston avulla |
+| 31.03. | 2    | Visualisoinnin muutoksia, viikkoraportti |
+yht    | 44  | 
