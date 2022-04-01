@@ -7,12 +7,13 @@ NROWS = 60
 
 if __name__ == "__main__":
 # Gridin ruudun koko
-	gsize = int(WIDTH / NCOLS)
+	gsize = WIDTH // NCOLS
 
 # Pygame ikkuna
+	width = gsize * NCOLS
 	height = gsize * NROWS
 	pygame.init()
-	win = pygame.display.set_mode((WIDTH, height))
+	win = pygame.display.set_mode((width, height))
 
 # Käyttöliittymän käynnistys
 	ui(win, NROWS, NCOLS, gsize)
