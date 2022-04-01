@@ -31,7 +31,6 @@ class Node:
 		self.start = False
 		self.end = False
 		self.blocked = False
-		self.visited = False
 		ngrey = (20 - self.cost) * 12
 		self.color = (ngrey,ngrey,ngrey)
 
