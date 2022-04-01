@@ -8,7 +8,7 @@ Ohjelman runko on toteutettu Pythonilla. Edellisen viikon ohjelma on kokenut tä
 
 Ohjelma generoi automaattisesti ruutukartan, jossa jokaisella ruudulla on painoarvo, joka vastaa aika tai kustannuslisää ruudun läpi kulkiessa.  Kartta visualisoidaan Pygame-kirjaston avulla.  Käyttäjä valitsee hiirellä reitin alku- ja loppupisteet ja lisää halutessaan esteet, joiden läpi reitti ei voi kulkea.
 
-Ohjelma löytää parhaan reitin (pienin kustannus) ruutukartan kahden pisteen välillä sekä Dijkstran, että  A* -menetelmillä.  Ensi viikolla työn alle tulee myös JPS- tai IDA*-menetelmät.  Parhaan reitin voi määrittää kahdella eri tavalla.  Joko siirrytään vain vaaka- tai pystysuoraaan ruutujen välillä tai toisessa vaihtoehdossa myös diagonaalisiirtyvät ovat mahdollisia.
+Ohjelma löytää parhaan reitin (pienin kustannus) ruutukartan kahden pisteen välillä sekä Dijkstran, että  A* -menetelmillä (Ensi viikolla työn alle tulevat myös JPS- tai IDA*-menetelmät).  Parhaan reitin voi määrittää kahdella eri tavalla.  Joko siirrytään ruutujen välillä pelkästään vaaka- ja pystysuoraaan tai vaihtoehtoisesti myös diagonaalisiirtyvät ovat mahdollisia.
 
 ### Havaintoja matkan varrelta
 
