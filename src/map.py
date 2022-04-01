@@ -56,15 +56,17 @@ class Map:
 				node.costsum = float("inf")
 
 				node.neighbors = []
-				if node.row < self.rows - 1 and not self.nodes[node.row + 1][node.col].blocked:
-					node.neighbors.append(self.nodes[node.row + 1][node.col])
+				if node.row < self.rows - 1:
+					if not self.nodes[node.row + 1][node.col].blocked:
+						node.neighbors.append(self.nodes[node.row + 1][node.col])
 					if node.col < self.cols - 1 and not self.nodes[node.row + 1][node.col + 1].blocked:
 						node.neighbors.append(self.nodes[node.row + 1][node.col + 1])
 					if node.col > 0 and not self.nodes[node.row + 1][node.col - 1].blocked:
 						node.neighbors.append(self.nodes[node.row + 1][node.col - 1])
 
-				if node.row > 0 and not self.nodes[node.row - 1][node.col].blocked:
-					node.neighbors.append(self.nodes[node.row - 1][node.col])
+				if node.row > 0:
+					if not self.nodes[node.row - 1][node.col].blocked:
+						node.neighbors.append(self.nodes[node.row - 1][node.col])
 					if node.col < self.cols - 1 and not self.nodes[node.row - 1][node.col + 1].blocked:
 						node.neighbors.append(self.nodes[node.row - 1][node.col + 1])
 					if node.col > 0 and not self.nodes[node.row - 1][node.col - 1].blocked:
@@ -80,10 +82,10 @@ class Map:
 	def reset(self):
 		for row in self.nodes:
 			for node in row:
+				node.visited = False
 				if not node.start and not node.end and not node.blocked:
 					ngrey = (20 - node.cost) * 12
 					node.color = (ngrey,ngrey,ngrey)
-					node.visited = False
 
 # Kartan piirtäminen
 	def draw(self):

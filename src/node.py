@@ -31,6 +31,7 @@ class Node:
 		self.start = False
 		self.end = False
 		self.blocked = False
+		self.visited = False
 		ngrey = (20 - self.cost) * 12
 		self.color = (ngrey,ngrey,ngrey)
 
@@ -46,11 +47,13 @@ class Node:
 
 	def set_end(self):
 		self.end = True
+		self.blocked = False
 		self.color = BLUE
 		return self
 
 	def set_start(self):
 		self.start = True
+		self.blocked = False
 		self.color = ORANGE
 		return self
 
