@@ -1,6 +1,6 @@
 ## Viikko 3
 
-<img src="/dokumentaatio/png/reittikartta03.png" width="750">
+<img src="/dokumentaatio/png/viikko3.png" width="750">
 
 ### Ohjelman rungon toteutus
 
