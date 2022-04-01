@@ -28,8 +28,11 @@ class Node:
 		self.costsum = float("inf")
 
 	def clear(self):
+		self.start = False
+		self.end = False
 		self.blocked = False
-		self.color = WHITE
+		ngrey = (20 - self.cost) * 12
+		self.color = (ngrey,ngrey,ngrey)
 
 	def get_pos(self):
 		return self.row, self.col

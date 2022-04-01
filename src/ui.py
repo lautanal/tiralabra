@@ -15,7 +15,7 @@ def ui(win, nrows, ncols, gsize):
 	run = True
 	searchmode = 'D'
 	diagonal = False
-	animation = True
+	animation = False
 	maxcost = 5
 	set_caption(searchmode, diagonal, animation)
 
@@ -45,8 +45,11 @@ def ui(win, nrows, ncols, gsize):
 				pos = pygame.mouse.get_pos()
 				row, col = get_clickpos(pos, gsize)
 				node = map.nodes[row][col]
-				if node != startnode and node != endnode:
-					node.clear()
+				if node == startnode:
+					startnode = None
+				if node == endnode:
+					endnode = None
+				node.clear()
 
 			if event.type == pygame.KEYDOWN:
 

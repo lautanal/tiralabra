@@ -1,8 +1,8 @@
-## Viikko 2
-
-### Ohjelman rungon toteutus
+## Viikko 3
 
 <img src="/dokumentaatio/png/reittikartta03.png" width="750">
+
+### Ohjelman rungon toteutus
 
 Ohjelman runko on toteutettu Pythonilla. Edellisen viikon ohjelma on kokenut täysmuutoksen. Ruutukartan mallinnus ja algoritmit ovat toteutettu luokkien avulla edellisen viikon taulukkopohjaisen toteutuksen sijasta. Visualisointi on nyt toteutettu Pygame-kirjastolla Matplotlib-kirjaston sijasta. Myös käyttöliittymä on toteutettu Pygame-kirjaston avulla hiiri- ja näppäinkomennoin.  
 
@@ -12,13 +12,19 @@ Ohjelma löytää parhaan reitin (pienin kustannus) ruutukartan kahden pisteen v
 
 ### Havaintoja matkan varrelta
 
-Visualisointi Pygame-kirjaston avulla on huomattavasti nopeampi ja näyttävämpi kuin aikaisempi Matplotlib-toteutus.  Pygamen avulla onistuu myös realiaikainen animointi.
+Visualisointi Pygame-kirjaston avulla on huomattavasti nopeampi ja näyttävämpi kuin aikaisempi Matplotlib-toteutus.  
+
+Pygamen avulla onistuu myös realiaikainen animointi.  Animointi on melko hidasta.
 
 A* -menetelmän paremmuus verrattuna Dijkstran menetelmään riippuu paljon reitin alku- ja loppupisteiden sijainnista.
 
+### Release
+
+Viikon 3 release löytyy [täältä](https://github.com/lautanal/tiralabra/releases/tag/Viikko3)
+
 ### Työtunnit
 
-Tähän mennessä käytetty aikaa 42 tuntia.  
+Tähän mennessä käytetty aikaa 47 tuntia.  
 
 ### Seuraava viikko
 
