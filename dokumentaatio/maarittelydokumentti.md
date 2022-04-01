@@ -2,7 +2,7 @@
 
 ## Aihe
 
-Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinna mukaan joko ainoastaan vaaka- tai pystysuoraan tai myös diagonaalisesti.
+Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinnan mukaan joko ainoastaan vaaka- tai pystysuoraan tai myös diagonaalisesti.
 
 
 ## Ohjelmointikieli
