@@ -1,5 +1,5 @@
 import pygame
-from ui import ui
+from ui import Ui
 
 WIDTH = 800
 NCOLS = 60
@@ -16,4 +16,5 @@ if __name__ == "__main__":
 	win = pygame.display.set_mode((width, height))
 
 # Käyttöliittymän käynnistys
-	ui(win, NROWS, NCOLS, gsize)
+	ui = Ui(win, NROWS, NCOLS, gsize)
+	ui.start()
