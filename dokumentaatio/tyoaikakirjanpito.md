@@ -14,4 +14,4 @@
 | 31.03. | 3    | Visualisoinnin muutoksia, viikkoraportti |
 | 01.04. | 4    | Viikkoraportti, release dokumentointia |
 | 02.04. | 4    | Dokumentointia, testausta, testikarttojen tekoa |
-yht    | 49 | 
+yht    | 53 | 
