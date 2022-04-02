@@ -116,7 +116,7 @@ class Ui:
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
 
-	# Uusi kartta TIEDOSTOSTA
+	# Uusi kartta 1 TIEDOSTOSTA
 					if event.key == pygame.K_1:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.startnode = None
@@ -124,13 +124,21 @@ class Ui:
 						self.map.make()
 						self.map.read("maps/1.map")
 
-	# Uusi kartta TIEDOSTOSTA
+	# Uusi kartta 2 TIEDOSTOSTA
 					if event.key == pygame.K_2:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.startnode = None
 						self.endnode = None
 						self.map.make()
 						self.map.read("maps/2.map")
+
+	# Uusi kartta 3 TIEDOSTOSTA
+					if event.key == pygame.K_3:
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+						self.startnode = None
+						self.endnode = None
+						self.map.make()
+						self.map.read("maps/3.map")
 
 	# Laskennan aloitus
 					if event.key == pygame.K_s:
