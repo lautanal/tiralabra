@@ -2,7 +2,7 @@
 
 ### Yksikkötestit
 
-Yksikkötestit ovat vielä työn alla.  Yksikkötestien määrää kannattaa rajoittaa, koska virheet ohjelmassa löytyvät paremmin vertailemalla eri menetelmien tuloksia testikartoilla visuaalisesti.
+Yksikkötestit ovat vielä työn alla.  Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska virheet ohjelmassa löytyvät parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.
 
 ### Empiirinen testaus
 
