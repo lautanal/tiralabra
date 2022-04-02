@@ -2,7 +2,7 @@
 
 ### Yksikkötestit
 
-Yksikkötestit ovat vielä työn alla.  Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelma topiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.
+Yksikkötestit ovat vielä työn alla.  Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.
 
 ### Empiirinen testaus
 
@@ -12,7 +12,7 @@ Graafinen käyttöliittymä auttaa huomattavasti ohjelman toiminnan todentamises
 
 Graafisesta käyttöliittymästä on huomattavasti apua myös siten, että voidaan tarkastella mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä kartalla.
 
-Testikartoilla voidaan varmistaa eri algoritmien toiminta ja oikeellisuus.
+Erilaisilla testikartoilla voidaan varmistaa parhaiten eri algoritmien toiminta ja oikeellisuus.
 
 <img src="/dokumentaatio/png/viikko3.png" width="750">
 
