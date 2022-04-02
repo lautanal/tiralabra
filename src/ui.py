@@ -3,14 +3,18 @@ from map import Map
 from algorithm import astar, dijkstra
 
 class Ui:
-	def __init__(self, win, nrows, ncols, gsize):
-		self.win = win
+	def __init__(self, nrows, ncols, width, height, gsize):
+# Pygame-ikkuna
+		pygame.init()
+		self.win = pygame.display.set_mode((width, height))
 		self.nrows = nrows
 		self.ncols = ncols
+		self.width = width
+		self.height = height
 		self.gsize = gsize
 
-# Gridin teko
-		self.map = Map(self.win, self.nrows, self.ncols, self.gsize)
+# Karttaruudukon teko
+		self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 		self.map.make()
 		self.map.generate_costs(5)
 
@@ -24,6 +28,7 @@ class Ui:
 		self.maxcost = 5
 		self.set_caption()
 
+# Käyttöliittymä
 	def start(self):
 	# Event loop
 		while self.run:
@@ -34,7 +39,7 @@ class Ui:
 				if event.type == pygame.QUIT:
 					self.run = False
 
-	# Alku-, loppu-, ja esteiden pisteeiden syöttö (hiiren vasen näppäin)
+	# Alku-, loppupisteet, ja esteiden syöttö (hiiren vasen näppäin)
 				if pygame.mouse.get_pressed()[0]:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
@@ -46,7 +51,7 @@ class Ui:
 					elif node != self.endnode and node != self.startnode:
 						node.set_blocked()
 
-	# Esteiden pyyhkiminen (hiiren oikea näppäin)
+	# Pisteiden pyyhkiminen (hiiren oikea näppäin)
 				elif pygame.mouse.get_pressed()[2]:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
@@ -89,7 +94,7 @@ class Ui:
 							self.maxcost -= 1
 						self.startnode = None
 						self.endnode = None
-						self.map = Map(self.win,self.nrows, self.ncols, self.gsize)
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
 
@@ -99,28 +104,36 @@ class Ui:
 							self.maxcost += 1
 						self.startnode = None
 						self.endnode = None
-						self.map = Map(self.win,self.nrows, self.ncols, self.gsize)
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
 
 	# Uusi kartta
 					if event.key == pygame.K_c:
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.startnode = None
 						self.endnode = None
-						self.map = Map(self.win,self.nrows, self.ncols, self.gsize)
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
 
+	# Uusi kartta TIEDOSTOSTA
+					if event.key == pygame.K_1:
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+						self.startnode = None
+						self.endnode = None
+						self.map.make()
+						self.map.read("maps/1.map")
+
 	# Laskennan aloitus
 					if event.key == pygame.K_s:
-						print(self.startnode,self.endnode)
 						if self.startnode and self.endnode:
+							self.map.reset()
 							if self.searchmode == 'D':
 								dijkstra(self.map, self.startnode, self.endnode, self.diagonal, self.animation)
 							else:
 								astar(self.map, self.startnode, self.endnode, self.diagonal, self.animation)
 
-	# Uusi laskenta samalla kartalla
+	# Reset, uusi laskenta samalla kartalla
 					if event.key == pygame.K_r:
 						self.map.reset()
 
@@ -143,7 +156,7 @@ class Ui:
 		else:
 			caption += ' - xy-suunnat'
 		if self.animation:
-			caption += ' - animaatiolla'
+			caption += ' - animaatio'
 		else:
 			caption += ' - ilman animaatiota'
 		pygame.display.set_caption(caption)

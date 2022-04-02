@@ -12,5 +12,6 @@
 | 27.03. | 8    | Ohjelman mallinnuksen muuttaminen luokka-pohjaiseksi|
 | 28.03. | 8    | Ohjelman visualisointi Pygame-kirjaston avulla |
 | 31.03. | 3    | Visualisoinnin muutoksia, viikkoraportti |
-| 01.04. | 2   | Viikkoraportti, release dokumentointia |
-yht    | 47 | 
+| 01.04. | 4    | Viikkoraportti, release dokumentointia |
+| 02.04. | 4    | Dokumentointia, testausta, testikarttojen tekoa |
+yht    | 49 | 

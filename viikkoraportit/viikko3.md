@@ -4,11 +4,11 @@
 
 ### Ohjelman rungon toteutus
 
-Ohjelman runko on toteutettu Pythonilla. Edellisen viikon ohjelma on kokenut täysmuutoksen. Ruutukartan mallinnus ja algoritmit ovat toteutettu luokkien avulla edellisen viikon taulukkopohjaisen toteutuksen sijasta. Visualisointi on nyt toteutettu Pygame-kirjastolla Matplotlib-kirjaston sijasta. Myös käyttöliittymä on toteutettu Pygame-kirjaston avulla hiiri- ja näppäinkomennoin.  
+Ohjelman runko on toteutettu Pythonilla. Edellisen viikon jälkeen ohjelma on kokenut täysmuutoksen. Ruutukartan mallinnus ja algoritmit ovat toteutettu luokkien avulla edellisen viikon taulukkopohjaisen toteutuksen sijasta. Visualisointi on nyt toteutettu Pygame-kirjastolla Matplotlib-kirjaston sijasta. Myös käyttöliittymä on toteutettu Pygame-kirjaston avulla hiiri- ja näppäinkomennoin.  
 
 Ohjelma generoi automaattisesti ruutukartan, jossa jokaisella ruudulla on painoarvo, joka vastaa aika tai kustannuslisää ruudun läpi kulkiessa.  Kartta visualisoidaan Pygame-kirjaston avulla.  Käyttäjä valitsee hiirellä reitin alku- ja loppupisteet ja lisää halutessaan esteet, joiden läpi reitti ei voi kulkea.
 
-Ohjelma löytää parhaan reitin (pienin kustannus) ruutukartan kahden pisteen välillä sekä Dijkstran, että  A* -menetelmillä (Ensi viikolla työn alle tulevat myös JPS- tai IDA*-menetelmät).  Parhaan reitin voi määrittää kahdella eri tavalla.  Joko siirrytään ruutujen välillä pelkästään vaaka- ja pystysuoraaan tai vaihtoehtoisesti myös diagonaalisiirtyvät ovat mahdollisia.
+Ohjelma löytää parhaan reitin (pienin kustannus) ruutukartan kahden pisteen välillä sekä Dijkstran, että  A* -menetelmillä (Ensi viikolla työn alle tulevat myös JPS- tai IDA*-menetelmät).  Parhaan reitin voi määrittää kahdella eri tavalla.  Joko reitti kulkee ruutujen välillä pelkästään vaaka- ja pystysuoraaan tai valinnaisesti myös diagonaalisuunnat ovat mahdollisia.
 
 ### Havaintoja matkan varrelta
 

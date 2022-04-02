@@ -2,28 +2,27 @@ import pygame
 import numpy as np
 from node import Node
 
-WHITE = (255, 255, 255)
-GREY = (128, 128, 128)
-
 class Map:
-	def __init__(self, win, rows, cols, gsize):
+	def __init__(self, win, nrows, ncols, width, height, gsize):
 		self.win = win
-		self.rows = rows
-		self.cols = cols
+		self.nrows = nrows
+		self.ncols = ncols
+		self.width = width
+		self.height = height
 		self.gsize = gsize
 		self.nodes = []
 
 # Solmujen luonti
 	def make(self):
-		for i in range(self.rows):
+		for i in range(self.nrows):
 			self.nodes.append([])
-			for j in range(self.cols):
+			for j in range(self.ncols):
 				node = Node(i, j, self.gsize)
 				self.nodes[i].append(node)
 
 # Kartan generointi
 	def generate_costs(self,levels):
-		costmap = np.random.randint(1, levels+1, size=(self.rows, self.cols))
+		costmap = np.random.randint(1, levels+1, size=(self.nrows, self.ncols))
 		for row in self.nodes:
 			for node in row:
 				node.cost = costmap[node.row][node.col]
@@ -37,13 +36,13 @@ class Map:
 				node.costsum = float("inf")
 
 				node.neighbors = []
-				if node.row < self.rows - 1 and not self.nodes[node.row + 1][node.col].blocked:
+				if node.row < self.nrows - 1 and not self.nodes[node.row + 1][node.col].blocked:
 					node.neighbors.append(self.nodes[node.row + 1][node.col])
 
 				if node.row > 0 and not self.nodes[node.row - 1][node.col].blocked:
 					node.neighbors.append(self.nodes[node.row - 1][node.col])
 
-				if node.col < self.cols - 1 and not self.nodes[node.row][node.col + 1].blocked:
+				if node.col < self.ncols - 1 and not self.nodes[node.row][node.col + 1].blocked:
 					node.neighbors.append(self.nodes[node.row][node.col + 1])
 
 				if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
@@ -56,10 +55,10 @@ class Map:
 				node.costsum = float("inf")
 
 				node.neighbors = []
-				if node.row < self.rows - 1:
+				if node.row < self.nrows - 1:
 					if not self.nodes[node.row + 1][node.col].blocked:
 						node.neighbors.append(self.nodes[node.row + 1][node.col])
-					if node.col < self.cols - 1 and not self.nodes[node.row + 1][node.col + 1].blocked:
+					if node.col < self.ncols - 1 and not self.nodes[node.row + 1][node.col + 1].blocked:
 						node.neighbors.append(self.nodes[node.row + 1][node.col + 1])
 					if node.col > 0 and not self.nodes[node.row + 1][node.col - 1].blocked:
 						node.neighbors.append(self.nodes[node.row + 1][node.col - 1])
@@ -67,12 +66,12 @@ class Map:
 				if node.row > 0:
 					if not self.nodes[node.row - 1][node.col].blocked:
 						node.neighbors.append(self.nodes[node.row - 1][node.col])
-					if node.col < self.cols - 1 and not self.nodes[node.row - 1][node.col + 1].blocked:
+					if node.col < self.ncols - 1 and not self.nodes[node.row - 1][node.col + 1].blocked:
 						node.neighbors.append(self.nodes[node.row - 1][node.col + 1])
 					if node.col > 0 and not self.nodes[node.row - 1][node.col - 1].blocked:
 						node.neighbors.append(self.nodes[node.row - 1][node.col - 1])
 
-				if node.col < self.cols - 1 and not self.nodes[node.row][node.col + 1].blocked:
+				if node.col < self.ncols - 1 and not self.nodes[node.row][node.col + 1].blocked:
 					node.neighbors.append(self.nodes[node.row][node.col + 1])
 
 				if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
@@ -89,7 +88,7 @@ class Map:
 
 # Kartan piirtäminen
 	def draw(self):
-		self.win.fill(WHITE)
+#		self.win.fill(WHITE)
 		font = pygame.font.SysFont('Arial', self.gsize // 2)
 
 		for row in self.nodes:
@@ -100,12 +99,29 @@ class Map:
 				else:
 					self.win.blit(font.render(str(node.cost), True, (128,128,128)), (node.x+self.gsize//3, node.y+self.gsize//4))
 
-		for i in range(self.rows):
-			pygame.draw.line(self.win, GREY, (0, i * self.gsize), (self.cols * self.gsize, i * self.gsize))
-		for j in range(self.cols):
-			pygame.draw.line(self.win, GREY, (j * self.gsize, 0), (j * self.gsize, self.rows * self.gsize))
+		for i in range(self.nrows):
+			pygame.draw.line(self.win, (128,128,128), (0, i * self.gsize), (self.ncols * self.gsize, i * self.gsize))
+		for j in range(self.ncols):
+			pygame.draw.line(self.win, (128,128,128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
 
 		pygame.display.update()
 
+# Kartan luku tiedostosta
+	def read(self,fname):
+		map = []
+		with open(fname) as file:
+			for row in file:
+				row = row.replace("\n", "")
+				map.append([char for char in row])
+		for row in self.nodes:
+			for node in row:
+				if map[node.row][node.col] == 'B':
+					node.cost = 11
+					node.blocked = True
+					node.color = (0,0,0)
+				else:
+					node.cost = int(map[node.row][node.col])
+					ngrey = (20 - node.cost) * 12
+					node.color = (ngrey,ngrey,ngrey)
 
 

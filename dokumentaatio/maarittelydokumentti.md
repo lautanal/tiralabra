@@ -2,8 +2,11 @@
 
 ## Aihe
 
-Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-10), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinnan mukaan joko ainoastaan vaaka- tai pystysuoraan tai myös diagonaalisesti.
+Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  
 
+Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-9), joka kertoo  kustannuksen tai ajan lisäyksen reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinnan mukaan joko ainoastaan vaaka- ja pystysuoraan tai valinnaisesti myös ns. väli-ilmansuuntiin (diagonaalisuuntiin).
+
+Polun etsinnän ohella vertaillaan myös algoritmien tehokkuutta toisiinsa nähden.
 
 ## Ohjelmointikieli
 
@@ -17,9 +20,9 @@ Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat 
 
 Ohjelma lataa pohjaksi karttatiedoston tai generoi itse ruutukartan.
 
-Käyttäjä valitsee halutun reitin alku- ja loppupisteet sekä käytetyn algoritmin ja muut tarvittavat parametrit.
+Käyttäjä valitsee graafisen käyttöliittymän kautta reitin lähtö- ja maaliruudut sekä käytetyn algoritmin ja muut tarvittavat parametrit.  Graafisen käyttöliittymän kautta voidaan myös lisätä läpäisemättömiä esteitä kartalle.
 
-Ohjelma näyttää polun visuaalisesti.
+Ohjelma näyttää polun visuaalisesti.  Polun haku voidaan animoida realiaikaisesti.
 
 ## Aika- ja tilavaativuudet
 
