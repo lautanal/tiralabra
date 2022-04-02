@@ -124,6 +124,14 @@ class Ui:
 						self.map.make()
 						self.map.read("maps/1.map")
 
+	# Uusi kartta TIEDOSTOSTA
+					if event.key == pygame.K_2:
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+						self.startnode = None
+						self.endnode = None
+						self.map.make()
+						self.map.read("maps/2.map")
+
 	# Laskennan aloitus
 					if event.key == pygame.K_s:
 						if self.startnode and self.endnode:
