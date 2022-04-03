@@ -1,6 +1,6 @@
 import pygame
 from map import Map
-from algorithm import astar, dijkstra
+from algorithm import Algorithm
 
 class Ui:
 	def __init__(self, nrows, ncols, width, height, gsize):
@@ -18,13 +18,11 @@ class Ui:
 		self.map.make()
 		self.map.generate_costs(5)
 
+# Algoritmin alustus
+		self.algorithm = Algorithm(self.map)
+
 # Alkuasetukset
-		self.startnode = None
-		self.endnode = None
 		self.run = True
-		self.searchmode = 'D'
-		self.diagonal = False
-		self.animation = False
 		self.maxcost = 5
 		self.set_caption()
 
@@ -44,11 +42,13 @@ class Ui:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
 					node = self.map.nodes[row][col]
-					if not self.startnode:
-						self.startnode = node.set_start()
-					elif not self.endnode and node != self.startnode:
-						self.endnode = node.set_end()
-					elif node != self.endnode and node != self.startnode:
+					if not self.algorithm.start:
+						node.set_start()
+						self.algorithm.set_start(node)
+					elif not self.algorithm.end and node != self.algorithm.start:
+						node.set_end()
+						self.algorithm.set_end(node)
+					elif node != self.algorithm.end and node != self.algorithm.start:
 						node.set_blocked()
 
 	# Pisteiden pyyhkiminen (hiiren oikea näppäin)
@@ -56,98 +56,92 @@ class Ui:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
 					node = self.map.nodes[row][col]
-					if node == self.startnode:
-						self.startnode = None
-					if node == self.endnode:
-						self.endnode = None
+					if node == self.algorithm.start:
+						self.algorithm.set_start(None)
+					if node == self.algorithm.end:
+						self.algorithm.set_end(None)
 					node.clear()
 
 				if event.type == pygame.KEYDOWN:
 
 	# Metodin valinta
 					if event.key == pygame.K_m:
-						if self.searchmode == 'D':
-							self.searchmode = 'A'
-						else:
-							self.searchmode = 'D'
+						self.algorithm.set_method()
 						self.set_caption()
 
 	# Polun tyypin valinta
 					if event.key == pygame.K_d:
-						if self.diagonal:
-							self.diagonal = False
-						else:
-							self.diagonal = True
+						self.algorithm.set_diagonal()
 						self.set_caption()
 
 	# Animaation valinta
 					if event.key == pygame.K_a:
-						if self.animation:
-							self.animation = False
-						else:
-							self.animation = True
+						self.algorithm.set_animate()
 						self.set_caption()
 
 	# Maxcost minus ja uusi kartta
 					if event.key == pygame.K_MINUS:
 						if self.maxcost > 1:
 							self.maxcost -= 1
-						self.startnode = None
-						self.endnode = None
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Maxcost plus ja uusi kartta
 					if event.key == pygame.K_PLUS:
 						if self.maxcost < 20:
 							self.maxcost += 1
-						self.startnode = None
-						self.endnode = None
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Uusi kartta
 					if event.key == pygame.K_c:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.startnode = None
-						self.endnode = None
 						self.map.make()
 						self.map.generate_costs(self.maxcost)
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Uusi kartta 1 TIEDOSTOSTA
 					if event.key == pygame.K_1:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.startnode = None
-						self.endnode = None
 						self.map.make()
 						self.map.read("maps/1.map")
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Uusi kartta 2 TIEDOSTOSTA
 					if event.key == pygame.K_2:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.startnode = None
-						self.endnode = None
 						self.map.make()
 						self.map.read("maps/2.map")
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Uusi kartta 3 TIEDOSTOSTA
 					if event.key == pygame.K_3:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.startnode = None
-						self.endnode = None
 						self.map.make()
 						self.map.read("maps/3.map")
+						self.algorithm.set_map(self.map)
+						self.algorithm.set_start(None)
+						self.algorithm.set_end(None)
 
 	# Laskennan aloitus
 					if event.key == pygame.K_s:
-						if self.startnode and self.endnode:
+						if self.algorithm.start and self.algorithm.end:
 							self.map.reset()
-							if self.searchmode == 'D':
-								dijkstra(self.map, self.startnode, self.endnode, self.diagonal, self.animation)
-							else:
-								astar(self.map, self.startnode, self.endnode, self.diagonal, self.animation)
+							self.algorithm.calculate()
 
 	# Reset, uusi laskenta samalla kartalla
 					if event.key == pygame.K_r:
@@ -163,15 +157,15 @@ class Ui:
 
 	# Ikkunan otsikko
 	def set_caption(self):
-		if self.searchmode == 'D':
+		if self.algorithm.method == 'D':
 			caption = 'Paras reitti - Dijkstran menetelmä'
 		else:
 			caption = 'Paras reitti - A* menetelmä'
-		if self.diagonal:
+		if self.algorithm.diagonal:
 			caption += ' - diagonaalisuunnat'
 		else:
 			caption += ' - xy-suunnat'
-		if self.animation:
+		if self.algorithm.animate:
 			caption += ' - animaatio'
 		else:
 			caption += ' - ilman animaatiota'
