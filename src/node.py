@@ -47,13 +47,13 @@ class Node:
 	def set_end(self):
 		self.end = True
 		self.blocked = False
-		self.color = BLUE
+		self.color = ORANGE
 		return self
 
 	def set_start(self):
 		self.start = True
 		self.blocked = False
-		self.color = ORANGE
+		self.color = BLUE
 		return self
 
 	def set_visited(self, animate):

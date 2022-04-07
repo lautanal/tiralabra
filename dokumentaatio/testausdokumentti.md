@@ -10,7 +10,7 @@ Testaus on ollut tähän mennessä pääosin kokeilevaa, manuaalista empiiristä
 
 Graafinen käyttöliittymä auttaa huomattavasti ohjelman toiminnan todentamisessa ja räikeimpien ongelmien selvittämisessä. Esimerkiksi, voidaan havaita, poikkeaako laskennan antama "paras" polku merkittävästi silmämääräisesti parhaalta tai lyhimmältä polulta. 
 
-Graafisesta käyttöliittymästä on huomattavasti apua myös siten, että voidaan tarkastella mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä kartalla.
+Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
 Erilaisilla testikartoilla voidaan varmistaa parhaiten eri algoritmien toiminta ja oikeellisuus.
 

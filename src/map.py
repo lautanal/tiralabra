@@ -29,7 +29,7 @@ class Map:
 				ngrey = (20 - node.cost) * 12
 				node.color = (ngrey,ngrey,ngrey)
 
-# Solmujen alustus laskentaa varten, xy-liike
+# Solmujen alustus laskentaa varten, xy-polku
 	def initnodes_xy(self):
 		for row in self.nodes:
 			for node in row:
@@ -48,7 +48,7 @@ class Map:
 				if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
 					node.neighbors.append(self.nodes[node.row][node.col - 1])
 
-# Solmujen alustus laskentaa varten, diagonaaliset liikkeet
+# Solmujen alustus laskentaa varten, diagonaalinen polku
 	def initnodes_diag(self):
 		for row in self.nodes:
 			for node in row:
