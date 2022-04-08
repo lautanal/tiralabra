@@ -31,7 +31,7 @@ class Node:
 		self.start = False
 		self.end = False
 		self.blocked = False
-		ngrey = (20 - self.cost) * 12
+		ngrey = (10 - self.cost) * 24
 		self.color = (ngrey,ngrey,ngrey)
 
 	def get_pos(self):

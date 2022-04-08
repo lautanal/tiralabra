@@ -1,17 +1,11 @@
 from ui import Ui
 
+HEIGHT = 1000
 WIDTH = 800
-NCOLS = 60
-NROWS = 60
+NCOLS = 40
+NROWS = 40
 
 if __name__ == "__main__":
-# Gridin ruudun koko
-	gsize = WIDTH // NCOLS
-
-# Pygame ikkunan koko
-	width = gsize * NCOLS
-	height = gsize * NROWS
-
 # Käyttöliittymän käynnistys
-	ui = Ui(NROWS, NCOLS, width, height, gsize)
+	ui = Ui(NROWS, NCOLS, WIDTH, HEIGHT)
 	ui.start()

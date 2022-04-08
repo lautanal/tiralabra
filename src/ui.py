@@ -3,28 +3,31 @@ from map import Map
 from algorithm import Algorithm
 
 class Ui:
-	def __init__(self, nrows, ncols, width, height, gsize):
-# Pygame-ikkuna
-		pygame.init()
-		self.win = pygame.display.set_mode((width, height))
+	def __init__(self, nrows, ncols, WIDTH, HEIGHT):
+
+	# Ruudun ja ikkunan koko
+		self.WIDTH = WIDTH
+		self.gsize = WIDTH // ncols
+		self.width = self.gsize * ncols
+		self.height = HEIGHT
 		self.nrows = nrows
 		self.ncols = ncols
-		self.width = width
-		self.height = height
-		self.gsize = gsize
 
-# Karttaruudukon teko
+	# Pygame-ikkuna
+		pygame.init()
+		self.win = pygame.display.set_mode((self.width, self.height))
+
+	# Karttaruudukon generointi
 		self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-		self.map.make()
-		self.map.generate_costs(5)
+		self.map.generate_costs(9)
 
-# Algoritmin alustus
+	# Algoritmin alustus
 		self.algorithm = Algorithm(self.map)
 
-# Alkuasetukset
+	# Alkuasetukset
 		self.run = True
-		self.maxcost = 5
-		self.set_caption()
+		pygame.display.set_caption('Paras reitti')
+		self.set_texts()
 
 # Käyttöliittymä
 	def start(self):
@@ -41,133 +44,177 @@ class Ui:
 				if pygame.mouse.get_pressed()[0]:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
-					node = self.map.nodes[row][col]
-					if not self.algorithm.start:
-						node.set_start()
-						self.algorithm.set_start(node)
-					elif not self.algorithm.end and node != self.algorithm.start:
-						node.set_end()
-						self.algorithm.set_end(node)
-					elif node != self.algorithm.end and node != self.algorithm.start:
-						node.set_blocked()
+					if row < self.nrows:
+						node = self.map.nodes[row][col]
+						if not self.algorithm.start:
+							node.set_start()
+							self.algorithm.set_start(node)
+						elif not self.algorithm.end and node != self.algorithm.start:
+							node.set_end()
+							self.algorithm.set_end(node)
+						elif node != self.algorithm.end and node != self.algorithm.start:
+							node.set_blocked()
 
 	# Pisteiden pyyhkiminen (hiiren oikea näppäin)
 				elif pygame.mouse.get_pressed()[2]:
 					pos = pygame.mouse.get_pos()
 					row, col = self.get_clickpos(pos)
-					node = self.map.nodes[row][col]
-					if node == self.algorithm.start:
-						self.algorithm.set_start(None)
-					if node == self.algorithm.end:
-						self.algorithm.set_end(None)
-					node.clear()
+					if row < self.nrows:
+						node = self.map.nodes[row][col]
+						if node == self.algorithm.start:
+							self.algorithm.set_start(None)
+						if node == self.algorithm.end:
+							self.algorithm.set_end(None)
+						node.clear()
 
 				if event.type == pygame.KEYDOWN:
 
 	# Metodin valinta
 					if event.key == pygame.K_m:
 						self.algorithm.set_method()
-						self.set_caption()
+						self.set_texts()
 
 	# Polun tyypin valinta
 					if event.key == pygame.K_d:
 						self.algorithm.set_diagonal()
-						self.set_caption()
+						self.set_texts()
 
 	# Animaation valinta
 					if event.key == pygame.K_a:
 						self.algorithm.set_animate()
-						self.set_caption()
+						self.set_texts()
 
-	# Maxcost minus ja uusi kartta
-					if event.key == pygame.K_MINUS:
-						if self.maxcost > 1:
-							self.maxcost -= 1
-						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.generate_costs(self.maxcost)
-						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
-
-	# Maxcost plus ja uusi kartta
-					if event.key == pygame.K_PLUS:
-						if self.maxcost < 20:
-							self.maxcost += 1
-						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.generate_costs(self.maxcost)
-						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
-
-	# Uusi kartta
+	# Uusi random-kartta
 					if event.key == pygame.K_c:
 						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.generate_costs(self.maxcost)
+						self.map.generate_costs(9)
 						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
+						self.set_texts()
 
-	# Uusi kartta 1 TIEDOSTOSTA
+	# Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
+					if event.key == pygame.K_PLUS and self.ncols < 200:
+						self.ncols += 10
+						self.nrows += 10
+						self.gsize = self.WIDTH // self.ncols
+						self.width = self.gsize * self.ncols
+						self.height = self.width + 200
+						oldwin = self.win
+						self.win = pygame.display.set_mode((self.width, self.height))
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+						self.map.generate_costs(9)
+						self.algorithm.set_map(self.map)
+						self.set_texts()
+						del oldwin
+
+	# Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
+					if event.key == pygame.K_MINUS and self.ncols > 10:
+						self.ncols -= 10
+						self.nrows -= 10
+						self.gsize = self.WIDTH // self.ncols
+						self.width = self.gsize * self.ncols
+						self.height = self.width + 200
+						oldwin = self.win
+						self.win = pygame.display.set_mode((self.width, self.height))
+						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+						self.map.generate_costs(9)
+						self.algorithm.set_map(self.map)
+						self.set_texts()
+
+	# Uusi kartta tiedostosta 1.map
 					if event.key == pygame.K_1:
-						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.read("maps/1.map")
-						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
+						mapfile = self.mapread("maps/1.map")
+						if mapfile:
+							oldwin = self.win
+							self.win = pygame.display.set_mode((self.width, self.height))
+							self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+							self.map.set_costs(mapfile)
+							self.algorithm.set_map(self.map)
+							self.set_texts()
+							del oldwin
 
-	# Uusi kartta 2 TIEDOSTOSTA
+	# Uusi kartta tiedostosta 2.map
 					if event.key == pygame.K_2:
-						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.read("maps/2.map")
-						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
+						mapfile = self.mapread("maps/2.map")
+						if mapfile:
+							oldwin = self.win
+							self.win = pygame.display.set_mode((self.width, self.height))
+							self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+							self.map.set_costs(mapfile)
+							self.algorithm.set_map(self.map)
+							self.set_texts()
+							del oldwin
 
-	# Uusi kartta 3 TIEDOSTOSTA
+	# Uusi kartta tiedostosta 3.map
 					if event.key == pygame.K_3:
-						self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
-						self.map.make()
-						self.map.read("maps/3.map")
-						self.algorithm.set_map(self.map)
-						self.algorithm.set_start(None)
-						self.algorithm.set_end(None)
+						mapfile = self.mapread("maps/3.map")
+						if mapfile:
+							oldwin = self.win
+							self.win = pygame.display.set_mode((self.width, self.height))
+							self.map = Map(self.win, self.nrows, self.ncols, self.width, self.height, self.gsize)
+							self.map.set_costs(mapfile)
+							self.algorithm.set_map(self.map)
+							self.set_texts()
+							del oldwin
 
 	# Laskennan aloitus
 					if event.key == pygame.K_s:
 						if self.algorithm.start and self.algorithm.end:
 							self.map.reset()
-							self.algorithm.calculate()
+							result = self.algorithm.calculate()
+							if result[0]:
+								self.map.text4 = f'Polun pituus {result[1]}'
+								self.map.text5 = f'Polun painotettu pituus {result[2]:.1f}'
+								self.map.text6 = f'Laskenta vei {result[3]:.3f} sekuntia'
+							else:								
+								self.map.text4 = f'*** REITTIÄ EI LÖYTYNYT ***'
+								self.map.text5 = f''
+								self.map.text6 = f''
 
 	# Reset, uusi laskenta samalla kartalla
 					if event.key == pygame.K_r:
 						self.map.reset()
+						self.set_texts()
 
 		pygame.quit()
 
-	# Klikkauksen koordinaatit
+# Klikkauksen koordinaatit
 	def get_clickpos(self, pos):
 		col = pos[0] // self.gsize
 		row = pos[1] // self.gsize
 		return row, col
 
-	# Ikkunan otsikko
-	def set_caption(self):
+# Ikkunan tekstit
+	def set_texts(self):
 		if self.algorithm.method == 'D':
-			caption = 'Paras reitti - Dijkstran menetelmä'
+			self.map.text1 = 'Metodi (m): Dijkstra'
 		else:
-			caption = 'Paras reitti - A* menetelmä'
+			self.map.text1 = 'Metodi (m): A*'
 		if self.algorithm.diagonal:
-			caption += ' - diagonaalisuunnat'
+			self.map.text2 = 'Polun tyyppi (d): viisto'
 		else:
-			caption += ' - xy-suunnat'
+			self.map.text2 = 'Polun tyyppi (d): x, y'
 		if self.algorithm.animate:
-			caption += ' - animaatio'
+			self.map.text3 = 'Animaatio (a): kyllä'
 		else:
-			caption += ' - ilman animaatiota'
-		pygame.display.set_caption(caption)
+			self.map.text3 = 'Animaatio (a): ei'
+		self.map.text4 = ''
+		self.map.text5 = ''
+		self.map.text6 = ''
+
+# Kartan luku tiedostosta
+	def mapread(self,fname):
+		map = []
+		try:
+			with open(fname) as file:
+				for row in file:
+					row = row.replace("\n", "")
+					map.append([char for char in row])
+				self.ncols = len(map[0])
+				self.nrows = len(map)
+				self.gsize = self.WIDTH // self.ncols
+				self.width = self.gsize * self.ncols
+				self.height = self.width + 200
+		except:
+			print('Tiedostoa ei löytynyt')
+		return map
 

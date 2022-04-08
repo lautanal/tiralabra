@@ -34,6 +34,8 @@ class Algorithm:
 
 	def set_map(self, map):
 		self.map = map
+		self.start = None
+		self.end = None
 
 	def set_start(self, start):
 		self.start = start
@@ -43,18 +45,18 @@ class Algorithm:
 
 	def calculate(self):
 		if self.method == 'D':
-			self.dijkstra()
+			return self.dijkstra()
 		else:
-			self.astar()
+			return self.astar()
 
 
 	# Dijkstran algoritmi
 	def dijkstra(self):
 		tstart = timer()
 		if self.diagonal:
-			self.map.initnodes_diag()
+			self.map.neighbors_diag()
 		else:
-			self.map.initnodes_xy()
+			self.map.neighbors_xy()
 		self.start.costsum = 0
 		prqueue = PriorityQueue()
 		prqueue.put((0, 0, self.start))
@@ -69,9 +71,12 @@ class Algorithm:
 			if node == self.end:
 				tend = timer()
 				print(f'*** REITTI LÖYTYI ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-				self.track_path()
-				self.map.draw()
-				return True
+				count = self.track_path()
+				if not self.diagonal:
+					costsum = node.costsum - (self.start.cost + self.end.cost) / 2
+				else:
+					costsum = node.costsum
+				return True, count, costsum, tend-tstart
 
 			for neighbor in node.neighbors:
 				deltacost = sqrt((node.row - neighbor.row)**2 + (node.col - neighbor.col)**2) * (node.cost + neighbor.cost) / 2
@@ -91,17 +96,17 @@ class Algorithm:
 		tend = timer()
 		print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
-		return False
+		return False, 0, 0, 0
 
 
 	# A* -algoritmi
 	def astar(self):
 		tstart = timer()
 		if self.diagonal:
-			self.map.initnodes_diag()
+			self.map.neighbors_diag()
 			heuristic = self.euclidian
 		else:
-			self.map.initnodes_xy()
+			self.map.neighbors_xy()
 			heuristic = self.manhattan
 		self.start.costsum = 0
 		prqueue = PriorityQueue()
@@ -117,9 +122,12 @@ class Algorithm:
 			if node == self.end:
 				tend = timer()
 				print(f'*** REITTI LÖYTYI ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-				self.track_path()
-				self.map.draw()
-				return True
+				count = self.track_path()
+				if not self.diagonal:
+					costsum = node.costsum - (self.start.cost + self.end.cost) / 2
+				else:
+					costsum = node.costsum
+				return True, count, costsum, tend-tstart
 
 			for neighbor in node.neighbors:
 				deltacost = sqrt((node.row - neighbor.row)**2+(node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
@@ -140,8 +148,7 @@ class Algorithm:
 		tend = timer()
 		print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
-		return False
-
+		return False, 0, 0, 0
 
 	# Manhattan-heuristiikka
 	def manhattan(self, p1, p2):
@@ -158,9 +165,12 @@ class Algorithm:
 	# Polun track
 	def track_path(self):
 		node = self.end.previous
+		count = 0
 		while node != self.start:
+			count += 1
 			node.mark_path()
 			node = node.previous
 		self.end.set_end()
+		return count
 
 
