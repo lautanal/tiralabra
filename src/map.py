@@ -12,8 +12,8 @@ class Map:
 		self.gsize = gsize
 		self.nodes = []
 		self.text1 = ''
-		self.text2 = 'ABC'
-		self.text3 = 'ABC'
+		self.text2 = ''
+		self.text3 = ''
 		self.text4 = ''
 		self.text5 = ''
 		self.text6 = ''
