@@ -63,20 +63,20 @@ class Map:
 						self.win.blit(font.render(str(node.cost), True, (128,128,128)), (node.x+self.gsize//3, node.y+self.gsize//4))
 
 		for i in range(self.nrows):
-			pygame.draw.line(self.win, (128,128,128), (0, i * self.gsize), (self.ncols * self.gsize, i * self.gsize))
+			pygame.draw.line(self.win, (128,128,128), (0, i * self.gsize), (self.width, i * self.gsize))
 		for j in range(self.ncols):
 			pygame.draw.line(self.win, (128,128,128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
 		
 		pygame.draw.rect(self.win, (180,180,180), (0, self.nrows*self.gsize, self.width, self.height-self.nrows*self.gsize))
-		pygame.draw.line(self.win, (60,60,60), (0, self.nrows*self.gsize), (self.ncols * self.gsize, self.nrows*self.gsize))
+		pygame.draw.line(self.win, (60,60,60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
 
 		font = pygame.font.SysFont('Arial', 15)
-		self.win.blit(font.render(str(self.text1), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 20))
-		self.win.blit(font.render(str(self.text2), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 45))
-		self.win.blit(font.render(str(self.text3), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 70))
-		self.win.blit(font.render(str(self.text4), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 110))
-		self.win.blit(font.render(str(self.text5), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 135))
-		self.win.blit(font.render(str(self.text6), True, (64,64,64)), (self.width/20, self.nrows*self.gsize + 160))
+		self.win.blit(font.render(str(self.text1), True, (64,64,64)), (40, self.height - 180))
+		self.win.blit(font.render(str(self.text2), True, (64,64,64)), (40, self.height - 155))
+		self.win.blit(font.render(str(self.text3), True, (64,64,64)), (40, self.height - 130))
+		self.win.blit(font.render(str(self.text4), True, (64,64,64)), (40, self.height - 90))
+		self.win.blit(font.render(str(self.text5), True, (64,64,64)), (40, self.height - 65))
+		self.win.blit(font.render(str(self.text6), True, (64,64,64)), (40, self.height - 40))
 
 		pygame.display.update()
 
