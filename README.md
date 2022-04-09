@@ -8,7 +8,7 @@ Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka l
 
 Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A*, IDA*, ja Jump Point Search.
 
-Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan tai valinnaisesti myös diagonaalisuuntiin.
+Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan tai valinnaisesti myös viistoon väli-ilmansuuntiin.
 
 ## Dokumentaatio
 
