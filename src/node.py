@@ -7,7 +7,6 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
-PURPLE = (128, 0, 128)
 ORANGE = (255, 165 ,0)
 
 class Node:
@@ -19,7 +18,7 @@ class Node:
 		self.gsize = gsize
 		self.color = WHITE
 		self.start = False
-		self.end = False
+		self.goal = False
 		self.blocked = False
 		self.visited = False
 		self.previous = None
@@ -29,7 +28,7 @@ class Node:
 
 	def clear(self):
 		self.start = False
-		self.end = False
+		self.goal = False
 		self.blocked = False
 		ngrey = (10 - self.cost) * 24
 		self.color = (ngrey,ngrey,ngrey)
@@ -44,8 +43,8 @@ class Node:
 		self.blocked = True
 		self.color = BLACK
 
-	def set_end(self):
-		self.end = True
+	def set_goal(self):
+		self.goal = True
 		self.blocked = False
 		self.color = ORANGE
 		return self

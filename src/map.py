@@ -1,14 +1,15 @@
 import pygame
-import numpy as np
+# import numpy as np
+import random
 from node import Node
 
 class Map:
-	def __init__(self, win, nrows, ncols, width, height, gsize):
+	def __init__(self, win, width, height, nrows, ncols, gsize):
 		self.win = win
-		self.nrows = nrows
-		self.ncols = ncols
 		self.width = width
 		self.height = height
+		self.nrows = nrows
+		self.ncols = ncols
 		self.gsize = gsize
 		self.nodes = []
 		self.text1 = ''
@@ -30,7 +31,8 @@ class Map:
 
 # Kartan random-generointi (solmujen painot)
 	def generate_costs(self,levels):
-		costmap = np.random.randint(1, levels+1, size=(self.nrows, self.ncols))
+		costmap = [[random.randrange(1,levels,1) for _ in range(self.ncols)] for _ in range(self.nrows)]
+#		costmap = np.random.randint(1, levels+1, size=(self.nrows, self.ncols))
 		for row in self.nodes:
 			for node in row:
 				node.cost = costmap[node.row][node.col]
@@ -42,7 +44,7 @@ class Map:
 		for row in self.nodes:
 			for node in row:
 				if map[node.row][node.col] == 'B':
-					node.cost = 11
+					node.cost = 1
 					node.blocked = True
 					node.color = (0,0,0)
 				else:
@@ -71,12 +73,12 @@ class Map:
 		pygame.draw.line(self.win, (60,60,60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
 
 		font = pygame.font.SysFont('Arial', 15)
-		self.win.blit(font.render(str(self.text1), True, (64,64,64)), (40, self.height - 180))
-		self.win.blit(font.render(str(self.text2), True, (64,64,64)), (40, self.height - 155))
-		self.win.blit(font.render(str(self.text3), True, (64,64,64)), (40, self.height - 130))
-		self.win.blit(font.render(str(self.text4), True, (64,64,64)), (40, self.height - 90))
-		self.win.blit(font.render(str(self.text5), True, (64,64,64)), (40, self.height - 65))
-		self.win.blit(font.render(str(self.text6), True, (64,64,64)), (40, self.height - 40))
+		self.win.blit(font.render(str(self.text1), True, (64,64,64)), (40, self.nrows*self.gsize + 20))
+		self.win.blit(font.render(str(self.text2), True, (64,64,64)), (40, self.nrows*self.gsize + 45))
+		self.win.blit(font.render(str(self.text3), True, (64,64,64)), (40, self.nrows*self.gsize + 70))
+		self.win.blit(font.render(str(self.text4), True, (64,64,64)), (40, self.nrows*self.gsize + 110))
+		self.win.blit(font.render(str(self.text5), True, (64,64,64)), (40, self.nrows*self.gsize + 135))
+		self.win.blit(font.render(str(self.text6), True, (64,64,64)), (40, self.nrows*self.gsize + 160))
 
 		pygame.display.update()
 
@@ -85,7 +87,7 @@ class Map:
 		for row in self.nodes:
 			for node in row:
 				node.visited = False
-				if not node.start and not node.end and not node.blocked:
+				if not node.start and not node.goal and not node.blocked:
 					ngrey = (10 - node.cost) * 24
 					node.color = (ngrey,ngrey,ngrey)
 
