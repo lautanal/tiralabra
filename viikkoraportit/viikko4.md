@@ -14,7 +14,7 @@ Parhaan reitin voi määrittää kahdella eri tavalla.  Reitti kulkee ruutujen v
 
 ### Manuaalinen testaus
 
-<img src="/dokumentaatio/png/testikartta4.png" width="750">
+<img src="/dokumentaatio/png/testikartta04.png" width="750">
 
 Algoritmien oikeellisuutta on testattu testikartoilla ja tarkastamalla ohjelman antamia tuloksia manuaalisesti laskemalla.  
 
