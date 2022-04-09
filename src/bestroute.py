@@ -1,6 +1,6 @@
 from ui import Ui
 
-WIDTH = 800
+WIDTH = 1200
 THEIGHT = 200
 NCOLS = 40
 NROWS = 40

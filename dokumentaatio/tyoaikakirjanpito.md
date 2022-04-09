@@ -14,4 +14,7 @@
 | 31.03. | 3    | Visualisoinnin muutoksia, viikkoraportti |
 | 01.04. | 4    | Viikkoraportti, release dokumentointia |
 | 02.04. | 4    | Dokumentointia, testausta, testikarttojen tekoa |
-yht    | 53 | 
+| 07.04. | 6    | Käyttöliittymän parantelua |
+| 08.04. | 4    | Käyttöliittymä, IDA* -algoritmi |
+| 09.04. | 4    | IDA* -algoritmi koodausta ja testailua|
+yht    | 65 | 

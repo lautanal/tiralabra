@@ -23,13 +23,17 @@ class Node:
 		self.visited = False
 		self.previous = None
 		self.neighbors = []
-		self.cost = 11
+		self.cost = 9
 		self.costsum = float("inf")
 
 	def clear(self):
 		self.start = False
 		self.goal = False
 		self.blocked = False
+		ngrey = (10 - self.cost) * 24
+		self.color = (ngrey,ngrey,ngrey)
+
+	def set_color(self):
 		ngrey = (10 - self.cost) * 24
 		self.color = (ngrey,ngrey,ngrey)
 

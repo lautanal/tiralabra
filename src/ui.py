@@ -14,6 +14,7 @@ class Ui:
 		self.nrows = nrows
 		self.ncols = ncols
 		self.maxcost = 9
+		self.edit = False
 
 	# Pygame-ikkuna
 		pygame.init()
@@ -49,14 +50,19 @@ class Ui:
 					row, col = self.get_clickpos(pos)
 					if row < self.nrows:
 						node = self.map.nodes[row][col]
-						if not self.algorithm.start:
-							node.set_start()
-							self.algorithm.set_start(node)
-						elif not self.algorithm.goal and node != self.algorithm.start:
-							node.set_goal()
-							self.algorithm.set_goal(node)
-						elif node != self.algorithm.goal and node != self.algorithm.start:
-							node.set_blocked()
+						if self.edit:
+							if not node.blocked and node.cost < 9:
+								node.cost += 1
+								node.set_color()
+						else:
+							if not self.algorithm.start:
+								node.set_start()
+								self.algorithm.set_start(node)
+							elif not self.algorithm.goal and node != self.algorithm.start:
+								node.set_goal()
+								self.algorithm.set_goal(node)
+							elif node != self.algorithm.goal and node != self.algorithm.start:
+								node.set_blocked()
 
 		# Pisteiden pyyhkiminen (hiiren oikea näppäin)
 				elif pygame.mouse.get_pressed()[2]:
@@ -64,11 +70,17 @@ class Ui:
 					row, col = self.get_clickpos(pos)
 					if row < self.nrows:
 						node = self.map.nodes[row][col]
-						if node == self.algorithm.start:
-							self.algorithm.set_start(None)
-						if node == self.algorithm.goal:
-							self.algorithm.set_goal(None)
-						node.clear()
+						if self.edit:
+							if not node.blocked and node.cost > 1:
+								node.cost -= 1
+								node.set_color()
+						else:
+							node = self.map.nodes[row][col]
+							if node == self.algorithm.start:
+								self.algorithm.set_start(None)
+							if node == self.algorithm.goal:
+								self.algorithm.set_goal(None)
+							node.clear()
 
 	# Näppäinkomennot
 				if event.type == pygame.KEYDOWN:
@@ -95,7 +107,7 @@ class Ui:
 						self.set_texts()
 
 		# Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
-					if event.key == pygame.K_PLUS and self.ncols < 200:
+					if event.key == pygame.K_PLUS and self.ncols < 500:
 						self.ncols += 10
 						self.nrows += 10
 						self.gsize = self.WIDTH // self.ncols
@@ -189,6 +201,13 @@ class Ui:
 					if event.key == pygame.K_r:
 						self.map.reset()
 						self.set_texts()
+
+		# Ruutujen editoinnin aloitus ja lopetus
+					if event.key == pygame.K_e:
+						self.edit = True
+
+					if event.key == pygame.K_q:
+						self.edit = False
 
 		pygame.quit()
 

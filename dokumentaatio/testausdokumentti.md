@@ -12,7 +12,7 @@ Graafinen käyttöliittymä auttaa huomattavasti ohjelman toiminnan todentamises
 
 Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
-Erilaisilla testikartoilla voidaan varmistaa parhaiten eri algoritmien toiminta ja oikeellisuus.
+Erilaisilla testikartoilla on varmistettu algoritmien toiminta ja oikeellisuus.  Kartalta on määritetty manuaalisesti lyhin reitti ja todettu, että algoritmi antaa saman tuloksen.
 
 <img src="/dokumentaatio/png/viikko3.png" width="750">
 
