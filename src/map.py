@@ -79,6 +79,15 @@ class Map:
 
 		pygame.display.update()
 
+	def drawnode(self, node):
+		font = pygame.font.SysFont('Arial', self.gsize // 2)
+		pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
+		if node.cost < 10:
+			self.win.blit(font.render(str(node.cost), True, (128,128,128)), (node.x+2*(self.gsize//5), node.y+self.gsize//4))
+		else:
+			self.win.blit(font.render(str(node.cost), True, (128,128,128)), (node.x+self.gsize//3, node.y+self.gsize//4))
+		pygame.display.update()
+
 # Kartan reset
 	def reset(self):
 		for row in self.nodes:

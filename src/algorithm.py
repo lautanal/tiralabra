@@ -101,7 +101,7 @@ class Algorithm:
 			node.set_visited(self.animate)
 
 			if self.animate:
-				self.map.draw()
+				self.map.drawnode(node)
 
 
 		tend = timer()
@@ -153,7 +153,7 @@ class Algorithm:
 			node.set_visited(self.animate)
 
 			if self.animate:
-				self.map.draw()
+				self.map.drawnode(node)
 
 
 		tend = timer()
@@ -196,7 +196,7 @@ class Algorithm:
 		node = path[-1]
 		node.set_visited(self.animate)
 		if self.animate:
-			self.map.draw()
+			self.map.drawnode(node)
 
 		if node == self.goal:
 			return -costsum
