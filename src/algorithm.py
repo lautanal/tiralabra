@@ -14,6 +14,7 @@ class Algorithm:
 		self.start = None
 		self.goal = None
 
+# Metodin asetus
 	def set_method(self):
 		if self.method == 'D':
 			self.method = 'A'
@@ -22,29 +23,35 @@ class Algorithm:
 		elif self.method == 'I':
 			self.method = 'D'
 
+# Polun tyypin asetus
 	def set_diagonal(self):
 		if self.diagonal:
 			self.diagonal = False
 		else:
 			self.diagonal = True
 
+# Animaatio
 	def set_animate(self):
 		if self.animate:
 			self.animate = False
 		else:
 			self.animate = True
 
+# Kartta
 	def set_map(self, map):
 		self.map = map
 		self.start = None
 		self.goal = None
 
+# Lähtöpiste
 	def set_start(self, start):
 		self.start = start
 
+# Maalipiste
 	def set_goal(self, goal):
 		self.goal = goal
 
+# Laskennan käynnistys
 	def calculate(self):
 		if self.method == 'D':
 			return self.dijkstra()
@@ -153,6 +160,7 @@ class Algorithm:
 		print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
 		return False, 0, 0, 0
+
 
 # IDA* -algoritmi
 	def ida_star(self):

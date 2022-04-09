@@ -1,5 +1,4 @@
 import pygame
-# import numpy as np
 import random
 from node import Node
 
@@ -20,7 +19,6 @@ class Map:
 		self.text6 = ''
 		self.make()
 
-
 # Solmujen luonti
 	def make(self):
 		for i in range(self.nrows):
@@ -32,7 +30,6 @@ class Map:
 # Kartan random-generointi (solmujen painot)
 	def generate_costs(self,levels):
 		costmap = [[random.randrange(1,levels,1) for _ in range(self.ncols)] for _ in range(self.nrows)]
-#		costmap = np.random.randint(1, levels+1, size=(self.nrows, self.ncols))
 		for row in self.nodes:
 			for node in row:
 				node.cost = costmap[node.row][node.col]

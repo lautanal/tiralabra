@@ -53,7 +53,7 @@ class Ui:
 						if self.edit:
 							if not node.blocked and node.cost < 9:
 								node.cost += 1
-								node.set_color()
+								node.reset_color()
 						else:
 							if not self.algorithm.start:
 								node.set_start()
@@ -73,7 +73,7 @@ class Ui:
 						if self.edit:
 							if not node.blocked and node.cost > 1:
 								node.cost -= 1
-								node.set_color()
+								node.reset_color()
 						else:
 							node = self.map.nodes[row][col]
 							if node == self.algorithm.start:

@@ -26,6 +26,7 @@ class Node:
 		self.cost = 9
 		self.costsum = float("inf")
 
+# Ruudun reset
 	def clear(self):
 		self.start = False
 		self.goal = False
@@ -33,32 +34,39 @@ class Node:
 		ngrey = (10 - self.cost) * 24
 		self.color = (ngrey,ngrey,ngrey)
 
+# Ruudun paikka
 	def get_pos(self):
 		return self.row, self.col
 
+# Polun merkintä
 	def mark_path(self):
 		self.color = RED
 
+# Ruudun värin reset
+	def reset_color(self):
+		ngrey = (10 - self.cost) * 24
+		self.color = (ngrey,ngrey,ngrey)
+
+# Estetty ruutu
 	def set_blocked(self):
 		self.blocked = True
 		self.color = BLACK
 
-	def set_color(self):
-		ngrey = (10 - self.cost) * 24
-		self.color = (ngrey,ngrey,ngrey)
-
+# Maaliruutu
 	def set_goal(self):
 		self.goal = True
 		self.blocked = False
 		self.color = ORANGE
 		return self
 
+# Lähtöruutu
 	def set_start(self):
 		self.start = True
 		self.blocked = False
 		self.color = BLUE
 		return self
 
+# Vierailtu ruutu
 	def set_visited(self, animate):
 		self.visited = True
 		if animate and not self.start:
