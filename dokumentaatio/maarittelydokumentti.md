@@ -1,4 +1,4 @@
-<img src="/dokumentaatio/png/reittikartta03.png" width="750">
+<img src="/dokumentaatio/png/reittikartta04.png" width="750">
 
 ## Aihe
 
@@ -33,10 +33,6 @@ Tilavaatimus: O(n)
 ## Lähteet
 
 [Dijkstra Wikipedia](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
-
-[A* Wikipedia](https://en.wikipedia.org/wiki/A*_search_algorithm)
-
-[IDA* Wikipedia](https://en.wikipedia.org/wiki/Iterative_deepening_A*)
 
 [JPS Wikipedia](https://en.wikipedia.org/wiki/Jump_point_search)
 
