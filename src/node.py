@@ -33,10 +33,6 @@ class Node:
 		ngrey = (10 - self.cost) * 24
 		self.color = (ngrey,ngrey,ngrey)
 
-	def set_color(self):
-		ngrey = (10 - self.cost) * 24
-		self.color = (ngrey,ngrey,ngrey)
-
 	def get_pos(self):
 		return self.row, self.col
 
@@ -46,6 +42,10 @@ class Node:
 	def set_blocked(self):
 		self.blocked = True
 		self.color = BLACK
+
+	def set_color(self):
+		ngrey = (10 - self.cost) * 24
+		self.color = (ngrey,ngrey,ngrey)
 
 	def set_goal(self):
 		self.goal = True
