@@ -24,7 +24,7 @@ Visualisointi Pygame-kirjaston avulla toimii hyvin, mutta realiaikainen animoint
 
 A* -menetelmän paremmuus verrattuna Dijkstran menetelmään riippuu paljon reitin alku- ja loppupisteiden sijainnista.  Molemmat laskevat 400x400 pisteen kartan lyhimmän polun alle sekunnissa (Mac Mini M1).  
 
-IDA* -menetelmä ei tunnu olevan kovin hyvä ruutukartan navigoinnissa, jossa vaihtoehtoisia reittejä on hyvin paljon.  Minun algoritmitoteutuksessa saattaa olla jotain mätää.  Pitää tutkia asiaa.
+IDA* -menetelmä ei tunnu olevan kovin hyvä ruutukartan navigoinnissa, jossa vaihtoehtoisia reittejä on hyvin paljon.  Minun algoritmitoteutuksessa taitaa olla jotain mätää.  Pitää tutkia asiaa.
 
 ### Release
 
@@ -36,7 +36,7 @@ Tähän mennessä käytetty aikaa 65 tuntia.
 
 ### Seuraava viikko
 
-Ensi viikolla keskityn tekemään automaattisia yksikkötestauksia.
+Ensi viikolla keskityn parantamaan IDA*-menetelmän toimintaa, tekemään automaattisia yksikkötestauksia ja kirjoittamaan toteutusraporttia.
 
 
 
