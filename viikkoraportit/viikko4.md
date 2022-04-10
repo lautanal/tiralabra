@@ -22,11 +22,13 @@ Algoritmien oikeellisuutta on testattu testikartoilla ja tarkastamalla ohjelman 
 
 Visualisointi Pygame-kirjaston avulla toimii hyvin, mutta realiaikainen animointi on melko hidas.
 
-A* -menetelmän paremmuus verrattuna Dijkstran menetelmään riippuu paljon reitin alku- ja loppupisteiden sijainnista.  Molemmat laskevat 400x400 pisteen kartan lyhimmän polun alle sekunnissa (Mac Mini M1).  IDA* -menetelmä ei tunnu olevan kovin hyvä ruutukartan navigoinnissa, jossa vaihtoehtoisia reittejä on hyvin paljon.
+A* -menetelmän paremmuus verrattuna Dijkstran menetelmään riippuu paljon reitin alku- ja loppupisteiden sijainnista.  Molemmat laskevat 400x400 pisteen kartan lyhimmän polun alle sekunnissa (Mac Mini M1).  
+
+IDA* -menetelmä ei tunnu olevan kovin hyvä ruutukartan navigoinnissa, jossa vaihtoehtoisia reittejä on hyvin paljon.  Minun algoritmitoteutuksessa saattaa olla jotain mätää.  Pitää tutkia asiaa.
 
 ### Release
 
-Viikon 4 release löytyy [täältä](https://github.com/lautanal/tiralabra/releases/tag/Viikko4)
+Viikon 4 release löytyy [täältä](https://github.com/lautanal/tiralabra/releases/tag/VIIKKO4)
 
 ### Työtunnit
 
