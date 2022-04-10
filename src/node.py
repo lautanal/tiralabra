@@ -24,8 +24,9 @@ class Node:
         self.visited = False
         self.previous = None
         self.neighbors = []
-        self.cost = 9
+        self.cost = 1
         self.costsum = float("inf")
+        self.heuristic = float("inf")
 
 # Ruudun reset
     def clear(self):

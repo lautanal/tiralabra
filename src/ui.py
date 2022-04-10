@@ -3,6 +3,7 @@ from map import Map
 from algorithm import Algorithm
 
 
+# Käyttöliittymä
 class Ui:
     def __init__(self, WIDTH, THEIGHT, nrows, ncols):
         # Ruudun ja ikkunan koko
@@ -13,32 +14,27 @@ class Ui:
         self.height = WIDTH + THEIGHT
         self.nrows = nrows
         self.ncols = ncols
-        self.maxcost = 9
         self.edit = False
 
         # Pygame-ikkuna
         pygame.init()
+        pygame.display.set_caption('Paras reitti')
         self.win = pygame.display.set_mode((self.width, self.height))
 
-        # Karttaruudukon generointi
+        # Kartan alustus
         self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-        self.map.generate_costs(self.maxcost)
-
-        # Algoritmin alustus
+        self.map.generate_costs()
         self.algorithm = Algorithm(self.map)
-
-        # Alkuasetukset
-        self.run = True
-        pygame.display.set_caption('Paras reitti')
         self.set_texts()
 
-# Käyttöliittymä
+        self.run = True
+
+# Käynnistys
     def start(self):
         # Event loop
         while self.run:
             self.map.draw()
             for event in pygame.event.get():
-
                 # Lopetus
                 if event.type == pygame.QUIT:
                     self.run = False
@@ -82,7 +78,7 @@ class Ui:
                                 self.algorithm.set_goal(None)
                             node.clear()
 
-            # Näppäinkomennot
+        # Näppäinkomennot
                 if event.type == pygame.KEYDOWN:
 
                     # Animaatio
@@ -93,7 +89,7 @@ class Ui:
                     # Uusi random-kartta
                     if event.key == pygame.K_c:
                         self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-                        self.map.generate_costs(self.maxcost)
+                        self.map.generate_costs()
                         self.algorithm.set_map(self.map)
                         self.set_texts()
 
@@ -142,11 +138,7 @@ class Ui:
                         mapfile = self.mapread("maps/f.map")
                         if mapfile:
                             oldwin = self.win
-                            self.win = pygame.display.set_mode((self.width, self.height))
-                            self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-                            self.map.set_costs(mapfile)
-                            self.algorithm.set_map(self.map)
-                            self.set_texts()
+                            self.mapinit(mapfile)
                             del oldwin
 
                     # Uusi kartta tiedostosta 1.map .... 9.map
@@ -155,11 +147,7 @@ class Ui:
                         mapfile = self.mapread(mapname)
                         if mapfile:
                             oldwin = self.win
-                            self.win = pygame.display.set_mode((self.width, self.height))
-                            self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-                            self.map.set_costs(mapfile)
-                            self.algorithm.set_map(self.map)
-                            self.set_texts()
+                            self.mapinit(mapfile)
                             del oldwin
 
                     # Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
@@ -170,11 +158,7 @@ class Ui:
                         self.width = self.gsize * self.ncols
                         self.height = self.width + self.THEIGHT
                         oldwin = self.win
-                        self.win = pygame.display.set_mode((self.width, self.height))
-                        self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-                        self.map.generate_costs(self.maxcost)
-                        self.algorithm.set_map(self.map)
-                        self.set_texts()
+                        self.mapinit(None)
                         del oldwin
 
                     # Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
@@ -185,11 +169,8 @@ class Ui:
                         self.width = self.gsize * self.ncols
                         self.height = self.width + self.THEIGHT
                         oldwin = self.win
-                        self.win = pygame.display.set_mode((self.width, self.height))
-                        self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
-                        self.map.generate_costs(self.maxcost)
-                        self.algorithm.set_map(self.map)
-                        self.set_texts()
+                        self.mapinit(None)
+                        del oldwin
 
         pygame.quit()
 
@@ -236,6 +217,7 @@ class Ui:
             print('Tiedostoa ei löytynyt')
         return map
 
+# Kartan kirjoitus tiedostoon
     def mapwrite(self, fname):
         with open(fname, "w") as file:
             for row in self.map.nodes:
@@ -247,3 +229,14 @@ class Ui:
                         s += str(node.cost)
                 s += '\n'
                 file.write(s)
+
+# Kartan alustus
+    def mapinit(self, mapfile):
+        self.win = pygame.display.set_mode((self.width, self.height))
+        self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
+        if mapfile:
+            self.map.set_costs(mapfile)
+        else:
+            self.map.generate_costs()
+        self.algorithm.set_map(self.map)
+        self.set_texts()

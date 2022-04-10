@@ -10,19 +10,21 @@ def idastar(map, start, goal, diagonal, animate):
     tstart = timer()
     if diagonal:
         map.neighbors_diag()
-        heuristic = euclidian
+        map.heuristic_manhattan(goal)
     else:
         map.neighbors_xy()
-        heuristic = euclidian
+        map.heuristic_euclidian(goal)
 
-    threshold = heuristic(start.get_pos(), goal.get_pos())
+    threshold = start.heuristic
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
+        map.init_costsums()
+        start.costsum = 0
         path = [start]
-        costsum = idastar_search(map, goal, path, 0, threshold, heuristic, diagonal, animate)
+        costsum = idastar_search(map, goal, path, threshold, diagonal, animate)
 
         if costsum == float("inf"):
             return False, 0, 0, 0
@@ -40,8 +42,9 @@ def idastar(map, start, goal, diagonal, animate):
 
 
 # Etsintä-rutiini
-def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, animate):
+def idastar_search(map, goal, path, threshold, diagonal, animate):
     node = path[-1]
+    costsum = node.costsum
     node.set_visited(animate)
     if animate:
         map.drawnode(node)
@@ -49,7 +52,7 @@ def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, ani
     if node == goal:
         return -costsum
 
-    estimate = costsum + heuristic(node.get_pos(), goal.get_pos())
+    estimate = costsum + node.heuristic
     if estimate > threshold:
         return estimate
 
@@ -61,29 +64,17 @@ def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, ani
                 deltacost = sqrt((node.row - neighbor.row)**2+(node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
             newcostsum = costsum + deltacost
 
-            path.append(neighbor)
-            res = idastar_search(map, goal, path, newcostsum, threshold, heuristic, diagonal, animate)
-            if res < 0:
-                return res
-            elif res < tmin:
-                tmin = res
-            path.pop()
+            if newcostsum < neighbor.costsum:
+                neighbor.costsum = newcostsum
+                path.append(neighbor)
+                res = idastar_search(map, goal, path, threshold, diagonal, animate)
+                if res < 0:
+                    return res
+                elif res < tmin:
+                    tmin = res
+                path.pop()
 
     return tmin
-
-
-# Manhattan-heuristiikka
-def manhattan(p1, p2):
-    y1, x1 = p1
-    y2, x2 = p2
-    return abs(x1 - x2) + abs(y1 - y2)
-
-
-# Euklidiininen heuristiikka
-def euclidian(p1, p2):
-    y1, x1 = p1
-    y2, x2 = p2
-    return sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
 
 # Polun track, IDA*

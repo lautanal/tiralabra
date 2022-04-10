@@ -1,6 +1,7 @@
 import pygame
 import random
 from node import Node
+from math import sqrt
 
 
 class Map:
@@ -29,8 +30,8 @@ class Map:
                 self.nodes[i].append(node)
 
 # Kartan random-generointi (solmujen painot)
-    def generate_costs(self, levels):
-        costmap = [[random.randrange(1, levels, 1) for _ in range(self.ncols)] for _ in range(self.nrows)]
+    def generate_costs(self):
+        costmap = [[random.randrange(1, 10, 1) for _ in range(self.ncols)] for _ in range(self.nrows)]
         for row in self.nodes:
             for node in row:
                 node.cost = costmap[node.row][node.col]
@@ -83,6 +84,7 @@ class Map:
 
         pygame.display.update()
 
+# Ruudun piirtäminen
     def drawnode(self, node):
         font = pygame.font.SysFont('Arial', self.gsize // 2)
         pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
@@ -150,3 +152,26 @@ class Map:
 
                 if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
                     node.neighbors.append(self.nodes[node.row][node.col - 1])
+
+# Solmujen costsum-attribuutin alustus
+    def init_costsums(self):
+        for row in self.nodes:
+            for node in row:
+                node.costsum = float("inf")
+
+# Manhattan heuristiikka
+    def heuristic_manhattan(self, goal):
+        for row in self.nodes:
+            for node in row:
+                y1, x1 = node.get_pos()
+                y2, x2 = goal.get_pos()
+                node.heuristic = abs(x1 - x2) + abs(y1 - y2)
+                
+# Eukliidinen heuristiikka
+    def heuristic_euclidian(self, goal):
+        for row in self.nodes:
+            for node in row:
+                y1, x1 = node.get_pos()
+                y2, x2 = goal.get_pos()
+                node.heuristic = sqrt((x1 - x2)**2 + (y1 - y2)**2)
+

@@ -11,10 +11,10 @@ def astar(map, start, goal, diagonal, animate):
     tstart = timer()
     if diagonal:
         map.neighbors_diag()
-        heuristic = euclidian
+        map.heuristic_manhattan(goal)
     else:
         map.neighbors_xy()
-        heuristic = manhattan
+        map.heuristic_euclidian(goal)
     start.costsum = 0
     prqueue = PriorityQueue()
     prqueue.put((0, 0, start))
@@ -44,8 +44,9 @@ def astar(map, start, goal, diagonal, animate):
                 count += 1
                 neighbor.previous = node
                 neighbor.costsum = newcostsum
-                fcostsum = newcostsum + heuristic(neighbor.get_pos(), goal.get_pos())
-                prqueue.put((fcostsum, count, neighbor))
+#                fcostsum = newcostsum + heuristic(neighbor, goal)
+#                fcostsum = newcostsum + neighbor.heuristic
+                prqueue.put((newcostsum + neighbor.heuristic, count, neighbor))
 
         node.set_visited(animate)
 
@@ -67,17 +68,3 @@ def track_path(start, goal):
         node.mark_path()
         node = node.previous
     return count
-
-
-# Manhattan-heuristiikka
-def manhattan(p1, p2):
-    y1, x1 = p1
-    y2, x2 = p2
-    return abs(x1 - x2) + abs(y1 - y2)
-
-
-# Euklidiininen heuristiikka
-def euclidian(p1, p2):
-    y1, x1 = p1
-    y2, x2 = p2
-    return sqrt((x1 - x2)**2 + (y1 - y2)**2)
