@@ -17,4 +17,5 @@
 | 07.04. | 6    | Käyttöliittymän parantelua |
 | 08.04. | 4    | Käyttöliittymä, IDA* -algoritmi |
 | 09.04. | 4    | IDA* -algoritmi koodausta ja testailua|
-yht    | 65 | 
+| 10.04. | 6    | IDA* -algoritmi koodausta ja parantelua|
+yht    | 71 | 
