@@ -20,11 +20,11 @@ Algoritmien oikeellisuutta on testattu testikartoilla ja tarkastamalla ohjelman 
 
 ### Havaintoja matkan varrelta
 
-Visualisointi Pygame-kirjaston avulla toimii hyvin, mutta realiaikainen animointi on melko hidas.
+Visualisointi Pygame-kirjaston avulla toimii hyvin, mutta realiaikainen animointi on melko hidas.  Pygame-kirjaston nopeutta pitänee optimoida.
 
 A* -menetelmän paremmuus verrattuna Dijkstran menetelmään riippuu paljon reitin alku- ja loppupisteiden sijainnista.  Molemmat laskevat 400x400 pisteen kartan lyhimmän polun alle sekunnissa (Mac Mini M1).  
 
-IDA* -menetelmä ei tunnu olevan kovin hyvä ruutukartan navigoinnissa, jossa vaihtoehtoisia reittejä on hyvin paljon.  Minun algoritmitoteutuksessa taitaa olla jotain mätää.  Pitää tutkia asiaa.
+IDA* -menetelmä tuntuu olevan aika hidas ruutukartan navigoinnissa verrattuna Dijkstran ja A*-menetelmiin.  IDA*-menetelmä ei ehkä ole parhaimmillaan tällaisessa ruutukartassa, vaihtoehtoisten reittien suuren määrän takia.  Toisaalta minun algoritmitoteutuksessani saattaa olla jotain mätää.  Pitää tutkia asiaa.
 
 ### Release
 
