@@ -55,7 +55,7 @@ def dijkstra(map, start, goal, diagonal, animate):
     return False, 0, 0, 0
 
 
-# Polun track, Dijkstra ja A*
+# Polun track
 def track_path(start, goal):
     node = goal.previous
     count = 0

@@ -44,8 +44,6 @@ def astar(map, start, goal, diagonal, animate):
                 count += 1
                 neighbor.previous = node
                 neighbor.costsum = newcostsum
-#                fcostsum = newcostsum + heuristic(neighbor, goal)
-#                fcostsum = newcostsum + neighbor.heuristic
                 prqueue.put((newcostsum + neighbor.heuristic, count, neighbor))
 
         node.set_visited(animate)
@@ -59,7 +57,7 @@ def astar(map, start, goal, diagonal, animate):
     return False, 0, 0, 0
 
 
-# Polun track, Dijkstra ja A*
+# Polun track
 def track_path(start, goal):
     node = goal.previous
     count = 0
