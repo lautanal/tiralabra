@@ -52,7 +52,6 @@ def astar(map, start, goal, diagonal, animate):
         if animate:
             map.drawnode(node)
 
-
     tend = timer()
     print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
@@ -78,7 +77,7 @@ def manhattan(p1, p2):
 
 
 # Euklidiininen heuristiikka
-def euclidian(p1,p2):
+def euclidian(p1, p2):
     y1, x1 = p1
     y2, x2 = p2
     return sqrt((x1 - x2)**2 + (y1 - y2)**2)

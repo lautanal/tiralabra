@@ -1,4 +1,3 @@
-
 import pygame
 from math import sqrt
 from timeit import default_timer as timer
@@ -18,7 +17,11 @@ def idastar(map, start, goal, diagonal, animate):
 
     threshold = heuristic(start.get_pos(), goal.get_pos())
     while True:
-        path = [start]		
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+
+        path = [start]
         costsum = idastar_search(map, goal, path, 0, threshold, heuristic, diagonal, animate)
 
         if costsum == float("inf"):
@@ -34,6 +37,7 @@ def idastar(map, start, goal, diagonal, animate):
             return True, npath, costsum, tend-tstart
         else:
             threshold = costsum
+
 
 # Etsintä-rutiini
 def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, animate):
@@ -56,7 +60,7 @@ def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, ani
             if diagonal:
                 deltacost = sqrt((node.row - neighbor.row)**2+(node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
             newcostsum = costsum + deltacost
-            
+
             path.append(neighbor)
             res = idastar_search(map, goal, path, newcostsum, threshold, heuristic, diagonal, animate)
             if res < 0:
@@ -67,21 +71,23 @@ def idastar_search(map, goal, path, costsum, threshold, heuristic, diagonal, ani
 
     return tmin
 
+
 # Manhattan-heuristiikka
 def manhattan(p1, p2):
     y1, x1 = p1
     y2, x2 = p2
     return abs(x1 - x2) + abs(y1 - y2)
 
+
 # Euklidiininen heuristiikka
-def euclidian(p1,p2):
+def euclidian(p1, p2):
     y1, x1 = p1
     y2, x2 = p2
     return sqrt((x1 - x2)**2 + (y1 - y2)**2)
+
 
 # Polun track, IDA*
 def ida_path(path, start, goal):
     for node in path:
         if node != start and node != goal:
             node.mark_path()
-
