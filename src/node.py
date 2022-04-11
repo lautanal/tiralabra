@@ -27,7 +27,6 @@ class Node:
         self.cost = 1
         self.costsum = float("inf")
         self.heuristic = float("inf")
-        self.path = None
 
     def __lt__(self, other):
         return self.costsum + self.heuristic < other.costsum + other.heuristic

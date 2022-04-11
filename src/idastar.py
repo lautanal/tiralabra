@@ -37,6 +37,7 @@ def idastar(map, start, goal, diagonal, animate):
         while not paths.empty():
             est, path = paths.get()
             res = idastar_search(path, threshold, goal, newpaths, diagonal, animate, map.drawnode)
+
             # Maali löytyi
             if res < 0:
                 tend = timer()
@@ -46,13 +47,16 @@ def idastar(map, start, goal, diagonal, animate):
                 if not diagonal:
                     costsum = costsum - goal.cost
                 return True, npath, costsum, tend-tstart
+
             # Uusi hakukynnys
             elif res < tmin:
                 tmin = res
         threshold = tmin
+
         # Uudet polut
         paths = newpaths
 
+    # Reittiä ei löytynyt
     tend = timer()
     print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
@@ -110,10 +114,3 @@ def track_path(start, goal):
         node.mark_path()
         node = node.previous
     return count
-
-
-# Polun track, IDA*
-def ida_path(path, start, goal):
-    for node in path:
-        if node != start and node != goal:
-            node.mark_path()
