@@ -11,10 +11,10 @@ def astar(map, start, goal, diagonal, animate):
     tstart = timer()
     if diagonal:
         map.neighbors_diag()
-        map.heuristic_manhattan(goal)
+        map.heuristic_euclidian(goal)
     else:
         map.neighbors_xy()
-        map.heuristic_euclidian(goal)
+        map.heuristic_manhattan(goal)
     start.costsum = 0
     prqueue = PriorityQueue()
     prqueue.put((0, 0, start))

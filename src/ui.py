@@ -188,6 +188,8 @@ class Ui:
             self.map.text1 = 'Metodi (m): A*'
         elif self.algorithm.method == 'I':
             self.map.text1 = 'Metodi (m): IDA*'
+        elif self.algorithm.method == 'IO':
+            self.map.text1 = 'Metodi (m): IDA* vanha'
         if self.algorithm.diagonal:
             self.map.text2 = 'Polun tyyppi (d): viisto'
         else:
