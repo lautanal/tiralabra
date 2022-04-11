@@ -28,6 +28,9 @@ class Node:
         self.costsum = float("inf")
         self.heuristic = float("inf")
 
+    def __lt__(self, other):
+        return self.heuristic < other.heuristic
+        
 # Ruudun reset
     def clear(self):
         self.start = False

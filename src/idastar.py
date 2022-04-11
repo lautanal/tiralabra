@@ -1,6 +1,7 @@
 import pygame
 from math import sqrt
 from timeit import default_timer as timer
+from queue import PriorityQueue
 from node import Node
 from map import Map
 
@@ -18,26 +19,29 @@ def idastar(map, start, goal, diagonal, animate):
     map.init_costsums()
     start.costsum = 0
     threshold = start.heuristic
-    paths = [[start]]
-    while paths:
+    paths = PriorityQueue()
+    paths.put((0, 1, [start]))
+    while not paths.empty():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
         thrmin = float("inf")
-        newpaths = []
-        for path in paths:
-            thrnew = idastar_search(path, threshold, goal, newpaths, diagonal, animate, map.drawnode)
-            if thrnew < 0:
+        newpaths = PriorityQueue()
+        while not paths.empty():
+            costsum, plen, path  = paths.get()
+            res = idastar_search(path, costsum, threshold, goal, newpaths, diagonal, animate, map.drawnode)
+            if res < 0:
                 tend = timer()
                 print(f'*** REITTI LÖYTYI ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-                npath = track_path(start, goal)
+                ida_path(path, start, goal)
+                npath = len(path) - 2
                 costsum = goal.costsum
                 if not diagonal:
                     costsum = costsum - goal.cost
                 return True, npath, costsum, tend-tstart
-            elif thrnew < thrmin:
-                thrmin = thrnew
+            elif res < thrmin:
+                thrmin = res
         threshold = thrmin
         paths = newpaths
 
@@ -48,9 +52,8 @@ def idastar(map, start, goal, diagonal, animate):
 
 
 # Syvyysetsintä-rutiini
-def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
+def idastar_search(path, costsum, threshold, goal, paths, diagonal, animate, drawfunc):
     node = path[-1]
-    costsum = node.costsum
     node.set_visited(animate)
     if animate:
         drawfunc(node)
@@ -60,7 +63,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
 
     estimate = costsum + node.heuristic
     if estimate > threshold:
-        paths.append(path.copy())
+        paths.put((costsum, len(path), path.copy()))
         return estimate
 
     tmin = float("inf")
@@ -75,7 +78,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
                 neighbor.costsum = newcostsum
                 neighbor.previous = node
                 path.append(neighbor)
-                res = idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc)
+                res = idastar_search(path, newcostsum, threshold, goal, paths, diagonal, animate, drawfunc)
                 if res < 0:
                     return res
                 elif res < tmin:
@@ -94,3 +97,11 @@ def track_path(start, goal):
         node.mark_path()
         node = node.previous
     return count
+
+
+
+# Polun track, IDA*
+def ida_path(path, start, goal):
+    for node in path:
+        if node != start and node != goal:
+            node.mark_path()
