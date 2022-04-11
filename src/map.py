@@ -45,7 +45,7 @@ class Map:
                 if map[node.row][node.col] == 'B':
                     node.cost = 1
                     node.blocked = True
-                    node.color = (0, 0 , 0)
+                    node.color = (0, 0, 0)
                 else:
                     node.cost = int(map[node.row][node.col])
                     ngrey = (10 - node.cost) * 24
@@ -69,7 +69,7 @@ class Map:
             pygame.draw.line(self.win, (128, 128, 128), (0, i * self.gsize), (self.width, i * self.gsize))
         for j in range(self.ncols):
             pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
-        
+
         pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width,
                 self.height-self.nrows*self.gsize))
         pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
@@ -166,7 +166,7 @@ class Map:
                 y1, x1 = node.get_pos()
                 y2, x2 = goal.get_pos()
                 node.heuristic = abs(x1 - x2) + abs(y1 - y2)
-                
+
 # Eukliidinen heuristiikka
     def heuristic_euclidian(self, goal):
         for row in self.nodes:
@@ -174,4 +174,3 @@ class Map:
                 y1, x1 = node.get_pos()
                 y2, x2 = goal.get_pos()
                 node.heuristic = sqrt((x1 - x2)**2 + (y1 - y2)**2)
-
