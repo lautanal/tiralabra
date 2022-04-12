@@ -5,7 +5,6 @@ from timeit import default_timer as timer
 from node import Node
 from map import Map
 
-
 # A* -algoritmi
 def astar(map, start, goal, diagonal, animate):
     tstart = timer()

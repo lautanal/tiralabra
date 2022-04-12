@@ -53,7 +53,7 @@ def idastar(map, start, goal, diagonal, animate):
                 tmin = res
         threshold = tmin
 
-        # Uudet polut
+        # Uudet hakupolut
         paths = newpaths
 
     # Reittiä ei löytynyt

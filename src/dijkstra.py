@@ -4,7 +4,7 @@ from queue import PriorityQueue
 from timeit import default_timer as timer
 from node import Node
 from map import Map
-
+from bheap import Bheap
 
 # Dijkstran algoritmi
 def dijkstra(map, start, goal, diagonal, animate):
@@ -18,7 +18,7 @@ def dijkstra(map, start, goal, diagonal, animate):
 
     # Alkuasetukset
     start.costsum = 0
-    prqueue = PriorityQueue()
+    prqueue = Bheap(map.nrows*map.ncols)
     prqueue.put((0, 0, start))
     count = 0
 
