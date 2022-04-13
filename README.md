@@ -6,7 +6,7 @@
 
 Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 0-9), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.
 
-Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A*, IDA*, ja Jump Point Search.
+Polunetsinnän nopeutta testataan usealla eri algoritmilla, joita ovat Dijkstran perinteinen, A*,  IDA* ja Jump Point Search.
 
 Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan tai valinnaisesti myös viistoon väli-ilmansuuntiin.
 

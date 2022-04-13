@@ -14,7 +14,7 @@ Ohjelmointikielenä käytetään Pythonia (versio 3.8.8).  Visualisointi ja käy
 
 ## Algoritmit ja tietorakenteet
 
-Polunetsinnän nopeutta testataan ainakin kahdella eri algoritmilla, joita ovat Dijkstran perinteinen, A*, IDA* ja Jump Point Search.
+Polunetsinnän nopeutta testataan ainakin usealla eri algoritmilla, joita ovat Dijkstran perinteinen, A*, IDA* ja Jump Point Search.
 
 ## Ohjelman syötteet ja tulosteet
 

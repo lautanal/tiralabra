@@ -16,6 +16,8 @@
 | 02.04. | 4    | Dokumentointia, testausta, testikarttojen tekoa |
 | 07.04. | 6    | Käyttöliittymän parantelua |
 | 08.04. | 4    | Käyttöliittymä, IDA* -algoritmi |
-| 09.04. | 4    | IDA* -algoritmi koodausta ja testailua|
+| 09.04. | 4    | Viikkoraportti, IDA*-algoritmi|
 | 10.04. | 6    | IDA* -algoritmi koodausta ja parantelua|
-yht    | 71 | 
+| 11.04. | 5   | IDA* -algoritmin viilausta|
+| 12.04. | 4    | Binäärikeko-luokan teko|
+yht    | 80 | 
