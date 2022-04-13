@@ -54,8 +54,32 @@ class Algorithm:
 # Laskennan käynnistys
     def calculate(self):
         if self.method == 'D':
-            return dijkstra(self.map, self.start, self.goal, self.diagonal, self.animate)
+            result, time = dijkstra(self.map, self.start, self.goal, self.diagonal, self.animate)
         elif self.method == 'A':
-            return astar(self.map, self.start, self.goal, self.diagonal, self.animate)
+            result, time = astar(self.map, self.start, self.goal, self.diagonal, self.animate)
         elif self.method == 'I':
-            return idastar(self.map, self.start, self.goal, self.diagonal, self.animate)
+            result, time = idastar(self.map, self.start, self.goal, self.diagonal, self.animate)
+        if result:
+            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia')
+            npath, costsum = self.results()
+            return True, npath, costsum, time
+        else:
+            return False, 0, 0, 0
+
+# Tulosten laskeminen
+    def results(self):
+        npath = self.track_path(self.start, self.goal)
+        costsum = self.goal.costsum
+        if not self.diagonal:
+            costsum = self.goal.costsum - self.goal.cost
+        return npath, costsum
+
+# Polun track
+    def track_path(self, start, goal):
+        node = goal.previous
+        count = 0
+        while node != start:
+            count += 1
+            node.mark_path()
+            node = node.previous
+        return count

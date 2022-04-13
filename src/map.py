@@ -78,9 +78,9 @@ class Map:
         self.win.blit(font.render(str(self.text1), True, (64, 64, 64)), (40, self.nrows*self.gsize + 20))
         self.win.blit(font.render(str(self.text2), True, (64, 64, 64)), (40, self.nrows*self.gsize + 45))
         self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (40, self.nrows*self.gsize + 70))
-        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (40, self.nrows*self.gsize + 110))
-        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (40, self.nrows*self.gsize + 135))
-        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (40, self.nrows*self.gsize + 160))
+        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
+        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 45))
+        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 70))
 
         pygame.display.update()
 

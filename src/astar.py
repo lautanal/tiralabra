@@ -35,13 +35,7 @@ def astar(map, start, goal, diagonal, animate):
 
         # Maali löytyi
         if node == goal:
-            tend = timer()
-            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-            npath = track_path(start, goal)
-            costsum = node.costsum
-            if not diagonal:
-                costsum = node.costsum - node.cost
-            return True, npath, costsum, tend-tstart
+            return True, timer() - tstart
 
         # Naapurit
         for neighbor in node.neighbors:
@@ -67,14 +61,3 @@ def astar(map, start, goal, diagonal, animate):
     print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
     return False, 0, 0, 0
-
-
-# Polun track
-def track_path(start, goal):
-    node = goal.previous
-    count = 0
-    while node != start:
-        count += 1
-        node.mark_path()
-        node = node.previous
-    return count
