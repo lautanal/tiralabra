@@ -20,4 +20,4 @@
 | 10.04. | 6    | IDA* -algoritmi koodausta ja parantelua|
 | 11.04. | 5   | IDA* -algoritmin viilausta|
 | 12.04. | 4    | Binäärikeko-luokan teko|
-yht    | 80 | 
+yht    | 82 | 
