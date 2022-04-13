@@ -51,7 +51,6 @@ class Bheap:
             if self.heap[index] > self.heap[left]:
                 self.swap(index, left)
             return
-
         else:
             if self.heap[left] < self.heap[right]:
                 swap = left
@@ -59,6 +58,7 @@ class Bheap:
                 swap = right
             if self.heap[index] > self.heap[swap]:
                 self.swap(index, swap)
+                
         self.heapify_get(swap)
 
     # Solmujen paikan vaihto
