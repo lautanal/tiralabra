@@ -60,4 +60,4 @@ def astar(map, start, goal, diagonal, animate):
     tend = timer()
     print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
-    return False, 0, 0, 0
+    return False, 0
