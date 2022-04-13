@@ -18,28 +18,23 @@ def dijkstra(map, start, goal, diagonal, animate):
 
     # Alkuasetukset
     start.costsum = 0
-    prqueue = Bheap(map.nrows*map.ncols)
-    prqueue.put((0, 0, start))
+    bheap = Bheap(map.nrows*map.ncols)
+    bheap.put((0, 0, start))
     count = 0
 
-    # Prioriteettijono-looppi
-    while not prqueue.empty():
+    # Binäärikeko-looppi
+    while not bheap.empty():
+        # Keskeytys
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
-        # Seuraava solmu jonosta
-        node = prqueue.get()[2]
+        # Seuraava solmu keosta
+        node = bheap.get()[2]
 
         # Maali löytyi
         if node == goal:
-            tend = timer()
-            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-            npath = track_path(start, goal)
-            costsum = node.costsum
-            if not diagonal:
-                costsum = node.costsum - node.cost
-            return True, npath, costsum, tend-tstart
+            return True, timer() - tstart
 
         # Käydään läpi naapurit
         for neighbor in node.neighbors:
@@ -53,7 +48,7 @@ def dijkstra(map, start, goal, diagonal, animate):
                 count += 1
                 neighbor.previous = node
                 neighbor.costsum = newcostsum
-                prqueue.put((newcostsum, count, neighbor))
+                bheap.put((newcostsum, count, neighbor))
 
         # Animaatio
         node.set_visited(animate)
@@ -65,14 +60,3 @@ def dijkstra(map, start, goal, diagonal, animate):
     print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
 
     return False, 0, 0, 0
-
-
-# Polun track
-def track_path(start, goal):
-    node = goal.previous
-    count = 0
-    while node != start:
-        count += 1
-        node.mark_path()
-        node = node.previous
-    return count
