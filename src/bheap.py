@@ -6,7 +6,7 @@ class Bheap:
         self.size = 0
         self.maxsize = size + 1
 
-    # Tyhjä keko
+    # Tarkistus, onko tyhjä keko
     def empty(self):
         return self.size == 0
 
