@@ -2,28 +2,26 @@ import pygame
 from math import sqrt
 from timeit import default_timer as timer
 from queue import PriorityQueue
-from node import Node
-from map import Map
 
 
 # IDA* -algoritmi
-def idastar(map, start, goal, diagonal, animate):
+def idastar(map, diagonal, animate):
     tstart = timer()
 
     # Naapurit ja heuristiikka
     if diagonal:
         map.neighbors_diag()
-        map.heuristic_euclidian(goal)
+        map.heuristic_euclidian(map.goal)
     else:
         map.neighbors_xy()
-        map.heuristic_manhattan(goal)
+        map.heuristic_manhattan(map.goal)
 
     # Alustukset
     map.init_costsums()
-    start.costsum = 0
-    threshold = start.heuristic
+    map.start.costsum = 0
+    threshold = map.start.heuristic
     paths = PriorityQueue()
-    paths.put((0, [start]))
+    paths.put((0, [map.start]))
 
     while not paths.empty():
         # Keskeytys
@@ -36,7 +34,7 @@ def idastar(map, start, goal, diagonal, animate):
         newpaths = PriorityQueue()
         while not paths.empty():
             est, path = paths.get()
-            res = idastar_search(path, threshold, goal, newpaths, diagonal, animate, map.drawnode)
+            res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, map.drawnode)
 
             # Maali löytyi
             if res < 0:
@@ -62,8 +60,10 @@ def idastar(map, start, goal, diagonal, animate):
 def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
     node = path[-1]
     costsum = node.costsum
-    node.set_visited(animate)
+
+    # Animaatio
     if animate:
+        node.set_visited(animate)
         drawfunc(node)
 
     # Maali

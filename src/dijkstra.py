@@ -2,12 +2,10 @@ import pygame
 from math import sqrt
 from queue import PriorityQueue
 from timeit import default_timer as timer
-from node import Node
-from map import Map
 from bheap import Bheap
 
 # Dijkstran algoritmi
-def dijkstra(map, start, goal, diagonal, animate):
+def dijkstra(map, diagonal, animate):
     tstart = timer()
 
     # Naapurit
@@ -17,9 +15,9 @@ def dijkstra(map, start, goal, diagonal, animate):
         map.neighbors_xy()
 
     # Alkuasetukset
-    start.costsum = 0
+    map.start.costsum = 0
     bheap = Bheap(map.nrows*map.ncols)
-    bheap.put((0, 0, start))
+    bheap.put((0, 0, map.start))
     count = 0
 
     # Binäärikeko-looppi
@@ -33,7 +31,7 @@ def dijkstra(map, start, goal, diagonal, animate):
         node = bheap.get()[2]
 
         # Maali löytyi
-        if node == goal:
+        if node == map.goal:
             return True, timer() - tstart
 
         # Käydään läpi naapurit

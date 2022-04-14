@@ -1,3 +1,4 @@
+from pickle import NONE
 import pygame
 import random
 from node import Node
@@ -13,6 +14,8 @@ class Map:
         self.ncols = ncols
         self.gsize = gsize
         self.nodes = []
+        self.start = None
+        self.goal = None
         self.text1 = ''
         self.text2 = ''
         self.text3 = ''
@@ -50,6 +53,27 @@ class Map:
                     node.cost = int(map[node.row][node.col])
                     ngrey = (10 - node.cost) * 24
                     node.color = (ngrey, ngrey, ngrey)
+
+# Lähtöpiste
+    def set_start(self, start):
+        self.start = start
+
+# Maalipiste
+    def set_goal(self, goal):
+        self.goal = goal
+
+# Polun track
+    def track_path(self, diagonal):
+        node = self.goal.previous
+        count = 0
+        while node != self.start:
+            count += 1
+            node.mark_path()
+            node = node.previous
+        costsum = self.goal.costsum
+        if not diagonal:
+            costsum = self.goal.costsum - self.goal.cost
+        return count, costsum
 
 # Kartan piirtäminen
     def draw(self):

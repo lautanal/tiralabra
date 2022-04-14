@@ -6,7 +6,7 @@ from algorithm import Algorithm
 # Käyttöliittymä
 class Ui:
     def __init__(self, WIDTH, THEIGHT, nrows, ncols):
-        # Ruudun ja ikkunan koko
+        # Ikkunan kokoparametrit
         self.WIDTH = WIDTH
         self.THEIGHT = THEIGHT
         self.gsize = WIDTH // ncols
@@ -16,7 +16,7 @@ class Ui:
         self.ncols = ncols
         self.edit = False
 
-        # Pygame-ikkuna
+        # Pygame-ikkunan luonti
         pygame.init()
         pygame.display.set_caption('Paras reitti')
         self.win = pygame.display.set_mode((self.width, self.height))
@@ -51,13 +51,13 @@ class Ui:
                                 node.cost += 1
                                 node.reset_color()
                         else:
-                            if not self.algorithm.start:
+                            if not self.map.start:
                                 node.set_start()
-                                self.algorithm.set_start(node)
-                            elif not self.algorithm.goal and node != self.algorithm.start:
+                                self.map.set_start(node)
+                            elif not self.map.goal and node != self.map.start:
                                 node.set_goal()
-                                self.algorithm.set_goal(node)
-                            elif node != self.algorithm.goal and node != self.algorithm.start:
+                                self.map.set_goal(node)
+                            elif node != self.map.goal and node != self.map.start:
                                 node.set_blocked()
 
                 # Pisteiden pyyhkiminen (hiiren oikea näppäin)
@@ -72,10 +72,10 @@ class Ui:
                                 node.reset_color()
                         else:
                             node = self.map.nodes[row][col]
-                            if node == self.algorithm.start:
-                                self.algorithm.set_start(None)
-                            if node == self.algorithm.goal:
-                                self.algorithm.set_goal(None)
+                            if node == self.map.start:
+                                self.map.set_start(None)
+                            if node == self.map.goal:
+                                self.map.set_goal(None)
                             node.clear()
 
         # Näppäinkomennot
@@ -90,7 +90,7 @@ class Ui:
                     if event.key == pygame.K_c:
                         self.map = Map(self.win, self.width, self.height, self.nrows, self.ncols, self.gsize)
                         self.map.generate_costs()
-                        self.algorithm.set_map(self.map)
+                        self.algorithm.map = self.map
                         self.set_texts()
 
                     # Polun tyypin valinta
@@ -117,7 +117,7 @@ class Ui:
 
                     # Laskennan aloitus
                     if event.key == pygame.K_s:
-                        if self.algorithm.start and self.algorithm.goal:
+                        if self.map.start and self.map.goal:
                             self.map.reset()
                             result = self.algorithm.calculate()
                             if result[0]:
@@ -240,5 +240,5 @@ class Ui:
             self.map.set_costs(mapfile)
         else:
             self.map.generate_costs()
-        self.algorithm.set_map(self.map)
+        self.algorithm.map = self.map
         self.set_texts()

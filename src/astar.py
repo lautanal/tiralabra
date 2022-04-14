@@ -1,43 +1,46 @@
 import pygame
 from math import sqrt
 from queue import PriorityQueue
+from heapq import heappush, heappop
 from timeit import default_timer as timer
-from node import Node
-from map import Map
 
 # A* -algoritmi
-def astar(map, start, goal, diagonal, animate):
+def astar(map, diagonal, animate):
     tstart = timer()
 
     # Naapurit ja heuristiikka
     if diagonal:
         map.neighbors_diag()
-        map.heuristic_euclidian(goal)
+        map.heuristic_euclidian(map.goal)
     else:
         map.neighbors_xy()
-        map.heuristic_manhattan(goal)
+        map.heuristic_manhattan(map.goal)
 
     # Alkuasetukset
-    start.costsum = 0
-    prqueue = PriorityQueue()
-    prqueue.put((0, 0, start))
+    map.start.costsum = 0
+    prqueue = []
+    heappush(prqueue, (0, 0, map.start))
+#    prqueue = PriorityQueue()
+#    prqueue.put((0, 0, start))
     count = 0
 
     # Prioriteettijono-looppi
-    while not prqueue.empty():
+#    while not prqueue.empty():
+    while prqueue:
         # Keskeytys
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
         # Seuraava solmu keosta
-        node = prqueue.get()[2]
+        node = heappop(prqueue)[2]
+#        node = prqueue.get()[2]
 
         # Maali löytyi
-        if node == goal:
+        if node == map.goal:
             return True, timer() - tstart
 
-        # Naapurit
+        # Käydään läpi naapurit
         for neighbor in node.neighbors:
             deltacost = neighbor.cost
             if diagonal:
@@ -49,7 +52,7 @@ def astar(map, start, goal, diagonal, animate):
                 count += 1
                 neighbor.previous = node
                 neighbor.costsum = newcostsum
-                prqueue.put((newcostsum + neighbor.heuristic, count, neighbor))
+                heappush(prqueue,(newcostsum + neighbor.heuristic, count, neighbor))
 
         # Animaatio
         node.set_visited(animate)
