@@ -20,7 +20,7 @@ Koodin yleisrakenne on seuraava:
 
 ## Tilavaativuudet
 
-## Suorituskykyvertailu eri pituisilla avaimilla
+## Suorituskykyvertailu eri suuruisilla ruutukartoilla
 
 Verkon laajuus | Algoritmi | Keskiarvo (10 suorituskertaa)|
 -----|----------|-------------|
