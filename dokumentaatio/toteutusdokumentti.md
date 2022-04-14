@@ -4,7 +4,7 @@
 
 Ohjelma on toteutettu Python-kielellä (versio 3.8.8) olio-ohjelmointia käyttäen.  
 
-Koodin pakkausrakenne on seuraava:
+Koodin yleisrakenne on seuraava:
 
 <img src="/dokumentaatio/png/uml-kaavio.png" width="750">
 
@@ -16,10 +16,7 @@ Koodin pakkausrakenne on seuraava:
 - Algorithm-instanssi kutsuu käyttäjän valinnan mukaan tarvittavaa algoritmia (Dijkstra, A* tai IDA*)
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
 
-
 ## Aikavaativuudet ja käytetyt tietorakenteet
-Tärkein tietorakenne tässä ohjelmassa RSA-salauksen kannalta on Javan BigInteger. 
-
 
 ## Tilavaativuudet
 

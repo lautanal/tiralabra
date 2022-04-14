@@ -4,7 +4,7 @@
 
 Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  
 
-Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-9), joka kertoo  kustannuksen tai ajan lisäyksen reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinnan mukaan joko ainoastaan vaaka- ja pystysuoraan tai valinnaisesti myös viistoon ns. väli-ilmansuuntiin.
+Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 1-9), joka kertoo kustannuksen tai ajan lisäyksen reitin kulkiessa ruudun kautta.  Polku voi kulkea ruutujen välillä käyttäjän valinnan mukaan joko ainoastaan vaaka- ja pystysuoraan tai valinnaisesti myös viistoon ns. väli-ilmansuuntiin.
 
 Polun etsinnän ohella vertaillaan myös algoritmien tehokkuutta toisiinsa nähden.
 
