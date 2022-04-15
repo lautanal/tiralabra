@@ -1,7 +1,6 @@
 import pygame
 from math import sqrt
 from timeit import default_timer as timer
-from queue import PriorityQueue
 from heapq import heappush, heappop
 
 
