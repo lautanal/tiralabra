@@ -15,6 +15,7 @@ Koodin yleisrakenne on seuraava:
 - Ui luokka luo Algorithm-luokan olion, joka käynnistää polun etsinnän
 - Algorithm-instanssi kutsuu käyttäjän valinnan mukaan tarvittavaa algoritmia (Dijkstra, A* tai IDA*)
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
+- Piirtorutiinit on keskitetty Draw-luokkaan
 
 ## Aikavaativuudet ja käytetyt tietorakenteet
 
