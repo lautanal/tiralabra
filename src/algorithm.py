@@ -4,7 +4,7 @@ from idastar import idastar
 
 
 class Algorithm:
-    def __init__(self, drawfunc, map):
+    def __init__(self, map, drawfunc):
         self.drawfunc = drawfunc
         self.map = map
         self.method = 'D'
@@ -41,11 +41,11 @@ class Algorithm:
 # Laskennan käynnistys
     def calculate(self):
         if self.method == 'D':
-            result, time = dijkstra(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
+            result, time = dijkstra(self.map, self.diagonal, self.animate, self.drawfunc)
         elif self.method == 'A':
-            result, time = astar(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
+            result, time = astar(self.map, self.diagonal, self.animate, self.drawfunc)
         elif self.method == 'I':
-            result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
+            result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc)
         if result:
             print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia')
             # Polku

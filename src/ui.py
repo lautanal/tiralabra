@@ -27,7 +27,7 @@ class Ui:
 
         # Algoritmi- ja piirtofunktioiden alustus
         self.drawfunc = Draw(self.win, self.width, self.height, self.map)
-        self.algorithm = Algorithm(self.drawfunc, self.map)
+        self.algorithm = Algorithm(self, self.drawfunc.drawnode)
         self.drawfunc.set_texts(self.algorithm)
 
         self.edit = False
