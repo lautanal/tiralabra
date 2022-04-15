@@ -1,11 +1,10 @@
 import pygame
 from math import sqrt
-from queue import PriorityQueue
 from heapq import heappush, heappop
 from timeit import default_timer as timer
 
 # A* -algoritmi
-def astar(map, diagonal, animate):
+def astar(map, diagonal, animate, drawnode):
     tstart = timer()
 
     # Naapurit ja heuristiikka
@@ -18,23 +17,19 @@ def astar(map, diagonal, animate):
 
     # Alkuasetukset
     map.start.costsum = 0
-    prqueue = []
-    heappush(prqueue, (0, 0, map.start))
-#    prqueue = PriorityQueue()
-#    prqueue.put((0, 0, start))
+    queue = []
+    heappush(queue, (0, 0, map.start))
     count = 0
 
     # Prioriteettijono-looppi
-#    while not prqueue.empty():
-    while prqueue:
+    while queue:
         # Keskeytys
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
         # Seuraava solmu keosta
-        node = heappop(prqueue)[2]
-#        node = prqueue.get()[2]
+        node = heappop(queue)[2]
 
         # Maali löytyi
         if node == map.goal:
@@ -52,12 +47,12 @@ def astar(map, diagonal, animate):
                 count += 1
                 neighbor.previous = node
                 neighbor.costsum = newcostsum
-                heappush(prqueue,(newcostsum + neighbor.heuristic, count, neighbor))
+                heappush(queue,(newcostsum + neighbor.heuristic, count, neighbor))
 
         # Animaatio
         node.set_visited(animate)
         if animate:
-            map.drawnode(node)
+            drawnode(node)
 
     # Reittiä ei löytynyt
     tend = timer()

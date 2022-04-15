@@ -1,12 +1,11 @@
-from node import Node
-from map import Map
 from dijkstra import dijkstra
 from astar import astar
 from idastar import idastar
 
 
 class Algorithm:
-    def __init__(self, map):
+    def __init__(self, drawfunc, map):
+        self.drawfunc = drawfunc
         self.map = map
         self.method = 'D'
         self.diagonal = False
@@ -35,14 +34,18 @@ class Algorithm:
         else:
             self.animate = True
 
+# Uusi kartta
+    def set_map(self, map):
+        self.map = map
+
 # Laskennan käynnistys
     def calculate(self):
         if self.method == 'D':
-            result, time = dijkstra(self.map, self.diagonal, self.animate)
+            result, time = dijkstra(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
         elif self.method == 'A':
-            result, time = astar(self.map, self.diagonal, self.animate)
+            result, time = astar(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
         elif self.method == 'I':
-            result, time = idastar(self.map, self.diagonal, self.animate)
+            result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc.drawnode)
         if result:
             print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia')
             # Polku

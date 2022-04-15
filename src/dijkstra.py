@@ -1,11 +1,10 @@
 import pygame
 from math import sqrt
-from queue import PriorityQueue
 from timeit import default_timer as timer
 from bheap import Bheap
 
 # Dijkstran algoritmi
-def dijkstra(map, diagonal, animate):
+def dijkstra(map, diagonal, animate, drawnode):
     tstart = timer()
 
     # Naapurit
@@ -51,7 +50,7 @@ def dijkstra(map, diagonal, animate):
         # Animaatio
         node.set_visited(animate)
         if animate:
-            map.drawnode(node)
+            drawnode(node)
 
     # Polkua ei löytynyt
     tend = timer()

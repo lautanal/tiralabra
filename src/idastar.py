@@ -2,10 +2,11 @@ import pygame
 from math import sqrt
 from timeit import default_timer as timer
 from queue import PriorityQueue
+from heapq import heappush, heappop
 
 
 # IDA* -algoritmi
-def idastar(map, diagonal, animate):
+def idastar(map, diagonal, animate, drawnode):
     tstart = timer()
 
     # Naapurit ja heuristiikka
@@ -17,13 +18,12 @@ def idastar(map, diagonal, animate):
         map.heuristic_manhattan(map.goal)
 
     # Alustukset
-    map.init_costsums()
     map.start.costsum = 0
     threshold = map.start.heuristic
-    paths = PriorityQueue()
-    paths.put((0, [map.start]))
+    paths = []
+    heappush(paths, (0, [map.start]))
 
-    while not paths.empty():
+    while paths:
         # Keskeytys
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -31,10 +31,10 @@ def idastar(map, diagonal, animate):
 
         # Edetään polkuja kunnes kynnys ylittyy
         tmin = float("inf")
-        newpaths = PriorityQueue()
-        while not paths.empty():
-            est, path = paths.get()
-            res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, map.drawnode)
+        newpaths = []
+        while paths:
+            est, path = heappop(paths)
+            res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, drawnode)
 
             # Maali löytyi
             if res < 0:
@@ -73,7 +73,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
     # Hakukynnys ylittyi
     estimate = costsum + node.heuristic
     if estimate > threshold:
-        paths.put((estimate, path.copy()))
+        heappush(paths, (estimate, path.copy()))
         return estimate
 
     # Käydään läpi naapurit
