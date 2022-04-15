@@ -22,5 +22,5 @@ Koodin yleisrakenne on seuraava:
 
 ## Suorituskykyvertailu eri suuruisilla ruutukartoilla
 
-Verkon laajuus | Algoritmi | Keskiarvo (10 suorituskertaa)|
+Verkon koko | Algoritmi | Keskiarvo (10 suorituskertaa)|
 -----|----------|-------------|
