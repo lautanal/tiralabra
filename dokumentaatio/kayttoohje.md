@@ -27,9 +27,9 @@ Sovellusta käytetään Pygamella luodun käyttöliittymän avulla :
 Käyttäjä valitsee lähtö- ja maaliruudun hiiren vasemmalla näppäimellä.  Kun lähtö ja maali on valittu, hiiren vasemmalla näppäimellä voi asettaa esteet, joiden läpi reitti ei voi kulkea.
 Lähdön ja maalin sekä esteet voi poistaa hiiren oikealla näppäimellä.
 
-Haluttu menetelmä reitin hakemiseen valitaan näppäilemällä m.
+Haluttu menetelmä reitin hakemiseen valitaan näppäimellä m.
 
-Laskenta käynnistetään näppäilemällä s.
+Laskenta käynnistetään näppäimellä s.
 
 ## Komennot
 
