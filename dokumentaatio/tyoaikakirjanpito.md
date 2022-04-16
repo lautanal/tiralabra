@@ -20,4 +20,7 @@
 | 10.04. | 6    | IDA* -algoritmi koodausta ja parantelua|
 | 11.04. | 5   | IDA* -algoritmin viilausta|
 | 12.04. | 4    | Binäärikeko-luokan teko|
-yht    | 82 | 
+| 14.04. | 4    | Toteutusdokumentti|
+| 15.04. | 2    | Aikavaativuuden testausta|
+
+yht    | 88 | 
