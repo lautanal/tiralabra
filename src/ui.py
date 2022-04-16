@@ -257,7 +257,6 @@ class Ui:
                     map.append([char for char in row])
         except FileNotFoundError:
             print('Tiedostoa ei löytynyt')
-        print(map)
         return map
 
 
