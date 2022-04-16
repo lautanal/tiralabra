@@ -33,11 +33,6 @@ def idastar(map, diagonal, animate, drawnode):
     heappush(paths, (0, [map.start]))
 
     while paths:
-        # Keskeytys
-#        for event in pygame.event.get():
-#            if event.type == pygame.QUIT:
-#                pygame.quit()
-
         # Edetään polkuja kunnes kynnys ylittyy
         tmin = float("inf")
         newpaths = []

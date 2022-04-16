@@ -33,11 +33,6 @@ def astar(map, diagonal, animate, drawnode):
 
     # Prioriteettijono-looppi
     while queue:
-        # Keskeytys
-#        for event in pygame.event.get():
-#            if event.type == pygame.QUIT:
-#                pygame.quit()
-
         # Seuraava solmu keosta
         node = heappop(queue)[2]
 

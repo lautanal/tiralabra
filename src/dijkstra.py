@@ -31,11 +31,6 @@ def dijkstra(map, diagonal, animate, drawnode):
 
     # Binäärikeko-looppi
     while not bheap.empty():
-        # Keskeytys
-#        for event in pygame.event.get():
-#            if event.type == pygame.QUIT:
-#                pygame.quit()
-
         # Seuraava solmu keosta
         node = bheap.get()[2]
 
