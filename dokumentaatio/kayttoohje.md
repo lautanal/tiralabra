@@ -29,27 +29,46 @@ Laskenta käynnistetään näppäilemällä s.
 
 Ohjelman näppäinkomennot:
 c : clear, poistaa kartan ja generoi uuden
+
 r : reset, pyyhkii lasketun reitin
+
 m : metodi, Dijkstra / A* / IDA*
+
 d : diagonal, polun tyyppi, vain x ja y-suunnat / väli-ilmansuunnat sallittu
+
 s : start, laskee parhaan reitin
+
 a : animointi päälle / pois
+
 t : Ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
     eri menetelmille
+
 + : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+
 - : vähentää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+
 1 : lataa kartta 1.map (hakemistosta maps)
+
 2 : lataa kartta 2.map (hakemistosta maps)
+
 w : write, talleta kartta tiedostoon f.map
+
 f : file, lue karttatiedosto f.map
+
 e : edit, editoi karttaa
+
 q : quit, lopeta editointi
+
 
 Hiiren toiminnot:
 Hiiren vasen näppäin valitsee reitin lähtöpisteen (jos sitä ei ole ennestään kartalla)
+
 Hiiren vasen näppäin valitsee reitin loppupisteen (jos sitä ei ole ennestään kartalla)
+
 Hiiren vasen näppän asettaa esteen (kun alku- ja loppupiste on asetettu)
+
 Hiiren oikea näppäin pyyhkii ruudun (alkupisteen, loppupisteen tai esteen)
+
 Editoinnissa hiiren vasen näppäin lisää ruudun painoarvoa, oikea vähentää
 
 
