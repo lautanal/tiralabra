@@ -24,3 +24,5 @@ Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan ta
 [Viikko 3](https://github.com/lautanal/tiralabra/releases/tag/Viikko3)
 
 [Viikko 4](https://github.com/lautanal/tiralabra/releases/tag/VIIKKO4)
+
+[Viikko 5](https://github.com/lautanal/tiralabra/releases/tag/VIIKKO5)
