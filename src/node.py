@@ -11,7 +11,7 @@ ORANGE = (255, 165, 0)
 
 
 class Node:
-    """Luokka, joka mallintaa karttaruudukon
+    """Luokka, joka mallintaa karttaruudun
 
     Attributes:
         row: Rivinumero
@@ -30,7 +30,7 @@ class Node:
 
 
     def __init__(self, row, col, gsize):
-        """Luokan konstruktori, joka luo uuden karttaruudukon.
+        """Luokan konstruktori, joka luo uuden karttaruudun.
 
         Args:
             row: Rivinumero
@@ -72,7 +72,7 @@ class Node:
         """ Ruudun paikka
 
         Returns:
-            Tuple, jossa ruudun rivi ja sarake    
+            row, col (Tuple): Ruudun rivi ja sarake    
         """
         return self.row, self.col
 

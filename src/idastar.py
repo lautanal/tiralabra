@@ -12,6 +12,9 @@ def idastar(map, diagonal, animate, drawnode):
         diagonal: Polun tyyppi (diagonal / xy)
         animate: Animaatio päällä
         drawnode: Karttaruudun piirtofunktio
+
+    Returns:
+        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan 
     """
     tstart = timer()
 
@@ -73,6 +76,9 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
         diagonal: Polun tyyppi (diagonal / xy)
         animate: Animaatio päällä
         drawnode: Karttaruudun piirtofunktio
+
+    Returns:
+        tmin: Uusi kynnysarvo etsinnälle
     """
     node = path[-1]
     costsum = node.costsum

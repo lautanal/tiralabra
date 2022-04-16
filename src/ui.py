@@ -15,11 +15,11 @@ class Ui:
         ncols: Sarakkeiden lukumäärä
         gsize: Karttaruudun koko pikseleinä
         width: Pygame-ikkunan leveys pikseleinä
-        width: Pygame-ikkunan korkeus pikseleinä
+        height: Pygame-ikkunan korkeus pikseleinä
         win: Pygame-ikkuna
         map: Karttaruudukko
-        drawfunc: Piirtorutiinit
-        algorithm: Algoritmit
+        drawfunc: Piirtorutiini
+        algorithm: Algoritmien käynnistys
         edit: Kartan editointi käynnissä
         run: Pygame-käynnissä
     """

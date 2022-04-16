@@ -11,6 +11,9 @@ def astar(map, diagonal, animate, drawnode):
         diagonal: Polun tyyppi (diagonal / xy)
         animate: Animaatio päällä
         drawnode: Karttaruudun piirtofunktio
+
+    Returns:
+        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan 
     """
     tstart = timer()
 

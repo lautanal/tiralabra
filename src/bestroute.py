@@ -1,9 +1,9 @@
 from ui import Ui
 
-WIDTH = 1200
+WIDTH = 800
 THEIGHT = 150
-NCOLS = 100
-NROWS = 100
+NCOLS = 40
+NROWS = 40
 
 
 if __name__ == "__main__":
