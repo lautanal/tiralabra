@@ -26,8 +26,8 @@ Koodin yleisrakenne on seuraava:
 Verkon koko | Solmut | Kaaret | Algoritmi | Keskiarvo (10 suorituskertaa)|
 --------|--------|--------|-------------|-------------|
 100 x 100 | 10000 | 19800 | Dijkstra | 0.1508 |
-          |       |       |  A\*     | 0.0990 |
-          |       |       |  IDA\*   | 0.5368 |
+ | | | A\* | 0.0990 |
+ | | | IDA\* | 0.5368 |
 200 x 200 | 40000 | 79600 | Dijkstra | 0.6351 |
           |       |       |  A\*     | 0.4020 |
           |       |       |  IDA\*   | 3.9984 |
