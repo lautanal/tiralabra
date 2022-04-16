@@ -19,7 +19,9 @@ Koodin yleisrakenne on seuraava:
 
 ## Aikavaativuudet ja käytetyt tietorakenteet
 
-## Tilavaativuudet
+Mitatut Dijkstran ja A* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
+
+Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa.  A\* ja IDA\* -menetelmät on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
 ## Suorituskykyvertailu eri suuruisilla ruutukartoilla
 
@@ -40,6 +42,5 @@ Verkon koko | Solmut | Kaaret | Algoritmi | Keskiarvo (10 suorituskertaa)|
 | 500 x 500 | 250000 | 499000 | Dijkstra | 4.4715  |
 | | | | A\*     | 2.7333  |
 | | | | IDA\*   | 58.3025 |
-          
-Mitattu Dijkstran menetelmän aikavaativuus vastaa hyvin teorian mukaista O(V + E logV) aikavaativuutta.  A\* -menetelmän aikavaativuus on hieman parempi kuin Dijkstran menetelmän.  IDA\* -menetelmän aikavaativuus on tämän testin mukaan lähinnä O(V + E)
 
+A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.
