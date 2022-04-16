@@ -26,9 +26,9 @@ Ohjelma näyttää polun visuaalisesti.  Polun haku voidaan animoida realiaikais
 
 ## Aika- ja tilavaativuudet
 
-Aikavaatimus: O((n + m log n)
+Aikavaatimus: O((V + E log V)
 
-Tilavaatimus: O(n)
+Tilavaatimus: O(V)
 
 ## Lähteet
 
