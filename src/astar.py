@@ -1,7 +1,7 @@
-import pygame
 from math import sqrt
 from heapq import heappush, heappop
 from timeit import default_timer as timer
+import pygame
 
 def astar(map, diagonal, animate, drawnode):
     """A* -algoritmi
@@ -13,7 +13,7 @@ def astar(map, diagonal, animate, drawnode):
         drawnode: Karttaruudun piirtofunktio
 
     Returns:
-        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan 
+        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan
     """
     tstart = timer()
 
@@ -49,7 +49,8 @@ def astar(map, diagonal, animate, drawnode):
         for neighbor in node.neighbors:
             deltacost = neighbor.cost
             if diagonal:
-                deltacost = sqrt((node.row - neighbor.row)**2+(node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
+                deltacost = sqrt((node.row - neighbor.row)**2 + \
+                    (node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
             newcostsum = node.costsum + deltacost
 
             # Parempi reitti löytyi

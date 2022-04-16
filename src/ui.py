@@ -303,4 +303,3 @@ class Ui:
         results[1] /= 10
         results[2] /= 10
         self.drawfunc.test_results(results)
-

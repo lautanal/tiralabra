@@ -1,6 +1,3 @@
-import pygame
-from queue import PriorityQueue
-
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -72,7 +69,7 @@ class Node:
         """ Ruudun paikka
 
         Returns:
-            row, col (Tuple): Ruudun rivi ja sarake    
+            row, col (Tuple): Ruudun rivi ja sarake
         """
         return self.row, self.col
 

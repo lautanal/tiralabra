@@ -1,7 +1,7 @@
-import pygame
 from math import sqrt
 from timeit import default_timer as timer
 from heapq import heappush, heappop
+import pygame
 
 
 def idastar(map, diagonal, animate, drawnode):
@@ -14,7 +14,7 @@ def idastar(map, diagonal, animate, drawnode):
         drawnode: Karttaruudun piirtofunktio
 
     Returns:
-        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan 
+        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan
     """
     tstart = timer()
 
@@ -104,7 +104,8 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
         if neighbor not in path:
             deltacost = neighbor.cost
             if diagonal:
-                deltacost = sqrt((node.row - neighbor.row)**2+(node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
+                deltacost = sqrt((node.row - neighbor.row)**2 + \
+                    (node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
             newcostsum = costsum + deltacost
 
             # Jatketaan syvyyshakua

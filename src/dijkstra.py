@@ -1,6 +1,6 @@
-import pygame
 from math import sqrt
 from timeit import default_timer as timer
+import pygame
 from bheap import Bheap
 
 def dijkstra(map, diagonal, animate, drawnode):
@@ -13,7 +13,7 @@ def dijkstra(map, diagonal, animate, drawnode):
         drawnode: Karttaruudun piirtofunktio
 
     Returns:
-        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan 
+        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan
     """
     tstart = timer()
 
@@ -47,7 +47,8 @@ def dijkstra(map, diagonal, animate, drawnode):
         for neighbor in node.neighbors:
             deltacost = neighbor.cost
             if diagonal:
-                deltacost = sqrt((node.row - neighbor.row)**2 + (node.col - neighbor.col)**2) * (node.cost + neighbor.cost) / 2
+                deltacost = sqrt((node.row - neighbor.row)**2 + \
+                    (node.col - neighbor.col)**2) * (node.cost + neighbor.cost) / 2
             newcostsum = node.costsum + deltacost
 
             # Löytyi parempi reitti

@@ -1,6 +1,6 @@
 import random
-from node import Node
 from math import sqrt
+from node import Node
 
 
 class Map:
@@ -53,17 +53,17 @@ class Map:
                 node.color = (ngrey, ngrey, ngrey)
 
 
-    def set_costs(self, map):
+    def set_costs(self, maparray):
         """ Kartan generointi (kartta luettu tiedostosta)
         """
         for row in self.nodes:
             for node in row:
-                if map[node.row][node.col] == 'B':
+                if maparray[node.row][node.col] == 'B':
                     node.cost = 1
                     node.blocked = True
                     node.color = (0, 0, 0)
                 else:
-                    node.cost = int(map[node.row][node.col])
+                    node.cost = int(maparray[node.row][node.col])
                     ngrey = (10 - node.cost) * 24
                     node.color = (ngrey, ngrey, ngrey)
 
@@ -165,4 +165,3 @@ class Map:
         if not diagonal:
             costsum = self.goal.costsum - self.goal.cost
         return count, costsum
-

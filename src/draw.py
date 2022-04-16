@@ -164,4 +164,3 @@ class Draw:
         self.text6 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
         self.text7 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
         self.text8 = ''
-

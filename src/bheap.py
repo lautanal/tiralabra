@@ -1,5 +1,3 @@
-# Minimikeko
-
 class Bheap:
     """Luokka, joka mallintaa binäärikeon
 
@@ -87,7 +85,7 @@ class Bheap:
                 swap = right
             if self.heap[index] > self.heap[swap]:
                 self.swap(index, swap)
-                
+
         self.heapify_get(swap)
 
 

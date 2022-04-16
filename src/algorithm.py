@@ -76,7 +76,8 @@ class Algorithm:
         if result:
             # Polku
             npath, costsum = self.map.track_path(self.diagonal)
-            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia\nPolun pituus {npath}\nPolun painotettu pituus {costsum}')
+            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia\n' \
+                f'Polun pituus {npath}\nPolun painotettu pituus {costsum}')
             return True, npath, costsum, time
         else:
             return False, 0, 0, 0
