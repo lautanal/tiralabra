@@ -226,7 +226,7 @@ class Ui:
         self.nrows = 100
         results = [0, 0, 0]
         self.algorithm.method = 'D'
-        for _ in range(10):
+        for _ in range(1):
             self.mapinit(None)
             node = self.map.nodes[0][0]
             node.set_start()

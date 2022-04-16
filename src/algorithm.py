@@ -47,9 +47,9 @@ class Algorithm:
         elif self.method == 'I':
             result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc)
         if result:
-            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia')
             # Polku
             npath, costsum = self.map.track_path(self.diagonal)
+            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia\nPolun pituus {npath}\nPolun painotettu pituus {costsum}')
             return True, npath, costsum, time
         else:
             return False, 0, 0, 0
