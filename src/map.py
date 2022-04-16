@@ -165,3 +165,11 @@ class Map:
         if not diagonal:
             costsum = self.goal.costsum - self.goal.cost
         return count, costsum
+
+
+    def reset(self):
+        """Karttaruudukon reset
+        """
+        for row in self.nodes:
+            for node in row:
+                node.visited = False

@@ -34,9 +34,9 @@ def idastar(map, diagonal, animate, drawnode):
 
     while paths:
         # Keskeytys
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
+#        for event in pygame.event.get():
+#            if event.type == pygame.QUIT:
+#                pygame.quit()
 
         # Edetään polkuja kunnes kynnys ylittyy
         tmin = float("inf")

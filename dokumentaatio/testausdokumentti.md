@@ -2,7 +2,7 @@
 
 ### Yksikkötestit
 
-Yksikkötestit ovat vielä työn alla.  Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.
+Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.  Olen kuitenkin tehnyt muutaman yksikkötestin, jotka ovat hyödyksi jos ohjelmaan tehdään jatkossa muutoksia.
 
 ### Empiirinen testaus
 
