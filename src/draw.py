@@ -118,3 +118,10 @@ class Draw:
             self.text7 = ''
             self.text8 = ''
 
+    # Laskennan tulokset näkyville
+    def test_results(self, result):
+        self.text5 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
+        self.text6 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
+        self.text7 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
+        self.text8 = ''
+

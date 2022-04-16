@@ -1,3 +1,4 @@
+from bs4 import ResultSet
 import pygame
 from map import Map
 from draw import Draw
@@ -123,6 +124,10 @@ class Ui:
                             result = self.algorithm.calculate()
                             self.drawfunc.set_results(result)
 
+                    # Laskennan aloitus
+                    if event.key == pygame.K_t:
+                        self.test()
+
                     # Kartan kirjoitus tiedostoon f.map
                     if event.key == pygame.K_w:
                         self.mapwrite('./maps/f.map')
@@ -215,3 +220,28 @@ class Ui:
                         s += str(node.cost)
                 s += '\n'
                 file.write(s)
+
+    def test(self):
+        self.ncols = 100
+        self.nrows = 100
+        results = [0, 0, 0]
+        self.algorithm.method = 'D'
+        for _ in range(10):
+            self.mapinit(None)
+            node = self.map.nodes[0][0]
+            node.set_start()
+            self.map.set_start(node)
+            node = self.map.nodes[self.nrows-1][self.ncols-1]
+            node.set_goal()
+            self.map.set_goal(node)
+            for i in range(3):
+                self.drawfunc.reset()
+                result = self.algorithm.calculate()
+                self.drawfunc.drawmap()
+                results[i] += result[3]
+                self.algorithm.set_method()
+        results[0] /= 10
+        results[1] /= 10
+        results[2] /= 10
+        self.drawfunc.test_results(results)
+
