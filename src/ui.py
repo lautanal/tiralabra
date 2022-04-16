@@ -1,4 +1,3 @@
-from bs4 import ResultSet
 import pygame
 from map import Map
 from draw import Draw
