@@ -31,6 +31,8 @@ Haluttu menetelmä reitin hakemiseen valitaan näppäilemällä m.
 
 Laskenta käynnistetään näppäilemällä s.
 
+## Komennot
+
 Ohjelman näppäinkomennot:
 
 c : clear, poistaa kartan ja generoi uuden
@@ -66,6 +68,7 @@ q : quit, lopeta editointi
 
 
 Hiiren toiminnot:
+
 Hiiren vasen näppäin valitsee reitin lähtöpisteen (jos sitä ei ole ennestään kartalla)
 
 Hiiren vasen näppäin valitsee reitin loppupisteen (jos sitä ei ole ennestään kartalla)
