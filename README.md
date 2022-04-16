@@ -4,7 +4,7 @@
 
 <img src="dokumentaatio/png/reittikartta.png" width="750">
 
-Kehitettävä sovellus on ruutukarttaa hyväksi käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 0-9), joka kertoo  kustannuksen tai ajan inkrementin reitin kulkiessa ruudun kautta.
+Kehitettävä sovellus on ruutukarttaa käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (esim. välillä 0-9), joka kertoo  kustannuksen tai ajan lisäyksen reitin kulkiessa ruudun kautta.
 
 Polunetsinnän nopeutta testataan usealla eri algoritmilla, joita ovat Dijkstran perinteinen, A*,  IDA* ja Jump Point Search.
 
