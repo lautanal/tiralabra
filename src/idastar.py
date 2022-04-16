@@ -4,8 +4,15 @@ from timeit import default_timer as timer
 from heapq import heappush, heappop
 
 
-# IDA* -algoritmi
 def idastar(map, diagonal, animate, drawnode):
+    """IDA* -algoritmi
+
+    Attributes:
+        map: Karttaruudukko
+        diagonal: Polun tyyppi (diagonal / xy)
+        animate: Animaatio päällä
+        drawnode: Karttaruudun piirtofunktio
+    """
     tstart = timer()
 
     # Naapurit ja heuristiikka
@@ -55,15 +62,25 @@ def idastar(map, diagonal, animate, drawnode):
     return False, 0
 
 
-# Syvyysetsintä-rutiini
-def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
+def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
+    """IDA* -syvyyshakurutiini
+
+    Attributes:
+        path: Polku ruutuun
+        threshold: Etsintäkynnys
+        goal: Maaliruutu
+        paths: Etsintäpolut
+        diagonal: Polun tyyppi (diagonal / xy)
+        animate: Animaatio päällä
+        drawnode: Karttaruudun piirtofunktio
+    """
     node = path[-1]
     costsum = node.costsum
 
     # Animaatio
     if animate:
         node.set_visited(animate)
-        drawfunc(node)
+        drawnode(node)
 
     # Maali
     if node == goal:
@@ -89,7 +106,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc):
                 neighbor.costsum = newcostsum
                 neighbor.previous = node
                 path.append(neighbor)
-                res = idastar_search(path, threshold, goal, paths, diagonal, animate, drawfunc)
+                res = idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode)
                 if res < 0:
                     return res
                 elif res < tmin:

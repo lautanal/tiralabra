@@ -1,25 +1,50 @@
 # Minimikeko
 
 class Bheap:
+    """Luokka, joka mallintaa binäärikeon
+
+    Attributes:
+        heap: Keko
+        size: Keon koko
+        maxsize: Maksimikoko
+    """
+
     def __init__(self, size):
+        """Luokan konstruktori, joka luo uuden binääriminimikeon.
+
+        Args:
+            size: Keon maksimikoko
+        """
         self.heap = [None] * (size+1)
         self.size = 0
         self.maxsize = size + 1
 
-    # Tarkistus, onko tyhjä keko
+
     def empty(self):
+        """Tarkistus, onko keko tyhjä.
+
+        Returns:
+            True, jos keko tyhjä.
+        """
         return self.size == 0
 
-    # Uuden alkion talletus kekoon
+
     def put(self, value):
+        """Uuden alkion tallennus kekoon.
+        """
         if self.size + 1 == self.maxsize:
             return
         self.heap[self.size + 1] = value
         self.size += 1
         self.heapify_put(self.size)
 
-    # Pienin alkio ulos keosta
+
     def get(self):
+        """Pienin alkio ulos keosta.
+
+        Returns:
+            Pienin alkio keossa.
+        """
         if self.size == 0:
             return None
         else:
@@ -30,8 +55,10 @@ class Bheap:
             self.heapify_get(1)
             return res
 
-    # Korjataan keon rakenne minimikeoksi (put)
+
     def heapify_put(self, index):
+        """Korjataan keon rakenne minimikeoksi uuden alkion lisäämisen jälkeen.
+        """
         parent = index // 2
         if index <= 1:
             return
@@ -39,8 +66,10 @@ class Bheap:
             self.swap(index, parent)
         self.heapify_put(parent)
 
-    # Korjataan keon rakenne minimikeoksi (get)
+
     def heapify_get(self, index):
+        """Korjataan keon rakenne minimikeoksi alkion poiston jälkeen.
+        """
         left = index * 2
         right = index * 2 + 1
         swap = 0
@@ -61,8 +90,10 @@ class Bheap:
                 
         self.heapify_get(swap)
 
-    # Solmujen paikan vaihto
+
     def swap(self, index1, index2):
+        """Alkioiden paikan vaihto keossa.
+        """
         temp = self.heap[index1]
         self.heap[index1] = self.heap[index2]
         self.heap[index2] = temp

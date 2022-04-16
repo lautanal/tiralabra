@@ -4,7 +4,25 @@ from math import sqrt
 
 
 class Map:
+    """Luokka, joka mallintaa karttaruudukon
+
+    Attributes:
+        nrows: Rivien lukumäärä
+        ncols: Sarakkeiden lukumäärä
+        gsize: Karttaruudun koko pikseleinä
+        nodes: Karttaruudut taulukkona
+        start: Lähtöruutu
+        goal: Maaliruutu
+    """
+
     def __init__(self, nrows, ncols, gsize):
+        """Luokan konstruktori, joka luo uuden karttaruudukon.
+
+        Args:
+            nrows: Rivien lukumäärä
+            ncols: Sarakkeiden lukumäärä
+            gsize: Karttaruudun koko pikseleinä
+        """
         self.nrows = nrows
         self.ncols = ncols
         self.gsize = gsize
@@ -13,16 +31,20 @@ class Map:
         self.goal = None
         self.make()
 
-# Solmujen luonti
+
     def make(self):
+        """ Solmujen luonti
+        """
         for i in range(self.nrows):
             self.nodes.append([])
             for j in range(self.ncols):
                 node = Node(i, j, self.gsize)
                 self.nodes[i].append(node)
 
-# Kartan random-generointi (solmujen painot)
+
     def generate_costs(self):
+        """ Kartan random-generointi (solmujen painot)
+        """
         costmap = [[random.randrange(1, 10, 1) for _ in range(self.ncols)] for _ in range(self.nrows)]
         for row in self.nodes:
             for node in row:
@@ -30,8 +52,10 @@ class Map:
                 ngrey = (10 - node.cost) * 24
                 node.color = (ngrey, ngrey, ngrey)
 
-# Kartan generointi (kartta luettu tiedostosta)
+
     def set_costs(self, map):
+        """ Kartan generointi (kartta luettu tiedostosta)
+        """
         for row in self.nodes:
             for node in row:
                 if map[node.row][node.col] == 'B':
@@ -43,16 +67,22 @@ class Map:
                     ngrey = (10 - node.cost) * 24
                     node.color = (ngrey, ngrey, ngrey)
 
-# Lähtöpiste
+
     def set_start(self, start):
+        """ Lähtöpiste
+        """
         self.start = start
 
-# Maalipiste
+
     def set_goal(self, goal):
+        """ Maalipiste
+        """
         self.goal = goal
 
-# Solmujen naapurit, xy-polku
+
     def neighbors_xy(self):
+        """ Solmujen naapurit, xy-polku
+        """
         for row in self.nodes:
             for node in row:
                 node.costsum = float("inf")
@@ -70,8 +100,10 @@ class Map:
                 if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
                     node.neighbors.append(self.nodes[node.row][node.col - 1])
 
-# Solmujen naapurit, viisto polku
+
     def neighbors_diag(self):
+        """ Solmujen naapurit, viisto polku
+        """
         for row in self.nodes:
             for node in row:
                 node.costsum = float("inf")
@@ -99,24 +131,30 @@ class Map:
                 if node.col > 0 and not self.nodes[node.row][node.col - 1].blocked:
                     node.neighbors.append(self.nodes[node.row][node.col - 1])
 
-# Manhattan heuristiikka
+
     def heuristic_manhattan(self, goal):
+        """ Manhattan heuristiikka
+        """
         for row in self.nodes:
             for node in row:
                 y1, x1 = node.get_pos()
                 y2, x2 = goal.get_pos()
                 node.heuristic = abs(x1 - x2) + abs(y1 - y2)
 
-# Eukliidinen heuristiikka
+
     def heuristic_euclidian(self, goal):
+        """ Eukliidinen heuristiikka
+        """
         for row in self.nodes:
             for node in row:
                 y1, x1 = node.get_pos()
                 y2, x2 = goal.get_pos()
                 node.heuristic = sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
-# Polun track
+
     def track_path(self, diagonal):
+        """ Polun track
+        """
         node = self.goal.previous
         count = 0
         while node != self.start:

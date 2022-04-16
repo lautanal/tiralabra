@@ -4,15 +4,34 @@ from idastar import idastar
 
 
 class Algorithm:
+    """Luokka, joka käynnistää eri algoritmit
+
+    Attributes:
+        map: Karttaruudukko
+        drawfunc: Piirtofunktio
+        method: Käytetty metodi
+        diagonal: Polun tyyppi (diagonal / xy)
+        animate: Animaatio päällä
+    """
+
+
     def __init__(self, map, drawfunc):
+        """Konstruktori, joka luo uuden Algorithm-alkion
+
+        Args:
+            map: Karttaruudukko
+            drawfunc: Piirtofunktio
+        """
         self.drawfunc = drawfunc
         self.map = map
         self.method = 'D'
         self.diagonal = False
         self.animate = False
 
-# Metodi
+
     def set_method(self):
+        """Metodin vaihto
+        """
         if self.method == 'D':
             self.method = 'A'
         elif self.method == 'A':
@@ -20,26 +39,34 @@ class Algorithm:
         elif self.method == 'I':
             self.method = 'D'
 
-# Polun tyyppi
+
     def set_diagonal(self):
+        """Polun tyyppi (diagonal / xy)
+        """
         if self.diagonal:
             self.diagonal = False
         else:
             self.diagonal = True
 
-# Animaatio
+
     def set_animate(self):
+        """Animaatio päällä / pois
+        """
         if self.animate:
             self.animate = False
         else:
             self.animate = True
 
-# Uusi kartta
+
     def set_map(self, map):
+        """Uusi kartta
+        """
         self.map = map
 
-# Laskennan käynnistys
+
     def calculate(self):
+        """Laskennan käynnistys
+        """
         if self.method == 'D':
             result, time = dijkstra(self.map, self.diagonal, self.animate, self.drawfunc)
         elif self.method == 'A':

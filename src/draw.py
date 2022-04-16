@@ -2,7 +2,36 @@ import pygame
 
 
 class Draw:
+    """Luokka, jossa on Pygame-piirtorutiinit
+
+    Attributes:
+        win = Pygame-ikkuna
+        map = Karttaruudukko
+        width = Pygame-ikkunan leveys
+        height = Pygame-ikkunan korkeus
+        nrows = Karttaruudukon rivien lukumäärä
+        ncols = Karttaruudukon sarakkeiden lukumäärä
+        gsize = Ruudun koko pikseleinä
+        text1 = Teksti 1
+        text2 = Teksti 2
+        text3 = Teksti 3
+        text4 = Teksti 4
+        text5 = Teksti 5
+        text6 = Teksti 6
+        text7 = Teksti 7
+        text8 = Teksti 8
+    """
+
+
     def __init__(self, win, width, height, map):
+        """Konstruktori, joka luo uuden Draw-alkion
+
+        Attributes:
+            win = Pygame-ikkuna
+            width = Pygame-ikkunan leveys
+            height = Pygame-ikkunan korkeus
+            map = Karttaruudukko
+        """
         self.win = win
         self.map = map
         self.width = width
@@ -19,8 +48,10 @@ class Draw:
         self.text7 = ''
         self.text8 = ''
 
-    # Koko kartan piirtäminen
+
     def drawmap(self):
+        """Koko karttaruudukon piirto
+        """
         font = pygame.font.SysFont('Arial', self.gsize // 2)
         for row in self.map.nodes:
             for node in row:
@@ -53,8 +84,10 @@ class Draw:
 
         pygame.display.update()
 
-    # Yksittäisen ruudun piirtäminen
+
     def drawnode(self, node):
+        """Yhden karttaruudun piirto
+        """
         font = pygame.font.SysFont('Arial', self.gsize // 2)
         pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
         if node.cost < 10:
@@ -65,8 +98,10 @@ class Draw:
                     (node.x+self.gsize//3, node.y+self.gsize//4))
         pygame.display.update()
 
-    # Kartan reset
+
     def reset(self):
+        """Karttaruudukon reset
+        """
         for row in self.map.nodes:
             for node in row:
                 node.visited = False
@@ -74,8 +109,10 @@ class Draw:
                     ngrey = (10 - node.cost) * 24
                     node.color = (ngrey, ngrey, ngrey)
 
-    # Ikkunan asetukset
+
     def set_win(self, win, width, height, map):
+        """Ikkunan asetukset
+        """
         self.win = win
         self.map = map
         self.width = width
@@ -84,8 +121,9 @@ class Draw:
         self.ncols = map.ncols
         self.gsize = map.gsize
 
-    # Ikkunan tekstit
     def set_texts(self, algorithm):
+        """Ikkunan tekstit
+        """
         if algorithm.method == 'D':
             self.text1 = 'Metodi (m): Dijkstra'
         elif algorithm.method == 'A':
@@ -105,8 +143,9 @@ class Draw:
         self.text6 = ''
         self.text7 = ''
 
-    # Laskennan tulokset näkyville
     def set_results(self, result):
+        """Laskennan tulokset näkyville
+        """
         if result[0]:
             self.text5 = f'Polun pituus {result[1]}'
             self.text6 = f'Polun painotettu pituus {result[2]:.1f}'
@@ -118,8 +157,9 @@ class Draw:
             self.text7 = ''
             self.text8 = ''
 
-    # Laskennan tulokset näkyville
     def test_results(self, result):
+        """Testilaskennan tulokset näkyville
+        """
         self.text5 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
         self.text6 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
         self.text7 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'

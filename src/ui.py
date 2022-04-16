@@ -6,7 +6,34 @@ from algorithm import Algorithm
 
 # Käyttöliittymä
 class Ui:
+    """Käyttöliittymän luokka
+
+    Attributes:
+        WIDTH: Ikkunan maksimileveys pikseleinä
+        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        nrows: Rivien lukumäärä
+        ncols: Sarakkeiden lukumäärä
+        gsize: Karttaruudun koko pikseleinä
+        width: Pygame-ikkunan leveys pikseleinä
+        width: Pygame-ikkunan korkeus pikseleinä
+        win: Pygame-ikkuna
+        map: Karttaruudukko
+        drawfunc: Piirtorutiinit
+        algorithm: Algoritmit
+        edit: Kartan editointi käynnissä
+        run: Pygame-käynnissä
+    """
+
     def __init__(self, WIDTH, THEIGHT, nrows, ncols):
+        """Luokan konstruktori, joka luo uuden käyttöliittymän.
+
+        Args:
+            WIDTH: Ikkunan maksimileveys pikseleinä
+            THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+            nrows: Rivien lukumäärä
+            ncols: Sarakkeiden lukumäärä
+        """
+
         # Ikkunan kokoparametrit
         self.WIDTH = WIDTH
         self.THEIGHT = THEIGHT
@@ -33,8 +60,11 @@ class Ui:
         self.edit = False
         self.run = True
 
-# Käynnistys
+
     def start(self):
+        """Käyttöliittymän käynnistys.
+        """
+
         # Event loop
         while self.run:
             self.drawfunc.drawmap()
@@ -82,7 +112,7 @@ class Ui:
                                 self.map.set_goal(None)
                             node.clear()
 
-        # Näppäinkomennot
+            # Näppäinkomennot
                 if event.type == pygame.KEYDOWN:
 
                     # Animaatio päälle / pois
@@ -158,14 +188,28 @@ class Ui:
 
         pygame.quit()
 
-# Klikkauksen koordinaatit
+
     def get_clickpos(self, pos):
+        """Klikkauksen koordinaatit.
+
+        Args:
+            pos: Klikkauksen positio pikseleinä
+
+        Returns:
+            row: Klikatun ruudun rivi
+            col: Klikatun ruudun sarake
+        """
         col = pos[0] // self.gsize
         row = pos[1] // self.gsize
         return row, col
 
-# Uusi kartta
+
     def mapinit(self, maparray):
+        """Uusi kartta.
+
+        Args:
+            maparray: Kartta tekstimuodossa
+        """
         # Kartan parametrit
         if maparray:
             self.ncols = len(maparray[0])
@@ -195,8 +239,16 @@ class Ui:
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
         self.drawfunc.set_texts(self.algorithm)
 
-# Kartan luku tiedostosta
+
     def mapread(self, fname):
+        """Kartan luku tiedostosta.
+
+        Args:
+            fname: Tiedoston nimi
+
+        Returns:
+            map: Luettu kartta taulukkona
+        """
         map = []
         try:
             with open(fname) as file:
@@ -207,8 +259,13 @@ class Ui:
             print('Tiedostoa ei löytynyt')
         return map
 
-# Kartan kirjoitus tiedostoon
+
     def mapwrite(self, fname):
+        """Kartan kirjoitus tiedostoon.
+
+        Args:
+            fname: Tiedoston nimi
+        """
         with open(fname, "w") as file:
             for row in self.map.nodes:
                 s = ''
@@ -220,7 +277,10 @@ class Ui:
                 s += '\n'
                 file.write(s)
 
+
     def test(self):
+        """Suorituskyvyn testausrutiini.
+        """
         self.ncols = 100
         self.nrows = 100
         results = [0, 0, 0]

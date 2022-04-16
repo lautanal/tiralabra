@@ -3,8 +3,15 @@ from math import sqrt
 from timeit import default_timer as timer
 from bheap import Bheap
 
-# Dijkstran algoritmi
 def dijkstra(map, diagonal, animate, drawnode):
+    """Dijkstran algoritmi
+
+    Attributes:
+        map: Karttaruudukko
+        diagonal: Polun tyyppi (diagonal / xy)
+        animate: Animaatio päällä
+        drawnode: Karttaruudun piirtofunktio
+    """
     tstart = timer()
 
     # Naapurit

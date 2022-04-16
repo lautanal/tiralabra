@@ -11,7 +11,32 @@ ORANGE = (255, 165, 0)
 
 
 class Node:
+    """Luokka, joka mallintaa karttaruudukon
+
+    Attributes:
+        row: Rivinumero
+        col: Sarakenumero
+        gsize: Karttaruudun koko pikseleinä
+        color: Ruudun väri
+        start: Ruutu on lähtöruutu
+        goal: Ruutu on maaliruutu
+        blocked: Ruutu on este
+        visited: Ruudussa on vierailtu
+        previous: Edellinen ruutu reitillä
+        cost: Ruudun painoarvo
+        costsum: Reitin hinta (tai aika)
+        heuristic: Ruudulle laskettu heuristiikka
+    """
+
+
     def __init__(self, row, col, gsize):
+        """Luokan konstruktori, joka luo uuden karttaruudukon.
+
+        Args:
+            row: Rivinumero
+            col: Sarakenumero
+            gsize: Karttaruudun koko pikseleinä
+        """
         self.row = row
         self.col = col
         self.x = col * gsize
@@ -28,51 +53,71 @@ class Node:
         self.costsum = float("inf")
         self.heuristic = float("inf")
 
+
     def __lt__(self, other):
         return self.costsum + self.heuristic < other.costsum + other.heuristic
 
-# Ruudun reset
+
     def clear(self):
+        """ Ruudun reset
+        """
         self.start = False
         self.goal = False
         self.blocked = False
         ngrey = (10 - self.cost) * 24
         self.color = (ngrey, ngrey, ngrey)
 
-# Ruudun paikka
+
     def get_pos(self):
+        """ Ruudun paikka
+
+        Returns:
+            Tuple, jossa ruudun rivi ja sarake    
+        """
         return self.row, self.col
 
-# Polun merkintä
+
     def mark_path(self):
+        """ Reittiruudun väritys punaiseksi
+        """
         self.color = RED
 
-# Ruudun värin reset
+
     def reset_color(self):
+        """ Ruudun värin palautus normaaliksi
+        """
         ngrey = (10 - self.cost) * 24
         self.color = (ngrey, ngrey, ngrey)
 
-# Estetty ruutu
+
     def set_blocked(self):
+        """ Esteruutu
+        """
         self.blocked = True
         self.color = BLACK
 
-# Maaliruutu
+
     def set_goal(self):
+        """ Maaliruutu
+        """
         self.goal = True
         self.blocked = False
         self.color = ORANGE
         return self
 
-# Lähtöruutu
+
     def set_start(self):
+        """ Lähtöruutu
+        """
         self.start = True
         self.blocked = False
         self.color = BLUE
         return self
 
-# Vierailtu ruutu
+
     def set_visited(self, animate):
+        """ Vierailtu ruutu
+        """
         self.visited = True
         if animate and not self.start:
             self.color = GREEN

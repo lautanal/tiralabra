@@ -3,8 +3,15 @@ from math import sqrt
 from heapq import heappush, heappop
 from timeit import default_timer as timer
 
-# A* -algoritmi
 def astar(map, diagonal, animate, drawnode):
+    """A* -algoritmi
+
+    Attributes:
+        map: Karttaruudukko
+        diagonal: Polun tyyppi (diagonal / xy)
+        animate: Animaatio päällä
+        drawnode: Karttaruudun piirtofunktio
+    """
     tstart = timer()
 
     # Naapurit ja heuristiikka
