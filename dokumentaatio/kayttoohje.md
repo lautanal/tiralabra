@@ -8,13 +8,13 @@ Lataa sovelluksen [release](https://github.com/lautanal/tiralabra/releases/tag/V
 
 Ohjelma kopioidaan haluttuun hakemistoon.
 
-Sille luodaan virtuaaliympäristö seuraavasti:
+Hakemistoon luodaan virtuaaliympäristö seuraavasti:
 
 $ poetry install
 
 ## Ohjelman käynnistäminen
 
-Ohjelma käynnistetään komennolla 
+Ohjelma käynnistetään asennushakemistossa komennolla:
 
 $ poetry run python3 src/bestroute.py
 
