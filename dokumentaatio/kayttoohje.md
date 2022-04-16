@@ -45,9 +45,9 @@ d : diagonal, polun tyyppi, vain x ja y-suunnat / väli-ilmansuunnat sallittu
 
 s : start, laskee parhaan reitin
 
-a : animointi päälle / pois
+a : animointi, päälle / pois
 
-t : Ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
+t : test, ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
     eri menetelmille
 
 \+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
@@ -70,11 +70,11 @@ q : quit, lopeta editointi
 
 Hiiren vasen näppäin valitsee reitin lähtöpisteen (jos sitä ei ole ennestään kartalla)
 
-Hiiren vasen näppäin valitsee reitin loppupisteen (jos sitä ei ole ennestään kartalla)
+Hiiren vasen näppäin valitsee reitin maalipisteen (kun lähtöpiste on valittu ja maalipiste puuttuu)
 
-Hiiren vasen näppän asettaa esteen (kun alku- ja loppupiste on asetettu)
+Hiiren vasen näppän asettaa esteen (kun alku- ja maalipiste on asetettu)
 
-Hiiren oikea näppäin pyyhkii ruudun (alkupisteen, loppupisteen tai esteen)
+Hiiren oikea näppäin pyyhkii ruudun (alkupisteen, maalipisteen tai esteen)
 
 Editoinnissa hiiren vasen näppäin lisää ruudun painoarvoa, oikea vähentää
 
