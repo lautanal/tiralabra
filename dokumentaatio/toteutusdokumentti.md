@@ -27,20 +27,20 @@ Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa. 
 
 Verkon koko | Solmut | Kaaret | Algoritmi | Keskiarvo (10 suorituskertaa)|
 --------|--------|--------|-------------|-------------|
-| 100 x 100 | 10000 | 19800 | Dijkstra | 0.1508 |
-| | | | A\* | 0.0990 |
-| | | | IDA\* | 0.5368 |
-| 200 x 200 | 40000 | 79600 | Dijkstra | 0.6351 |
-| | | | A\*     | 0.4020 |
-| | | | IDA\*   | 3.9984 |
-| 300 x 300 | 90000 | 179400 | Dijkstra | 1.4897 |
-| | | | A\*     | 0.9183 |
-| | | | IDA\*   | 12.6262 |
-| 400 x 400 | 160000 | 319200 | Dijkstra | 2.7773 |
-| | | | A\*      | 1.6956 |
-| | | | IDA\*    | 29.5669 |
-| 500 x 500 | 250000 | 499000 | Dijkstra | 4.4715  |
-| | | | A\*     | 2.7333  |
-| | | | IDA\*   | 58.3025 |
+| 100 x 100 | 10000 | 19800 | Dijkstra | 0.0896 |
+| | | | A\* | 0.0367 |
+| | | | IDA\* | 0.5331 |
+| 200 x 200 | 40000 | 79600 | Dijkstra | 0.3970 |
+| | | | A\*     | 0.1560 |
+| | | | IDA\*   | 3.9088 |
+| 300 x 300 | 90000 | 179400 | Dijkstra | 0.9518 |
+| | | | A\*     | 0.3692 |
+| | | | IDA\*   | 13.3590 |
+| 400 x 400 | 160000 | 319200 | Dijkstra | 1.7554 |
+| | | | A\*      | 0.6370 |
+| | | | IDA\*    | 29.5708 |
+| 500 x 500 | 250000 | 499000 | Dijkstra | 2.8174  |
+| | | | A\*     | 1.0455  |
+| | | | IDA\*   | 56.3359 |
 
 A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.

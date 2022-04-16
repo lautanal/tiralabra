@@ -285,7 +285,8 @@ class Ui:
         self.nrows = 100
         results = [0, 0, 0]
         self.algorithm.method = 'D'
-        for _ in range(10):
+        ntests = 10
+        for _ in range(ntests):
             self.mapinit(None)
             node = self.map.nodes[0][0]
             node.set_start()
@@ -299,7 +300,7 @@ class Ui:
                 self.drawfunc.drawmap()
                 results[i] += result[3]
                 self.algorithm.set_method()
-        results[0] /= 10
-        results[1] /= 10
-        results[2] /= 10
+        results[0] /= ntests
+        results[1] /= ntests
+        results[2] /= ntests
         self.drawfunc.test_results(results)
