@@ -50,17 +50,17 @@ a : animointi päälle / pois
 t : Ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
     eri menetelmille
 
-+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+\+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
 
-- : vähentää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+\- : vähentää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
 
 1 : lataa kartta 1.map (hakemistosta maps)
 
 2 : lataa kartta 2.map (hakemistosta maps)
 
-w : write, talleta kartta tiedostoon f.map
+w : write, talleta kartta tiedostoon f.map (hakemistoon maps)
 
-f : file, lue karttatiedosto f.map
+f : file, lue karttatiedosto f.map (hakemistosta maps)
 
 e : edit, editoi karttaa
 
