@@ -33,7 +33,7 @@ Laskenta käynnistetään näppäilemällä s.
 
 ## Komennot
 
-Ohjelman näppäinkomennot:
+### Ohjelman näppäinkomennot:
 
 c : clear, poistaa kartan ja generoi uuden
 
@@ -66,8 +66,7 @@ e : edit, editoi karttaa
 
 q : quit, lopeta editointi
 
-
-Hiiren toiminnot:
+### Hiiren toiminnot:
 
 Hiiren vasen näppäin valitsee reitin lähtöpisteen (jos sitä ei ole ennestään kartalla)
 
