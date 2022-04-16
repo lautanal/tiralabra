@@ -83,7 +83,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
         node.set_visited(animate)
         drawnode(node)
 
-    # Maali
+    # Maali löytyi
     if node == goal:
         return -1
 
