@@ -41,5 +41,5 @@ Verkon koko | Solmut | Kaaret | Algoritmi | Keskiarvo (10 suorituskertaa)|
 | | | | A\*     | 2.7333  |
 | | | | IDA\*   | 58.3025 |
           
-Mitattu Dijkstran menetelmän aikavaativuus vastaa hyvin teorian mukaista O(V + E logV) aikavaativuutta.  A\* -menetelmän aikavaativuus on hieman parempi kuin Dijkstran menetelmän.  IDA\* -menetelmän aikavaativuus on tämän testin mukaan lähinnä O(E + V)
+Mitattu Dijkstran menetelmän aikavaativuus vastaa hyvin teorian mukaista O(V + E logV) aikavaativuutta.  A\* -menetelmän aikavaativuus on hieman parempi kuin Dijkstran menetelmän.  IDA\* -menetelmän aikavaativuus on tämän testin mukaan lähinnä O(V + E)
 
