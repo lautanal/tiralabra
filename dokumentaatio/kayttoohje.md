@@ -6,7 +6,10 @@ Lataa sovelluksen [release](https://github.com/lautanal/tiralabra/releases/tag/V
 
 ## Ohjelman asentaminen
 
-Ohjelma kopioidaan haluttuun hakemistoon.  Sille luodaan virtuaaliympäristö seuraavasti:
+Ohjelma kopioidaan haluttuun hakemistoon.
+
+Sille luodaan virtuaaliympäristö seuraavasti:
+
 $ poetry install
 
 ## Ohjelman käynnistäminen
@@ -25,9 +28,11 @@ Käyttäjä valitsee lähtö- ja maaliruudun hiiren vasemmalla näppäimellä.  
 Lähdön ja maalin sekä esteet voi poistaa hiiren oikealla näppäimellä.
 
 Haluttu menetelmä reitin hakemiseen valitaan näppäilemällä m.
+
 Laskenta käynnistetään näppäilemällä s.
 
 Ohjelman näppäinkomennot:
+
 c : clear, poistaa kartan ja generoi uuden
 
 r : reset, pyyhkii lasketun reitin
