@@ -17,8 +17,6 @@ class TestBestroute(unittest.TestCase):
         node.set_goal()
         self.map.set_goal(node)
 
-    def test_hello_world(self):
-        self.assertEqual('Hello World', 'Hello World')
 
     def test_map1(self):
         maparray = [['1','1','1','1','1','1'],
@@ -31,6 +29,7 @@ class TestBestroute(unittest.TestCase):
 
         result = self.algorithm.calculate()
         self.assertEqual(result[1], 9)
+
 
     def test_map2(self):
         maparray = [['1','1','1','1','1','1'],
@@ -59,3 +58,19 @@ class TestBestroute(unittest.TestCase):
         self.map.reset()
         result2 = self.algorithm.calculate()
         self.assertEqual(result1[1], result2[1])
+
+
+    def test_map4(self):
+        maparray = [['1','1','1','1','1','1'],
+                    ['1','1','1','1','1','1'],
+                    ['1','1','1','1','1','1'],
+                    ['B','2','B','1','B','2'],
+                    ['1','1','1','1','1','1'],
+                    ['1','1','1','1','1','1']]
+        self.initmap(maparray)
+
+        self.algorithm.set_method()
+        self.algorithm.set_method()
+        self.map.reset()
+        result = self.algorithm.calculate()
+        self.assertEqual(result[1], 9)
