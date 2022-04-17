@@ -258,7 +258,7 @@ class Ui:
                 for row in file:
                     row = row.replace("\n", "")
                     map.append([char for char in row])
-            print(f'Karttatiedosto {data_file_path} luettu')
+            print(f'Karttatiedosto {fname} luettu')
         except FileNotFoundError:
             print('Tiedostoa ei löytynyt')
         return map
@@ -282,7 +282,7 @@ class Ui:
                         s += str(node.cost)
                 s += '\n'
                 file.write(s)
-        print(f'Karttatiedosto {data_file_path} kirjoitettu')
+        print(f'Karttatiedosto {fname} kirjoitettu')
 
 
     def test(self):
