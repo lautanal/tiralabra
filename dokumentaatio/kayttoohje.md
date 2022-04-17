@@ -33,7 +33,7 @@ Laskenta käynnistetään näppäimellä s.
 
 ## Komennot
 
-### Ohjelman näppäinkomennot:
+### Näppäinkomennot:
 
 c : clear, poistaa kartan ja generoi uuden
 
