@@ -121,6 +121,7 @@ class Draw:
         self.ncols = map.ncols
         self.gsize = map.gsize
 
+
     def set_texts(self, algorithm):
         """Ikkunan tekstit
         """
@@ -143,6 +144,7 @@ class Draw:
         self.text6 = ''
         self.text7 = ''
 
+
     def set_results(self, result):
         """Laskennan tulokset näkyville
         """
@@ -156,6 +158,7 @@ class Draw:
             self.text6 = ''
             self.text7 = ''
             self.text8 = ''
+
 
     def test_results(self, result):
         """Testilaskennan tulokset näkyville

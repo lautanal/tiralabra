@@ -1,7 +1,7 @@
 from math import sqrt
 from timeit import default_timer as timer
-import pygame
 from bheap import Bheap
+
 
 def dijkstra(map, diagonal, animate, drawnode):
     """Dijkstran algoritmi

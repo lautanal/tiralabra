@@ -1,7 +1,6 @@
 from math import sqrt
 from timeit import default_timer as timer
 from heapq import heappush, heappop
-import pygame
 
 
 def idastar(map, diagonal, animate, drawnode):

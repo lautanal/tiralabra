@@ -1,7 +1,7 @@
 from math import sqrt
 from heapq import heappush, heappop
 from timeit import default_timer as timer
-import pygame
+
 
 def astar(map, diagonal, animate, drawnode):
     """A* -algoritmi

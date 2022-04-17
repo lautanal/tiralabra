@@ -1,9 +1,11 @@
 from ui import Ui
 
+
 WIDTH = 800
 THEIGHT = 150
 NCOLS = 40
 NROWS = 40
+
 
 def main():
     """Käyttöliittymän käynnistys.
