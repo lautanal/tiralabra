@@ -64,7 +64,7 @@ class TestBestroute(unittest.TestCase):
         maparray = [['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
-                    ['B','2','B','1','B','2'],
+                    ['B','3','B','2','B','4'],
                     ['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1']]
         self.initmap(maparray)
@@ -73,4 +73,4 @@ class TestBestroute(unittest.TestCase):
         self.algorithm.set_method()
         self.map.reset()
         result = self.algorithm.calculate()
-        self.assertEqual(result[1], 9)
+        self.assertEqual(result[2], 10)
