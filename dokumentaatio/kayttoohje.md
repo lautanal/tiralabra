@@ -54,13 +54,13 @@ t : test, ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee ke
 
 \- : vähentää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
 
-1 : lataa kartta 1.map (hakemistosta maps)
+1 : lataa kartta 1.map (hakemistosta data/maps)
 
-2 : lataa kartta 2.map (hakemistosta maps)
+2 : lataa kartta 2.map (hakemistosta data/maps)
 
-w : write, talleta kartta tiedostoon f.map (hakemistoon maps)
+w : write, talleta kartta tiedostoon f.map (hakemistoon data/maps)
 
-f : file, lue karttatiedosto f.map (hakemistosta maps)
+f : file, lue karttatiedosto f.map (hakemistosta data/maps)
 
 e : edit, editoi karttaa
 
