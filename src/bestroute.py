@@ -13,5 +13,6 @@ def main():
     ui = Ui(WIDTH, THEIGHT, NROWS, NCOLS)
     ui.start()
 
+
 if __name__ == "__main__":
     main()
