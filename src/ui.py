@@ -1,3 +1,4 @@
+import os
 import pygame
 from map import Map
 from draw import Draw
@@ -159,17 +160,17 @@ class Ui:
 
                     # Kartan kirjoitus tiedostoon f.map
                     if event.key == pygame.K_w:
-                        self.mapwrite('./maps/f.map')
+                        self.mapwrite('f.map')
 
                     # Kartan luku tiedostosta f.map
                     if event.key == pygame.K_f:
-                        maparray = self.mapread("maps/f.map")
+                        maparray = self.mapread("f.map")
                         if maparray:
                             self.mapinit(maparray)
 
                     # Uusi kartta tiedostosta 1.map .... 9.map
                     if event.key >= pygame.K_1 and event.key <= pygame.K_9:
-                        mapname = './maps/' + str(event.key-48) + '.map'
+                        mapname = str(event.key-48) + '.map'
                         maparray = self.mapread(mapname)
                         if maparray:
                             self.mapinit(maparray)
@@ -251,10 +252,13 @@ class Ui:
         """
         map = []
         try:
-            with open(fname) as file:
+            dirname = os.path.dirname(__file__)
+            data_file_path = os.path.join(dirname, "..", "maps", fname)            
+            with open(data_file_path) as file:
                 for row in file:
                     row = row.replace("\n", "")
                     map.append([char for char in row])
+            print(f'Karttatiedosto {data_file_path} luettu')
         except FileNotFoundError:
             print('Tiedostoa ei löytynyt')
         return map
@@ -266,7 +270,9 @@ class Ui:
         Args:
             fname: Tiedoston nimi
         """
-        with open(fname, "w") as file:
+        dirname = os.path.dirname(__file__)
+        data_file_path = os.path.join(dirname, "..", "maps", fname)            
+        with open(data_file_path, "w") as file:
             for row in self.map.nodes:
                 s = ''
                 for node in row:
@@ -276,6 +282,7 @@ class Ui:
                         s += str(node.cost)
                 s += '\n'
                 file.write(s)
+        print(f'Karttatiedosto {data_file_path} kirjoitettu')
 
 
     def test(self):
