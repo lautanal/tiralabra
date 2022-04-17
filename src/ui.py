@@ -253,7 +253,7 @@ class Ui:
         map = []
         try:
             dirname = os.path.dirname(__file__)
-            data_file_path = os.path.join(dirname, "..", "maps", fname)            
+            data_file_path = os.path.join(dirname, "..", "data", "maps", fname)            
             with open(data_file_path) as file:
                 for row in file:
                     row = row.replace("\n", "")
@@ -271,7 +271,7 @@ class Ui:
             fname: Tiedoston nimi
         """
         dirname = os.path.dirname(__file__)
-        data_file_path = os.path.join(dirname, "..", "maps", fname)            
+        data_file_path = os.path.join(dirname, "..", "data", "maps", fname)            
         with open(data_file_path, "w") as file:
             for row in self.map.nodes:
                 s = ''
