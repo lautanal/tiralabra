@@ -2,7 +2,7 @@
 
 # Ruutukarttanavigaattori
 
-<img src="dokumentaatio/png/reittikartta.png" width="750">
+<img src="dokumentaatio/png/ruutukartta.png" width="750">
 
 Kehitettävä sovellus on ruutukarttaa käyttävä navigaattori, joka löytää parhaan reitin kahden pisteen välillä.  Kartan jokaisella ruuduilla on tietty painoarvo (välillä 1-9), joka kertoo  kustannuksen tai ajan lisäyksen reitin kulkiessa ruudun kautta.
 
