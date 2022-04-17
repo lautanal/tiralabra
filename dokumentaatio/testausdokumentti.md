@@ -14,6 +14,6 @@ Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä
 
 Erilaisilla testikartoilla on varmistettu algoritmien toiminta ja oikeellisuus.  Kartalta on määritetty manuaalisesti lyhin reitti ja todettu, että algoritmi antaa saman tuloksen.
 
-<img src="/dokumentaatio/png/viikko3.png" width="750">
+<img src="/dokumentaatio/png/testi05.png" width="750">
 
-<img src="/dokumentaatio/png/testikartta3.png" width="750">
+Suorituskykyä on vertailu eri kokoisilla random-kartoilla.  Paras reitti on haettu samalla kartalla kolmella eri menetelmällä.  On tarkastettu, että menetelmät antavat saman tuloksen (polku voi joskus olla hieman eri).  Suorituskykytestin tulokset löytyvät toteutusdokumentista.
