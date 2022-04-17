@@ -38,7 +38,7 @@ class TestBestroute(unittest.TestCase):
         self.assertEqual(result[1], 9)
 
 
-    def test_map2(self):
+    def test_ei_loyda_reittia(self):
         costs = [['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
@@ -51,42 +51,53 @@ class TestBestroute(unittest.TestCase):
         self.assertEqual(result[0], False)
 
 
-    def test_map3(self):
-        costs = [['1','1','2','2','2','2'],
-                    ['2','1','1','2','2','2'],
-                    ['2','2','1','1','2','2'],
-                    ['2','2','2','1','2','2'],
-                    ['2','2','2','1','1','2'],
-                    ['2','2','2','2','4','1']]
+    def test_dijkstra_diagonaalireitti(self):
+        costs = [['1','2','2','2','2','2'],
+                ['2','1','2','2','2','2'],
+                ['2','2','1','2','2','2'],
+                ['2','2','2','1','2','2'],
+                ['2','2','2','2','1','2'],
+                ['2','2','2','2','2','1']]
         self.initmap(costs)
-
-        result1 = self.algorithm.calculate()
-        self.algorithm.set_method()
-        self.map.reset()
-        result2 = self.algorithm.calculate()
-        self.assertEqual(result1[2], result2[2])
-
-
-    def test_map4(self):
-        costs = [['1','1','1','1','1','1'],
-                    ['1','1','1','1','1','1'],
-                    ['1','1','1','1','1','1'],
-                    ['B','3','B','2','B','4'],
-                    ['1','1','1','1','1','1'],
-                    ['1','1','1','1','1','1']]
-        self.initmap(costs)
-
-        self.algorithm.set_method()
-        self.algorithm.set_method()
-        self.map.reset()
-        result = self.algorithm.calculate()
-        self.assertEqual(result[2], 10)
-
-
-    def test_map5(self):
-        self.initmap(None)
 
         self.algorithm.set_diagonal()
+        result = self.algorithm.calculate()
+        self.assertEqual(result[1],4)
+
+
+    def test_astar_diagonaalireitti(self):
+        costs = [['1','2','2','2','2','2'],
+                ['1','2','2','2','2','2'],
+                ['2','1','1','2','2','2'],
+                ['2','2','2','1','2','2'],
+                ['2','2','2','2','1','2'],
+                ['2','2','2','2','2','1']]
+        self.initmap(costs)
+
+        self.algorithm.set_method()
+        self.algorithm.set_diagonal()
+        result = self.algorithm.calculate()
+        self.assertEqual(result[1],5)
+
+
+    def test_idastar_paras_reitti(self):
+        costs = [['1','1','1','1','1','1'],
+                ['1','1','1','1','1','1'],
+                ['1','1','1','1','1','1'],
+                ['B','8','B','6','B','4'],
+                ['1','1','1','1','1','1'],
+                ['1','1','1','1','1','1']]
+        self.initmap(costs)
+
+        self.algorithm.set_method()
+        self.algorithm.set_method()
+        result = self.algorithm.calculate()
+        self.assertEqual(result[2], 12)
+
+
+    def test_dijkstra_astar_sama_tulos(self):
+        self.initmap(None)
+
         result1 = self.algorithm.calculate()
         self.algorithm.set_method()
         self.map.reset()
