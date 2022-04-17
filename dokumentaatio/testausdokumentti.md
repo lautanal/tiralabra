@@ -2,17 +2,17 @@
 
 ### Yksikkötestit
 
-Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.  Olen kuitenkin tehnyt muutaman yksikkötestin, jotka ovat hyödyksi jos ohjelmaan tehdään jatkossa muutoksia.
+Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.  Olen kuitenkin tehnyt yksikkötestejä, jotka ovat hyödyksi jos ohjelmaan tehdään jatkossa muutoksia.
 
 ### Empiirinen testaus
 
 Testaus on ollut pääosin kokeilevaa, manuaalista empiiristä testaamista.  Graafinen käyttöliittymä antaa tähän hyvän mahdollisuuden.
 
-Graafinen käyttöliittymä auttaa huomattavasti ohjelman toiminnan varmistamisessa ja räikeimpien ongelmien selvittämisessä. Esimerkiksi voidaan havaita, poikkeaako laskennan antama "paras" polku merkittävästi silmämääräisesti parhaalta tai lyhimmältä polulta. 
+Graafinen käyttöliittymä helpottaa huomattavasti ohjelman toiminnan varmistamisessa ja räikeimpien ongelmien selvittämisessä. Esimerkiksi voidaan havaita, poikkeaako laskennan antama "paras" polku merkittävästi silmämääräisesti parhaalta tai lyhimmältä polulta. 
 
 Ottamalla animointi käyttöön, voidaan tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
-Erilaisilla testikartoilla on varmistettu algoritmien toiminta ja oikeellisuus.  Kartalta on määritetty manuaalisesti lyhin reitti ja todettu, että algoritmi antaa saman tuloksen.
+Erilaisilla testikartoilla on varmistettu algoritmien toiminta ja oikeellisuus.  Kartalta on määritetty manuaalisesti lyhin reitti ja todettu, että algoritmit antavat saman tuloksen.
 
 
 <img src="/dokumentaatio/png/testi05.png" width="750">
