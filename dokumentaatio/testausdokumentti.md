@@ -4,6 +4,11 @@
 
 Yksikkötestit eivät ole niin tärkeitä tässä sovelluksessa, koska ohjelman toiminta varmistetaan parhaiten vertailemalla visuaalisesti eri menetelmien tuloksia testikartoilla.  Olen kuitenkin tehnyt melko kattavat yksikkötestit, jotka ovat hyödyksi jos ohjelmaan tehdään jatkossa muutoksia.  Käyttöliittymä ja Pygame-piirtorutiinit on jätetty testauksen ulkopuolelle.
 
+Yksikkötestit suoritetaan komennolla: poetry run coverage run --branch -m pytest src
+
+Testikattavuus voidaan raportoida komennolla: poetry run coverage report -m 
+
+
 ### Empiirinen testaus
 
 Testaus on ollut pääosin kokeilevaa, manuaalista empiiristä testaamista.  Graafinen käyttöliittymä antaa tähän hyvän mahdollisuuden.
