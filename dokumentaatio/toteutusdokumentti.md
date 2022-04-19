@@ -45,4 +45,6 @@ Verkon koko | Solmut | Kaaret | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 
 Mitatut Dijkstran ja A* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
+<img src="/dokumentaatio/png/aikavaativuus.png" width="750">
+
 A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.
