@@ -26,7 +26,7 @@ Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa. 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
---------|--------|--------|-------------|-------------|
+--------|--------|--------|--------|-------------|-------------|
 | 100 x 100 | 10000 | 19800 | 273097 | Dijkstra | 0.0896 |
 | | | | | A\* | 0.0367 |
 | | | | | IDA\* | 0.5331 |
