@@ -17,13 +17,11 @@ Koodin yleisrakenne on seuraava:
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
 - Piirtorutiinit on keskitetty Draw-luokkaan
 
-## Aikavaativuudet ja käytetyt tietorakenteet
-
-Mitatut Dijkstran ja A* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
+## Käytetyt tietorakenteet
 
 Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa.  A\* ja IDA\* -menetelmät on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
-## Suorituskykyvertailu eri suuruisilla ruutukartoilla
+## Aikavaativuudet ja Suorituskykyvertailu eri suuruisilla ruutukartoilla
 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
 
@@ -44,5 +42,7 @@ Verkon koko | Solmut | Kaaret | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 | 500 x 500 | 250000 | 499000 | Dijkstra | 2.8174  |
 | | | | A\*     | 1.0455  |
 | | | | IDA\*   | 56.3359 |
+
+Mitatut Dijkstran ja A* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
 A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.
