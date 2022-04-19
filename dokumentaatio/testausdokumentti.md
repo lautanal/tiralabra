@@ -10,18 +10,7 @@ Testikattavuus voidaan raportoida komennolla: poetry run coverage report -m
 
 Kattavuusraportti:
 
-Name               Stmts   Miss Branch BrPart  Cover   Missing
---------------------------------------------------------------
-src/algorithm.py      39      1     20      2    95%   39->exit, 64, 74->76
-src/astar.py          34      1     14      1    96%   61
-src/bheap.py          49      2     20      2    94%   34, 47
-src/dijkstra.py       32      1     14      1    96%   59
-src/idastar.py        59      2     28      1    97%   82-83
-src/map.py           102      0     70      2    99%   113->115, 121->123
-src/node.py           56      1      4      1    97%   120
---------------------------------------------------------------
-TOTAL                371      8    170     10    97%
-
+<img src="/dokumentaatio/png/testikattavuus.png" width="750">
 
 ### Empiirinen testaus
 
