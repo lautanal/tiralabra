@@ -24,4 +24,5 @@
 | 15.04. | 2    | Aikavaativuuden testausta|
 | 16.04. | 4    | Yksikkötestit, testausraportti|
 | 17.04. | 2    | Yksikkötestit, testausraportti|
-| yhteensä    | 94 | |
+| 18.04. | 2    | Yksikkötestit, code review|
+| yhteensä    | 96 | |
