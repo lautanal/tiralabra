@@ -22,5 +22,7 @@
 | 12.04. | 4    | Binäärikeko-luokan teko|
 | 14.04. | 4    | Toteutusdokumentti|
 | 15.04. | 2    | Aikavaativuuden testausta|
+| 16.04. | 4    | Yksikkötestit, testausraportti|
+| 17.04. | 2    | Yksikkötestit, testausraportti|
 
-yht    | 88 | 
+yht    | 94| 
