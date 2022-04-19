@@ -25,4 +25,4 @@
 | 16.04. | 4    | Yksikkötestit, testausraportti|
 | 17.04. | 2    | Yksikkötestit, testausraportti|
 
-yht    | 94| 
+| yht    | 94 | 
