@@ -25,7 +25,7 @@ class TestBestroute(unittest.TestCase):
         self.map.set_goal(node)
 
 
-    def test_test_siksak(self):
+    def test_test_siksak_sama_tulos(self):
         costs = [['1','1','2','2','2','2'],
                 ['2','1','1','1','2','2'],
                 ['2','2','2','1','1','1'],
@@ -34,11 +34,17 @@ class TestBestroute(unittest.TestCase):
                 ['2','1','1','1','1','1']]
         self.initmap(costs)
 
-        result = self.algorithm.calculate()
-        self.assertEqual(result[1], 9)
+        res1 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res2 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res3 = self.algorithm.calculate()
+        self.assertEqual((res1[1] == 9 and res2[1] == 9 and res3[1] == 9), True)
 
 
-    def test_ei_loyda_reittia(self):
+    def test_metodit_eivat_loyda_reittia(self):
         costs = [['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
                     ['1','1','1','1','1','1'],
@@ -47,11 +53,20 @@ class TestBestroute(unittest.TestCase):
                     ['1','1','1','1','1','1']]
         self.initmap(costs)
 
-        result = self.algorithm.calculate()
-        self.assertEqual(result[0], False)
+        self.algorithm.set_diagonal()
+        self.algorithm.set_diagonal()
+        res1 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res2 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res3 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.assertEqual((res1[0] and res2[0] and res3[0]), False)
 
 
-    def test_dijkstra_diagonaalireitti(self):
+    def test_diagonaalireitti_sama_tulos(self):
         costs = [['1','2','2','2','2','2'],
                 ['2','1','2','2','2','2'],
                 ['2','2','1','2','2','2'],
@@ -61,8 +76,16 @@ class TestBestroute(unittest.TestCase):
         self.initmap(costs)
 
         self.algorithm.set_diagonal()
-        result = self.algorithm.calculate()
-        self.assertEqual(result[1],4)
+        self.algorithm.set_animate()
+        self.algorithm.set_animate()
+        res1 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res2 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.map.reset()
+        res3 = self.algorithm.calculate()
+        self.assertEqual((res1[1] == 4 and res2[1] == 4 and res3[1] == 4),True)
 
 
     def test_astar_diagonaalireitti(self):
@@ -89,17 +112,23 @@ class TestBestroute(unittest.TestCase):
                 ['1','1','1','1','1','1']]
         self.initmap(costs)
 
+        node = self.map.nodes[3][0]
+        node.clear()
+        node.reset_color()
+        node.set_blocked()
         self.algorithm.set_method()
         self.algorithm.set_method()
         result = self.algorithm.calculate()
         self.assertEqual(result[2], 12)
 
 
-    def test_dijkstra_astar_sama_tulos(self):
+    def test_dijkstra_astar_random_sama_tulos(self):
         self.initmap(None)
 
         result1 = self.algorithm.calculate()
         self.algorithm.set_method()
         self.map.reset()
         result2 = self.algorithm.calculate()
+        self.algorithm.set_method()
+        self.algorithm.set_method()
         self.assertEqual(result1[2], result2[2])
