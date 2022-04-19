@@ -25,23 +25,23 @@ Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa. 
 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
 
-Verkon koko | Solmut | Kaaret | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
+Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|-------------|-------------|
-| 100 x 100 | 10000 | 19800 | Dijkstra | 0.0896 |
-| | | | A\* | 0.0367 |
-| | | | IDA\* | 0.5331 |
-| 200 x 200 | 40000 | 79600 | Dijkstra | 0.3970 |
-| | | | A\*     | 0.1560 |
-| | | | IDA\*   | 3.9088 |
-| 300 x 300 | 90000 | 179400 | Dijkstra | 0.9518 |
-| | | | A\*     | 0.3692 |
-| | | | IDA\*   | 13.3590 |
-| 400 x 400 | 160000 | 319200 | Dijkstra | 1.7554 |
-| | | | A\*      | 0.6370 |
-| | | | IDA\*    | 29.5708 |
-| 500 x 500 | 250000 | 499000 | Dijkstra | 2.8174  |
-| | | | A\*     | 1.0455  |
-| | | | IDA\*   | 56.3359 |
+| 100 x 100 | 10000 | 19800 | 273097 | Dijkstra | 0.0896 |
+| | | | | A\* | 0.0367 |
+| | | | | IDA\* | 0.5331 |
+| 200 x 200 | 40000 | 79600 | 1256902 | Dijkstra | 0.3970 |
+| | | | | A\*     | 0.1560 |
+| | | | | IDA\*   | 3.9088 |
+| 300 x 300 | 90000 | 179400 | 2042500 | Dijkstra | 0.9518 |
+| | | | | A\*     | 0.3692 |
+| | | | | IDA\*   | 13.3590 |
+| 400 x 400 | 160000 | 319200 | 5678238 | Dijkstra | 1.7554 |
+| | | | | A\*      | 0.6370 |
+| | | | | IDA\*    | 29.5708 |
+| 500 x 500 | 250000 | 499000 | 9197853 | Dijkstra | 2.8174  |
+| | | | | A\*     | 1.0455  |
+| | | | | IDA\*   | 56.3359 |
 
 
 Mitatut Dijkstran ja A* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
