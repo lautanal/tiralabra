@@ -15,12 +15,12 @@ class Ui:
         nrows: Rivien lukumäärä
         ncols: Sarakkeiden lukumäärä
         gsize: Karttaruudun koko pikseleinä
+        win: Pygame-ikkuna
         width: Pygame-ikkunan leveys pikseleinä
         height: Pygame-ikkunan korkeus pikseleinä
-        win: Pygame-ikkuna
         map: Karttaruudukko
         drawfunc: Piirtorutiini
-        algorithm: Algoritmien käynnistys
+        algorithm: Algoritmien käynnistysrutiini
         edit: Kartan editointi käynnissä
         run: Pygame-käynnissä
     """
@@ -132,9 +132,11 @@ class Ui:
 
                     # Ruutujen editoinnin aloitus ja lopetus
                     if event.key == pygame.K_e:
+                        print('Editointi aloitus')
                         self.edit = True
 
                     if event.key == pygame.K_q:
+                        print('Editointi lopetus')
                         self.edit = False
 
                     # Metodin valinta
@@ -253,10 +255,10 @@ class Ui:
         map = []
         try:
             dirname = os.path.dirname(__file__)
-            data_file_path = os.path.join(dirname, "..", "data", "maps", fname)            
+            data_file_path = os.path.join(dirname, '..', 'data', 'maps', fname)            
             with open(data_file_path) as file:
                 for row in file:
-                    row = row.replace("\n", "")
+                    row = row.replace('\n', '')
                     map.append([char for char in row])
             print(f'Karttatiedosto {fname} luettu')
         except FileNotFoundError:
@@ -271,8 +273,8 @@ class Ui:
             fname: Tiedoston nimi
         """
         dirname = os.path.dirname(__file__)
-        data_file_path = os.path.join(dirname, "..", "data", "maps", fname)            
-        with open(data_file_path, "w") as file:
+        data_file_path = os.path.join(dirname, '..', 'data', 'maps', fname)            
+        with open(data_file_path, 'w') as file:
             for row in self.map.nodes:
                 s = ''
                 for node in row:
