@@ -21,7 +21,7 @@ Koodin yleisrakenne on seuraava:
 
 Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa.  A\* ja IDA\* -menetelmät on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
-## Aikavaativuudet ja Suorituskykyvertailu eri suuruisilla ruutukartoilla
+## Suorituskykyvertailu ja aikavaativuudet
 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
 
