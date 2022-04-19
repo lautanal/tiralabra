@@ -209,7 +209,7 @@ class Ui:
         """Uusi kartta.
 
         Args:
-            maparray: Kartta tekstimuodossa
+            maparray: Kartta kirjaintaulukkona
         """
         # Kartan parametrit
         if maparray:
@@ -248,7 +248,7 @@ class Ui:
             fname: Tiedoston nimi
 
         Returns:
-            map: Luettu kartta taulukkona
+            map: Luettu kartta kirjaintaulukkona
         """
         map = []
         try:
@@ -282,7 +282,7 @@ class Ui:
                         s += str(node.cost)
                 s += '\n'
                 file.write(s)
-        print(f'Karttatiedosto {fname} kirjoitettu')
+        print(f'Karttatiedosto {fname} talletettu')
 
 
     def test(self):
