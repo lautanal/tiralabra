@@ -44,7 +44,7 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | IDA\*   | 56.3359 |
 
 
-Mitatut Dijkstran ja A\* -menetelmän aikavaativuudet vastaavat melko hyvin teorian mukaista O(V + E logV) aikavaativuutta.
+Mitatut Dijkstran ja A\* -menetelmän aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
 
 <img src="/dokumentaatio/png/aikavaativuus.png" width="750">
