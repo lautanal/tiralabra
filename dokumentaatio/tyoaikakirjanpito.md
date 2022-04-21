@@ -25,4 +25,5 @@
 | 16.04. | 4    | Yksikkötestit, testausraportti|
 | 17.04. | 2    | Yksikkötestit, testausraportti|
 | 18.04. | 2    | Yksikkötestit, code review|
-| yhteensä    | 96 | |
+| 21.04. | 2    | Viikkoraportti|
+yhteensä    | 98 | |
