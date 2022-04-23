@@ -49,8 +49,7 @@ class Map:
         for row in self.nodes:
             for node in row:
                 node.cost = costmap[node.row][node.col]
-                ngrey = (10 - node.cost) * 24
-                node.color = (ngrey, ngrey, ngrey)
+                node.reset_color()
 
 
     def set_costs(self, maparray):
@@ -60,13 +59,10 @@ class Map:
             for node in row:
                 if maparray[node.row][node.col] == 'B':
                     node.cost = 1
-                    node.blocked = True
-                    node.color = (0, 0, 0)
+                    node.set_blocked()
                 else:
                     node.cost = int(maparray[node.row][node.col])
-                    ngrey = (10 - node.cost) * 24
-                    node.color = (ngrey, ngrey, ngrey)
-
+                    node.reset_color()
 
     def set_start(self, start):
         """ Lähtöpiste

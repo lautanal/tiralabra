@@ -3,6 +3,7 @@ import pygame
 from map import Map
 from draw import Draw
 from algorithm import Algorithm
+from files import Files
 
 
 # Käyttöliittymä
@@ -21,6 +22,7 @@ class Ui:
         map: Karttaruudukko
         drawfunc: Piirtorutiini
         algorithm: Algoritmien käynnistysrutiini
+        files = Tiedostojen käsittelijä
         edit: Kartan editointi käynnissä
         run: Pygame-käynnissä
     """
@@ -57,6 +59,7 @@ class Ui:
         self.drawfunc = Draw(self.win, self.width, self.height, self.map)
         self.algorithm = Algorithm(self.map, self.drawfunc.drawnode)
         self.drawfunc.set_texts(self.algorithm)
+        self.files = Files()
 
         self.edit = False
         self.run = True
@@ -162,18 +165,21 @@ class Ui:
 
                     # Kartan kirjoitus tiedostoon f.map
                     if event.key == pygame.K_w:
-                        self.mapwrite('f.map')
+                        self.files.fname = 'f.map'
+                        self.files.write(self.map)
 
                     # Kartan luku tiedostosta f.map
                     if event.key == pygame.K_f:
-                        maparray = self.mapread("f.map")
+                        self.files.fname = 'f.map'
+                        maparray = self.files.read()
                         if maparray:
                             self.mapinit(maparray)
 
                     # Uusi kartta tiedostosta 1.map .... 9.map
                     if event.key >= pygame.K_1 and event.key <= pygame.K_9:
-                        mapname = str(event.key-48) + '.map'
-                        maparray = self.mapread(mapname)
+                        fname = str(event.key-48) + '.map'
+                        self.files.fname = fname
+                        maparray = self.files.read()
                         if maparray:
                             self.mapinit(maparray)
 
@@ -241,50 +247,6 @@ class Ui:
         self.algorithm.set_map(self.map)
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
         self.drawfunc.set_texts(self.algorithm)
-
-
-    def mapread(self, fname):
-        """Kartan luku tiedostosta.
-
-        Args:
-            fname: Tiedoston nimi
-
-        Returns:
-            map: Luettu kartta kirjaintaulukkona
-        """
-        map = []
-        try:
-            dirname = os.path.dirname(__file__)
-            data_file_path = os.path.join(dirname, '..', 'data', 'maps', fname)            
-            with open(data_file_path) as file:
-                for row in file:
-                    row = row.replace('\n', '')
-                    map.append([char for char in row])
-            print(f'Karttatiedosto {fname} luettu')
-        except FileNotFoundError:
-            print('Tiedostoa ei löytynyt')
-        return map
-
-
-    def mapwrite(self, fname):
-        """Kartan kirjoitus tiedostoon.
-
-        Args:
-            fname: Tiedoston nimi
-        """
-        dirname = os.path.dirname(__file__)
-        data_file_path = os.path.join(dirname, '..', 'data', 'maps', fname)            
-        with open(data_file_path, 'w') as file:
-            for row in self.map.nodes:
-                s = ''
-                for node in row:
-                    if node.blocked:
-                        s += 'B'
-                    else:
-                        s += str(node.cost)
-                s += '\n'
-                file.write(s)
-        print(f'Karttatiedosto {fname} talletettu')
 
 
     def test(self):

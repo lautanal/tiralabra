@@ -5,6 +5,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 ORANGE = (255, 165, 0)
+GRAYSHADES = [(255,255,255),(216,216,216),(192,192,192),(168,168,168),(144,144,144),(120,120,120),(96,96,96),(72,72,72),(48,48,48),(24,24,24),(0,0,0)]
 
 
 class Node:
@@ -61,8 +62,7 @@ class Node:
         self.start = False
         self.goal = False
         self.blocked = False
-        ngrey = (10 - self.cost) * 24
-        self.color = (ngrey, ngrey, ngrey)
+        self.color = GRAYSHADES[self.cost]
 
 
     def get_pos(self):
@@ -83,8 +83,7 @@ class Node:
     def reset_color(self):
         """ Ruudun värin palautus normaaliksi
         """
-        ngrey = (10 - self.cost) * 24
-        self.color = (ngrey, ngrey, ngrey)
+        self.color = GRAYSHADES[self.cost]
 
 
     def set_blocked(self):
