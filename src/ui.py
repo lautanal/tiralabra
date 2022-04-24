@@ -95,7 +95,7 @@ class Ui:
 
 
     def leftclick(self):
-        """Vasemman hiiren näppäimen klikkaus.
+        """Hiiren vasemman näppäimen klikkaus.
         """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
@@ -117,7 +117,7 @@ class Ui:
 
 
     def rightclick(self):
-        """Oikean hiiren näppäimen klikkaus.
+        """Hiiren oikean näppäimen klikkaus.
         """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
