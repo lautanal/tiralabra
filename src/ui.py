@@ -234,7 +234,7 @@ class Ui:
 
 
     def newmap(self, maparray):
-        """Kartan ja Pygame-ikkunan muutos.
+        """Uusi kartta ja Pygame-ikkuna.
 
         Args:
             maparray: Kartta kirjaintaulukkona
