@@ -2,7 +2,7 @@ import pygame
 from map import Map
 
 class Perftest:
-    """Luokka, joka käynnistää eri algoritmit
+    """Luokka, joka käynnistää suorituskykytestauksen
 
     Attributes:
         WIDTH: Ikkunan maksimileveys pikseleinä
@@ -20,7 +20,7 @@ class Perftest:
 
 
     def __init__(self, WIDTH, THEIGHT, win, map, algorithm, drawfunc):
-        """Konstruktori, joka luo uuden Test-alkion
+        """Konstruktori, joka luo uuden Perftest-alkion
 
         Args:
         WIDTH: Ikkunan maksimileveys pikseleinä
