@@ -41,6 +41,7 @@ def dijkstra(map, diagonal, animate, drawnode):
         # Käydään läpi naapurit
         for neighbor in node.neighbors:
             deltacost = neighbor.cost
+            # Vino reitti
             if diagonal:
                 deltacost = sqrt((node.row - neighbor.row)**2 + \
                     (node.col - neighbor.col)**2) * (node.cost + neighbor.cost) / 2

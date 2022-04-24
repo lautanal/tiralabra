@@ -97,6 +97,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
     for neighbor in node.neighbors:
         if neighbor not in path:
             deltacost = neighbor.cost
+            # Vino reitti
             if diagonal:
                 deltacost = sqrt((node.row - neighbor.row)**2 + \
                     (node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
