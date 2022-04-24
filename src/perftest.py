@@ -5,12 +5,17 @@ class Perftest:
     """Luokka, joka käynnistää eri algoritmit
 
     Attributes:
-        ui: Käyttöliittymä
+        WIDTH: Ikkunan maksimileveys pikseleinä
+        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        nrows: Rivien lukumäärä
+        ncols: Sarakkeiden lukumäärä
+        gsize: Karttaruudun koko pikseleinä
+        win: Pygame-ikkuna
+        width: Pygame-ikkunan leveys pikseleinä
+        height: Pygame-ikkunan korkeus pikseleinä
         map: Karttaruudukko
-        algorithm: Laskentarutiini
-        drawfunc: Piirtofunktio
-        ncols: Kartan ruutujen määrä x-suunnassa
-        nrows: Kartan ruutujen määrä y-suunnassa
+        drawfunc: Piirtorutiini
+        algorithm: Algoritmien käynnistysrutiini
     """
 
 
@@ -18,9 +23,14 @@ class Perftest:
         """Konstruktori, joka luo uuden Test-alkion
 
         Args:
-            map: Karttaruudukko
-            drawfunc: Piirtofunktio
+        WIDTH: Ikkunan maksimileveys pikseleinä
+        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        win: Pygame-ikkuna
+        map: Karttaruudukko
+        drawfunc: Piirtorutiini
+        algorithm: Algoritmien käynnistysrutiini
         """
+
         self.WIDTH = WIDTH
         self.THEIGHT = THEIGHT
         self.win = win
@@ -41,7 +51,7 @@ class Perftest:
         self.algorithm.method = 'D'
         ntests = 10
         for _ in range(ntests):
-            self.newmap(None)
+            self.newmap()
             node = self.map.nodes[0][0]
             node.set_start()
             self.map.set_start(node)
@@ -60,11 +70,8 @@ class Perftest:
         self.drawfunc.test_results(results)
 
 
-    def newmap(self, maparray):
-        """Kartan ja Pygame-ikkunan muutos.
-
-        Args:
-            maparray: Kartta kirjaintaulukkona
+    def newmap(self):
+        """Uusi kartta ja Pygame-ikkuna.
         """
         # Kartan parametrit
         self.gsize = self.WIDTH // self.ncols
