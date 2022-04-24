@@ -95,6 +95,8 @@ class Ui:
 
 
     def leftclick(self):
+        """Vasemman hiiren näppäimen klikkaus.
+        """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
         if row < self.nrows:
@@ -115,6 +117,8 @@ class Ui:
 
 
     def rightclick(self):
+        """Oikean hiiren näppäimen klikkaus.
+        """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
         if row < self.nrows:
@@ -148,6 +152,8 @@ class Ui:
 
 
     def keyboard(self, event):
+        """Näppäinkomennot.
+        """
         # Animaatio päälle / pois
         if event.key == pygame.K_a:
             self.algorithm.set_animate()
