@@ -4,6 +4,7 @@ from map import Map
 from draw import Draw
 from algorithm import Algorithm
 from files import Files
+from perftest import Perftest
 
 
 # Käyttöliittymä
@@ -80,122 +81,55 @@ class Ui:
             # Hiirikomennot
                 # Alku-, loppupisteet, esteiden syöttö  ja editointi(hiiren vasen näppäin)
                 if pygame.mouse.get_pressed()[0]:
-                    pos = pygame.mouse.get_pos()
-                    row, col = self.get_clickpos(pos)
-                    if row < self.nrows:
-                        node = self.map.nodes[row][col]
-                        if self.edit:
-                            if not node.blocked and node.cost < 9:
-                                node.cost += 1
-                                node.reset_color()
-                        else:
-                            if not self.map.start:
-                                node.set_start()
-                                self.map.set_start(node)
-                            elif not self.map.goal and node != self.map.start:
-                                node.set_goal()
-                                self.map.set_goal(node)
-                            elif node != self.map.goal and node != self.map.start:
-                                node.set_blocked()
+                    self.leftclick()
 
                 # Pisteiden pyyhkiminen (hiiren oikea näppäin)
                 elif pygame.mouse.get_pressed()[2]:
-                    pos = pygame.mouse.get_pos()
-                    row, col = self.get_clickpos(pos)
-                    if row < self.nrows:
-                        node = self.map.nodes[row][col]
-                        if self.edit:
-                            if not node.blocked and node.cost > 1:
-                                node.cost -= 1
-                                node.reset_color()
-                        else:
-                            node = self.map.nodes[row][col]
-                            if node == self.map.start:
-                                self.map.set_start(None)
-                            if node == self.map.goal:
-                                self.map.set_goal(None)
-                            node.clear()
+                    self.rightclick()
 
             # Näppäinkomennot
                 if event.type == pygame.KEYDOWN:
-
-                    # Animaatio päälle / pois
-                    if event.key == pygame.K_a:
-                        self.algorithm.set_animate()
-                        self.drawfunc.set_texts(self.algorithm)
-
-                    # Uusi random-kartta
-                    if event.key == pygame.K_c:
-                        self.mapinit(None)
-
-                    # Polun tyyppi
-                    if event.key == pygame.K_d:
-                        self.algorithm.set_diagonal()
-                        self.drawfunc.set_texts(self.algorithm)
-
-                    # Ruutujen editoinnin aloitus ja lopetus
-                    if event.key == pygame.K_e:
-                        print('Editointi aloitus')
-                        self.edit = True
-
-                    if event.key == pygame.K_q:
-                        print('Editointi lopetus')
-                        self.edit = False
-
-                    # Metodin valinta
-                    if event.key == pygame.K_m:
-                        self.algorithm.set_method()
-                        self.drawfunc.set_texts(self.algorithm)
-
-                    # Reset, uusi laskenta samalla kartalla
-                    if event.key == pygame.K_r:
-                        self.drawfunc.reset()
-                        self.drawfunc.set_texts(self.algorithm)
-
-                    # Laskennan aloitus
-                    if event.key == pygame.K_s:
-                        if self.map.start and self.map.goal:
-                            self.drawfunc.reset()
-                            result = self.algorithm.calculate()
-                            self.drawfunc.set_results(result)
-
-                    # Laskennan aloitus
-                    if event.key == pygame.K_t:
-                        self.test()
-
-                    # Kartan kirjoitus tiedostoon f.map
-                    if event.key == pygame.K_w:
-                        self.files.fname = 'f.map'
-                        self.files.write(self.map)
-
-                    # Kartan luku tiedostosta f.map
-                    if event.key == pygame.K_f:
-                        self.files.fname = 'f.map'
-                        maparray = self.files.read()
-                        if maparray:
-                            self.mapinit(maparray)
-
-                    # Uusi kartta tiedostosta 1.map .... 9.map
-                    if event.key >= pygame.K_1 and event.key <= pygame.K_9:
-                        fname = str(event.key-48) + '.map'
-                        self.files.fname = fname
-                        maparray = self.files.read()
-                        if maparray:
-                            self.mapinit(maparray)
-
-                    # Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
-                    if event.key == pygame.K_PLUS and self.ncols < 500:
-                        self.ncols += 10
-                        self.nrows += 10
-                        self.mapinit(None)
-
-                    # Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
-                    if event.key == pygame.K_MINUS and self.ncols > 10:
-                        self.ncols -= 10
-                        self.nrows -= 10
-                        self.mapinit(None)
+                    self.keyboard(event)
 
         pygame.quit()
+
+
+    def leftclick(self):
+        pos = pygame.mouse.get_pos()
+        row, col = self.get_clickpos(pos)
+        if row < self.nrows:
+            node = self.map.nodes[row][col]
+            if self.edit:
+                if not node.blocked and node.cost < 9:
+                    node.cost += 1
+                    node.reset_color()
+            else:
+                if not self.map.start:
+                    node.set_start()
+                    self.map.set_start(node)
+                elif not self.map.goal and node != self.map.start:
+                    node.set_goal()
+                    self.map.set_goal(node)
+                elif node != self.map.goal and node != self.map.start:
+                    node.set_blocked()
+
+
+    def rightclick(self):
+        pos = pygame.mouse.get_pos()
+        row, col = self.get_clickpos(pos)
+        if row < self.nrows:
+            node = self.map.nodes[row][col]
+            if self.edit:
+                if not node.blocked and node.cost > 1:
+                    node.cost -= 1
+                    node.reset_color()
+            else:
+                node = self.map.nodes[row][col]
+                if node == self.map.start:
+                    self.map.set_start(None)
+                if node == self.map.goal:
+                    self.map.set_goal(None)
+                node.clear()
 
 
     def get_clickpos(self, pos):
@@ -213,8 +147,88 @@ class Ui:
         return row, col
 
 
-    def mapinit(self, maparray):
-        """Uusi kartta.
+    def keyboard(self, event):
+        # Animaatio päälle / pois
+        if event.key == pygame.K_a:
+            self.algorithm.set_animate()
+            self.drawfunc.set_texts(self.algorithm)
+
+        # Uusi random-kartta
+        if event.key == pygame.K_c:
+            self.newmap(None)
+
+        # Polun tyyppi
+        if event.key == pygame.K_d:
+            self.algorithm.set_diagonal()
+            self.drawfunc.set_texts(self.algorithm)
+
+        # Ruutujen editoinnin aloitus ja lopetus
+        if event.key == pygame.K_e:
+            print('Editointi aloitus')
+            self.edit = True
+
+        if event.key == pygame.K_q:
+            print('Editointi lopetus')
+            self.edit = False
+
+        # Metodin valinta
+        if event.key == pygame.K_m:
+            self.algorithm.set_method()
+            self.drawfunc.set_texts(self.algorithm)
+
+        # Reset, uusi laskenta samalla kartalla
+        if event.key == pygame.K_r:
+            self.drawfunc.reset()
+            self.drawfunc.set_texts(self.algorithm)
+
+        # Laskennan aloitus
+        if event.key == pygame.K_s:
+            if self.map.start and self.map.goal:
+                self.drawfunc.reset()
+                result = self.algorithm.calculate()
+                self.drawfunc.set_results(result)
+
+        # Suorituskykytesti
+        if event.key == pygame.K_t:
+            perftest = Perftest(self.WIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest.test()
+            del perftest
+
+        # Kartan kirjoitus tiedostoon f.map
+        if event.key == pygame.K_w:
+            self.files.fname = 'f.map'
+            self.files.write(self.map)
+
+        # Kartan luku tiedostosta f.map
+        if event.key == pygame.K_f:
+            self.files.fname = 'f.map'
+            maparray = self.files.read()
+            if maparray:
+                self.newmap(maparray)
+
+        # Uusi kartta tiedostosta 1.map .... 9.map
+        if event.key >= pygame.K_1 and event.key <= pygame.K_9:
+            fname = str(event.key-48) + '.map'
+            self.files.fname = fname
+            maparray = self.files.read()
+            if maparray:
+                self.newmap(maparray)
+
+        # Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
+        if event.key == pygame.K_PLUS and self.ncols < 500:
+            self.ncols += 10
+            self.nrows += 10
+            self.newmap(None)
+
+        # Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
+        if event.key == pygame.K_MINUS and self.ncols > 10:
+            self.ncols -= 10
+            self.nrows -= 10
+            self.newmap(None)
+
+
+    def newmap(self, maparray):
+        """Kartan ja Pygame-ikkunan muutos.
 
         Args:
             maparray: Kartta kirjaintaulukkona
@@ -247,31 +261,3 @@ class Ui:
         self.algorithm.set_map(self.map)
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
         self.drawfunc.set_texts(self.algorithm)
-
-
-    def test(self):
-        """Suorituskyvyn testausrutiini.
-        """
-        self.ncols = 100
-        self.nrows = 100
-        results = [0, 0, 0]
-        self.algorithm.method = 'D'
-        ntests = 10
-        for _ in range(ntests):
-            self.mapinit(None)
-            node = self.map.nodes[0][0]
-            node.set_start()
-            self.map.set_start(node)
-            node = self.map.nodes[self.nrows-1][self.ncols-1]
-            node.set_goal()
-            self.map.set_goal(node)
-            for i in range(3):
-                self.drawfunc.reset()
-                result = self.algorithm.calculate()
-                self.drawfunc.drawmap()
-                results[i] += result[3]
-                self.algorithm.set_method()
-        results[0] /= ntests
-        results[1] /= ntests
-        results[2] /= ntests
-        self.drawfunc.test_results(results)

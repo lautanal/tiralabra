@@ -53,7 +53,7 @@ class Map:
 
 
     def set_costs(self, maparray):
-        """ Kartan generointi (kartta luettu tiedostosta)
+        """ Kartan solmujen painoarvot (kartta luettu tiedostosta)
         """
         for row in self.nodes:
             for node in row:
@@ -63,6 +63,7 @@ class Map:
                 else:
                     node.cost = int(maparray[node.row][node.col])
                     node.reset_color()
+
 
     def set_start(self, start):
         """ Lähtöpiste

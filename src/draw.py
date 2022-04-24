@@ -100,7 +100,7 @@ class Draw:
 
 
     def reset(self):
-        """Karttaruudukon reset
+        """Karttaruutujen värien reset
         """
         for row in self.map.nodes:
             for node in row:
@@ -111,7 +111,7 @@ class Draw:
 
 
     def set_win(self, win, width, height, map):
-        """Ikkunan asetukset
+        """Pygame-ikkunan asetukset
         """
         self.win = win
         self.map = map
@@ -123,7 +123,7 @@ class Draw:
 
 
     def set_texts(self, algorithm):
-        """Ikkunan tekstit
+        """Pygame-ikkunan tekstit
         """
         if algorithm.method == 'D':
             self.text1 = 'Metodi (m): Dijkstra'
