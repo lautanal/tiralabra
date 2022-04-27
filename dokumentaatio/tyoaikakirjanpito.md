@@ -26,4 +26,6 @@
 | 17.04. | 2    | Yksikkötestit, testausraportti|
 | 18.04. | 2    | Yksikkötestit, code review|
 | 21.04. | 2    | Viikkoraportti|
-yhteensä    | 98 | |
+| 23.04. | 2    | Ui-luokkaa jaettu pienempiin osamoduleihin|
+| 24.04. | 2    | Luokkajakoa muutettu, uudet luokat Files ja Perftest|
+yhteensä    | 102 | |

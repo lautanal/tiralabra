@@ -17,9 +17,18 @@ Koodin yleisrakenne on seuraava:
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
 - Piirtorutiinit on keskitetty Draw-luokkaan
 
-## Käytetyt tietorakenteet
+## Käytetyt algoritmit ja tietorakenteet
 
-Dijkstran menetelmän toteutuksessa on käytetty omaa Bheap -minimikekoluokkaa.  A\* ja IDA\* -menetelmät on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
+Parhaan reitin hakemisessa on käytetty kolmea vaihtoehtoista algoritmia:
+
+### Dijkstra
+Dijkstra menetelmä käyttää minimikekoa käsiteltävien solmujen tallennukseen.  Ohjelma ottaa keosta käsittelyyn aina solmun, jonka etäisyysarvo lähtösolmusta on pienin.  Tässä ohjelmassa minimikeko on toteutettu omalla Bheap-luokalla.
+
+### A*
+A* -menetelmä on hyvin samankaltainen Dijkstran menetelmän kanssa.  Lisäksi käytössä on  heuristiikka, joka ennustaa etäisyyden maaliin.  A* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
+
+### IDA*
+IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
