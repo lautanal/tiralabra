@@ -22,7 +22,7 @@ Koodin yleisrakenne on seuraava:
 Parhaan reitin hakemisessa on käytetty kolmea vaihtoehtoista algoritmia:
 
 ### Dijkstra
-Dijkstra menetelmä käyttää minimikekoa käsiteltävien solmujen tallennukseen.  Ohjelma ottaa keosta käsittelyyn aina solmun, jonka etäisyysarvo lähtösolmusta on pienin.  Tässä ohjelmassa minimikeko on toteutettu omalla Bheap-luokalla.
+Dijkstran menetelmä käyttää minimikekoa käsiteltävien solmujen tallennukseen.  Ohjelma ottaa keosta käsittelyyn aina solmun, jonka etäisyysarvo lähtösolmusta on pienin.  Tässä ohjelmassa minimikeko on toteutettu omalla Bheap-luokalla.
 
 ### A*
 A* -menetelmä on hyvin samankaltainen Dijkstran menetelmän kanssa.  Lisäksi käytössä on  heuristiikka, joka ennustaa etäisyyden maaliin.  A* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
