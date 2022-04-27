@@ -16,6 +16,8 @@ Koodin yleisrakenne on seuraava:
 - Algorithm-instanssi kutsuu käyttäjän valinnan mukaan tarvittavaa algoritmia (Dijkstra, A* tai IDA*)
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
 - Piirtorutiinit on keskitetty Draw-luokkaan
+- Tiedostojen luku ja kirjoitus tehdään Files-luokan avulla
+- Suorituskykytestit tehdään Perftest-luokan avulla
 
 ## Käytetyt algoritmit ja tietorakenteet
 
