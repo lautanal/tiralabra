@@ -12,7 +12,7 @@ class Ui:
     """Käyttöliittymän luokka
 
     Attributes:
-        WIDTH: Ikkunan maksimileveys pikseleinä
+        MAXWIDTH: Ikkunan maksimileveys pikseleinä
         THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
         nrows: Rivien lukumäärä
         ncols: Sarakkeiden lukumäärä
@@ -28,22 +28,23 @@ class Ui:
         run: Pygame-käynnissä
     """
 
-    def __init__(self, WIDTH, THEIGHT, nrows, ncols):
+    def __init__(self, MAXWIDTH, MAXHEIGHT, THEIGHT, nrows, ncols):
         """Luokan konstruktori, joka luo uuden käyttöliittymän.
 
         Args:
-            WIDTH: Ikkunan maksimileveys pikseleinä
+            MAXWIDTH: Ikkunan maksimileveys pikseleinä
             THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
             nrows: Rivien lukumäärä
             ncols: Sarakkeiden lukumäärä
         """
 
         # Ikkunan kokoparametrit
-        self.WIDTH = WIDTH
+        self.MAXWIDTH = MAXWIDTH
+        self.MAXHEIGHT = MAXHEIGHT
         self.THEIGHT = THEIGHT
-        self.gsize = WIDTH // ncols
+        self.gsize = min(MAXWIDTH // ncols, MAXHEIGHT // nrows)
         self.width = self.gsize * ncols
-        self.height = WIDTH + THEIGHT
+        self.height = self.gsize * nrows + THEIGHT
         self.nrows = nrows
         self.ncols = ncols
 
@@ -161,10 +162,12 @@ class Ui:
 
         # C: Clear, Lähtö- ja maalipisteiden pyyhkiminen
         if event.key == pygame.K_c:
-            self.map.start.clear()
-            self.map.goal.clear()
-            self.map.set_start(None)
-            self.map.set_goal(None)
+            if self.map.start:
+                self.map.start.clear()
+                self.map.set_start(None)
+                if self.map.goal:
+                    self.map.goal.clear()
+                    self.map.set_goal(None)
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
@@ -207,7 +210,7 @@ class Ui:
 
         # Suorituskykytesti
         if event.key == pygame.K_t:
-            perftest = Perftest(self.WIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest = Perftest(self.MAXWIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test()
             del perftest
 
@@ -254,9 +257,12 @@ class Ui:
         if maparray:
             self.ncols = len(maparray[0])
             self.nrows = len(maparray)
-        self.gsize = self.WIDTH // self.ncols
+        self.gsize = min(self.MAXWIDTH // self.ncols, self.MAXHEIGHT // self.nrows)
         self.width = self.gsize * self.ncols
-        self.height = self.width + self.THEIGHT
+        self.height = self.gsize * self.nrows + self.THEIGHT
+#        self.gsize = self.MAXWIDTH // self.ncols
+#        self.width = self.gsize * self.ncols
+#        self.height = self.width + self.THEIGHT
 
         # Uusi Pygame-ikkuna
         oldwin = self.win

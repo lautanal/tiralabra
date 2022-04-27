@@ -1,7 +1,8 @@
 from ui import Ui
 
 
-WIDTH = 800
+MAXWIDTH = 1600
+MAXHEIGHT = 1200
 THEIGHT = 150
 NCOLS = 40
 NROWS = 40
@@ -10,7 +11,7 @@ NROWS = 40
 def main():
     """Käyttöliittymän käynnistys.
     """
-    ui = Ui(WIDTH, THEIGHT, NROWS, NCOLS)
+    ui = Ui(MAXWIDTH, MAXHEIGHT, THEIGHT, NROWS, NCOLS)
     ui.start()
 
 
