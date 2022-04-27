@@ -154,18 +154,24 @@ class Ui:
     def keyboard(self, event):
         """Näppäinkomennot.
         """
-        # Animaatio päälle / pois
+        # A: Animation, animaatio päälle / pois
         if event.key == pygame.K_a:
             self.algorithm.set_animate()
             self.drawfunc.set_texts(self.algorithm)
 
-        # Uusi random-kartta
+        # C: Clear, Lähtö- ja maalipisteiden pyyhkiminen
         if event.key == pygame.K_c:
-            self.newmap(None)
+            self.map.start.clear()
+            self.map.goal.clear()
+            self.map.set_start(None)
+            self.map.set_goal(None)
+            self.drawfunc.reset()
+            self.drawfunc.set_texts(self.algorithm)
 
-        # Polun tyyppi
+        # D: Diagonal, polun tyyppi
         if event.key == pygame.K_d:
             self.algorithm.set_diagonal()
+            self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
         # Ruutujen editoinnin aloitus ja lopetus
@@ -177,12 +183,17 @@ class Ui:
             print('Editointi lopetus')
             self.edit = False
 
-        # Metodin valinta
+        # M: Method, metodin valinta
         if event.key == pygame.K_m:
             self.algorithm.set_method()
+            self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
-        # Reset, uusi laskenta samalla kartalla
+        # N: New, uusi random-kartta
+        if event.key == pygame.K_n:
+            self.newmap(None)
+
+        # R: Reset, lasketun polun pyyhkiminen
         if event.key == pygame.K_r:
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
