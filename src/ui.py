@@ -79,7 +79,7 @@ class Ui:
                     self.run = False
 
             # Hiirikomennot
-                # Alku-, loppupisteet, esteiden syöttö  ja editointi(hiiren vasen näppäin)
+                # Alku-, loppupisteet, esteiden syöttö  ja editointi (hiiren vasen näppäin)
                 if pygame.mouse.get_pressed()[0]:
                     self.leftclick()
 

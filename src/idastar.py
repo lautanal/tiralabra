@@ -31,12 +31,13 @@ def idastar(map, diagonal, animate, drawnode):
     paths = []
     heappush(paths, (0, [map.start]))
 
+    # Hakulooppi
     while paths:
         # Edetään polkuja kunnes kynnys ylittyy
         tmin = float("inf")
         newpaths = []
         while paths:
-            est, path = heappop(paths)
+            path = heappop(paths)[1]
             res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, drawnode)
 
             # Maali löytyi
