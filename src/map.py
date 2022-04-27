@@ -57,9 +57,12 @@ class Map:
         """
         for row in self.nodes:
             for node in row:
-                if maparray[node.row][node.col] == 'B':
+                if maparray[node.row][node.col] == 'B' or maparray[node.row][node.col] == '@':
                     node.cost = 1
                     node.set_blocked()
+                elif maparray[node.row][node.col] == '.':
+                    node.cost = 1
+                    node.reset_color()
                 else:
                     node.cost = int(maparray[node.row][node.col])
                     node.reset_color()
