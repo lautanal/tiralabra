@@ -56,13 +56,13 @@ class Draw:
         for row in self.map.nodes:
             for node in row:
                 pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
-                if not node.blocked:
-                    if node.cost < 10:
-                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                                (node.x+2*(self.gsize//5), node.y+self.gsize//4))
-                    else:
-                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                                (node.x+self.gsize//3, node.y+self.gsize//4))
+#                if not node.blocked:
+#                    if node.cost < 10:
+#                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+#                                (node.x+2*(self.gsize//5), node.y+self.gsize//4))
+#                    else:
+#                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+#                                (node.x+self.gsize//3, node.y+self.gsize//4))
 
         for i in range(self.nrows):
             pygame.draw.line(self.win, (128, 128, 128), (0, i * self.gsize), (self.width, i * self.gsize))
@@ -106,8 +106,7 @@ class Draw:
             for node in row:
                 node.visited = False
                 if not node.start and not node.goal and not node.blocked:
-                    ngrey = (10 - node.cost) * 24
-                    node.color = (ngrey, ngrey, ngrey)
+                    node.reset_color()
 
 
     def set_win(self, win, width, height, map):

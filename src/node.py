@@ -5,7 +5,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 ORANGE = (255, 165, 0)
-GRAYSHADES = [(255,255,255),(216,216,216),(192,192,192),(168,168,168),(144,144,144),(120,120,120),(96,96,96),(72,72,72),(48,48,48),(24,24,24),(0,0,0)]
+GRAYSHADES = [(240,240,240),(220,220,220),(200,200,200),(180,180,180),(160,160,160),(140,140,140),(120,120,120),(100,100,100),(80,80,80),(60,60,60),(0,0,0)]
 
 
 class Node:
@@ -14,7 +14,8 @@ class Node:
     Attributes:
         row: Rivinumero
         col: Sarakenumero
-        gsize: Karttaruudun koko pikseleinä
+        x: Ruudun x-koordinaatti (vasen ylänurkka)
+        y: Ruudun y-koordinaatti (vasen ylänurkka)
         color: Ruudun väri
         start: Ruutu on lähtöruutu
         goal: Ruutu on maaliruutu
@@ -39,7 +40,6 @@ class Node:
         self.col = col
         self.x = col * gsize
         self.y = row * gsize
-        self.gsize = gsize
         self.color = WHITE
         self.start = False
         self.goal = False
