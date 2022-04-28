@@ -110,9 +110,11 @@ class Ui:
                 if not self.map.start:
                     node.set_start()
                     self.map.set_start(node)
+                    self.drawfunc.set_texts(self.algorithm)
                 elif not self.map.goal and node != self.map.start:
                     node.set_goal()
                     self.map.set_goal(node)
+                    self.drawfunc.set_texts(self.algorithm)
                 elif node != self.map.goal and node != self.map.start:
                     node.set_blocked()
 
@@ -132,8 +134,10 @@ class Ui:
                 node = self.map.nodes[row][col]
                 if node == self.map.start:
                     self.map.set_start(None)
+                    self.drawfunc.set_texts(self.algorithm)
                 if node == self.map.goal:
                     self.map.set_goal(None)
+                    self.drawfunc.set_texts(self.algorithm)
                 node.clear()
 
 
@@ -162,12 +166,12 @@ class Ui:
 
         # C: Clear, Lähtö- ja maalipisteiden pyyhkiminen
         if event.key == pygame.K_c:
-            if self.map.start:
+            if self.map.goal:
+                self.map.goal.clear()
+                self.map.set_goal(None)
+            elif self.map.start:
                 self.map.start.clear()
                 self.map.set_start(None)
-                if self.map.goal:
-                    self.map.goal.clear()
-                    self.map.set_goal(None)
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 

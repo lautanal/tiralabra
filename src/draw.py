@@ -20,6 +20,8 @@ class Draw:
         text6 = Teksti 6
         text7 = Teksti 7
         text8 = Teksti 8
+        text9 = Teksti 9
+        text10 = Teksti 10
     """
 
 
@@ -47,6 +49,8 @@ class Draw:
         self.text6 = ''
         self.text7 = ''
         self.text8 = ''
+        self.text9 = ''
+        self.text10 = ''
 
 
     def drawmap(self):
@@ -75,12 +79,14 @@ class Draw:
 
         font = pygame.font.SysFont('Arial', 15)
         self.win.blit(font.render(str(self.text1), True, (64, 64, 64)), (40, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text2), True, (64, 64, 64)), (40, self.nrows*self.gsize + 45))
-        self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (40, self.nrows*self.gsize + 70))
-        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (40, self.nrows*self.gsize + 95))
-        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 45))
-        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 70))
+        self.win.blit(font.render(str(self.text2), True, (64, 64, 64)), (40, self.nrows*self.gsize + 40))
+        self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (40, self.nrows*self.gsize + 60))
+        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (40, self.nrows*self.gsize + 80))
+        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (40, self.nrows*self.gsize + 100))
+        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
+        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 40))
+        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 60))
+        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 80))
 
         pygame.display.update()
 
@@ -140,29 +146,36 @@ class Draw:
             self.text3 = 'Animaatio (a): ei'
         self.text4 = f'Kartan koko: {self.nrows} x {self.ncols}'
         self.text5 = ''
+        if self.map.start:
+            self.text5 = f'Lähtö x,y: {str(self.map.start.col)},{str(self.map.start.row)}      '
+        if self.map.goal:
+            self.text5 += f'Maali x,y: {str(self.map.goal.col)},{str(self.map.goal.row)}'
         self.text6 = ''
         self.text7 = ''
+        self.text8 = ''
+        self.text9 = ''
+        self.text10 = ''
 
 
     def set_results(self, result):
         """Laskennan tulokset näkyville
         """
         if result[0]:
-            self.text5 = f'Polun pituus {result[1]}'
-            self.text6 = f'Polun painotettu pituus {result[2]:.1f}'
-            self.text7 = f'Laskenta vei {result[3]:.3f} sekuntia'
-            self.text8 = ''
+            self.text6 = f'Polun pituus {result[1]}'
+            self.text7 = f'Polun painotettu pituus {result[2]:.1f}'
+            self.text8 = f'Laskenta vei {result[3]:.3f} sekuntia'
+            self.text9 = ''
         else:
-            self.text5 = '*** REITTIÄ EI LÖYTYNYT ***'
-            self.text6 = ''
+            self.text6 = '*** REITTIÄ EI LÖYTYNYT ***'
             self.text7 = ''
             self.text8 = ''
+            self.text9 = ''
 
 
     def test_results(self, result):
         """Testilaskennan tulokset näkyville
         """
-        self.text5 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
-        self.text6 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
-        self.text7 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
-        self.text8 = ''
+        self.text6 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
+        self.text7 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
+        self.text8 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
+        self.text9 = ''
