@@ -62,6 +62,9 @@ class Algorithm:
         """Uusi kartta
         """
         self.map = map
+        self.method = 'D'
+        self.diagonal = False
+        self.animate = False
 
 
     def calculate(self):
