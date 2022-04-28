@@ -35,7 +35,9 @@ Laskenta käynnistetään näppäimellä s.
 
 ### Näppäinkomennot:
 
-c : clear, poistaa kartan ja generoi uuden
+s : start, laskee parhaan reitin
+
+c : clear, poistaa lähtö- ja maalipisteet
 
 r : reset, pyyhkii lasketun reitin
 
@@ -43,11 +45,11 @@ m : metodi, Dijkstra / A* / IDA*
 
 d : diagonal, polun tyyppi, vain x ja y-suunnat / väli-ilmansuunnat sallittu
 
-s : start, laskee parhaan reitin
-
 a : animointi, päälle / pois
 
-t : test, ohjelma käy läpi kymmenen testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
+n: new, generoi uuden random-kartan
+
+t : test, ohjelma käy läpi kymmenen random-testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
     eri menetelmille
 
 \+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
