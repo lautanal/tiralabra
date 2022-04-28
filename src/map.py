@@ -52,6 +52,12 @@ class Map:
                 node.reset_color()
 
 
+    def on_map(self, row, col):
+        """ Tarkastetaan, onko ruutu kartalla
+        """
+        return row >= 0 and row < self.nrows and col >= 0 and col < self.ncols
+
+
     def set_costs(self, maparray):
         """ Kartan solmujen painoarvot (kartta luettu tiedostosta)
         """
