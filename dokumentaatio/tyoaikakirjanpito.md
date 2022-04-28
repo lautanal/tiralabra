@@ -28,4 +28,5 @@
 | 21.04. | 2    | Viikkoraportti|
 | 23.04. | 2    | Ui-luokkaa jaettu pienempiin osamoduleihin|
 | 24.04. | 2    | Luokkajakoa muutettu, uudet luokat Files ja Perftest|
-yhteensä    | 102 | |
+| 27.04. | 2    | Vertaisarvio, Draw-luokan piirtorutiinien muutos|
+yhteensä    | 104 | |
