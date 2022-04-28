@@ -21,6 +21,7 @@ def astar(map, diagonal, animate, drawnode):
     if diagonal:
         map.neighbors_diag()
         map.heuristic_euclidian(map.goal)
+#        map.heuristic_chebyshev(map.goal)
     else:
         map.neighbors_xy()
         map.heuristic_manhattan(map.goal)

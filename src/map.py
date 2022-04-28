@@ -152,6 +152,16 @@ class Map:
                 node.heuristic = sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
 
+    def heuristic_chebyshev(self, goal):
+        """ Eukliidinen heuristiikka
+        """
+        for row in self.nodes:
+            for node in row:
+                y1, x1 = node.get_pos()
+                y2, x2 = goal.get_pos()
+                node.heuristic = max(abs(x1 - x2), abs(y1 - y2))
+
+
     def track_path(self, diagonal):
         """ Polun track
         """

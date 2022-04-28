@@ -21,6 +21,7 @@ def idastar(map, diagonal, animate, drawnode):
     if diagonal:
         map.neighbors_diag()
         map.heuristic_euclidian(map.goal)
+#        map.heuristic_chebyshev(map.goal)
     else:
         map.neighbors_xy()
         map.heuristic_manhattan(map.goal)
@@ -38,6 +39,8 @@ def idastar(map, diagonal, animate, drawnode):
         newpaths = []
         while paths:
             path = heappop(paths)[1]
+
+            # Syvyyshaku kynnykseen asti
             res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, drawnode)
 
             # Maali löytyi
