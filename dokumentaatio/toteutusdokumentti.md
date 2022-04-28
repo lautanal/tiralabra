@@ -54,11 +54,14 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | A\*     | 1.0455  |
 | | | | | IDA\*   | 56.3359 |
 
-
 Mitatut Dijkstran ja A\* -menetelmän aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
-
 
 <img src="/dokumentaatio/png/aikavaativuus.png" width="750">
 
-
 A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.
+
+## Puutteet ja parannukset
+
+Pygame-kirjaston animaatio polun etsinnän etenemisestä on vielä toivottoman hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
+
+JPS-menetelmää ei voi suoraan käyttää painotetussa ruutuverkossa.  Sitä voisi kuitenkin käyttää kun verkon kaikki solmut ovat saman painoisia.  JPS-menetelmän implementaatio on vielä työn alla.
