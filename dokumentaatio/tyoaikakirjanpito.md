@@ -29,4 +29,6 @@
 | 23.04. | 2    | Ui-luokkaa jaettu pienempiin osamoduleihin|
 | 24.04. | 2    | Luokkajakoa muutettu, uudet luokat Files ja Perftest|
 | 27.04. | 2    | Vertaisarvio, Draw-luokan piirtorutiinien muutos|
-yhteensä    | 104 | |
+| 28.04. | 2    | JPS-menetelmän ohjelmointia|
+| 29.04. | 6    | JPS-menetelmän ohjelmointia, viikkoraportti|
+yhteensä    | 112 | |
