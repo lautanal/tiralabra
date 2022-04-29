@@ -137,6 +137,8 @@ class Draw:
             self.text1 = 'Metodi (m): A*'
         elif algorithm.method == 'I':
             self.text1 = 'Metodi (m): IDA*'
+        elif algorithm.method == 'J':
+            self.text1 = 'Metodi (m): Jump Point Search'
         if algorithm.diagonal:
             self.text2 = 'Polun tyyppi (d): viisto'
         else:
@@ -162,7 +164,7 @@ class Draw:
         """Laskennan tulokset näkyville
         """
         if result[0]:
-            self.text7 = f'Polun pituus {result[1]}'
+            self.text7 = f'Polun solmujen lukumäärä {result[1]}'
             self.text8 = f'Polun painotettu pituus {result[2]:.1f}'
             self.text9 = f'Laskenta vei {result[3]:.3f} sekuntia'
             self.text10 = ''
