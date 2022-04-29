@@ -13,7 +13,8 @@ def astar(map, diagonal, animate, drawnode):
         drawnode: Karttaruudun piirtofunktio
 
     Returns:
-        True, time (Tuple): Palauttaa arvon True, jos reitti löytyi ja laskentaan kuluneen ajan
+        True: Palauttaa arvon True, jos reitti löytyi
+        time: laskentaan kulunut aika
     """
     tstart = timer()
 
