@@ -29,6 +29,7 @@ class Map:
         self.nodes = []
         self.start = None
         self.goal = None
+        self.weighted = True
         self.make()
 
 
@@ -45,6 +46,7 @@ class Map:
     def generate_costs(self):
         """ Kartan random-generointi (solmujen painot)
         """
+        self.weighted = True
         costmap = [[random.randrange(1, 10, 1) for _ in range(self.ncols)] for _ in range(self.nrows)]
         for row in self.nodes:
             for node in row:
@@ -61,15 +63,17 @@ class Map:
     def set_costs(self, maparray):
         """ Kartan solmujen painoarvot (kartta luettu tiedostosta)
         """
+        self.weighted = False
         for row in self.nodes:
             for node in row:
                 if maparray[node.row][node.col] == 'B' or maparray[node.row][node.col] == '@':
                     node.cost = 1
                     node.set_blocked()
-                elif maparray[node.row][node.col] == '.':
+                elif maparray[node.row][node.col] == '.' or maparray[node.row][node.col] == '1':
                     node.cost = 1
                     node.reset_color()
                 else:
+                    self.weighted = True
                     node.cost = int(maparray[node.row][node.col])
                     node.reset_color()
 
@@ -181,6 +185,31 @@ class Map:
         if not diagonal:
             costsum = self.goal.costsum - self.goal.cost
         return count, costsum
+
+
+    def track_path_jps(self, path):
+        """ Polun track
+        """
+        for i in range(len(path)-1):
+            node0 = path[i]
+            col0 = node0.col
+            row0 = node0.row
+            node1 = path[i+1]
+            col1 = node1.col
+            row1 = node1.row
+            if col0 == col1:
+                nn = abs(row1 - row0)
+            else:
+                nn = abs(col1 - col0)
+            ic = (col1 - col0) // nn
+            ir = (row1 - row0) // nn
+            col = col0
+            row = row0
+            while col != col1 or row != row1:
+                node = self.nodes[row][col]
+                node.mark_path()
+                col += ic
+                row += ir
 
 
     def reset(self):

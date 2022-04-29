@@ -1,6 +1,7 @@
 from dijkstra import dijkstra
 from astar import astar
 from idastar import idastar
+from jps import jps
 
 
 class Algorithm:
@@ -37,6 +38,12 @@ class Algorithm:
         elif self.method == 'A':
             self.method = 'I'
         elif self.method == 'I':
+            if self.map.weighted:
+                self.method = 'D'
+            else:
+                self.method = 'J'
+                self.diagonal = True
+        elif self.method == 'J':
             self.method = 'D'
 
 
@@ -76,11 +83,15 @@ class Algorithm:
             result, time = astar(self.map, self.diagonal, self.animate, self.drawfunc)
         elif self.method == 'I':
             result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc)
+        elif self.method == 'J':
+            result, time, npath, costsum, path = jps(self.map, self.animate, self.drawfunc)
         if result:
-            # Polku
-            npath, costsum = self.map.track_path(self.diagonal)
+            if self.method == 'J':
+                self.map.track_path_jps(path)
+            else:
+                npath, costsum = self.map.track_path(self.diagonal)
             print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia\n' \
-                f'Polun pituus {npath}\nPolun painotettu pituus {costsum}')
+                f'Polun solmujen lukumäärä {npath}\nPolun painotettu pituus {costsum}')
             return True, npath, costsum, time
         else:
             return False, 0, 0, 0
