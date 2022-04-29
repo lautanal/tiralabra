@@ -21,7 +21,7 @@ Koodin yleisrakenne on seuraava:
 
 ## Käytetyt algoritmit ja tietorakenteet
 
-Parhaan reitin hakemisessa on käytetty kolmea vaihtoehtoista algoritmia:
+Parhaan reitin hakemisessa on käytetty neljää vaihtoehtoista algoritmia:
 
 ### Dijkstra
 Dijkstran menetelmä käyttää minimikekoa käsiteltävien solmujen tallennukseen.  Ohjelma ottaa keosta käsittelyyn aina solmun, jonka etäisyysarvo lähtösolmusta on pienin.  Tässä ohjelmassa minimikeko on toteutettu omalla Bheap-luokalla.
@@ -33,8 +33,7 @@ A* -menetelmä on hyvin samankaltainen Dijkstran menetelmän kanssa.  Lisäksi k
 IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
 ### Jump Point Search
-IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
-
+JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko (kaikki ruudut saman arvoisia) ja vinot siirtymät on sallittu.  Se voi nopeuttaa laskentaa huomattavasti kun tarpeettomien solmujen käsittely voidaan sivuuttaa.
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
@@ -68,4 +67,4 @@ A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heur
 
 Pygame-kirjaston animaatio polun etsinnän etenemisestä on vielä toivottoman hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
 
-JPS-menetelmää ei voi suoraan käyttää painotetussa ruutuverkossa.  Sitä voisi kuitenkin käyttää kun verkon kaikki solmut ovat saman painoisia.  JPS-menetelmän implementaatio on vielä työn alla.
+JPS-menetelmää ei voi suoraan käyttää painotetussa ruutuverkossa.  JPS-menetelmän toteutus ei ilmeisesti ole optimaalinen ja sen nopeutta voidaan parantaa.
