@@ -83,10 +83,11 @@ class Draw:
         self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (40, self.nrows*self.gsize + 60))
         self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (40, self.nrows*self.gsize + 80))
         self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (40, self.nrows*self.gsize + 100))
-        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 40))
-        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 60))
+        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (40, self.nrows*self.gsize + 120))
+        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
+        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 50))
         self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 80))
+        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 110))
 
         pygame.display.update()
 
@@ -139,7 +140,7 @@ class Draw:
         if algorithm.diagonal:
             self.text2 = 'Polun tyyppi (d): viisto'
         else:
-            self.text2 = 'Polun tyyppi (d): x, y'
+            self.text2 = 'Polun tyyppi (d): xy'
         if algorithm.animate:
             self.text3 = 'Animaatio (a): kyllä'
         else:
@@ -147,10 +148,10 @@ class Draw:
         self.text4 = f'Kartan koko: {self.nrows} x {self.ncols}'
         self.text5 = ''
         if self.map.start:
-            self.text5 = f'Lähtö x,y: {str(self.map.start.col)},{str(self.map.start.row)}      '
-        if self.map.goal:
-            self.text5 += f'Maali x,y: {str(self.map.goal.col)},{str(self.map.goal.row)}'
+            self.text5 = f'Lähtö x,y: {str(self.map.start.col)}, {str(self.map.start.row)}'
         self.text6 = ''
+        if self.map.goal:
+            self.text6 = f'Maali x,y: {str(self.map.goal.col)}, {str(self.map.goal.row)}'
         self.text7 = ''
         self.text8 = ''
         self.text9 = ''
@@ -161,21 +162,21 @@ class Draw:
         """Laskennan tulokset näkyville
         """
         if result[0]:
-            self.text6 = f'Polun pituus {result[1]}'
-            self.text7 = f'Polun painotettu pituus {result[2]:.1f}'
-            self.text8 = f'Laskenta vei {result[3]:.3f} sekuntia'
-            self.text9 = ''
+            self.text7 = f'Polun pituus {result[1]}'
+            self.text8 = f'Polun painotettu pituus {result[2]:.1f}'
+            self.text9 = f'Laskenta vei {result[3]:.3f} sekuntia'
+            self.text10 = ''
         else:
-            self.text6 = '*** REITTIÄ EI LÖYTYNYT ***'
-            self.text7 = ''
+            self.text7 = '*** REITTIÄ EI LÖYTYNYT ***'
             self.text8 = ''
             self.text9 = ''
+            self.text10 = ''
 
 
     def test_results(self, result):
         """Testilaskennan tulokset näkyville
         """
-        self.text6 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
-        self.text7 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
-        self.text8 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
-        self.text9 = ''
+        self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
+        self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
+        self.text9 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
+        self.text10 = ''

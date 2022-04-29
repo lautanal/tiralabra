@@ -1,7 +1,7 @@
 from ui import Ui
 
 
-MAXWIDTH = 1600
+MAXWIDTH = 1500
 MAXHEIGHT = 1200
 THEIGHT = 150
 NCOLS = 40
