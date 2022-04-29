@@ -32,6 +32,10 @@ A* -menetelmä on hyvin samankaltainen Dijkstran menetelmän kanssa.  Lisäksi k
 ### IDA*
 IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
+### Jump Point Search
+IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
+
+
 ## Suorituskykyvertailu ja aikavaativuudet
 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
