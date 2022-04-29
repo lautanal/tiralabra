@@ -6,14 +6,14 @@ Ohjelma on toteutettu Python-kielellä (versio 3.8.8) olio-ohjelmointia käyttä
 
 Koodin yleisrakenne on seuraava:
 
-<img src="/dokumentaatio/png/uml-kaavio-ver2.png" width="750">
+<img src="/dokumentaatio/png/uml-kaavio.png" width="750">
 
 - Pääohjelma bestroute.py käynnistää Ui-luokan määrittelemän käyttöliittymän
 - Ui-luokka luo Pygame-kirjaston avulla graafisen käyttöliittymän
 - Ui-luokka luo Map-luokan olion, joka mallintaa ruutukarttaa
 - Map luokka luo Node-luokan oliot, jotka mallintavat kartan ruutuja
 - Ui luokka luo Algorithm-luokan olion, joka käynnistää polun etsinnän
-- Algorithm-instanssi kutsuu käyttäjän valinnan mukaan tarvittavaa algoritmia (Dijkstra, A* tai IDA*)
+- Algorithm-instanssi kutsuu käyttäjän valinnan mukaan tarvittavaa algoritmia (Dijkstra, A*, IDA* tai JPS)
 - Dijkstra-algoritmi käyttää minimikeon tietorakenteena Bheap-luokkaa
 - Piirtorutiinit on keskitetty Draw-luokkaan
 - Tiedostojen luku ja kirjoitus tehdään Files-luokan avulla
