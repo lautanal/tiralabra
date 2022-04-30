@@ -54,6 +54,18 @@ class Map:
                 node.reset_color()
 
 
+    def generate_obstacles(self):
+        """ Kartan random-generointi (esteiden paikat)
+        """
+        self.weighted = False
+        costmap = [[random.randrange(1, 6, 1) for _ in range(self.ncols)] for _ in range(self.nrows)]
+        for row in self.nodes:
+            for node in row:
+                if costmap[node.row][node.col] == 5:
+                    node.blocked = True
+                node.reset_color()
+
+
     def on_map(self, row, col):
         """ Tarkastetaan, onko ruutu kartalla
         """
@@ -188,7 +200,7 @@ class Map:
 
 
     def track_path_jps(self, path):
-        """ Polun track
+        """ Polun track JPS
         """
         for i in range(len(path)-1):
             node0 = path[i]
@@ -207,7 +219,8 @@ class Map:
             row = row0
             while col != col1 or row != row1:
                 node = self.nodes[row][col]
-                node.mark_path()
+                if node != self.start:
+                    node.mark_path()
                 col += ic
                 row += ir
 

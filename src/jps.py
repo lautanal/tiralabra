@@ -83,6 +83,10 @@ def search_horizontal(map, node0, hor_dir, nn, dist, path, queue):
         node1 = map.nodes[row0][col1]
         if node1.blocked: 
             return False
+
+        # Ruudussa käyty       
+        if node1.visited: 
+            return False
         
         path = path.copy()
         path.append(node1)
@@ -92,6 +96,7 @@ def search_horizontal(map, node0, hor_dir, nn, dist, path, queue):
             return True 
 
         # Skannataan eteenpäin
+        node1.visited = True
         nn += 1        
         dist += 1
         col2 = col1 + hor_dir 
@@ -134,6 +139,10 @@ def search_vertical(map, node0, vert_dir, nn, dist, path, queue):
         # Este
         if node1.blocked: 
             return False
+
+        # Ruudussa käyty       
+        if node1.visited: 
+            return False
         
         path = path.copy()
         path.append(node1)
@@ -144,6 +153,7 @@ def search_vertical(map, node0, vert_dir, nn, dist, path, queue):
             return True 
 
         # Skannataan eteenpäin
+        node1.visited = True
         nn += 1        
         dist += 1
         row2 = row1 + vert_dir 
@@ -189,6 +199,10 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
         # Este        
         if node1.blocked: 
             return False 
+
+        # Ruudussa käyty       
+        if node1.visited: 
+            return False
         
         path = path.copy()
         path.append(node1)
@@ -199,6 +213,8 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
             return True
 #            return (node1, dist + sqrt(2), path) 
 
+        # Skannataan eteenpäin
+        node1.visited = True
         nn += 1        
         dist += sqrt(2)
         col2 = col1 + hor_dir

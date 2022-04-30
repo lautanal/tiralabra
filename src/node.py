@@ -84,6 +84,9 @@ class Node:
         """ Ruudun värin palautus normaaliksi
         """
         self.color = GRAYSHADES[self.cost]
+        if self.blocked:
+            self.color = BLACK
+
 
 
     def set_blocked(self):
