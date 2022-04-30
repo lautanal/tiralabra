@@ -186,9 +186,12 @@ class Ui:
             print('Editointi aloitus')
             self.edit = True
 
-        if event.key == pygame.K_q:
-            print('Editointi lopetus')
-            self.edit = False
+        # Kartan luku tiedostosta f.map
+        if event.key == pygame.K_f:
+            self.files.fname = 'f.map'
+            maparray = self.files.read()
+            if maparray:
+                self.newmap(maparray)
 
         # M: Method, metodin valinta
         if event.key == pygame.K_m:
@@ -199,6 +202,10 @@ class Ui:
         # N: New, uusi random-kartta
         if event.key == pygame.K_n:
             self.newmap(None)
+
+        if event.key == pygame.K_q:
+            print('Editointi lopetus')
+            self.edit = False
 
         # R: Reset, lasketun polun pyyhkiminen
         if event.key == pygame.K_r:
@@ -215,20 +222,19 @@ class Ui:
         # Suorituskykytesti
         if event.key == pygame.K_t:
             perftest = Perftest(self.MAXWIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
-            perftest.test()
+            perftest.test3()
+            del perftest
+
+        # Suorituskykytesti
+        if event.key == pygame.K_p:
+            perftest = Perftest(self.MAXWIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest.test4()
             del perftest
 
         # Kartan kirjoitus tiedostoon f.map
         if event.key == pygame.K_w:
             self.files.fname = 'f.map'
             self.files.write(self.map)
-
-        # Kartan luku tiedostosta f.map
-        if event.key == pygame.K_f:
-            self.files.fname = 'f.map'
-            maparray = self.files.read()
-            if maparray:
-                self.newmap(maparray)
 
         # Uusi kartta tiedostosta 1.map .... 9.map
         if event.key >= pygame.K_1 and event.key <= pygame.K_9:
@@ -264,9 +270,6 @@ class Ui:
         self.gsize = min(self.MAXWIDTH // self.ncols, self.MAXHEIGHT // self.nrows)
         self.width = self.gsize * self.ncols
         self.height = self.gsize * self.nrows + self.THEIGHT
-#        self.gsize = self.MAXWIDTH // self.ncols
-#        self.width = self.gsize * self.ncols
-#        self.height = self.width + self.THEIGHT
 
         # Uusi Pygame-ikkuna
         oldwin = self.win
@@ -282,7 +285,7 @@ class Ui:
         if maparray:
             self.map.set_costs(maparray)
         else:
-            self.map.generate_costs()
+            self.map.generate_obstacles()
 
         # Algoritmin ja piirtofunktion asetukset
         self.algorithm.set_map(self.map)
