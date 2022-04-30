@@ -85,9 +85,9 @@ class Draw:
         self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (40, self.nrows*self.gsize + 100))
         self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (40, self.nrows*self.gsize + 120))
         self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 50))
-        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 80))
-        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 110))
+        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 45))
+        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 70))
+        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 95))
 
         pygame.display.update()
 
@@ -175,10 +175,19 @@ class Draw:
             self.text10 = ''
 
 
-    def test_results(self, result):
+    def test3_results(self, result):
         """Testilaskennan tulokset näkyville
         """
         self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
         self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
         self.text9 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
         self.text10 = ''
+
+
+    def test4_results(self, result):
+        """Testilaskennan tulokset näkyville
+        """
+        self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
+        self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
+        self.text9 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
+        self.text10 = f'JPS keskimäärin: {result[3]:.4f} sekuntia'
