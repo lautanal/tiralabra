@@ -30,5 +30,6 @@
 | 24.04. | 2    | Luokkajakoa muutettu, uudet luokat Files ja Perftest|
 | 27.04. | 2    | Vertaisarvio, Draw-luokan piirtorutiinien muutos|
 | 28.04. | 2    | JPS-menetelmän ohjelmointia|
-| 29.04. | 6    | JPS-menetelmän ohjelmointia, viikkoraportti|
-yhteensä    | 112 | |
+| 29.04. | 6    | JPS-menetelmän ohjelmointia|
+| 30.04. | 1    | Viikkoraportti|
+yhteensä    | 113 | |
