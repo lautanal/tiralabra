@@ -21,6 +21,7 @@ class Ui:
         width: Pygame-ikkunan leveys pikseleinä
         height: Pygame-ikkunan korkeus pikseleinä
         map: Karttaruudukko
+        costmap: Kartan tyyppi, costmap=True -> painotettu ruutukartta
         drawfunc: Piirtorutiini
         algorithm: Algoritmien käynnistysrutiini
         files = Tiedostojen käsittelijä
@@ -55,6 +56,7 @@ class Ui:
 
         # Kartan alustus
         self.map = Map(self.nrows, self.ncols, self.gsize)
+        self.costmap = True
         self.map.generate_costs()
 
         # Algoritmi- ja piirtofunktioiden alustus
@@ -181,12 +183,12 @@ class Ui:
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
-        # Ruutujen editoinnin aloitus ja lopetus
+        # E: Edit, ruutujen editoinnin aloitus
         if event.key == pygame.K_e:
             print('Editointi aloitus')
             self.edit = True
 
-        # Kartan luku tiedostosta f.map
+        # F: Kartan luku tiedostosta f.map
         if event.key == pygame.K_f:
             self.files.fname = 'f.map'
             maparray = self.files.read()
@@ -199,10 +201,17 @@ class Ui:
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
-        # N: New, uusi random-kartta
-        if event.key == pygame.K_n:
+        # G: Generate, uusi painottamaton random-kartta
+        if event.key == pygame.K_g:
+            self.costmap = False
             self.newmap(None)
 
+        # N: New, uusi painotettu random-kartta
+        if event.key == pygame.K_n:
+            self.costmap = True
+            self.newmap(None)
+
+        # Q: Quit, ruutujen editoinnin lopetus
         if event.key == pygame.K_q:
             print('Editointi lopetus')
             self.edit = False
@@ -212,31 +221,32 @@ class Ui:
             self.drawfunc.reset()
             self.drawfunc.set_texts(self.algorithm)
 
-        # Laskennan aloitus
+        # S: Start, laskennan aloitus
         if event.key == pygame.K_s:
             if self.map.start and self.map.goal:
                 self.drawfunc.reset()
+                self.map.reset()
                 result = self.algorithm.calculate()
                 self.drawfunc.set_results(result)
 
-        # Suorituskykytesti
+        # T: Test, suorituskykytesti, 3 menetelmää, painotetut ruudut
         if event.key == pygame.K_t:
-            perftest = Perftest(self.MAXWIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test3()
             del perftest
 
-        # Suorituskykytesti
+        # P: Suorituskykytesti 4 menetelmää, painottamattomat ruudut, diagonaalireitti
         if event.key == pygame.K_p:
-            perftest = Perftest(self.MAXWIDTH, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test4()
             del perftest
 
-        # Kartan kirjoitus tiedostoon f.map
+        # W: Write, kartan kirjoitus tiedostoon f.map
         if event.key == pygame.K_w:
             self.files.fname = 'f.map'
             self.files.write(self.map)
 
-        # Uusi kartta tiedostosta 1.map .... 9.map
+        # 1,2,3,4,5,6,7,8,9: Uusi kartta tiedostosta 1.map .... 9.map
         if event.key >= pygame.K_1 and event.key <= pygame.K_9:
             fname = str(event.key-48) + '.map'
             self.files.fname = fname
@@ -244,13 +254,13 @@ class Ui:
             if maparray:
                 self.newmap(maparray)
 
-        # Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
+        # +: Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
         if event.key == pygame.K_PLUS and self.ncols < 500:
             self.ncols += 10
             self.nrows += 10
             self.newmap(None)
 
-        # Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
+        # -: Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
         if event.key == pygame.K_MINUS and self.ncols > 10:
             self.ncols -= 10
             self.nrows -= 10
@@ -284,8 +294,11 @@ class Ui:
         # Ruutujen cost-arvot
         if maparray:
             self.map.set_costs(maparray)
+        elif self.costmap:
+            self.map.generate_costs()
         else:
             self.map.generate_obstacles()
+
 
         # Algoritmin ja piirtofunktion asetukset
         self.algorithm.set_map(self.map)

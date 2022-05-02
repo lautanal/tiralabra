@@ -18,8 +18,7 @@ class Perftest:
         algorithm: Algoritmien käynnistysrutiini
     """
 
-
-    def __init__(self, WIDTH, THEIGHT, win, map, algorithm, drawfunc):
+    def __init__(self, WIDTH, HEIGHT, THEIGHT, win, map, algorithm, drawfunc):
         """Konstruktori, joka luo uuden Perftest-alkion
 
         Args:
@@ -32,6 +31,7 @@ class Perftest:
         """
 
         self.WIDTH = WIDTH
+        self.HEIGHT = HEIGHT
         self.THEIGHT = THEIGHT
         self.win = win
         self.map = map
@@ -39,17 +39,17 @@ class Perftest:
         self.drawfunc = drawfunc
         self.ncols = 100
         self.nrows = 100
-        self.gsize = WIDTH // self.ncols
+        self.gsize = min(WIDTH // self.ncols, HEIGHT // self.nrows)
         self.width = self.gsize * self.ncols
-        self.height = WIDTH + THEIGHT
+        self.height = self.gsize * self.nrows + THEIGHT
 
 
     def test3(self):
         """Suorituskyvyn testausrutiini.
         """
         results = [0, 0, 0, 0]
-        self.ncols = 80
-        self.nrows = 80
+        self.ncols = 100
+        self.nrows = 100
         ntests = 10
         for _ in range(ntests):
             self.newmap(False)
@@ -61,6 +61,7 @@ class Perftest:
             self.map.set_goal(node)
             for i in range(3):
                 self.drawfunc.reset()
+                self.map.reset()
                 result = self.algorithm.calculate()
                 self.drawfunc.drawmap()
                 results[i] += result[3]
@@ -86,8 +87,15 @@ class Perftest:
             node = self.map.nodes[self.nrows-1][self.ncols-1]
             node.set_goal()
             self.map.set_goal(node)
+            node = self.map.nodes[self.nrows-2][self.ncols-1]
+            node.clear()
+            node = self.map.nodes[self.nrows-2][self.ncols-2]
+            node.clear()
+            node = self.map.nodes[self.nrows-1][self.ncols-2]
+            node.clear()
             for i in range(4):
                 self.drawfunc.reset()
+                self.map.reset()
                 result = self.algorithm.calculate()
                 self.drawfunc.drawmap()
                 results[i] += result[3]
@@ -103,9 +111,9 @@ class Perftest:
         """Uusi kartta ja Pygame-ikkuna.
         """
         # Kartan parametrit
-        self.gsize = self.WIDTH // self.ncols
+        self.gsize = min(self.WIDTH // self.ncols, self.HEIGHT // self.nrows)
         self.width = self.gsize * self.ncols
-        self.height = self.width + self.THEIGHT
+        self.height = self.gsize * self.nrows + self.THEIGHT
 
         # Uusi Pygame-ikkuna
         oldwin = self.win
