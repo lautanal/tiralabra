@@ -86,7 +86,11 @@ class Map:
                     node.reset_color()
                 else:
                     self.weighted = True
-                    node.cost = int(maparray[node.row][node.col])
+                    try:
+                        node.cost = int(maparray[node.row][node.col])
+                    except:
+                        node.cost = 1
+                        node.set_blocked()
                     node.reset_color()
 
 
