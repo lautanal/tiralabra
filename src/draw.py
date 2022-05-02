@@ -1,5 +1,6 @@
 import pygame
 
+GREEN = (0, 255, 0)
 
 class Draw:
     """Luokka, jossa on Pygame-piirtorutiinit
@@ -95,15 +96,17 @@ class Draw:
     def drawnode(self, node):
         """Yhden karttaruudun piirto
         """
-        font = pygame.font.SysFont('Arial', self.gsize // 2)
-        pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
-        if node.cost < 10:
-            self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                    (node.x+2*(self.gsize//5), node.y+self.gsize//4))
-        else:
-            self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                    (node.x+self.gsize//3, node.y+self.gsize//4))
-        pygame.display.update()
+        if not node.start:
+            node.color = GREEN
+            pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
+            font = pygame.font.SysFont('Arial', self.gsize // 2)
+            if node.cost < 10:
+                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+                        (node.x+2*(self.gsize//5), node.y+self.gsize//4))
+            else:
+                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+                        (node.x+self.gsize//3, node.y+self.gsize//4))
+            pygame.display.update()
 
 
     def reset(self):

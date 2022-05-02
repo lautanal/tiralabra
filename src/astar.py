@@ -58,8 +58,10 @@ def astar(map, diagonal, animate, drawnode):
                 neighbor.costsum = newcostsum
                 heappush(queue,(newcostsum + neighbor.heuristic, count, neighbor))
 
+        # Merkitään solmu käsitellyksi
+        node.set_visited()
+
         # Animaatio
-        node.set_visited(animate)
         if animate:
             drawnode(node)
 

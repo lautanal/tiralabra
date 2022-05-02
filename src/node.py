@@ -90,6 +90,11 @@ class Node:
             self.color = BLACK
 
 
+    def set_color(self, color):
+        """ Ruudun väritys
+        """
+        self.color = color
+
 
     def set_blocked(self):
         """ Esteruutu
@@ -116,53 +121,51 @@ class Node:
         return self
 
 
-    def set_visited(self, animate):
+    def set_visited(self):
         """ Vierailtu ruutu
         """
         self.visited = True
-        if animate and not self.start:
-            self.color = GREEN
 
 
-    def set_visited_jps(self, dir, animate):
+    def set_visited_jps(self, dir):
         """ Vierailtu ruutu ja skannaussuunta
         """
-        if animate and not self.start:
-            self.color = GREEN
-        if dir ==  (1,0):
+#        if animate and not self.start:
+#            self.color = RED
+        if dir == (1,0):
             self.visited_jps[0] = 1
         elif dir == (1,1):
             self.visited_jps[1] = 1
-        elif dir == (1,1):
-            self.visited_jps[2] = 1
         elif dir == (0,1):
-            self.visited_jps[3] = 1
+            self.visited_jps[2] = 1
         elif dir == (-1,1):
-            self.visited_jps[4] = 1
+            self.visited_jps[3] = 1
         elif dir == (-1,0):
-            self.visited_jps[5] = 1
+            self.visited_jps[4] = 1
         elif dir == (-1,-1):
-            self.visited_jps[6] = 1
+            self.visited_jps[5] = 1
         elif dir == (0,-1):
+            self.visited_jps[6] = 1
+        elif dir == (1,-1):
             self.visited_jps[7] = 1
 
 
     def check_visited_jps(self, dir):
         """ Tarkistetaan reitti jo tutkittu
         """
-        if dir ==  (1,0):
+        if dir == (1,0):
             return self.visited_jps[0] == 1
         elif dir == (1,1):
             return self.visited_jps[1] == 1
-        elif dir == (1,1):
-            return self.visited_jps[2] == 1
         elif dir == (0,1):
-            return self.visited_jps[3] == 1
+            return self.visited_jps[2] == 1
         elif dir == (-1,1):
-            return self.visited_jps[4] == 1
+            return self.visited_jps[3] == 1
         elif dir == (-1,0):
-            return self.visited_jps[5] == 1
+            return self.visited_jps[4] == 1
         elif dir == (-1,-1):
-            return self.visited_jps[6] == 1
+            return self.visited_jps[5] == 1
         elif dir == (0,-1):
+            return self.visited_jps[6] == 1
+        elif dir == (1,-1):
             return self.visited_jps[7] == 1

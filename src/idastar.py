@@ -82,14 +82,14 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
     node = path[-1]
     costsum = node.costsum
 
-    # Animaatio
-    if animate:
-        node.set_visited(animate)
-        drawnode(node)
-
     # Maali löytyi
     if node == goal:
         return -1
+
+    # Animaatio
+    node.set_visited()
+    if animate:
+        drawnode(node)
 
     # Hakukynnys ylittyi
     estimate = costsum + node.heuristic
