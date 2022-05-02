@@ -50,10 +50,11 @@ class Algorithm:
     def set_diagonal(self):
         """Polun tyyppi (diagonal / xy)
         """
-        if self.diagonal:
-            self.diagonal = False
-        else:
-            self.diagonal = True
+        if not self.method == 'J':
+            if self.diagonal:
+                self.diagonal = False
+            else:
+                self.diagonal = True
 
 
     def set_animate(self):
