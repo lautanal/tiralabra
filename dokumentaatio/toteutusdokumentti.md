@@ -67,4 +67,4 @@ A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heur
 
 Pygame-kirjaston animaatio polun etsinnän etenemisestä on vielä toivottoman hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
 
-JPS-menetelmää ei voi suoraan käyttää painotetussa ruutuverkossa.  JPS-menetelmän toteutus ei ilmeisesti ole optimaalinen ja sen nopeutta voidaan parantaa.
+JPS-menetelmää ei voi käyttää painotetussa ruutuverkossa.  JPS-menetelmä edellyttää myös, että vinot siirtymät karttaruutujen välillä sallitaan.
