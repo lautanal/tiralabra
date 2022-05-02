@@ -37,7 +37,7 @@ JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko 
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
-Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä.
+Suorituskykytestit on tehty eri kokoisilla painotetuilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä (Dijkstra, A* ja IDA*).
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
