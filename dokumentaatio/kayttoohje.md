@@ -41,16 +41,17 @@ c : clear, poistaa lähtö- ja maalipisteet
 
 r : reset, pyyhkii lasketun reitin
 
-m : metodi, Dijkstra / A* / IDA*
+m : metodi, Dijkstra / A* / IDA* / JPS
 
 d : diagonal, polun tyyppi, vain x ja y-suunnat / väli-ilmansuunnat sallittu
 
 a : animointi, päälle / pois
 
-n: new, generoi uuden random-kartan
+n: new, generoi uuden painotetun random-kartan
 
-t : test, ohjelma käy läpi kymmenen random-testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan
-    eri menetelmille
+g: generate, generoi uuden painottamattoman random-kartan (kaikki ruudut saman arvoisia)
+
+t : test, ohjelma käy läpi kymmenen painotettua random-testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan eri menetelmille
 
 \+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
 
