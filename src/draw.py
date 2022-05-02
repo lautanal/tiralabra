@@ -111,7 +111,6 @@ class Draw:
         """
         for row in self.map.nodes:
             for node in row:
-                node.visited = False
                 if not node.start and not node.goal and not node.blocked:
                     node.reset_color()
 
