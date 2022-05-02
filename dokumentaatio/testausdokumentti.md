@@ -22,6 +22,6 @@ Graafisen käyttöliittymän avulla varmistetaan helposti, että eri algoritmit 
 
 Ottamalla animointi käyttöön, voidaan lisäksi tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
-<img src="/dokumentaatio/png/testi05.png" width="750">
+<img src="/dokumentaatio/png/testi06.png" width="750">
 
 Suorituskykyä on vertailu eri kokoisilla random-kartoilla.  Paras reitti on haettu samalla kartalla usealla eri menetelmällä.  Samalla on tarkastettu, että menetelmät antavat yhtäpitävät tulokset (polut voivat joskus olla hieman eroavat jos löytyy useampi yhtä hyvä reitti).  Suorituskykytestin tulokset löytyvät toteutusdokumentista.
