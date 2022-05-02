@@ -65,6 +65,8 @@ A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heur
 
 ## Puutteet ja parannukset
 
+JPS-menetelmää ei voi käyttää painotetussa ruutuverkossa.  JPS-menetelmä edellyttää myös, että vinot siirtymät karttaruutujen välillä sallitaan.
+
 Pygame-kirjaston animaatio polun etsinnän etenemisestä on vielä toivottoman hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
 
-JPS-menetelmää ei voi käyttää painotetussa ruutuverkossa.  JPS-menetelmä edellyttää myös, että vinot siirtymät karttaruutujen välillä sallitaan.
+IDA*- ja JPS-menetelmien suorituskykyä pystyy todennäköisesti parantamaan reilusti ottamalla käyttöön erilaisia tarkistuksia ja optimointeja.
