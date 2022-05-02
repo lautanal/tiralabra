@@ -20,14 +20,12 @@ def jps(map, animate, drawnode):
     """
     tstart = timer()
 
-    # Naapurit ja heuristiikka
+    # Heuristiikka
     map.heuristic_euclidian(map.goal)
 #        map.heuristic_chebyshev(map.goal)
 
     # Alkuasetukset
-#    map.start.costsum = 0
     queue = []
-    heappush(queue, (0, map.start, (1,-1), 0, 0, [map.start]))
     heappush(queue, (0, map.start, (1,0), 0, 0, [map.start]))
     heappush(queue, (0, map.start, (1,1), 0, 0, [map.start]))
     heappush(queue, (0, map.start, (0,1), 0, 0, [map.start]))
@@ -35,6 +33,7 @@ def jps(map, animate, drawnode):
     heappush(queue, (0, map.start, (-1,0), 0, 0, [map.start]))
     heappush(queue, (0, map.start, (-1,-1), 0, 0, [map.start]))
     heappush(queue, (0, map.start, (0,-1), 0, 0, [map.start]))
+    heappush(queue, (0, map.start, (1,-1), 0, 0, [map.start]))
 
     # Prioriteettijono-looppi
     while queue:
@@ -46,6 +45,11 @@ def jps(map, animate, drawnode):
         if node == map.goal:
             return True, timer() - tstart, nn, dist, path
 
+        # Reitti on jo käyty
+        if node.check_visited_jps(dir):
+            continue
+
+        # Eri suuntien skannaukset
         if dir == (1,0) or dir == (-1,0):
             search_horizontal(map, node, dir[0], nn, dist, path, queue)
         elif dir == (0,1) or dir == (0,-1):  
@@ -54,7 +58,7 @@ def jps(map, animate, drawnode):
             search_diagonal(map, node, dir, nn, dist, path, queue)
 
         # Animaatio
-        node.set_visited(animate)
+        node.set_visited_jps(dir, animate)
         if animate:
             drawnode(node)
 
@@ -84,19 +88,16 @@ def search_horizontal(map, node0, hor_dir, nn, dist, path, queue):
         if node1.blocked: 
             return False
 
-        # Ruudussa käyty       
-        if node1.visited: 
-            return False
-        
+        # Lisätään käsiteltävä solmu reitille
         path = path.copy()
         path.append(node1)
+
         # Maali
         if node1 == map.goal:
             heappush(queue, (dist+1, node1, (hor_dir, 0), nn, dist+1, path))
             return True 
 
         # Skannataan eteenpäin
-        node1.visited = True
         nn += 1        
         dist += 1
         col2 = col1 + hor_dir 
@@ -105,10 +106,12 @@ def search_horizontal(map, node0, hor_dir, nn, dist, path, queue):
         # Tarkistetaan, onko jump point        
         if map.on_map(row0-1, col2) and not map.nodes[row0-1][col2].blocked and map.nodes[row0-1][col1].blocked:
             jumppoint = True
+#            node1.visited = True
             heappush(queue, (dist+node1.heuristic, node1, (hor_dir, -1), nn, dist, path))
         
         if map.on_map(row0+1, col2) and not map.nodes[row0+1][col2].blocked and map.nodes[row0+1][col1].blocked:
             jumppoint = True
+#           node1.visited = True
             heappush(queue, (dist+node1.heuristic, node1, (hor_dir, 1), nn, dist, path))
         
         if jumppoint:
@@ -140,10 +143,7 @@ def search_vertical(map, node0, vert_dir, nn, dist, path, queue):
         if node1.blocked: 
             return False
 
-        # Ruudussa käyty       
-        if node1.visited: 
-            return False
-        
+        # Lisätään käsiteltävä solmu reitille
         path = path.copy()
         path.append(node1)
 
@@ -153,7 +153,6 @@ def search_vertical(map, node0, vert_dir, nn, dist, path, queue):
             return True 
 
         # Skannataan eteenpäin
-        node1.visited = True
         nn += 1        
         dist += 1
         row2 = row1 + vert_dir 
@@ -162,10 +161,12 @@ def search_vertical(map, node0, vert_dir, nn, dist, path, queue):
         # Tarkistetaan, onko jump point        
         if map.on_map(row2, col0-1) and not map.nodes[row2][col0-1].blocked and map.nodes[row1][col0-1].blocked:
             jumppoint = True
+#            node1.visited = True
             heappush(queue, (dist+node1.heuristic, node1, (-1, vert_dir), nn, dist, path))
         
         if map.on_map(row2, col0+1) and not map.nodes[row2][col0+1].blocked and map.nodes[row1][col0+1].blocked:
             jumppoint = True
+#            node1.visited = True
             heappush(queue, (dist+node1.heuristic, node1, (1, vert_dir), nn, dist, path))
         
         if jumppoint:
@@ -200,10 +201,7 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
         if node1.blocked: 
             return False 
 
-        # Ruudussa käyty       
-        if node1.visited: 
-            return False
-        
+        # Lisätään käsiteltävä solmu reitille
         path = path.copy()
         path.append(node1)
 
@@ -211,10 +209,8 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
         if node1 == map.goal:
             heappush(queue, (dist+sqrt(2), node1, (hor_dir, 0), nn, dist+sqrt(2), path))
             return True
-#            return (node1, dist + sqrt(2), path) 
 
         # Skannataan eteenpäin
-        node1.visited = True
         nn += 1        
         dist += sqrt(2)
         col2 = col1 + hor_dir
@@ -233,6 +229,7 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
 
         # Jump point löytyi
         if hsearch or vsearch:
+#            node1.visited = True
             heappush(queue, (dist+node1.heuristic, node1, (hor_dir, vert_dir), nn, dist, path))
             return True
 

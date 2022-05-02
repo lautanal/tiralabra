@@ -175,7 +175,7 @@ class Map:
 
 
     def heuristic_chebyshev(self, goal):
-        """ Eukliidinen heuristiikka
+        """ Chebyshev heuristiikka
         """
         for row in self.nodes:
             for node in row:
@@ -231,3 +231,4 @@ class Map:
         for row in self.nodes:
             for node in row:
                 node.visited = False
+                node.visited_jps = [0,0,0,0,0,0,0,0]

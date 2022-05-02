@@ -21,6 +21,7 @@ class Node:
         goal: Ruutu on maaliruutu
         blocked: Ruutu on este
         visited: Ruudussa on vierailtu
+        visited_jps: Ruudun kautta kulkeva reitti on tutkittu (JPS)
         previous: Edellinen ruutu reitillä
         cost: Ruudun painoarvo
         costsum: Reitin hinta (tai aika)
@@ -45,6 +46,7 @@ class Node:
         self.goal = False
         self.blocked = False
         self.visited = False
+        self.visited_jps = [0,0,0,0,0,0,0,0]
         self.previous = None
         self.neighbors = []
         self.cost = 1
@@ -120,3 +122,47 @@ class Node:
         self.visited = True
         if animate and not self.start:
             self.color = GREEN
+
+
+    def set_visited_jps(self, dir, animate):
+        """ Vierailtu ruutu ja skannaussuunta
+        """
+        if animate and not self.start:
+            self.color = GREEN
+        if dir ==  (1,0):
+            self.visited_jps[0] = 1
+        elif dir == (1,1):
+            self.visited_jps[1] = 1
+        elif dir == (1,1):
+            self.visited_jps[2] = 1
+        elif dir == (0,1):
+            self.visited_jps[3] = 1
+        elif dir == (-1,1):
+            self.visited_jps[4] = 1
+        elif dir == (-1,0):
+            self.visited_jps[5] = 1
+        elif dir == (-1,-1):
+            self.visited_jps[6] = 1
+        elif dir == (0,-1):
+            self.visited_jps[7] = 1
+
+
+    def check_visited_jps(self, dir):
+        """ Tarkistetaan reitti jo tutkittu
+        """
+        if dir ==  (1,0):
+            return self.visited_jps[0] == 1
+        elif dir == (1,1):
+            return self.visited_jps[1] == 1
+        elif dir == (1,1):
+            return self.visited_jps[2] == 1
+        elif dir == (0,1):
+            return self.visited_jps[3] == 1
+        elif dir == (-1,1):
+            return self.visited_jps[4] == 1
+        elif dir == (-1,0):
+            return self.visited_jps[5] == 1
+        elif dir == (-1,-1):
+            return self.visited_jps[6] == 1
+        elif dir == (0,-1):
+            return self.visited_jps[7] == 1
