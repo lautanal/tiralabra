@@ -29,11 +29,13 @@ def dijkstra(map, diagonal, animate, drawnode):
     bheap = Bheap(map.nrows*map.ncols)
     bheap.put((0, 0, map.start))
     count = 0
+    drawcount = 0
 
     # Binäärikeko-looppi
     while not bheap.empty():
         # Seuraava solmu keosta
         node = bheap.get()[2]
+        drawcount += 1
 
         # Maali löytyi
         if node == map.goal:
@@ -60,7 +62,11 @@ def dijkstra(map, diagonal, animate, drawnode):
 
         # Animaatio
         if animate:
-            drawnode(node)
+            if drawcount > 20:
+                drawnode(node, True)
+                drawcount = 0
+            else:
+                drawnode(node, False)
 
     # Polkua ei löytynyt
     tend = timer()

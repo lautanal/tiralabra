@@ -32,6 +32,8 @@ def idastar(map, diagonal, animate, drawnode):
     threshold = map.start.heuristic
     paths = []
     heappush(paths, (0, [map.start]))
+    drawcount = 0
+    update = False
 
     # Hakulooppi
     while paths:
@@ -40,9 +42,15 @@ def idastar(map, diagonal, animate, drawnode):
         newpaths = []
         while paths:
             path = heappop(paths)[1]
+            if drawcount < 20:
+                update = False
+                drawcount += 1
+            else:
+                update = True
+                drawcount = 0
 
             # Syvyyshaku kynnykseen asti
-            res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, drawnode)
+            res = idastar_search(path, threshold, map.goal, newpaths, diagonal, animate, drawnode, update)
 
             # Maali löytyi
             if res < 0:
@@ -64,7 +72,7 @@ def idastar(map, diagonal, animate, drawnode):
     return False, 0
 
 
-def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
+def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode, update):
     """IDA* -syvyyshakurutiini
 
     Attributes:
@@ -89,7 +97,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
     # Animaatio
     node.set_visited()
     if animate:
-        drawnode(node)
+        drawnode(node, update)
 
     # Hakukynnys ylittyi
     estimate = costsum + node.heuristic
@@ -102,7 +110,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
     for neighbor in node.neighbors:
         if neighbor not in path:
             deltacost = neighbor.cost
-            # Vino reitti
+            # Viisto polku
             if diagonal:
                 deltacost = sqrt((node.row - neighbor.row)**2 + \
                     (node.col - neighbor.col)**2) * (node.cost + neighbor.cost)/2
@@ -113,7 +121,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode):
                 neighbor.costsum = newcostsum
                 neighbor.previous = node
                 path.append(neighbor)
-                res = idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode)
+                res = idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode, update)
                 if res < 0:
                     return res
                 elif res < tmin:

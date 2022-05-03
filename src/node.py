@@ -130,8 +130,6 @@ class Node:
     def set_visited_jps(self, dir):
         """ Vierailtu ruutu ja skannaussuunta
         """
-#        if animate and not self.start:
-#            self.color = RED
         if dir == (1,0):
             self.visited_jps[0] = 1
         elif dir == (1,1):

@@ -34,11 +34,13 @@ def jps(map, animate, drawnode):
     heappush(queue, (0, 0, 0, map.start, (-1,-1), [map.start]))
     heappush(queue, (0, 0, 0, map.start, (0,-1), [map.start]))
     heappush(queue, (0, 0, 0, map.start, (1,-1), [map.start]))
+    drawcount = 0
 
     # Prioriteettijono-looppi
     while queue:
         # Seuraava solmu keosta
         est, dist, nn, node, dir, path = heappop(queue)
+        drawcount += 1
 #        print(f'ROW: {node.row} COL: {node.col} DIR: {dir} NN: {nn} DIST:{dist}')
 
         # Maali löytyi
@@ -60,7 +62,11 @@ def jps(map, animate, drawnode):
 
         # Animaatio
         if animate:
-            drawnode(node)
+            if drawcount > 20:
+                drawnode(node, True)
+                drawcount = 0
+            else:
+                drawnode(node, False)
 
     # Reittiä ei löytynyt
     tend = timer()

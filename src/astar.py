@@ -32,11 +32,13 @@ def astar(map, diagonal, animate, drawnode):
     queue = []
     heappush(queue, (0, 0, map.start))
     count = 0
+    drawcount = 0
 
     # Prioriteettijono-looppi
     while queue:
         # Seuraava solmu keosta
         node = heappop(queue)[2]
+        drawcount += 1
 
         # Maali löytyi
         if node == map.goal:
@@ -63,7 +65,11 @@ def astar(map, diagonal, animate, drawnode):
 
         # Animaatio
         if animate:
-            drawnode(node)
+            if drawcount > 20:
+                drawnode(node, True)
+                drawcount = 0
+            else:
+                drawnode(node, False)
 
     # Reittiä ei löytynyt
     tend = timer()
