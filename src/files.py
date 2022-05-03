@@ -24,9 +24,12 @@ class Files:
             dirname = os.path.dirname(__file__)
             data_file_path = os.path.join(dirname, '..', 'data', 'maps', self.fname)            
             with open(data_file_path) as file:
+                irow = 0
                 for row in file:
-                    row = row.replace('\n', '')
-                    maparray.append([char for char in row])
+                    irow += 1
+                    if irow > 4:
+                        row = row.replace('\n', '')
+                        maparray.append([char for char in row])
             print(f'Karttatiedosto {self.fname} luettu')
         except FileNotFoundError:
             print('Tiedostoa ei löytynyt')
@@ -41,11 +44,21 @@ class Files:
         dirname = os.path.dirname(__file__)
         data_file_path = os.path.join(dirname, '..', 'data', 'maps', self.fname)            
         with open(data_file_path, 'w') as file:
+            s = 'type octile\n'
+            file.write(s)
+            s = 'height ' + str(len(map.nodes)) + '\n'
+            file.write(s)
+            s = 'width ' + str(len(map.nodes[0])) + '\n'
+            file.write(s)
+            s = 'map\n'
+            file.write(s)
             for row in map.nodes:
                 s = ''
                 for node in row:
                     if node.blocked:
-                        s += 'B'
+                        s += '@'
+                    elif node.cost == 1:
+                        s += '.'
                     else:
                         s += str(node.cost)
                 s += '\n'
