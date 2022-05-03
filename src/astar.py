@@ -65,11 +65,11 @@ def astar(map, diagonal, animate, drawnode):
 
         # Animaatio
         if animate:
-            if drawcount > 50:
+            if drawcount < 200:
+                drawnode(node, False)
+            else:
                 drawnode(node, True)
                 drawcount = 0
-            else:
-                drawnode(node, False)
 
     # Reittiä ei löytynyt
     tend = timer()
