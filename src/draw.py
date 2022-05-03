@@ -93,7 +93,7 @@ class Draw:
         pygame.display.update()
 
 
-    def drawnode(self, node):
+    def drawnode(self, node, update):
         """Yhden karttaruudun piirto
         """
         if not node.start:
@@ -106,7 +106,8 @@ class Draw:
             else:
                 self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
                         (node.x+self.gsize//3, node.y+self.gsize//4))
-            pygame.display.update()
+            if update:
+                pygame.display.update()
 
 
     def reset(self):
@@ -178,7 +179,7 @@ class Draw:
 
 
     def test3_results(self, result):
-        """Testilaskennan tulokset näkyville
+        """Suoritusarvovertailun tulokset näkyville
         """
         self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
         self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
@@ -187,7 +188,7 @@ class Draw:
 
 
     def test4_results(self, result):
-        """Testilaskennan tulokset näkyville
+        """Suoritusarvovertailun tulokset näkyville
         """
         self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
         self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
