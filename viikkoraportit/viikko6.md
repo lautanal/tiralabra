@@ -1,6 +1,6 @@
 ## Viikko 6
 
-<img src="/dokumentaatio/png/viikko6a.png" width="750">
+<img src="/dokumentaatio/png/viikko6b.png" width="750">
 
 ### Jump Point Search
 
@@ -10,7 +10,7 @@ JPS-menetelmällä voidaan saavuttaa tietynlaisissa verkoissa merkittävä etu v
 
 ## Suorituskykyvertailu random-kartoilla
 
-Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Kartan ruudut ovat ilman painokertoimia ja viistot siirtymät ruutujen välillä on sallittu.  Paras reitti on haettu kullakin kartalla neljällä eri menetelmällä (Dijkstra, A*, IDA* ja JPS).
+Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Kartan ruudut ovat ilman painokertoimia ja polku voi kulkea viistoon ruutujen välillä.  Paras reitti on haettu kullakin kartalla neljällä eri menetelmällä (Dijkstra, A*, IDA* ja JPS).
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
