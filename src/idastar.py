@@ -42,7 +42,7 @@ def idastar(map, diagonal, animate, drawnode):
         newpaths = []
         while paths:
             path = heappop(paths)[1]
-            if drawcount < 20:
+            if drawcount < 50:
                 update = False
                 drawcount += 1
             else:

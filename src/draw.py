@@ -61,6 +61,7 @@ class Draw:
         for row in self.map.nodes:
             for node in row:
                 pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
+                # Ruutujen numerot
 #                if not node.blocked:
 #                    if node.cost < 10:
 #                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
@@ -69,10 +70,11 @@ class Draw:
 #                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
 #                                (node.x+self.gsize//3, node.y+self.gsize//4))
 
-        for i in range(self.nrows):
-            pygame.draw.line(self.win, (128, 128, 128), (0, i * self.gsize), (self.width, i * self.gsize))
-        for j in range(self.ncols):
-            pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
+        # Ruutujen reunat
+#        for i in range(self.nrows):
+#            pygame.draw.line(self.win, (128, 128, 128), (0, i * self.gsize), (self.width, i * self.gsize))
+#        for j in range(self.ncols):
+#            pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
 
         pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width,
                 self.height-self.nrows*self.gsize))

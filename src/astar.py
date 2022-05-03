@@ -65,7 +65,7 @@ def astar(map, diagonal, animate, drawnode):
 
         # Animaatio
         if animate:
-            if drawcount > 20:
+            if drawcount > 50:
                 drawnode(node, True)
                 drawcount = 0
             else:
