@@ -33,7 +33,7 @@ A* -menetelmä on hyvin samankaltainen Dijkstran menetelmän kanssa.  Lisäksi k
 IDA* -menetelmä yhdistää A*-menetelmään syvyyshaun.  Syvyyshaku etenee käsiteltävästä solmusta syvemmälle verkkoon kunnes saavutetaan ennalta määritelty hakukynnys. Seuraavalla hakukierroksella jatketaan solmusta, jolla on pienin hakukynnyksen ylittävä arvo.  IDA* -menetelmän minimikeko on toteutettu Pythonin standardikirjaston heapq-moduulin avulla.
 
 ### Jump Point Search
-JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko (kaikki ruudut saman arvoisia) ja vinot siirtymät on sallittu.  Se voi nopeuttaa laskentaa huomattavasti kun tarpeettomien solmujen käsittely voidaan sivuuttaa.
+JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko (kaikki ruudut saman arvoisia) ja viistoon siirtymät polussa on sallittu.  Se voi nopeuttaa laskentaa huomattavasti kun tarpeettomien solmujen käsittely voidaan ohittaa.
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
@@ -69,4 +69,4 @@ JPS-menetelmää ei voi käyttää painotetussa ruutuverkossa.  JPS-menetelmä e
 
 Pygame-kirjaston animaatio polun etsinnän etenemisestä on vielä toivottoman hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
 
-IDA*- ja JPS-menetelmien suorituskykyä pystyy todennäköisesti parantamaan reilusti ottamalla käyttöön erilaisia tarkistuksia ja optimointeja.
+IDA*-menetelmän suorituskykyä pystyisi todennäköisesti parantamaan reilusti ottamalla käyttöön erilaisia tarkistuksia ja optimointeja.  Ajan puutteen vuoksi se jää tehtäväksi tulevaisuudessa.
