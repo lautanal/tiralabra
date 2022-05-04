@@ -20,8 +20,10 @@ Graafinen käyttöliittymä helpottaa huomattavasti ohjelman toiminnan varmistam
 
 Graafisen käyttöliittymän avulla varmistetaan helposti, että eri algoritmit antavat aina saman lopputuloksen samalla karttapohjalla ja samoilla lähtöarvoilla.
 
-Ottamalla animointi käyttöön, voidaan lisäksi tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
+Ottamalla animaatio käyttöön, voidaan lisäksi tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
+\
 <img src="/dokumentaatio/png/testi06.png" width="750">
+\
 
-Suorituskykyä on vertailu eri kokoisilla random-kartoilla.  Paras reitti on haettu samalla kartalla usealla eri menetelmällä.  Samalla on tarkastettu, että menetelmät antavat yhtäpitävät tulokset (polut voivat joskus olla hieman eroavat jos löytyy useampi yhtä hyvä reitti).  Suorituskykytestin tulokset löytyvät toteutusdokumentista.
+Suorituskykyä on vertailu eri kokoisilla random-kartoilla.  Paras reitti on haettu samalla kartalla eri menetelmillä.  Suorituskykyvertailun lisäksi on tarkastettu, että menetelmät antavat yhtäpitävät tulokset (polut voivat joskus olla hieman eroavat jos löytyy useampi yhtä hyvä reitti).  Suorituskykytestin tulokset löytyvät toteutusdokumentista.
