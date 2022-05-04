@@ -59,7 +59,7 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | A\*     | 1.0455  |
 | | | | | IDA\*   | 56.3359 |
 
-
+\n
 Painottamattomat kartat.  Kartan ruudut ovat saman arvoisia ja polku voi kulkea viistoon ruutujen välillä.
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
@@ -85,7 +85,7 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | IDA\*   | 109.4129 |
 | | | | | JPS | 2.6955 |
 
-
+\n
 Mitatut Dijkstran, A\*- ja JPS-menetelmien aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
 <img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
