@@ -32,4 +32,7 @@
 | 28.04. | 2    | JPS-menetelmän ohjelmointia|
 | 29.04. | 6    | JPS-menetelmän ohjelmointia|
 | 30.04. | 1    | Viikkoraportti|
-yhteensä    | 113 | |
+| 03.05. | 2    | Animaation virittelyä|
+| 04.05. | 2    | Animaation virittelyä, muutoksia piirtorutiineihin|
+
+yhteensä    | 117 | |
