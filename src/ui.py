@@ -41,16 +41,15 @@ class Ui:
 
         # Ikkunan kokoparametrit
         self.MAXWIDTH = MAXWIDTH
-        self.MAXHEIGHT = MAXHEIGHT
+        self.MAXHEIGHT = MAXHEIGHT - THEIGHT
         self.THEIGHT = THEIGHT
-        self.gsize = min(MAXWIDTH // ncols, MAXHEIGHT // nrows)
+        self.gsize = min(self.MAXWIDTH // ncols, self.MAXHEIGHT // nrows)
         self.width = self.gsize * ncols
         self.height = self.gsize * nrows + THEIGHT
         self.nrows = nrows
         self.ncols = ncols
 
         # Pygame-ikkunan luonti
-        pygame.init()
         pygame.display.set_caption('Paras reitti')
         self.win = pygame.display.set_mode((self.width, self.height))
 

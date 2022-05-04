@@ -1,8 +1,9 @@
+import pygame
 from ui import Ui
 
 
-MAXWIDTH = 1600
-MAXHEIGHT = 1200
+WIDTHMARGIN = 0
+HEIGHTMARGIN = 150
 THEIGHT = 150
 NCOLS = 100
 NROWS = 100
@@ -11,7 +12,11 @@ NROWS = 100
 def main():
     """Käyttöliittymän käynnistys.
     """
-    ui = Ui(MAXWIDTH, MAXHEIGHT, THEIGHT, NROWS, NCOLS)
+    pygame.init()
+    infoObject = pygame.display.Info()
+    maxw = infoObject.current_w - WIDTHMARGIN
+    maxh = infoObject.current_h - HEIGHTMARGIN
+    ui = Ui(maxw, maxh, THEIGHT, NROWS, NCOLS)
     ui.start()
 
 
