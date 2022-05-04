@@ -39,7 +39,9 @@ JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko 
 
 Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kaikilla eri menetelmillä. 
 
-Painotetut kartat (kullakin ruudulla painoarvo):
+### Painotetut kartat
+
+Kullakin ruudulla on painoarvo, joka kertoo kuluvan ajan tai kustannuksen reitin kulkiessa ruudun kautta:
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
@@ -59,8 +61,10 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | A\*     | 1.0455  |
 | | | | | IDA\*   | 56.3359 |
 
-\
-Painottamattomat kartat.  Kartan ruudut ovat saman arvoisia ja polku voi kulkea viistoon ruutujen välillä.
+
+### Painottamattomat kartat
+
+Kartan ruudut ovat saman arvoisia ja polku voi kulkea viistoon ruutujen välillä.
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
@@ -85,7 +89,9 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | IDA\*   | 109.4129 |
 | | | | | JPS | 2.6955 |
 
-\
+
+### Aikavaativuudet
+
 Mitatut Dijkstran, A\*- ja JPS-menetelmien aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
 <img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
