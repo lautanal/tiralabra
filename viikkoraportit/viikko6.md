@@ -35,6 +35,7 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | IDA\*   | 109.4129 |
 | | | | | JPS | 2.6955 |
 
+
 Mitatut Dijkstran, A\*, ja JPS-menetelmän aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
 <img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
