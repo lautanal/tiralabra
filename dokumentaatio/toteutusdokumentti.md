@@ -37,7 +37,9 @@ JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko 
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
-Suorituskykytestit on tehty eri kokoisilla painotetuilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kolmella eri menetelmällä (Dijkstra, A* ja IDA*).
+Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kaikilla eri menetelmällä.  JPS-menetelmää ei voi käyttää tällaisen kartan kanssa.
+
+Painotetut kartat (kullakin ruudulla painoarvo):
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
@@ -57,9 +59,36 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | A\*     | 1.0455  |
 | | | | | IDA\*   | 56.3359 |
 
-Mitatut Dijkstran ja A\* -menetelmän aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
 
-<img src="/dokumentaatio/png/aikavaativuus.png" width="750">
+Painottamattomat kartat.  Kartan ruudut ovat saman arvoisia ja polku voi kulkea viistoon ruutujen välillä.
+
+Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
+--------|--------|--------|--------|-------------|-------------|
+| 100 x 100 | 10000 | 19800 | 273097 | Dijkstra | 0.1218 |
+| | | | | A\* | 0.0508 |
+| | | | | IDA\* | 0.5023 |
+| | | | | JPS | 0.0357 |
+| 200 x 200 | 40000 | 79600 | 1256902 | Dijkstra | 0.5343 |
+| | | | | A\*     | 0.2319 |
+| | | | | IDA\*   | 5.5076 |
+| | | | | JPS | 0.2637 |
+| 300 x 300 | 90000 | 179400 | 2042500 | Dijkstra | 1.2569 |
+| | | | | A\*     | 0.5283 |
+| | | | | IDA\*   | 18.9459 |
+| | | | | JPS | 0.7785 |
+| 400 x 400 | 160000 | 319200 | 5678238 | Dijkstra | 2.3001 |
+| | | | | A\*      | 0.9362 |
+| | | | | IDA\*    | 51.8285 |
+| | | | | JPS | 1.6054 |
+| 500 x 500 | 250000 | 499000 | 9197853 | Dijkstra | 3.6767  |
+| | | | | A\*     | 1.4412  |
+| | | | | IDA\*   | 109.4129 |
+| | | | | JPS | 2.6955 |
+
+
+Mitatut Dijkstran, A\*- ja JPS-menetelmien aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
+
+<img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
 
 A\* -menetelmä on kautta linjan nopein vaikka tämän kaltaisessa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.
 
