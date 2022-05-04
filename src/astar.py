@@ -72,7 +72,4 @@ def astar(map, diagonal, animate, drawnode):
                 drawcount = 0
 
     # Reittiä ei löytynyt
-    tend = timer()
-    print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-
-    return False, 0
+    return False, timer() - tstart

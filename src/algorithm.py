@@ -91,8 +91,18 @@ class Algorithm:
                 self.map.track_path_jps(path)
             else:
                 npath, costsum = self.map.track_path(self.diagonal)
-            print(f'*** REITTI LÖYTYI ***\nLaskenta vei {time:.3f} sekuntia\n' \
+            print(f'\n*** REITTI LÖYTYI ***')
+            if self.method == 'D':
+                print('Dijkstran menetelmä')
+            elif self.method == 'A':
+                print('A* -menetelmä')
+            elif self.method == 'I':
+                print('IDA* -menetelmä')
+            elif self.method == 'J':
+                print('Jump Point Search -menetelmä')
+            print(f'Laskenta vei {time:.3f} sekuntia\n' \
                 f'Polun solmujen lukumäärä {npath}\nPolun painotettu pituus {costsum}')
             return True, npath, costsum, time
         else:
+            print(f'\n*** REITTIÄ EI LÖYTYNYT ***')
             return False, 0, 0, 0

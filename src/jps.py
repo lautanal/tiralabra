@@ -70,8 +70,6 @@ def jps(map, animate, drawnode):
 
     # Reittiä ei löytynyt
     tend = timer()
-    print(f'*** Reittiä ei löytynyt ***\nLaskenta vei {tend-tstart:.3f} sekuntia')
-
     return False, timer() - tstart, 0, 0, 0
 
 
