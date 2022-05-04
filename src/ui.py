@@ -275,7 +275,6 @@ class Ui:
             self.ncols = len(maparray[0])
             self.nrows = len(maparray)
         self.gsize = min(self.MAXWIDTH // self.ncols, self.MAXHEIGHT // self.nrows)
-        print('GSIZE: ', self.gsize)
         self.width = self.gsize * self.ncols
         self.height = self.gsize * self.nrows + self.THEIGHT
 
