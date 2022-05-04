@@ -1,15 +1,3 @@
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 128, 255)
-YELLOW = (255, 255, 0)
-ORANGE = (255, 165, 0)
-PURPLE = (128, 0, 128)
-GREY = (128, 128, 128)
-GRAYSHADES = [(240,240,240),(220,220,220),(200,200,200),(180,180,180),(160,160,160),(140,140,140),(120,120,120),(100,100,100),(80,80,80),(60,60,60),(0,0,0)]
-
-
 class Node:
     """Luokka, joka mallintaa karttaruudun
 
@@ -47,7 +35,9 @@ class Node:
         self.neighbors = []
         self.cost = 1
         self.start = False
+        self.startmark = False
         self.goal = False
+        self.goalmark = False
         self.blocked = False
         self.visited = False
         self.visited_jps = [0,0,0,0,0,0,0,0]

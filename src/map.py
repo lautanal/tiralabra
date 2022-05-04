@@ -93,12 +93,56 @@ class Map:
     def set_start(self, start):
         """ Lähtöpiste
         """
+        # Isompi starttimerkki
+        if self.gsize < 10:
+            if start:
+                if self.on_map(start.row-1, start.col): 
+                    self.nodes[start.row-1][start.col].startmark = True        
+                if self.on_map(start.row+1, start.col): 
+                    self.nodes[start.row+1][start.col].startmark = True        
+                if self.on_map(start.row, start.col-1): 
+                    self.nodes[start.row][start.col-1].startmark = True        
+                if self.on_map(start.row, start.col+1): 
+                    self.nodes[start.row][start.col+1].startmark = True
+            else:        
+                if self.on_map(self.start.row-1, self.start.col): 
+                    self.nodes[self.start.row-1][self.start.col].startmark = False        
+                if self.on_map(self.start.row+1, self.start.col): 
+                    self.nodes[self.start.row+1][self.start.col].startmark = False        
+                if self.on_map(self.start.row, self.start.col-1): 
+                    self.nodes[self.start.row][self.start.col-1].startmark = False        
+                if self.on_map(self.start.row, self.start.col+1): 
+                    self.nodes[self.start.row][self.start.col+1].startmark = False
+
+        # Uusi lähtöpiste
         self.start = start
 
 
     def set_goal(self, goal):
         """ Maalipiste
         """
+        # Suurempi maalimerkki
+        if self.gsize < 10:
+            if goal:
+                if self.on_map(goal.row-1, goal.col): 
+                    self.nodes[goal.row-1][goal.col].goalmark = True        
+                if self.on_map(goal.row+1, goal.col): 
+                    self.nodes[goal.row+1][goal.col].goalmark = True        
+                if self.on_map(goal.row, goal.col-1): 
+                    self.nodes[goal.row][goal.col-1].goalmark = True        
+                if self.on_map(goal.row, goal.col+1): 
+                    self.nodes[goal.row][goal.col+1].goalmark = True
+            else:        
+                if self.on_map(self.goal.row-1, self.goal.col): 
+                    self.nodes[self.goal.row-1][self.goal.col].goalmark = False        
+                if self.on_map(self.goal.row+1, self.goal.col): 
+                    self.nodes[self.goal.row+1][self.goal.col].goalmark = False        
+                if self.on_map(self.goal.row, self.goal.col-1): 
+                    self.nodes[self.goal.row][self.goal.col-1].goalmark = False        
+                if self.on_map(self.goal.row, self.goal.col+1): 
+                    self.nodes[self.goal.row][self.goal.col+1].goalmark = False
+                    
+        # Uusi maalipiste
         self.goal = goal
 
 

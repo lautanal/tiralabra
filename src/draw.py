@@ -75,9 +75,9 @@ class Draw:
                     color = BLACK
                 elif node.path:
                     color = RED
-                elif node.start:
+                elif node.start or node.startmark:
                     color = BLUE
-                elif node.goal:
+                elif node.goal or node.goalmark:
                     color = ORANGE
                 elif animate and node.visited:
                     color = GREEN
@@ -127,24 +127,19 @@ class Draw:
         if not node.start:
             node.color = GREEN
             pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
-            font = pygame.font.SysFont('Arial', self.gsize // 2)
-            if node.cost < 10:
-                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                        (node.x+2*(self.gsize//5), node.y+self.gsize//4))
-            else:
-                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-                        (node.x+self.gsize//3, node.y+self.gsize//4))
+
+            # NUmeromerkintä
+#            font = pygame.font.SysFont('Arial', self.gsize // 2)
+#            if node.cost < 10:
+#                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+#                        (node.x+2*(self.gsize//5), node.y+self.gsize//4))
+#            else:
+#                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+#                        (node.x+self.gsize//3, node.y+self.gsize//4))
+
+            # Update
             if update:
                 pygame.display.update()
-
-
-#    def reset(self):
-#        """Karttaruutujen värien reset
-#        """
-#        for row in self.map.nodes:
-#            for node in row:
-#                if not node.start and not node.goal and not node.blocked:
-#                    node.reset_color()
 
 
     def set_win(self, win, width, height, map):
