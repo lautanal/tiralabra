@@ -111,11 +111,11 @@ class Ui:
                 if not self.map.start:
                     node.set_start()
                     self.map.set_start(node)
-                    self.drawfunc.set_texts(self.algorithm)
+                    self.drawfunc.clear_texts(self.algorithm)
                 elif not self.map.goal and node != self.map.start:
                     node.set_goal()
                     self.map.set_goal(node)
-                    self.drawfunc.set_texts(self.algorithm)
+                    self.drawfunc.clear_texts(self.algorithm)
                 elif node != self.map.goal and node != self.map.start:
                     node.set_blocked()
 
@@ -134,10 +134,10 @@ class Ui:
                 node = self.map.nodes[row][col]
                 if node == self.map.start:
                     self.map.set_start(None)
-                    self.drawfunc.set_texts(self.algorithm)
+                    self.drawfunc.clear_texts(self.algorithm)
                 if node == self.map.goal:
                     self.map.set_goal(None)
-                    self.drawfunc.set_texts(self.algorithm)
+                    self.drawfunc.clear_texts(self.algorithm)
                 node.clear()
 
 
@@ -173,13 +173,13 @@ class Ui:
                 self.map.start.clear()
                 self.map.set_start(None)
             self.map.reset()
-            self.drawfunc.set_texts(self.algorithm)
+            self.drawfunc.clear_texts(self.algorithm)
 
         # D: Diagonal, polun tyyppi
         if event.key == pygame.K_d:
             self.algorithm.set_diagonal()
             self.map.reset()
-            self.drawfunc.set_texts(self.algorithm)
+            self.drawfunc.clear_texts(self.algorithm)
 
         # E: Edit, ruutujen editoinnin aloitus
         if event.key == pygame.K_e:
@@ -197,7 +197,7 @@ class Ui:
         if event.key == pygame.K_m:
             self.algorithm.set_method()
             self.map.reset()
-            self.drawfunc.set_texts(self.algorithm)
+            self.drawfunc.clear_texts(self.algorithm)
 
         # G: Generate, uusi painottamaton random-kartta
         if event.key == pygame.K_g:
@@ -217,7 +217,7 @@ class Ui:
         # R: Reset, lasketun polun pyyhkiminen
         if event.key == pygame.K_r:
             self.map.reset()
-            self.drawfunc.set_texts(self.algorithm)
+            self.drawfunc.clear_texts(self.algorithm)
 
         # S: Start, laskennan aloitus
         if event.key == pygame.K_s:
@@ -300,4 +300,4 @@ class Ui:
         # Algoritmin ja piirtofunktion asetukset
         self.algorithm.set_map(self.map)
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
-        self.drawfunc.set_texts(self.algorithm)
+        self.drawfunc.clear_texts(self.algorithm)

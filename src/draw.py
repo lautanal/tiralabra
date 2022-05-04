@@ -144,7 +144,7 @@ class Draw:
         self.gsize = map.gsize
 
 
-    def set_texts(self, algorithm):
+    def clear_texts(self, algorithm):
         """Pygame-ikkunan tekstit
         """
         if algorithm.method == 'D':
@@ -174,6 +174,34 @@ class Draw:
         self.text8 = ''
         self.text9 = ''
         self.text10 = ''
+
+
+    def set_texts(self, algorithm):
+        """Pygame-ikkunan tekstit
+        """
+        if algorithm.method == 'D':
+            self.text1 = 'Metodi (m): Dijkstra'
+        elif algorithm.method == 'A':
+            self.text1 = 'Metodi (m): A*'
+        elif algorithm.method == 'I':
+            self.text1 = 'Metodi (m): IDA*'
+        elif algorithm.method == 'J':
+            self.text1 = 'Metodi (m): Jump Point Search'
+        if algorithm.diagonal:
+            self.text2 = 'Polun tyyppi (d): viisto'
+        else:
+            self.text2 = 'Polun tyyppi (d): xy'
+        if algorithm.animate:
+            self.text3 = 'Animaatio (a): kyllä'
+        else:
+            self.text3 = 'Animaatio (a): ei'
+        self.text4 = f'Kartan koko: {self.nrows} x {self.ncols}'
+        self.text5 = ''
+        if self.map.start:
+            self.text5 = f'Lähtö x,y: {str(self.map.start.col)}, {str(self.map.start.row)}'
+        self.text6 = ''
+        if self.map.goal:
+            self.text6 = f'Maali x,y: {str(self.map.goal.col)}, {str(self.map.goal.row)}'
 
 
     def set_results(self, result):
