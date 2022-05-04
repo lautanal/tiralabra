@@ -23,7 +23,7 @@ Graafisen käyttöliittymän avulla varmistetaan helposti, että eri algoritmit 
 Ottamalla animaatio käyttöön, voidaan lisäksi tarkastella eri algoritmien etenemistä ja mitkä solmut ovat kulloinkin käsittelyssä ja missä järjestyksessä.  
 
 \
-<img src="/dokumentaatio/png/testi06.png" width="750">
+<img src="/dokumentaatio/png/testi06a.png" width="750">
 
 ### Suorituskyvyn testaus
 
