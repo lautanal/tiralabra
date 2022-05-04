@@ -41,7 +41,7 @@ Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on ha
 
 ### Painotetut kartat
 
-Kullakin ruudulla on painoarvo, joka kertoo kuluvan ajan tai kustannuksen reitin kulkiessa ruudun kautta:
+Kullakin ruudulla on painoarvo, joka kertoo ajan tai kustannuksen reitin kulkiessa ruudun kautta:
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
