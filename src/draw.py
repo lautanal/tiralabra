@@ -144,6 +144,8 @@ class Draw:
         self.nrows = map.nrows
         self.ncols = map.ncols
         self.gsize = map.gsize
+        self.t1 = (40, self.nrows*self.gsize + 20)
+        self.t7 = (self.width // 2, self.nrows*self.gsize + 20)
 
 
     def clear_texts(self, algorithm):
