@@ -63,7 +63,7 @@ def jps(map, animate, drawnode):
         # Animaatio
         node.set_visited()
         if animate:
-            if drawcount < 200:
+            if drawcount < 50:
                 drawnode(node, False)
             else:
                 drawnode(node, True)
@@ -244,6 +244,8 @@ def search_diagonal(map, node0, dir, nn, dist, path, queue):
 
 
 def addheap(queue, dist, nn, node, dir, path):
+    """ Lisätään solmu ja suunta prioriteettijonoon
+    """ 
     if node.check_visited_jps(dir):
         return
     heappush(queue, (dist+node.heuristic, dist, nn, node, dir, path))

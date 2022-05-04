@@ -125,17 +125,7 @@ class Draw:
         """Yhden karttaruudun piirto
         """
         if not node.start:
-            node.color = GREEN
-            pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
-
-            # NUmeromerkintä
-#            font = pygame.font.SysFont('Arial', self.gsize // 2)
-#            if node.cost < 10:
-#                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-#                        (node.x+2*(self.gsize//5), node.y+self.gsize//4))
-#            else:
-#                self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-#                        (node.x+self.gsize//3, node.y+self.gsize//4))
+            pygame.draw.rect(self.win, GREEN, (node.x, node.y, self.gsize, self.gsize))
 
             # Update
             if update:
