@@ -96,7 +96,7 @@ Mitatut Dijkstran, A\*- ja JPS-menetelmien aikavaativuudet vastaavat hyvin teori
 
 <img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
 
-A\* -menetelmä on melkein kautta linjan nopein vaikka painotetussa verkossa heuristiikka ei toimi parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisessa verkossa.  JPS-menetelmä toimii hyvin silloin, kun sitä voi käyttää.
+A\* -menetelmä on melkein kautta linjan nopein vaikka painotetussa verkossa heuristiikka ei toimikaan parhaalla mahdollisella tavalla.  Dijkstran menetelmä toimii myös melko hyvin, mutta IDA\* ei näytä olevan hyvä ratkaisija tämän tapaisissa verkoissa.  JPS-menetelmä toimii hyvin silloin, kun sitä voi käyttää.
 
 ## Puutteet ja parannukset
 
