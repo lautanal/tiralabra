@@ -60,10 +60,9 @@ class Perftest:
             node.set_goal()
             self.map.set_goal(node)
             for i in range(3):
-                self.drawfunc.reset()
                 self.map.reset()
                 result = self.algorithm.calculate()
-                self.drawfunc.drawmap()
+                self.drawfunc.drawmap(False, False)
                 results[i] += result[3]
                 self.algorithm.set_method()
         results[0] /= ntests
@@ -94,10 +93,9 @@ class Perftest:
             node = self.map.nodes[self.nrows-1][self.ncols-2]
             node.clear()
             for i in range(4):
-                self.drawfunc.reset()
                 self.map.reset()
                 result = self.algorithm.calculate()
-                self.drawfunc.drawmap()
+                self.drawfunc.drawmap(False, False)
                 results[i] += result[3]
                 self.algorithm.set_method()
         results[0] /= ntests
