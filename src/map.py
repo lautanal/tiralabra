@@ -51,7 +51,6 @@ class Map:
         for row in self.nodes:
             for node in row:
                 node.cost = costmap[node.row][node.col]
-                node.reset_color()
 
 
     def generate_obstacles(self):
@@ -63,7 +62,6 @@ class Map:
             for node in row:
                 if costmap[node.row][node.col] == 5:
                     node.blocked = True
-                node.reset_color()
 
 
     def on_map(self, row, col):
@@ -83,7 +81,6 @@ class Map:
                     node.set_blocked()
                 elif maparray[node.row][node.col] == '.' or maparray[node.row][node.col] == '1':
                     node.cost = 1
-                    node.reset_color()
                 else:
                     self.weighted = True
                     try:
@@ -91,7 +88,6 @@ class Map:
                     except:
                         node.cost = 1
                         node.set_blocked()
-                    node.reset_color()
 
 
     def set_start(self, start):
@@ -236,3 +232,4 @@ class Map:
             for node in row:
                 node.visited = False
                 node.visited_jps = [0,0,0,0,0,0,0,0]
+                node.path = False

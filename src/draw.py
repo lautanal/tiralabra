@@ -1,6 +1,15 @@
 import pygame
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
 GREEN = (0, 255, 0)
+BLUE = (0, 128, 255)
+YELLOW = (255, 255, 0)
+ORANGE = (255, 165, 0)
+PURPLE = (128, 0, 128)
+GREY = (128, 128, 128)
+GRAYSHADES = [(240,240,240),(220,220,220),(200,200,200),(180,180,180),(160,160,160),(140,140,140),(120,120,120),(100,100,100),(80,80,80),(60,60,60),(0,0,0)]
 
 class Draw:
     """Luokka, jossa on Pygame-piirtorutiinit
@@ -54,21 +63,37 @@ class Draw:
         self.text10 = ''
 
 
-    def drawmap(self):
+    def drawmap(self, numbers, animate):
         """Koko karttaruudukon piirto
         """
-        font = pygame.font.SysFont('Arial', self.gsize // 2)
         for row in self.map.nodes:
             for node in row:
-                pygame.draw.rect(self.win, node.color, (node.x, node.y, self.gsize, self.gsize))
+
+                # Väritetään ruutu
+                color = GRAYSHADES[node.cost]
+                if node.blocked:
+                    color = BLACK
+                elif node.path:
+                    color = RED
+                elif node.start:
+                    color = BLUE
+                elif node.goal:
+                    color = ORANGE
+                elif animate and node.visited:
+                    color = GREEN
+
+                pygame.draw.rect(self.win, color, (node.x, node.y, self.gsize, self.gsize))
+
                 # Ruutujen numerot
-#                if not node.blocked:
-#                    if node.cost < 10:
-#                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-#                                (node.x+2*(self.gsize//5), node.y+self.gsize//4))
-#                    else:
-#                        self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
-#                                (node.x+self.gsize//3, node.y+self.gsize//4))
+                if numbers:
+                    if not node.blocked:
+                        font = pygame.font.SysFont('Arial', self.gsize // 2)
+                        if node.cost < 10:
+                            self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+                                    (node.x+2*(self.gsize//5), node.y+self.gsize//4))
+                        else:
+                            self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
+                                    (node.x+self.gsize//3, node.y+self.gsize//4))
 
         # Ruutujen reunat
 #        for i in range(self.nrows):
@@ -76,8 +101,8 @@ class Draw:
 #        for j in range(self.ncols):
 #            pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
 
-        pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width,
-                self.height-self.nrows*self.gsize))
+        # Ikkunan alaosa
+        pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width, self.height-self.nrows*self.gsize))
         pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
 
         font = pygame.font.SysFont('Arial', 15)
@@ -92,6 +117,7 @@ class Draw:
         self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 70))
         self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 95))
 
+        # Ikkunan päivitys
         pygame.display.update()
 
 
@@ -112,13 +138,13 @@ class Draw:
                 pygame.display.update()
 
 
-    def reset(self):
-        """Karttaruutujen värien reset
-        """
-        for row in self.map.nodes:
-            for node in row:
-                if not node.start and not node.goal and not node.blocked:
-                    node.reset_color()
+#    def reset(self):
+#        """Karttaruutujen värien reset
+#        """
+#        for row in self.map.nodes:
+#            for node in row:
+#                if not node.start and not node.goal and not node.blocked:
+#                    node.reset_color()
 
 
     def set_win(self, win, width, height, map):

@@ -18,14 +18,15 @@ class Node:
         col: Sarakenumero
         x: Ruudun x-koordinaatti (vasen ylänurkka)
         y: Ruudun y-koordinaatti (vasen ylänurkka)
-        color: Ruudun väri
+        cost: Ruudun painoarvo
+        neighbors; Ruudun naapuriruudut
         start: Ruutu on lähtöruutu
         goal: Ruutu on maaliruutu
         blocked: Ruutu on este
         visited: Ruudussa on vierailtu
         visited_jps: Ruudun kautta kulkeva reitti on tutkittu (JPS)
         previous: Edellinen ruutu reitillä
-        cost: Ruudun painoarvo
+        path: Ruutu on lasketulla polulla
         costsum: Reitin hinta (tai aika)
         heuristic: Ruudulle laskettu heuristiikka
     """
@@ -43,15 +44,15 @@ class Node:
         self.col = col
         self.x = col * gsize
         self.y = row * gsize
-        self.color = WHITE
+        self.neighbors = []
+        self.cost = 1
         self.start = False
         self.goal = False
         self.blocked = False
         self.visited = False
         self.visited_jps = [0,0,0,0,0,0,0,0]
         self.previous = None
-        self.neighbors = []
-        self.cost = 1
+        self.path = False
         self.costsum = float("inf")
         self.heuristic = float("inf")
 
@@ -66,7 +67,6 @@ class Node:
         self.start = False
         self.goal = False
         self.blocked = False
-        self.color = GRAYSHADES[self.cost]
 
 
     def get_pos(self):
@@ -79,30 +79,15 @@ class Node:
 
 
     def mark_path(self):
-        """ Reittiruudun väritys punaiseksi
+        """ Reittiruutu
         """
-        self.color = RED
-
-
-    def reset_color(self):
-        """ Ruudun värin palautus normaaliksi
-        """
-        self.color = GRAYSHADES[self.cost]
-        if self.blocked:
-            self.color = BLACK
-
-
-    def set_color(self, color):
-        """ Ruudun väritys
-        """
-        self.color = color
+        self.path = True
 
 
     def set_blocked(self):
         """ Esteruutu
         """
         self.blocked = True
-        self.color = BLACK
 
 
     def set_goal(self):
@@ -110,7 +95,6 @@ class Node:
         """
         self.goal = True
         self.blocked = False
-        self.color = ORANGE
         return self
 
 
@@ -119,7 +103,6 @@ class Node:
         """
         self.start = True
         self.blocked = False
-        self.color = BLUE
         return self
 
 
@@ -130,7 +113,7 @@ class Node:
 
 
     def set_visited_jps(self, dir):
-        """ Vierailtu ruutu ja skannaussuunta
+        """ Talletetaan vierailu skannaussuunta
         """
         if dir == (1,0):
             self.visited_jps[0] = 1
@@ -151,7 +134,7 @@ class Node:
 
 
     def check_visited_jps(self, dir):
-        """ Tarkistetaan reitti jo tutkittu
+        """ Tarkistetaan onko reitti jo tutkittu
         """
         if dir == (1,0):
             return self.visited_jps[0] == 1

@@ -92,6 +92,7 @@ def idastar_search(path, threshold, goal, paths, diagonal, animate, drawnode, up
         return -1
 
     # Animaatio
+    node.set_visited()
     if animate:
         drawnode(node, update)
 

@@ -61,6 +61,7 @@ def jps(map, animate, drawnode):
         node.set_visited_jps(dir)
 
         # Animaatio
+        node.set_visited()
         if animate:
             if drawcount < 200:
                 drawnode(node, False)

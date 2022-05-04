@@ -75,7 +75,7 @@ class Ui:
 
         # Event loop
         while self.run:
-            self.drawfunc.drawmap()
+            self.drawfunc.drawmap(self.edit, self.algorithm.animate)
             for event in pygame.event.get():
                 # Lopetus
                 if event.type == pygame.QUIT:
@@ -107,7 +107,6 @@ class Ui:
             if self.edit:
                 if not node.blocked and node.cost < 9:
                     node.cost += 1
-                    node.reset_color()
             else:
                 if not self.map.start:
                     node.set_start()
@@ -131,7 +130,6 @@ class Ui:
             if self.edit:
                 if not node.blocked and node.cost > 1:
                     node.cost -= 1
-                    node.reset_color()
             else:
                 node = self.map.nodes[row][col]
                 if node == self.map.start:
@@ -174,13 +172,13 @@ class Ui:
             elif self.map.start:
                 self.map.start.clear()
                 self.map.set_start(None)
-            self.drawfunc.reset()
+            self.map.reset()
             self.drawfunc.set_texts(self.algorithm)
 
         # D: Diagonal, polun tyyppi
         if event.key == pygame.K_d:
             self.algorithm.set_diagonal()
-            self.drawfunc.reset()
+            self.map.reset()
             self.drawfunc.set_texts(self.algorithm)
 
         # E: Edit, ruutujen editoinnin aloitus
@@ -198,7 +196,7 @@ class Ui:
         # M: Method, metodin valinta
         if event.key == pygame.K_m:
             self.algorithm.set_method()
-            self.drawfunc.reset()
+            self.map.reset()
             self.drawfunc.set_texts(self.algorithm)
 
         # G: Generate, uusi painottamaton random-kartta
@@ -218,13 +216,12 @@ class Ui:
 
         # R: Reset, lasketun polun pyyhkiminen
         if event.key == pygame.K_r:
-            self.drawfunc.reset()
+            self.map.reset()
             self.drawfunc.set_texts(self.algorithm)
 
         # S: Start, laskennan aloitus
         if event.key == pygame.K_s:
             if self.map.start and self.map.goal:
-                self.drawfunc.reset()
                 self.map.reset()
                 result = self.algorithm.calculate()
                 self.drawfunc.set_results(result)
@@ -278,6 +275,7 @@ class Ui:
             self.ncols = len(maparray[0])
             self.nrows = len(maparray)
         self.gsize = min(self.MAXWIDTH // self.ncols, self.MAXHEIGHT // self.nrows)
+        print('GSIZE: ', self.gsize)
         self.width = self.gsize * self.ncols
         self.height = self.gsize * self.nrows + self.THEIGHT
 
