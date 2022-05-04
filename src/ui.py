@@ -227,12 +227,14 @@ class Ui:
 
         # T: Test, suorituskykytesti, 3 menetelmää, painotetut ruudut
         if event.key == pygame.K_t:
+            self.drawfunc.clear_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test3()
             del perftest
 
         # P: Suorituskykytesti 4 menetelmää, painottamattomat ruudut, diagonaalireitti
         if event.key == pygame.K_p:
+            self.drawfunc.clear_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test4()
             del perftest

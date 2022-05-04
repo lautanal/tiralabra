@@ -51,6 +51,8 @@ class Draw:
         self.nrows = map.nrows
         self.ncols = map.ncols
         self.gsize = map.gsize
+        self.t1 = (40, self.nrows*self.gsize + 20)
+        self.t7 = (self.width // 2, self.nrows*self.gsize + 20)
         self.text1 = ''
         self.text2 = ''
         self.text3 = ''
@@ -106,16 +108,16 @@ class Draw:
         pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
 
         font = pygame.font.SysFont('Arial', 15)
-        self.win.blit(font.render(str(self.text1), True, (64, 64, 64)), (40, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text2), True, (64, 64, 64)), (40, self.nrows*self.gsize + 40))
-        self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (40, self.nrows*self.gsize + 60))
-        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (40, self.nrows*self.gsize + 80))
-        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (40, self.nrows*self.gsize + 100))
-        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (40, self.nrows*self.gsize + 120))
-        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 20))
-        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 45))
-        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 70))
-        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.width // 2, self.nrows*self.gsize + 95))
+        self.win.blit(font.render(str(self.text1), True, (64, 64, 64)), self.t1)
+        self.win.blit(font.render(str(self.text2), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 20))
+        self.win.blit(font.render(str(self.text3), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 40))
+        self.win.blit(font.render(str(self.text4), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 60))
+        self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 80))
+        self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 100))
+        self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), self.t7)
+        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 25))
+        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 50))
+        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 75))
 
         # Ikkunan päivitys
         pygame.display.update()
