@@ -10,7 +10,7 @@ JPS-menetelmällä voidaan saavuttaa tietynlaisissa verkoissa merkittävä etu v
 
 ## Suorituskykyvertailu random-kartoilla
 
-Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Kartan ruudut ovat ilman painokertoimia ja polku voi kulkea viistoon ruutujen välillä.  Paras reitti on haettu kullakin kartalla neljällä eri menetelmällä (Dijkstra, A*, IDA* ja JPS).
+Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Kartan ruudut ovat saman arvoisia (ilman painokertoimia) ja polku voi kulkea viistoon ruutujen välillä.  Paras reitti on haettu kullakin kartalla neljällä eri menetelmällä (Dijkstra, A*, IDA* ja JPS).
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
@@ -34,6 +34,10 @@ Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10
 | | | | | A\*     | 1.4412  |
 | | | | | IDA\*   | 109.4129 |
 | | | | | JPS | 2.6955 |
+
+Mitatut Dijkstran, A\*, ja JPS-menetelmän aikavaativuudet vastaavat hyvin teorian mukaista O(V + E logV) aikavaativuutta.
+
+<img src="/dokumentaatio/png/aikavaativuus2.png" width="750">
 
 ### Havaintoja matkan varrelta
 
