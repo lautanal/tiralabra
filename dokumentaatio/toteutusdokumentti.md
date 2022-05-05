@@ -102,6 +102,6 @@ A\* -menetelmä on melkein kautta linjan nopein vaikka painotetussa verkossa heu
 
 JPS-menetelmää ei voi käyttää painotetussa ruutuverkossa.  JPS-menetelmä edellyttää myös, että vinot siirtymät karttaruutujen välillä sallitaan.
 
-Pygame-kirjaston animaatio polun on toisinaan melko hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
+Pygame-kirjaston animaatio on toisinaan melko hidas.  En ole ehtinyt perehtyä, mistä tämä johtuu.  Todennäköisesti sitä pystyy nopeuttamaan huomattavasti.
 
 IDA*-menetelmän suorituskykyä pystyisi todennäköisesti parantamaan reilusti ottamalla käyttöön erilaisia tarkistuksia ja optimointeja.  Ajan puutteen vuoksi se jää tehtäväksi tulevaisuudessa.
