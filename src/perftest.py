@@ -48,9 +48,9 @@ class Perftest:
         """Suorituskyvyn testausrutiini.
         """
         results = [0, 0, 0, 0]
-        self.ncols = 100
+        self.ncols = 200
         self.nrows = 100
-        ntests = 10
+        ntests = 5
         for _ in range(ntests):
             self.newmap(False)
             node = self.map.nodes[0][0]
@@ -75,9 +75,9 @@ class Perftest:
         """Suorituskyvyn testausrutiini.
         """
         results = [0, 0, 0, 0]
-        self.ncols = 100
+        self.ncols = 200
         self.nrows = 100
-        ntests = 10
+        ntests = 5
         for _ in range(ntests):
             self.newmap(True)
             node = self.map.nodes[0][0]

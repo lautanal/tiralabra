@@ -254,14 +254,14 @@ class Ui:
 
         # +: Uusi kartta, ruutujen määrän lisäys (+10 molemmissa suunnissa)
         if event.key == pygame.K_PLUS and self.ncols < 500:
-            self.ncols += 10
-            self.nrows += 10
+            self.ncols += self.ncols // 10
+            self.nrows += self.nrows // 10
             self.newmap(None)
 
         # -: Uusi kartta, ruutujen määrän vähennys (-10 molemmissa suunnissa)
         if event.key == pygame.K_MINUS and self.ncols > 10:
-            self.ncols -= 10
-            self.nrows -= 10
+            self.ncols -= self.ncols // 10
+            self.nrows -= self.nrows // 10
             self.newmap(None)
 
 
