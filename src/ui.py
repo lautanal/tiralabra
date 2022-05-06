@@ -114,7 +114,7 @@ class Ui:
         """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
-        if row < self.nrows:
+        if row < self.nrows and col < self.ncols:
             node = self.map.nodes[row][col]
             if self.edit:
                 if not node.blocked and node.cost < 9:
@@ -137,7 +137,7 @@ class Ui:
         """
         pos = pygame.mouse.get_pos()
         row, col = self.get_clickpos(pos)
-        if row < self.nrows:
+        if row < self.nrows and col < self.ncols:
             node = self.map.nodes[row][col]
             if self.edit:
                 if not node.blocked and node.cost > 1:
