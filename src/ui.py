@@ -13,7 +13,9 @@ class Ui:
 
     Attributes:
         MAXWIDTH: Ikkunan maksimileveys pikseleinä
-        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        MAXHEIGHT: Ikkunan maksimileveys pikseleinä
+        TEXTAREA: Ikkunan tekstiosan koko
+        TEXTPOS: Ikkunan tekstiosan paikka
         nrows: Rivien lukumäärä
         ncols: Sarakkeiden lukumäärä
         gsize: Karttaruudun koko pikseleinä
@@ -29,23 +31,34 @@ class Ui:
         run: Pygame-käynnissä
     """
 
-    def __init__(self, MAXWIDTH, MAXHEIGHT, THEIGHT, nrows, ncols):
+    def __init__(self, MAXWIDTH, MAXHEIGHT, nrows, ncols, TEXTAREA, TEXTPOS):
         """Luokan konstruktori, joka luo uuden käyttöliittymän.
 
         Args:
             MAXWIDTH: Ikkunan maksimileveys pikseleinä
-            THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+            MAXHEIGHT: Ikkunan maksimileveys pikseleinä
+            TEXTAREA: Ikkunan tekstiosan koko pikseleinä
+            TEXTPOS: Ikkunan tekstiosan paikka, True -> alalaita
             nrows: Rivien lukumäärä
             ncols: Sarakkeiden lukumäärä
         """
 
         # Ikkunan kokoparametrit
-        self.MAXWIDTH = MAXWIDTH
-        self.MAXHEIGHT = MAXHEIGHT - THEIGHT
-        self.THEIGHT = THEIGHT
+        if TEXTPOS:
+            self.MAXWIDTH = MAXWIDTH
+            self.MAXHEIGHT = MAXHEIGHT - TEXTAREA
+        else:
+            self.MAXWIDTH = MAXWIDTH - TEXTAREA
+            self.MAXHEIGHT = MAXHEIGHT
+        self.TEXTAREA = TEXTAREA
         self.gsize = min(self.MAXWIDTH // ncols, self.MAXHEIGHT // nrows)
-        self.width = self.gsize * ncols
-        self.height = self.gsize * nrows + THEIGHT
+        if TEXTPOS:
+            self.width = self.gsize * ncols
+            self.height = self.gsize * nrows + TEXTAREA
+        else:
+            self.width = self.gsize * ncols + TEXTAREA
+            self.height = self.gsize * nrows
+        self.TEXTPOS = TEXTPOS
         self.nrows = nrows
         self.ncols = ncols
 
@@ -59,7 +72,7 @@ class Ui:
         self.map.generate_costs()
 
         # Algoritmi- ja piirtofunktioiden alustus
-        self.drawfunc = Draw(self.win, self.width, self.height, self.map)
+        self.drawfunc = Draw(self.win, self.width, self.height, self.map, self.TEXTPOS)
         self.algorithm = Algorithm(self.map, self.drawfunc.drawnode)
         self.drawfunc.set_texts(self.algorithm)
         self.files = Files()
@@ -228,14 +241,14 @@ class Ui:
         # T: Test, suorituskykytesti, 3 menetelmää, painotetut ruudut
         if event.key == pygame.K_t:
             self.drawfunc.clear_texts(self.algorithm)
-            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test3()
             del perftest
 
         # P: Suorituskykytesti 4 menetelmää, painottamattomat ruudut, diagonaalireitti
         if event.key == pygame.K_p:
             self.drawfunc.clear_texts(self.algorithm)
-            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.THEIGHT, self.win, self.map, self.algorithm, self.drawfunc)
+            perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test4()
             del perftest
 
@@ -275,9 +288,14 @@ class Ui:
         if maparray:
             self.ncols = len(maparray[0])
             self.nrows = len(maparray)
+
         self.gsize = min(self.MAXWIDTH // self.ncols, self.MAXHEIGHT // self.nrows)
-        self.width = self.gsize * self.ncols
-        self.height = self.gsize * self.nrows + self.THEIGHT
+        if self.TEXTPOS:
+            self.width = self.gsize * self.ncols
+            self.height = self.gsize * self.nrows + self.TEXTAREA
+        else:
+            self.width = self.gsize * self.ncols + self.TEXTAREA
+            self.height = self.gsize * self.nrows
 
         # Uusi Pygame-ikkuna
         oldwin = self.win

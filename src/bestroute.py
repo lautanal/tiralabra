@@ -2,11 +2,12 @@ import pygame
 from ui import Ui
 
 
-WIDTHMARGIN = 0
-HEIGHTMARGIN = 150
-THEIGHT = 150
-NCOLS = 200
+WIDTHMARGIN = 150
+HEIGHTMARGIN = 100
+NCOLS = 150
 NROWS = 100
+TEXTAREA = 250
+TEXTHOR = False
 
 
 def main():
@@ -16,7 +17,7 @@ def main():
     infoObject = pygame.display.Info()
     maxw = infoObject.current_w - WIDTHMARGIN
     maxh = infoObject.current_h - HEIGHTMARGIN
-    ui = Ui(maxw, maxh, THEIGHT, NROWS, NCOLS)
+    ui = Ui(maxw, maxh, NROWS, NCOLS, TEXTAREA, TEXTHOR)
     ui.start()
 
 

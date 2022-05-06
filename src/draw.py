@@ -22,6 +22,9 @@ class Draw:
         nrows = Karttaruudukon rivien lukumäärä
         ncols = Karttaruudukon sarakkeiden lukumäärä
         gsize = Ruudun koko pikseleinä
+        textpos = Tekstialueen paikka
+        t1 = Tekstin 1 paikka
+        t7 = Tekstin 7 paikka
         text1 = Teksti 1
         text2 = Teksti 2
         text3 = Teksti 3
@@ -32,10 +35,11 @@ class Draw:
         text8 = Teksti 8
         text9 = Teksti 9
         text10 = Teksti 10
+        text11 = Teksti 11
     """
 
 
-    def __init__(self, win, width, height, map):
+    def __init__(self, win, width, height, map, textpos):
         """Konstruktori, joka luo uuden Draw-alkion
 
         Attributes:
@@ -43,16 +47,22 @@ class Draw:
             width = Pygame-ikkunan leveys
             height = Pygame-ikkunan korkeus
             map = Karttaruudukko
+            textpos = Tekstialueen paikka
         """
         self.win = win
         self.map = map
         self.width = width
         self.height = height
+        self.textpos = textpos
         self.nrows = map.nrows
         self.ncols = map.ncols
         self.gsize = map.gsize
-        self.t1 = (40, self.nrows*self.gsize + 20)
-        self.t7 = (self.width // 2, self.nrows*self.gsize + 20)
+        if self.textpos:
+            self.t1 = (40, self.nrows*self.gsize + 20)
+            self.t7 = (self.t1[0] + 250, self.t1[1])
+        else:
+            self.t1 = (self.ncols*self.gsize + 20, 20)
+            self.t7 = (self.t1[0], self.t1[1] + 200)
         self.text1 = ''
         self.text2 = ''
         self.text3 = ''
@@ -63,6 +73,7 @@ class Draw:
         self.text8 = ''
         self.text9 = ''
         self.text10 = ''
+        self.text11 = ''
 
 
     def drawmap(self, numbers, animate):
@@ -103,9 +114,13 @@ class Draw:
 #        for j in range(self.ncols):
 #            pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
 
-        # Ikkunan alaosa
-        pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width, self.height-self.nrows*self.gsize))
-        pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
+        # Tekstiosa
+        if self.textpos:
+            pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width, self.height-self.nrows*self.gsize))
+            pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))
+        else:
+            pygame.draw.rect(self.win, (180, 180, 180), (self.ncols*self.gsize, 0, self.width-self.ncols*self.gsize, self.height))
+            pygame.draw.line(self.win, (60, 60, 60), (self.ncols*self.gsize, 0), (self.ncols*self.gsize, self.height))
 
         font = pygame.font.SysFont('Arial', 15)
         self.win.blit(font.render(str(self.text1), True, (64, 64, 64)), self.t1)
@@ -115,9 +130,10 @@ class Draw:
         self.win.blit(font.render(str(self.text5), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 80))
         self.win.blit(font.render(str(self.text6), True, (64, 64, 64)), (self.t1[0], self.t1[1] + 100))
         self.win.blit(font.render(str(self.text7), True, (64, 64, 64)), self.t7)
-        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 25))
-        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 50))
-        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 75))
+        self.win.blit(font.render(str(self.text8), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 20))
+        self.win.blit(font.render(str(self.text9), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 40))
+        self.win.blit(font.render(str(self.text10), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 60))
+        self.win.blit(font.render(str(self.text11), True, (64, 64, 64)), (self.t7[0], self.t7[1] + 80))
 
         # Ikkunan päivitys
         pygame.display.update()
@@ -144,8 +160,12 @@ class Draw:
         self.nrows = map.nrows
         self.ncols = map.ncols
         self.gsize = map.gsize
-        self.t1 = (40, self.nrows*self.gsize + 20)
-        self.t7 = (self.width // 2, self.nrows*self.gsize + 20)
+        if self.textpos:
+            self.t1 = (40, self.nrows*self.gsize + 20)
+            self.t7 = (self.t1[0] + 250, self.t1[1])
+        else:
+            self.t1 = (self.ncols*self.gsize + 20, 20)
+            self.t7 = (self.t1[0], self.t1[1] + 200)
 
 
     def clear_texts(self, algorithm):
@@ -212,30 +232,35 @@ class Draw:
         """Laskennan tulokset näkyville
         """
         if result[0]:
-            self.text7 = f'Polun solmujen lukumäärä {result[1]}'
-            self.text8 = f'Polun painotettu pituus {result[2]:.1f}'
-            self.text9 = f'Laskenta vei {result[3]:.3f} sekuntia'
-            self.text10 = ''
+            self.text7 = '*** TULOKSET ***'
+            self.text8 = f'Polun solmujen lukumäärä {result[1]}'
+            self.text9 = f'Polun painotettu pituus {result[2]:.1f}'
+            self.text10 = f'Laskenta vei {result[3]:.3f} sekuntia'
+            self.text11 = ''
+            self.text11 = ''
         else:
             self.text7 = '*** REITTIÄ EI LÖYTYNYT ***'
             self.text8 = ''
             self.text9 = ''
             self.text10 = ''
+            self.text11 = ''
 
 
     def test3_results(self, result):
         """Suoritusarvovertailun tulokset näkyville
         """
-        self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
-        self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
-        self.text9 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
-        self.text10 = ''
+        self.text7 = '*** TULOKSET ***'
+        self.text8 = f'Dijkstra keskimäärin: {result[0]:.3f} s'
+        self.text9 = f'A* keskimäärin : {result[1]:.3f} s'
+        self.text10 = f'IDA* keskimäärin: {result[2]:.3f} s'
+        self.text11 = ''
 
 
     def test4_results(self, result):
         """Suoritusarvovertailun tulokset näkyville
         """
-        self.text7 = f'Dijkstra keskimäärin: {result[0]:.4f} sekuntia'
-        self.text8 = f'A* keskimäärin : {result[1]:.4f} sekuntia'
-        self.text9 = f'IDA* keskimäärin: {result[2]:.4f} sekuntia'
-        self.text10 = f'JPS keskimäärin: {result[3]:.4f} sekuntia'
+        self.text7 = '*** TULOKSET ***'
+        self.text8 = f'Dijkstra keskimäärin: {result[0]:.3f} s'
+        self.text9 = f'A* keskimäärin : {result[1]:.3f} s'
+        self.text10 = f'IDA* keskimäärin: {result[2]:.3f} s'
+        self.text11 = f'JPS keskimäärin: {result[3]:.3f} s'

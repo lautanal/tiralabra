@@ -6,7 +6,7 @@ class Perftest:
 
     Attributes:
         WIDTH: Ikkunan maksimileveys pikseleinä
-        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        TEXTAREA: Ikkunan tekstiosan koko pikseleinä
         nrows: Rivien lukumäärä
         ncols: Sarakkeiden lukumäärä
         gsize: Karttaruudun koko pikseleinä
@@ -18,37 +18,48 @@ class Perftest:
         algorithm: Algoritmien käynnistysrutiini
     """
 
-    def __init__(self, WIDTH, HEIGHT, THEIGHT, win, map, algorithm, drawfunc):
+    def __init__(self, WIDTH, HEIGHT, TEXTAREA, TEXTPOS, win, map, algorithm, drawfunc):
         """Konstruktori, joka luo uuden Perftest-alkion
 
         Args:
         WIDTH: Ikkunan maksimileveys pikseleinä
-        THEIGHT: Ikkunan tekstiosan korkeus pikseleinä
+        TEXTAREA: Ikkunan tekstiosan koko pikseleinä
+        TEXTPOS: True -> Tekstialue ruudun alallaidassa
         win: Pygame-ikkuna
         map: Karttaruudukko
         drawfunc: Piirtorutiini
         algorithm: Algoritmien käynnistysrutiini
         """
 
-        self.WIDTH = WIDTH
-        self.HEIGHT = HEIGHT
-        self.THEIGHT = THEIGHT
+        if TEXTPOS:
+            self.WIDTH = WIDTH
+            self.HEIGHT = HEIGHT - TEXTAREA
+        else:
+            self.WIDTH = WIDTH - TEXTAREA
+            self.HEIGHT = HEIGHT
+        self.TEXTAREA = TEXTAREA
+        self.TEXTPOS = TEXTPOS
+        self.ncols = 100
+        self.nrows = 100
+        self.gsize = min(self.WIDTH // self.ncols, self.HEIGHT // self.nrows)
+        if self.TEXTPOS:
+            self.width = self.gsize * self.ncols
+            self.height = self.gsize * self.nrows + self.TEXTAREA
+        else:
+            self.width = self.gsize * self.ncols + self.TEXTAREA
+            self.height = self.gsize * self.nrows
+
         self.win = win
         self.map = map
         self.algorithm = algorithm
         self.drawfunc = drawfunc
-        self.ncols = 100
-        self.nrows = 100
-        self.gsize = min(WIDTH // self.ncols, HEIGHT // self.nrows)
-        self.width = self.gsize * self.ncols
-        self.height = self.gsize * self.nrows + THEIGHT
 
 
     def test3(self):
         """Suorituskyvyn testausrutiini.
         """
         results = [0, 0, 0, 0]
-        self.ncols = 200
+        self.ncols = 150
         self.nrows = 100
         ntests = 5
         for _ in range(ntests):
@@ -75,7 +86,7 @@ class Perftest:
         """Suorituskyvyn testausrutiini.
         """
         results = [0, 0, 0, 0]
-        self.ncols = 200
+        self.ncols = 150
         self.nrows = 100
         ntests = 5
         for _ in range(ntests):
@@ -110,8 +121,12 @@ class Perftest:
         """
         # Kartan parametrit
         self.gsize = min(self.WIDTH // self.ncols, self.HEIGHT // self.nrows)
-        self.width = self.gsize * self.ncols
-        self.height = self.gsize * self.nrows + self.THEIGHT
+        if self.TEXTPOS:
+            self.width = self.gsize * self.ncols
+            self.height = self.gsize * self.nrows + self.TEXTAREA
+        else:
+            self.width = self.gsize * self.ncols + self.TEXTAREA
+            self.height = self.gsize * self.nrows
 
         # Uusi Pygame-ikkuna
         oldwin = self.win
