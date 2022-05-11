@@ -2,7 +2,7 @@
 
 ## Ohjelman lataus
 
-Lataa sovelluksen [release](https://github.com/lautanal/tiralabra/releases/tag/VIIKKO6).
+Lataa sovelluksen [release](https://github.com/lautanal/tiralabra/releases/tag/Final).
 
 ## Ohjelman asentaminen
 
