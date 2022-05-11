@@ -38,7 +38,6 @@ def astar(map, diagonal, animate, drawnode):
     while queue:
         # Seuraava solmu keosta
         node = heappop(queue)[2]
-        drawcount += 1
 
         # Maali löytyi
         if node == map.goal:
@@ -65,7 +64,8 @@ def astar(map, diagonal, animate, drawnode):
 
         # Animaatio
         if animate:
-            if drawcount < 50:
+            if drawcount < 200:
+                drawcount += 1
                 drawnode(node, False)
             else:
                 drawnode(node, True)

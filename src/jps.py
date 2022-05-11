@@ -24,7 +24,7 @@ def jps(map, animate, drawnode):
     map.heuristic_euclidian(map.goal)
 #        map.heuristic_chebyshev(map.goal)
 
-    # Alkuasetukset
+    # Alkuasetukset, skannaus joka suuntaan
     queue = []
     heappush(queue, (0, 0, 0, map.start, (1,0), [map.start]))
     heappush(queue, (0, 0, 0, map.start, (1,1), [map.start]))
@@ -40,14 +40,13 @@ def jps(map, animate, drawnode):
     while queue:
         # Seuraava solmu keosta
         est, dist, nn, node, dir, path = heappop(queue)
-        drawcount += 1
 #        print(f'ROW: {node.row} COL: {node.col} DIR: {dir} NN: {nn} DIST:{dist}')
 
         # Maali löytyi
         if node == map.goal:
             return True, timer() - tstart, nn, dist, path
 
-        # Reitti on jo käyty
+        # Reitti solmun kautta on jo käyty
         if node.check_visited_jps(dir):
             continue
 
@@ -63,7 +62,8 @@ def jps(map, animate, drawnode):
         # Animaatio
         node.set_visited()
         if animate:
-            if drawcount < 50:
+            if drawcount < 200:
+                drawcount += 1
                 drawnode(node, False)
             else:
                 drawnode(node, True)
