@@ -37,11 +37,11 @@ JPS-menetelmä soveltuu polun etsintään kun kyseessä on painottamaton verkko 
 
 ## Suorituskykyvertailu ja aikavaativuudet
 
-Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kaikilla eri menetelmillä. 
+Suorituskykytestit on tehty eri kokoisilla random-kartoilla.  Paras reitti on haettu kullakin kartalla kaikilla soveltuvilla eri menetelmillä. 
 
 ### Painotetut kartat
 
-Kullakin ruudulla on painoarvo, joka kertoo ajan tai kustannuksen reitin kulkiessa ruudun kautta:
+Kullakin ruudulla on painoarvo, joka kertoo ajan tai kustannuksen reitin kulkiessa ruudun kautta.  Reitti voi kulkea ruutujen välillä vain vaaka- ja pystysuoraan.
 
 Verkon koko | Solmut | Kaaret | V + E log V | Algoritmi | Hakuajan keskiarvo (10 karttaa)|
 --------|--------|--------|--------|-------------|-------------|
