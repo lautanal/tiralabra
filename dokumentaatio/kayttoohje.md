@@ -53,9 +53,9 @@ g: generate, generoi uuden painottamattoman random-kartan (kaikki ruudut saman a
 
 t : test, ohjelma käy läpi kymmenen painotettua random-testikarttaa (koko 100 x 100) ja laskee keskimääräisen hakuajan eri menetelmille
 
-\+ : lisää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+\+ : lisää ruutujen lukumäärää 10 prosentilla molemmissa suunnissa ja generoi uuden kartan
 
-\- : vähentää ruutujen lukumäärää 10:llä molemmissa suunnissa ja generoi uuden kartan
+\- : vähentää ruutujen lukumäärää 10 prosentilla molemmissa suunnissa ja generoi uuden kartan
 
 1 : lataa kartta 1.map (hakemistosta data/maps)
 
