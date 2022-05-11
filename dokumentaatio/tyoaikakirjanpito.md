@@ -34,4 +34,5 @@
 | 30.04. | 1    | Viikkoraportti|
 | 03.05. | 2    | Animaation virittelyä|
 | 04.05. | 4    | Animaation virittelyä, muutoksia piirtorutiineihin|
-| yhteensä | 119 | |
+| 11.05. | 1    | Final release, dokumenttien editointia|
+| yhteensä | 120 | |
