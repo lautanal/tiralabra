@@ -22,7 +22,7 @@ $ poetry run python3 src/bestroute.py
 
 Sovellusta käytetään Pygamella luodun käyttöliittymän avulla :
 
-<img src="png/ui2.png" width="750">
+<img src="png/ui3.png" width="750">
 
 Käyttäjä valitsee lähtö- ja maaliruudun hiiren vasemmalla näppäimellä.  Kun lähtö ja maali on valittu, hiiren vasemmalla näppäimellä voi asettaa esteet, joiden läpi reitti ei voi kulkea.
 Lähdön ja maalin sekä esteet voi poistaa hiiren oikealla näppäimellä.
