@@ -108,13 +108,7 @@ class Draw:
                             self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
                                     (node.x+self.gsize//3, node.y+self.gsize//4))
 
-        # Ruutujen reunat
-#        for i in range(self.nrows):
-#            pygame.draw.line(self.win, (128, 128, 128), (0, i * self.gsize), (self.width, i * self.gsize))
-#        for j in range(self.ncols):
-#            pygame.draw.line(self.win, (128, 128, 128), (j * self.gsize, 0), (j * self.gsize, self.nrows * self.gsize))
-
-        # Tekstiosa
+        # Tekstipaneeli
         if self.textpos:
             pygame.draw.rect(self.win, (180, 180, 180), (0, self.nrows*self.gsize, self.width, self.height-self.nrows*self.gsize))
             pygame.draw.line(self.win, (60, 60, 60), (0, self.nrows*self.gsize), (self.width, self.nrows*self.gsize))

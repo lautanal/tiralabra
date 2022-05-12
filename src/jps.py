@@ -46,7 +46,7 @@ def jps(map, animate, drawnode):
         if node == map.goal:
             return True, timer() - tstart, nn, dist, path
 
-        # Reitti solmun kautta on jo käyty
+        # Reitti solmun kautta on jo tutkittu
         if node.check_visited_jps(dir):
             continue
 

@@ -38,7 +38,7 @@ class Ui:
             MAXWIDTH: Ikkunan maksimileveys pikseleinä
             MAXHEIGHT: Ikkunan maksimileveys pikseleinä
             TEXTAREA: Ikkunan tekstiosan koko pikseleinä
-            TEXTPOS: Ikkunan tekstiosan paikka, True -> alalaita
+            TEXTPOS: Ikkunan tekstiosan paikka, True -> alalaita, False -> oikea sivu
             nrows: Rivien lukumäärä
             ncols: Sarakkeiden lukumäärä
         """
@@ -77,6 +77,7 @@ class Ui:
         self.drawfunc.set_texts(self.algorithm)
         self.files = Files()
 
+        # Ohjelman tilat
         self.edit = False
         self.run = True
 
