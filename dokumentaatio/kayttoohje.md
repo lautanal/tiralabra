@@ -65,10 +65,6 @@ w : write, talleta kartta tiedostoon f.map (hakemistoon data/maps)
 
 f : file, lue karttatiedosto f.map (hakemistosta data/maps)
 
-e : edit, editoi karttaa
-
-q : quit, lopeta editointi
-
 ### Hiiren toiminnot:
 
 Hiiren vasen näppäin valitsee reitin lähtöpisteen (jos sitä ei ole ennestään kartalla)
