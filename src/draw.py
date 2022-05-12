@@ -79,6 +79,7 @@ class Draw:
     def drawmap(self, numbers, animate):
         """Koko karttaruudukon piirto
         """
+        font = pygame.font.SysFont('Arial', self.gsize // 2)
         for row in self.map.nodes:
             for node in row:
 
@@ -100,7 +101,6 @@ class Draw:
                 # Ruutujen numerot
                 if numbers:
                     if not node.blocked:
-                        font = pygame.font.SysFont('Arial', self.gsize // 2)
                         if node.cost < 10:
                             self.win.blit(font.render(str(node.cost), True, (128, 128, 128)),
                                     (node.x+2*(self.gsize//5), node.y+self.gsize//4))

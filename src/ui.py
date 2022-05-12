@@ -241,6 +241,7 @@ class Ui:
 
         # T: Test, suorituskykytesti, 3 menetelmää, painotetut ruudut
         if event.key == pygame.K_t:
+            self.edit = False
             self.drawfunc.clear_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test3()
@@ -248,6 +249,7 @@ class Ui:
 
         # P: Suorituskykytesti 4 menetelmää, painottamattomat ruudut, diagonaalireitti
         if event.key == pygame.K_p:
+            self.edit = False
             self.drawfunc.clear_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test4()
@@ -321,3 +323,4 @@ class Ui:
         self.algorithm.set_map(self.map)
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
         self.drawfunc.clear_texts(self.algorithm)
+        self.edit = False
