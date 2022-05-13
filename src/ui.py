@@ -144,10 +144,9 @@ class Ui:
                 if not node.blocked and node.cost > 1:
                     node.cost -= 1
             else:
-                node = self.map.nodes[row][col]
                 if node == self.map.start:
                     self.map.set_start(None)
-                if node == self.map.goal:
+                elif node == self.map.goal:
                     self.map.set_goal(None)
                 self.map.reset()
                 self.drawfunc.set_texts(self.algorithm)
