@@ -124,11 +124,11 @@ class Ui:
                 if not self.map.start:
                     node.set_start()
                     self.map.set_start(node)
-                    self.drawfunc.clear_texts(self.algorithm)
+                    self.drawfunc.set_texts(self.algorithm)
                 elif not self.map.goal and node != self.map.start:
                     node.set_goal()
                     self.map.set_goal(node)
-                    self.drawfunc.clear_texts(self.algorithm)
+                    self.drawfunc.set_texts(self.algorithm)
                 elif node != self.map.goal and node != self.map.start:
                     node.set_blocked()
 
@@ -147,10 +147,10 @@ class Ui:
                 node = self.map.nodes[row][col]
                 if node == self.map.start:
                     self.map.set_start(None)
-                    self.drawfunc.clear_texts(self.algorithm)
                 if node == self.map.goal:
                     self.map.set_goal(None)
-                    self.drawfunc.clear_texts(self.algorithm)
+                self.map.reset()
+                self.drawfunc.set_texts(self.algorithm)
                 node.clear()
 
 
@@ -175,7 +175,7 @@ class Ui:
         # A: Animation, animaatio päälle / pois
         if event.key == pygame.K_a:
             self.algorithm.set_animate()
-            self.drawfunc.set_texts(self.algorithm)
+            self.drawfunc.set_texts_animation(self.algorithm)
 
         # C: Clear, Lähtö- ja maalipisteiden pyyhkiminen
         if event.key == pygame.K_c:
@@ -186,13 +186,13 @@ class Ui:
                 self.map.start.clear()
                 self.map.set_start(None)
             self.map.reset()
-            self.drawfunc.clear_texts(self.algorithm)
+            self.drawfunc.set_texts(self.algorithm)
 
         # D: Diagonal, polun tyyppi
         if event.key == pygame.K_d:
             self.algorithm.set_diagonal()
             self.map.reset()
-            self.drawfunc.clear_texts(self.algorithm)
+            self.drawfunc.set_texts(self.algorithm)
 
         # E: Edit, ruutujen editoinnin aloitus
         if event.key == pygame.K_e:
@@ -206,16 +206,16 @@ class Ui:
             if maparray:
                 self.newmap(maparray)
 
-        # M: Method, metodin valinta
-        if event.key == pygame.K_m:
-            self.algorithm.set_method()
-            self.map.reset()
-            self.drawfunc.clear_texts(self.algorithm)
-
         # G: Generate, uusi painottamaton random-kartta
         if event.key == pygame.K_g:
             self.costmap = False
             self.newmap(None)
+
+        # M: Method, metodin valinta
+        if event.key == pygame.K_m:
+            self.algorithm.set_method()
+            self.map.reset()
+            self.drawfunc.set_texts(self.algorithm)
 
         # N: New, uusi painotettu random-kartta
         if event.key == pygame.K_n:
@@ -227,10 +227,10 @@ class Ui:
             print('Editointi lopetus')
             self.edit = False
 
-        # R: Reset, lasketun polun pyyhkiminen
+        # R: Reset, lasketun reitin pyyhkiminen
         if event.key == pygame.K_r:
             self.map.reset()
-            self.drawfunc.clear_texts(self.algorithm)
+            self.drawfunc.set_texts(self.algorithm)
 
         # S: Start, laskennan aloitus
         if event.key == pygame.K_s:
@@ -242,7 +242,7 @@ class Ui:
         # T: Test, suorituskykytesti, 3 menetelmää, painotetut ruudut
         if event.key == pygame.K_t:
             self.edit = False
-            self.drawfunc.clear_texts(self.algorithm)
+            self.drawfunc.set_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test3()
             del perftest
@@ -250,7 +250,7 @@ class Ui:
         # P: Suorituskykytesti 4 menetelmää, painottamattomat ruudut, diagonaalireitti
         if event.key == pygame.K_p:
             self.edit = False
-            self.drawfunc.clear_texts(self.algorithm)
+            self.drawfunc.set_texts(self.algorithm)
             perftest = Perftest(self.MAXWIDTH, self.MAXHEIGHT, self.TEXTAREA, self.TEXTPOS, self.win, self.map, self.algorithm, self.drawfunc)
             perftest.test4()
             del perftest
@@ -322,5 +322,5 @@ class Ui:
         # Algoritmin ja piirtofunktion asetukset
         self.algorithm.set_map(self.map)
         self.drawfunc.set_win(self.win, self.width, self.height, self.map)
-        self.drawfunc.clear_texts(self.algorithm)
+        self.drawfunc.set_texts(self.algorithm)
         self.edit = False

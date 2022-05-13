@@ -85,7 +85,6 @@ class Node:
         """
         self.goal = True
         self.blocked = False
-        return self
 
 
     def set_start(self):
@@ -93,7 +92,6 @@ class Node:
         """
         self.start = True
         self.blocked = False
-        return self
 
 
     def set_visited(self):
