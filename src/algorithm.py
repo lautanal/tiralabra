@@ -1,10 +1,10 @@
-from dijkstra import dijkstra
-from astar import astar
-from idastar import idastar
-from jps import jps
+import dijkstra
+import astar
+import idastar
+import jps
 
 
-class Algorithm:
+class Algorithm(dijkstra.DijkstraMixin, astar.AstarMixin, idastar.IdastarMixin, jps.JpsMixin):
     """Luokka, joka käynnistää eri algoritmit
 
     Attributes:
@@ -79,13 +79,13 @@ class Algorithm:
         """Laskennan käynnistys
         """
         if self.method == 'D':
-            result, time = dijkstra(self.map, self.diagonal, self.animate, self.drawfunc)
+            result, time = self.dijkstra()
         elif self.method == 'A':
-            result, time = astar(self.map, self.diagonal, self.animate, self.drawfunc)
+            result, time = self.astar()
         elif self.method == 'I':
-            result, time = idastar(self.map, self.diagonal, self.animate, self.drawfunc)
+            result, time = self.idastar()
         elif self.method == 'J':
-            result, time, npath, costsum, path = jps(self.map, self.animate, self.drawfunc)
+            result, time, npath, costsum, path = self.jps()
         if result:
             if self.method == 'J':
                 self.map.track_path_jps(path)
