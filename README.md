@@ -1,5 +1,3 @@
-# Tiralabra - 2022 periodi 4 
-
 # Ruutukarttanavigaattori
 
 <img src="dokumentaatio/png/ruutukartta.png" width="750">
