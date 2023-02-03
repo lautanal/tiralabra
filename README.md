@@ -16,8 +16,6 @@ Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan ta
 
 [Toteutusdokumentti](https://github.com/lautanal/tiralabra/blob/master/dokumentaatio/toteutusdokumentti.md)
 
-[Työaikakirjanpito](https://github.com/lautanal/tiralabra//blob/master/dokumentaatio/tyoaikakirjanpito.md)
-
 [Käyttöohje](https://github.com/lautanal/tiralabra/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Releaset
