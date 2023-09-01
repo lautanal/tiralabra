@@ -11,7 +11,7 @@ TEXTHOR = False
 
 
 def main():
-    """Käyttöliittymän käynnistys.
+    """User interface start.
     """
     pygame.init()
     infoObject = pygame.display.Info()

@@ -9,38 +9,38 @@ from perftest import Perftest
 
 # Käyttöliittymä
 class Ui:
-    """Käyttöliittymän luokka
+    """User interface class
 
     Attributes:
-        MAXWIDTH: Ikkunan maksimileveys pikseleinä
-        MAXHEIGHT: Ikkunan maksimileveys pikseleinä
-        TEXTAREA: Ikkunan tekstiosan koko
-        TEXTPOS: Ikkunan tekstiosan paikka
-        nrows: Rivien lukumäärä
-        ncols: Sarakkeiden lukumäärä
-        gsize: Karttaruudun koko pikseleinä
-        win: Pygame-ikkuna
-        width: Pygame-ikkunan leveys pikseleinä
-        height: Pygame-ikkunan korkeus pikseleinä
-        map: Karttaruudukko
-        costmap: Kartan tyyppi, costmap=True -> painotettu ruutukartta
-        drawfunc: Piirtorutiini
-        algorithm: Algoritmien käynnistysrutiini
-        files = Tiedostojen käsittelijä
-        edit: Kartan editointi käynnissä
-        run: Pygame-käynnissä
+        MAXWIDTH: Max window width in pixels
+        MAXHEIGHT: Max window height in pixels
+        TEXTAREA: Window text part size in pixels
+        TEXTPOS: Text window position
+        nrows: Row number
+        ncols: Column number
+        gsize: Grid square size in pixels
+        win: Pygame-window
+        width: Pygame-window size in pixels
+        height: Pygame-iwindow height in pixels
+        map: grid map
+        costmap: Map type (costmap is with weighted nodes)
+        drawfunc: Draw function
+        algorithm: Algorithm routines
+        files = File handler
+        edit: Map edit in operation
+        run: Pygame is running
     """
 
     def __init__(self, MAXWIDTH, MAXHEIGHT, nrows, ncols, TEXTAREA, TEXTPOS):
-        """Luokan konstruktori, joka luo uuden käyttöliittymän.
+        """The constructor that creates a user interface.
 
         Args:
-            MAXWIDTH: Ikkunan maksimileveys pikseleinä
-            MAXHEIGHT: Ikkunan maksimileveys pikseleinä
-            TEXTAREA: Ikkunan tekstiosan koko pikseleinä
-            TEXTPOS: Ikkunan tekstiosan paikka, True -> alalaita, False -> oikea sivu
-            nrows: Rivien lukumäärä
-            ncols: Sarakkeiden lukumäärä
+            MAXWIDTH: Max window width in pixels
+            MAXHEIGHT: Max window height in pixels
+            TEXTAREA: Window text part size in pixels
+            TEXTPOS: Text window position, True -> bottom, False -> right side
+            nrows: Row number
+            ncols: Column number
         """
 
         # Ikkunan kokoparametrit
@@ -63,7 +63,7 @@ class Ui:
         self.ncols = ncols
 
         # Pygame-ikkunan luonti
-        pygame.display.set_caption('Paras reitti')
+        pygame.display.set_caption('Best route')
         self.win = pygame.display.set_mode((self.width, self.height))
 
         # Kartan alustus

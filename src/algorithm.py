@@ -91,18 +91,18 @@ class Algorithm(dijkstra.DijkstraMixin, astar.AstarMixin, idastar.IdastarMixin, 
                 self.map.track_path_jps(path)
             else:
                 npath, costsum = self.map.track_path(self.diagonal)
-            print(f'\n*** REITTI LÖYTYI ***')
+            print(f'\n*** ROUTE FOUND***')
             if self.method == 'D':
-                print('Dijkstran menetelmä')
+                print('Dijkstra method')
             elif self.method == 'A':
-                print('A* -menetelmä')
+                print('A* -method')
             elif self.method == 'I':
-                print('IDA* -menetelmä')
+                print('IDA* -method')
             elif self.method == 'J':
-                print('Jump Point Search -menetelmä')
-            print(f'Laskenta vei {time:.3f} sekuntia\n' \
-                f'Polun solmujen lukumäärä {npath}\nPolun painotettu pituus {costsum}')
+                print('Jump Point Search -method')
+            print(f'Analysis took {time:.3f} seconds\n' \
+                f'Route length {npath} nodes\nRoute weighted length {costsum}')
             return True, npath, costsum, time
         else:
-            print(f'\n*** REITTIÄ EI LÖYTYNYT ***')
+            print(f'\n*** ROUTE NOT FOUND ***')
             return False, 0, 0, 0

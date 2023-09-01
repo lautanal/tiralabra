@@ -166,28 +166,28 @@ class Draw:
         """Pygame-ikkunan tekstit
         """
         if algorithm.method == 'D':
-            self.text1 = 'Metodi (m): Dijkstra'
+            self.text1 = 'Method (m): Dijkstra'
         elif algorithm.method == 'A':
-            self.text1 = 'Metodi (m): A*'
+            self.text1 = 'Method (m): A*'
         elif algorithm.method == 'I':
-            self.text1 = 'Metodi (m): IDA*'
+            self.text1 = 'Method (m): IDA*'
         elif algorithm.method == 'J':
-            self.text1 = 'Metodi (m): Jump Point Search'
+            self.text1 = 'Method (m): Jump Point Search'
         if algorithm.diagonal:
-            self.text2 = 'Polun tyyppi (d): viisto'
+            self.text2 = 'Path type (d): diagonal'
         else:
-            self.text2 = 'Polun tyyppi (d): xy'
+            self.text2 = 'Path type (d): xy'
         if algorithm.animate:
-            self.text3 = 'Animaatio (a): kyllä'
+            self.text3 = 'Animation (a): yes'
         else:
-            self.text3 = 'Animaatio (a): ei'
-        self.text4 = f'Kartan koko: {self.nrows} x {self.ncols}'
+            self.text3 = 'Animation (a): no'
+        self.text4 = f'Map size: {self.nrows} x {self.ncols}'
         self.text5 = ''
         if self.map.start:
-            self.text5 = f'Lähtö x,y: {str(self.map.start.col)}, {str(self.map.start.row)}'
+            self.text5 = f'Start x,y: {str(self.map.start.col)}, {str(self.map.start.row)}'
         self.text6 = ''
         if self.map.goal:
-            self.text6 = f'Maali x,y: {str(self.map.goal.col)}, {str(self.map.goal.row)}'
+            self.text6 = f'Goal x,y: {str(self.map.goal.col)}, {str(self.map.goal.row)}'
         self.text7 = ''
         self.text8 = ''
         self.text9 = ''
@@ -198,23 +198,23 @@ class Draw:
         """Pygame-ikkunan teksti, animaatio
         """
         if algorithm.animate:
-            self.text3 = 'Animaatio (a): kyllä'
+            self.text3 = 'Animation (a): yes'
         else:
-            self.text3 = 'Animaatio (a): ei'
+            self.text3 = 'Animation (a): no'
 
 
     def set_results(self, result):
         """Laskennan tulokset näkyville
         """
         if result[0]:
-            self.text7 = '*** TULOKSET ***'
-            self.text8 = f'Polun solmujen lukumäärä {result[1]}'
-            self.text9 = f'Polun painotettu pituus {result[2]:.1f}'
-            self.text10 = f'Laskenta vei {result[3]:.3f} sekuntia'
+            self.text7 = '*** RESULTS ***'
+            self.text8 = f'Route length {result[1]} nodes'
+            self.text9 = f'Route weighted length {result[2]:.1f}'
+            self.text10 = f'Analysis took {result[3]:.3f} seconds'
             self.text11 = ''
             self.text11 = ''
         else:
-            self.text7 = '*** REITTIÄ EI LÖYTYNYT ***'
+            self.text7 = '*** NO ROUTE FOUND ***'
             self.text8 = ''
             self.text9 = ''
             self.text10 = ''
@@ -224,18 +224,18 @@ class Draw:
     def test3_results(self, result):
         """Suoritusarvovertailun tulokset näkyville
         """
-        self.text7 = '*** TULOKSET ***'
-        self.text8 = f'Dijkstra keskimäärin: {result[0]:.3f} s'
-        self.text9 = f'A* keskimäärin : {result[1]:.3f} s'
-        self.text10 = f'IDA* keskimäärin: {result[2]:.3f} s'
+        self.text7 = '*** RESULTS ***'
+        self.text8 = f'Dijkstra average time: {result[0]:.3f} s'
+        self.text9 = f'A* average time: {result[1]:.3f} s'
+        self.text10 = f'IDA* average time: {result[2]:.3f} s'
         self.text11 = ''
 
 
     def test4_results(self, result):
         """Suoritusarvovertailun tulokset näkyville
         """
-        self.text7 = '*** TULOKSET ***'
-        self.text8 = f'Dijkstra keskimäärin: {result[0]:.3f} s'
-        self.text9 = f'A* keskimäärin : {result[1]:.3f} s'
-        self.text10 = f'IDA* keskimäärin: {result[2]:.3f} s'
-        self.text11 = f'JPS keskimäärin: {result[3]:.3f} s'
+        self.text7 = '*** RESULTS ***'
+        self.text8 = f'Dijkstra average time:  {result[0]:.3f} s'
+        self.text9 = f'A* average time: {result[1]:.3f} s'
+        self.text10 = f'IDA* average time: {result[2]:.3f} s'
+        self.text11 = f'JPS average time: {result[3]:.3f} s'

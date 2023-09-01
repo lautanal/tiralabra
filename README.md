@@ -8,6 +8,8 @@ Polunetsinnän nopeutta testataan usealla eri algoritmilla, joita ovat Dijkstran
 
 Polku voi kulkea ruutujen välillä joko pelkästään vaaka- ja pystysuoraan tai valinnaisesti myös viistoon väli-ilmansuuntiin.
 
+Sovellus on toteutettu Python ohjelmointikielen versiolla 3.8,
+
 ## Dokumentaatio
 
 [Tehtävän määrittely](https://github.com/lautanal/tiralabra/blob/master/dokumentaatio/maarittelydokumentti.md)
