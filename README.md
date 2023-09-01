@@ -18,9 +18,11 @@ Sovellus on toteutettu Python-ohjelmointikielen versiolla 3.8.
 
 [Toteutusdokumentti](https://github.com/lautanal/tiralabra/blob/master/dokumentaatio/toteutusdokumentti.md)
 
+[Ohjelmakoodi](https://github.com/lautanal/tiralabra/blob/master/src)
+
 [Käyttöohje](https://github.com/lautanal/tiralabra/blob/master/dokumentaatio/kayttoohje.md)
 
 ## Releaset
 
-[Loppupalautus](https://github.com/lautanal/tiralabra/releases/tag/Final)
+[Loppuversio](https://github.com/lautanal/tiralabra/releases/tag/Final)
 
